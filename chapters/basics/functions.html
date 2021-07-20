@@ -1,0 +1,905 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Programming in CMake · Modern CMake</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="Henry Schreiner">
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-hints/plugin-hints.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-term/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ace/ace.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="comms.html" />
+    
+    
+    <link rel="prev" href="variables.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    An Introduction to Modern CMake
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1.1" data-path="../intro/installing.html">
+            
+                <a href="../intro/installing.html">
+            
+                    
+                    Installing CMake
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.2" data-path="../intro/running.html">
+            
+                <a href="../intro/running.html">
+            
+                    
+                    Running CMake
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.3" data-path="../intro/dodonot.html">
+            
+                <a href="../intro/dodonot.html">
+            
+                    
+                    Do's and Don'ts
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.4" data-path="../intro/newcmake.html">
+            
+                <a href="../intro/newcmake.html">
+            
+                    
+                    What's new in CMake
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../basics.html">
+            
+                <a href="../basics.html">
+            
+                    
+                    Introduction to the Basics
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="variables.html">
+            
+                <a href="variables.html">
+            
+                    
+                    Variables and the Cache
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.2" data-path="functions.html">
+            
+                <a href="functions.html">
+            
+                    
+                    Programming in CMake
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="comms.html">
+            
+                <a href="comms.html">
+            
+                    
+                    Communicating with your code
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="structure.html">
+            
+                <a href="structure.html">
+            
+                    
+                    How to Structure Your Project
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="programs.html">
+            
+                <a href="programs.html">
+            
+                    
+                    Running Other Programs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="example.html">
+            
+                <a href="example.html">
+            
+                    
+                    A Simple Example
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../features.html">
+            
+                <a href="../features.html">
+            
+                    
+                    Adding Features
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../features/cpp11.html">
+            
+                <a href="../features/cpp11.html">
+            
+                    
+                    C++11 and Beyond
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../features/small.html">
+            
+                <a href="../features/small.html">
+            
+                    
+                    Small but common needs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../features/utilities.html">
+            
+                <a href="../features/utilities.html">
+            
+                    
+                    Utilities
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../features/modules.html">
+            
+                <a href="../features/modules.html">
+            
+                    
+                    Useful modules
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../features/ides.html">
+            
+                <a href="../features/ides.html">
+            
+                    
+                    IDEs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="../features/debug.html">
+            
+                <a href="../features/debug.html">
+            
+                    
+                    Debugging
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../projects.html">
+            
+                <a href="../projects.html">
+            
+                    
+                    Including Projects
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../projects/submodule.html">
+            
+                <a href="../projects/submodule.html">
+            
+                    
+                    Submodule
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../projects/download.html">
+            
+                <a href="../projects/download.html">
+            
+                    
+                    DownloadProject
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../projects/fetch.html">
+            
+                <a href="../projects/fetch.html">
+            
+                    
+                    Fetch (CMake 3.11)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../testing.html">
+            
+                <a href="../testing.html">
+            
+                    
+                    Testing
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../testing/googletest.html">
+            
+                <a href="../testing/googletest.html">
+            
+                    
+                    GoogleTest
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../testing/catch.html">
+            
+                <a href="../testing/catch.html">
+            
+                    
+                    Catch
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../install.html">
+            
+                <a href="../install.html">
+            
+                    
+                    Exporting and Installing
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../install/installing.html">
+            
+                <a href="../install/installing.html">
+            
+                    
+                    Installing
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../install/exporting.html">
+            
+                <a href="../install/exporting.html">
+            
+                    
+                    Exporting
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../install/packaging.html">
+            
+                <a href="../install/packaging.html">
+            
+                    
+                    Packaging
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../packages.html">
+            
+                <a href="../packages.html">
+            
+                    
+                    Looking for Libraries (Packages)
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../packages/CUDA.html">
+            
+                <a href="../packages/CUDA.html">
+            
+                    
+                    CUDA
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../packages/OpenMP.html">
+            
+                <a href="../packages/OpenMP.html">
+            
+                    
+                    OpenMP
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../packages/Boost.html">
+            
+                <a href="../packages/Boost.html">
+            
+                    
+                    Boost
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../packages/MPI.html">
+            
+                <a href="../packages/MPI.html">
+            
+                    
+                    MPI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../packages/ROOT.html">
+            
+                <a href="../packages/ROOT.html">
+            
+                    
+                    ROOT
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.5.1" data-path="../../examples/root-usefile/">
+            
+                <a href="../../examples/root-usefile/">
+            
+                    
+                    UseFile Example
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.2" data-path="../../examples/root-simple/">
+            
+                <a href="../../examples/root-simple/">
+            
+                    
+                    Simple Example
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.3" data-path="../../examples/root-dict/">
+            
+                <a href="../../examples/root-dict/">
+            
+                    
+                    Dictionary Example
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="../packages/Minuit2.html">
+            
+                <a href="../packages/Minuit2.html">
+            
+                    
+                    Minuit2
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Programming in CMake</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="programming-in-cmake">Programming in CMake</h1>
+<h2 id="control-flow">Control flow</h2>
+<p>CMake has an <a href="https://cmake.org/cmake/help/latest/command/if.html" target="_blank"><code>if</code></a> statement, though over the years it has become rather complex. There are a series of all caps keywords you can use inside an if statement, and you can often refer to variables by either directly by name or using the <code>${}</code> syntax (the if statement historically predates variable expansion). An example if statement:</p>
+<pre><code class="lang-cmake"><span class="hljs-keyword">if</span>(variable)
+    <span class="hljs-comment"># If variable is `ON`, `YES`, `TRUE`, `Y`, or non zero number</span>
+<span class="hljs-keyword">else</span>()
+    <span class="hljs-comment"># If variable is `0`, `OFF`, `NO`, `FALSE`, `N`, `IGNORE`, `NOTFOUND`, `&quot;&quot;`, or ends in `-NOTFOUND`</span>
+<span class="hljs-keyword">endif</span>()
+<span class="hljs-comment"># If variable does not expand to one of the above, CMake will expand it then try again</span>
+</code></pre>
+<p>Since this can be a little confusing if you explicitly put a variable expansion, like <code>${variable}</code>, due to the potential expansion of an expansion, a policy (<a href="https://cmake.org/cmake/help/latest/policy/CMP0054.html" target="_blank">CMP0054</a>) was added in CMake 3.1+ that keeps a quoted expansion from being expanded yet again. So, as long as the minimum version of CMake is 3.1+, you can do:</p>
+<pre><code class="lang-cmake"><span class="hljs-keyword">if</span>(<span class="hljs-string">&quot;${variable}&quot;</span>)
+    <span class="hljs-comment"># True if variable is not false-like</span>
+<span class="hljs-keyword">else</span>()
+    <span class="hljs-comment"># Note that undefined variables would be `&quot;&quot;` thus false</span>
+<span class="hljs-keyword">endif</span>()
+</code></pre>
+<p>There are a variety of keywords as well, such as:</p>
+<ul>
+<li>Unary: <code>NOT</code>, <code>TARGET</code>, <code>EXISTS</code> (file), <code>DEFINED</code>, etc.</li>
+<li>Binary: <code>STREQUAL</code>, <code>AND</code>, <code>OR</code>, <code>MATCHES</code> (regular expression), <code>VERSION_LESS</code>, <code>VERSION_LESS_EQUAL</code> (CMake 3.7+), etc.</li>
+<li>Parentheses can be used to group</li>
+</ul>
+<h2 id="generator-expressions"><a href="https://cmake.org/cmake/help/latest/manual/cmake-generator-expressions.7.html" target="_blank">generator-expressions</a></h2>
+<p><a href="https://cmake.org/cmake/help/latest/manual/cmake-generator-expressions.7.html" target="_blank">generator-expressions</a> are really powerful, but a bit odd and specialized. Most CMake commands happen at configure time, include the if statements seen above. But what if you need logic to occur at build time or even install time? Generator expressions were added for this purpose.<sup><a href="#fn_1" id="reffn_1">1</a></sup> They are evaluated in target properties.</p>
+<p>The simplest generator expressions are informational expressions, and are of the form <code>$&lt;KEYWORD&gt;</code>; they evaluate to a piece of information relevant for the current configuration. The other form is <code>$&lt;KEYWORD:value&gt;</code>, where <code>KEYWORD</code> is a keyword that controls the evaluation, and value is the item to evaluate (an informational expression keyword is allowed here, too). If KEYWORD is a generator expression or variable that evaluates to 0 or 1, <code>value</code> is substituted
+if 1 and not if 0. You can nest generator expressions, and you can use variables to make reading nested variables bearable. Some
+expressions allow multiple values, separated by commas.<sup><a href="#fn_2" id="reffn_2">2</a></sup></p>
+<p>If you want to put a compile flag only for the DEBUG configuration, for example, you could do:</p>
+<pre><code>target_compile_options(MyTarget PRIVATE &quot;$&lt;$&lt;CONFIG:Debug&gt;:--my-flag&gt;&quot;)
+</code></pre><p>This is a newer, better way to add things than using specialized <code>*_DEBUG</code> variables, and generalized to all the things generator expressions support. Note that you should never, never use the configure time value for the current configuration, because multi-configuration generators like IDEs do not have a &quot;current&quot; configuration at configure time, only at build time through generator expressions and custom <code>*_&lt;CONFIG&gt;</code> variables.</p>
+<p>Other common uses for generator expressions:</p>
+<ul>
+<li>Limiting an item to a certain language only, such as CXX, to avoid it mixing with something like CUDA, or wrapping it so that it is different depending on target language.</li>
+<li>Accessing configuration dependent properties, like target file location.</li>
+<li>Giving a different location for build and install directories.</li>
+</ul>
+<p>That last one is very common. You&apos;ll see something like this in almost every package that supports installing:</p>
+<pre><code class="lang-cmake">target_include_directories(
+    MyTarget
+  PUBLIC
+    $&lt;BUILD_INTERFACE:<span class="hljs-variable">${CMAKE_CURRENT_SOURCE_DIR}</span>/<span class="hljs-keyword">include</span>&gt;
+    $&lt;INSTALL_INTERFACE:<span class="hljs-keyword">include</span>&gt;
+)
+</code></pre>
+<h2 id="macros-and-functions">Macros and Functions</h2>
+<p>You can define your own CMake <a href="https://cmake.org/cmake/help/latest/command/function.html" target="_blank"><code>function</code></a> or <a href="https://cmake.org/cmake/help/latest/command/macro.html" target="_blank"><code>macro</code></a> easily. The only difference between a function and a macro is scope; macros don&apos;t have one. So, if you set a variable in a function and want it to be visible outside, you&apos;ll need <code>PARENT_SCOPE</code>. Nesting functions therefore is a bit tricky, since you&apos;ll have to explicitly set the variables you want visible to the outside world to <code>PARENT_SCOPE</code> in each function. But, functions don&apos;t &quot;leak&quot; all their variables like macros do. For the
+following examples, I&apos;ll use functions.</p>
+<p>An example of a simple function is as follows:</p>
+<pre><code class="lang-cmake"><span class="hljs-keyword">function</span>(SIMPLE REQUIRED_ARG)
+    <span class="hljs-keyword">message</span>(STATUS <span class="hljs-string">&quot;Simple arguments: ${REQUIRED_ARG}, followed by ${ARGN}&quot;</span>)
+    <span class="hljs-keyword">set</span>(<span class="hljs-variable">${REQUIRED_ARG}</span> <span class="hljs-string">&quot;From SIMPLE&quot;</span> PARENT_SCOPE)
+<span class="hljs-keyword">endfunction</span>()
+
+simple(This Foo Bar)
+<span class="hljs-keyword">message</span>(<span class="hljs-string">&quot;Output: ${This}&quot;</span>)
+</code></pre>
+<p>The output would be:</p>
+<pre><code>-- Simple arguments: This, followed by Foo;Bar
+Output: From SIMPLE
+</code></pre><p>If you want positional arguments, they are listed explicitly, and all other arguments are collected in <code>ARGN</code> (<code>ARGV</code> holds all arguments, even the ones you list). You have to work around the fact that CMake does not have return values by setting variables. In the example above, you can explicitly give a variable name to set.</p>
+<h2 id="arguments">Arguments</h2>
+<p>CMake has a named variable system that you&apos;ve already seen in most of the build in CMake functions. You can use it with the <a href="https://cmake.org/cmake/help/latest/command/cmake_parse_arguments.html" target="_blank"><code>cmake_parse_arguments</code></a> function. If you want to support a version of CMake less than 3.5, you&apos;ll want to also include the <a href="https://cmake.org/cmake/help/latest/module/CMakeParseArguments.html" target="_blank">CMakeParseArguments</a> module, which is where it used to live before becoming a built in command. Here is an example of how to use it:</p>
+<pre><code class="lang-cmake"><span class="hljs-keyword">function</span>(COMPLEX)
+    cmake_parse_arguments(
+        COMPLEX_PREFIX
+        <span class="hljs-string">&quot;SINGLE;ANOTHER&quot;</span>
+        <span class="hljs-string">&quot;ONE_VALUE;ALSO_ONE_VALUE&quot;</span>
+        <span class="hljs-string">&quot;MULTI_VALUES&quot;</span>
+        <span class="hljs-variable">${ARGN}</span>
+    )
+<span class="hljs-keyword">endfunction</span>()
+
+complex(SINGLE ONE_VALUE value MULTI_VALUES some other values)
+</code></pre>
+<p>Inside the function after this call, you&apos;ll find:</p>
+<pre><code class="lang-cmake">COMPLEX_PREFIX_SINGLE = <span class="hljs-keyword">TRUE</span>
+COMPLEX_PREFIX_ANOTHER = <span class="hljs-keyword">FALSE</span>
+COMPLEX_PREFIX_ONE_VALUE = <span class="hljs-string">&quot;value&quot;</span>
+COMPLEX_PREFIX_ALSO_ONE_VALUE = &lt;UNDEFINED&gt;
+COMPLEX_PREFIX_MULTI_VALUES = <span class="hljs-string">&quot;some;other;values&quot;</span>
+</code></pre>
+<p>If you look at the official page, you&apos;ll see a slightly different method using set to avoid explicitly writing the semicolons in the list; feel free to use the structure you like best. You can mix it with the positional arguments listed above; any remaining arguments (therefore optional positional arguments) are in <code>COMPLEX_PREFIX_UNPARSED_ARGUMENTS</code>.</p>
+<blockquote id="fn_1">
+<sup>1</sup>. They act as if they are evaluated at build/install time, though actually they are evaluated for each build configuration.<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#x21A9;</a>
+</blockquote>
+<blockquote id="fn_2">
+<sup>2</sup>. The CMake docs splits expressions into Informational, Logical, and Output.<a href="#reffn_2" title="Jump back to footnote [2] in the text."> &#x21A9;</a>
+</blockquote>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="variables.html" class="navigation navigation-prev " aria-label="Previous page: Variables and the Cache">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="comms.html" class="navigation navigation-next " aria-label="Next page: Communicating with your code">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Programming in CMake","level":"1.2.2","depth":2,"next":{"title":"Communicating with your code","level":"1.2.3","depth":2,"path":"chapters/basics/comms.md","ref":"chapters/basics/comms.md","articles":[]},"previous":{"title":"Variables and the Cache","level":"1.2.1","depth":2,"path":"chapters/basics/variables.md","ref":"chapters/basics/variables.md","articles":[]},"dir":"ltr"},"config":{"plugins":["replace","hints","term","include-codeblock","ace"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"ace":{},"search":{},"term":{"copyButtons":true,"fade":true,"lineStyles":true,"prompt":"(?<prompt>[^\\$^#^:]*)(?<pathsep>:?)(?<path>[^\\$^#]*?)(?<delimiter>[\\$#] )(?<command>.*)$","style":"default"},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"replace":{"substitutes":[{"pattern":"«cmake:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/manual/cmake-$1.7.html)"},{"pattern":"«command:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/command/$1.html)"},{"pattern":"«envvar:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/envvar/$1.html)"},{"pattern":"«module:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/module/$1.html)"},{"pattern":"«policy:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/policy/$1.html)"},{"pattern":"«variable:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest//$1.html)"},{"pattern":"«prop:([^:]+):`?([^`^»]+)`?»","flags":"g","substitute":"[`$2`](https://cmake.org/cmake/help/latest/prop_$1/$2.html)"}]},"include-codeblock":{"check":false,"edit":false,"fixlang":true,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Henry Schreiner","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Modern CMake","gitbook":"*","description":"A guide to writing simple, powerful, and clean CMake 3.1+ builds."},"file":{"path":"chapters/basics/functions.md","mtime":"2021-07-20T13:16:31.691Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-20T13:17:14.844Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-term/clipboard.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-term/initclip.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-term/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-ace/ace/ace.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-ace/ace.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

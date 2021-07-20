@@ -1,0 +1,175 @@
+
+pre.term {
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  overflow-x: hidden;
+  padding: .85em 1em;
+  font-size: .85em;
+  position: relative;
+}
+
+pre code.lang-term pre.term {
+  margin:0;
+  padding:0;
+  font-size: 1em;
+}
+
+pre.term code {
+  display: block;
+  margin: 1em 2em 0 1em;
+  padding-bottom: 1em;
+  overflow-x: auto;
+}
+
+pre.term span.t-line {
+  display: block;
+}
+
+pre.term.t-fade span.t-line:not(.t-prompt-line),
+pre.term.t-fade span.t-delimiter,
+pre.term.t-fade span.t-path,
+pre.term.t-fade span.t-pathsep,
+pre.term.t-fade span.t-prompt {
+  transition: opacity 0.3s ease-in-out;
+}
+
+pre.term.t-fade:hover span.t-line:not(.t-prompt-line),
+pre.term.t-fade:hover span.t-delimiter,
+pre.term.t-fade:hover span.t-path,
+pre.term.t-fade:hover span.t-pathsep,
+pre.term.t-fade:hover span.t-prompt {
+  opacity: 0.3;
+}
+
+pre.term > button.t-copy,
+pre.term > i.t-copy {
+  cursor: pointer;
+  margin-top: 0.3em;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  right: 0.4em;
+  transition: opacity 0.3s ease-in-out;
+}
+
+pre.term:hover > button.t-copy,
+pre.term:hover > i.t-copy {
+  opacity: 1;
+}
+
+#t-textarea {
+  height: 0;
+  position: fixed;
+  top: -1000px;
+  width: 0;
+}
+
+pre.term.t-black {
+  background-color: #222;
+  color: #dedede;
+}
+
+pre.term.t-black .t-prompt {
+  font-weight: bold;
+}
+
+pre.term.t-classic {
+  background-color: black;
+  color: lawngreen;
+}
+
+pre.term.t-classic .t-error {
+  color: red;
+}
+
+pre.term.t-classic .t-warning {
+  color: orange;
+}
+
+pre.term.t-flat {
+  background-color: #2b3d50;
+  color: #dedede;
+}
+
+pre.term.t-flat .t-delimiter {
+  color: #60b0e5;
+}
+
+pre.term.t-flat .t-error {
+  color: #f55
+}
+
+pre.term.t-flat .t-prompt {
+  color: #28c66e;
+}
+
+pre.term.t-flat .t-warning {
+  color: #d93;
+}
+
+pre.term.t-ubuntu {
+  background-color: #300b24;
+  color: #b8c4c5;
+}
+
+pre.term.t-ubuntu .t-error {
+  color: #e22227;
+}
+
+pre.term.t-ubuntu .t-path {
+  color: #475ca0;
+}
+
+pre.term.t-ubuntu .t-prompt {
+  color: #84cc40;
+}
+
+pre.term.t-ubuntu .t-warning {
+  color: #d93;
+}
+
+pre.term.t-white {
+  background-color: white;
+  color: #333;
+}
+
+pre.term.t-white .t-error {
+  color: #e22227;
+}
+
+pre.term.t-white .t-path {
+  color: #475ca0;
+}
+
+pre.term.t-white .t-prompt {
+  color: #4caf50;
+}
+
+pre.term.t-white .t-warning {
+  color: #d93;
+}
+
+
+pre.term.t-default {
+  background-color: #f7f7f7;
+  color: #333;
+}
+
+pre.term.t-default .t-error {
+  color: #e22227;
+}
+
+pre.term.t-default .t-path {
+  color: #475ca0;
+}
+
+pre.term.t-default .t-prompt {
+  color: #4caf50;
+}
+
+pre.term.t-default .t-warning {
+  color: #d93;
+}
+
+pre.term.t-default .t-delimiter {
+  color: #4090b5;
+}

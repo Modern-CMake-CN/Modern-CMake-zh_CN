@@ -1,0 +1,1132 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>What's new in CMake · Modern CMake</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="Henry Schreiner">
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-hints/plugin-hints.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-term/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ace/ace.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../basics.html" />
+    
+    
+    <link rel="prev" href="dodonot.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    An Introduction to Modern CMake
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1.1" data-path="installing.html">
+            
+                <a href="installing.html">
+            
+                    
+                    Installing CMake
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.2" data-path="running.html">
+            
+                <a href="running.html">
+            
+                    
+                    Running CMake
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.3" data-path="dodonot.html">
+            
+                <a href="dodonot.html">
+            
+                    
+                    Do's and Don'ts
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.1.4" data-path="newcmake.html">
+            
+                <a href="newcmake.html">
+            
+                    
+                    What's new in CMake
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../basics.html">
+            
+                <a href="../basics.html">
+            
+                    
+                    Introduction to the Basics
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../basics/variables.html">
+            
+                <a href="../basics/variables.html">
+            
+                    
+                    Variables and the Cache
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../basics/functions.html">
+            
+                <a href="../basics/functions.html">
+            
+                    
+                    Programming in CMake
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../basics/comms.html">
+            
+                <a href="../basics/comms.html">
+            
+                    
+                    Communicating with your code
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../basics/structure.html">
+            
+                <a href="../basics/structure.html">
+            
+                    
+                    How to Structure Your Project
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../basics/programs.html">
+            
+                <a href="../basics/programs.html">
+            
+                    
+                    Running Other Programs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../basics/example.html">
+            
+                <a href="../basics/example.html">
+            
+                    
+                    A Simple Example
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../features.html">
+            
+                <a href="../features.html">
+            
+                    
+                    Adding Features
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../features/cpp11.html">
+            
+                <a href="../features/cpp11.html">
+            
+                    
+                    C++11 and Beyond
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../features/small.html">
+            
+                <a href="../features/small.html">
+            
+                    
+                    Small but common needs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../features/utilities.html">
+            
+                <a href="../features/utilities.html">
+            
+                    
+                    Utilities
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../features/modules.html">
+            
+                <a href="../features/modules.html">
+            
+                    
+                    Useful modules
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../features/ides.html">
+            
+                <a href="../features/ides.html">
+            
+                    
+                    IDEs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="../features/debug.html">
+            
+                <a href="../features/debug.html">
+            
+                    
+                    Debugging
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../projects.html">
+            
+                <a href="../projects.html">
+            
+                    
+                    Including Projects
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../projects/submodule.html">
+            
+                <a href="../projects/submodule.html">
+            
+                    
+                    Submodule
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../projects/download.html">
+            
+                <a href="../projects/download.html">
+            
+                    
+                    DownloadProject
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../projects/fetch.html">
+            
+                <a href="../projects/fetch.html">
+            
+                    
+                    Fetch (CMake 3.11)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../testing.html">
+            
+                <a href="../testing.html">
+            
+                    
+                    Testing
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../testing/googletest.html">
+            
+                <a href="../testing/googletest.html">
+            
+                    
+                    GoogleTest
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../testing/catch.html">
+            
+                <a href="../testing/catch.html">
+            
+                    
+                    Catch
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../install.html">
+            
+                <a href="../install.html">
+            
+                    
+                    Exporting and Installing
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../install/installing.html">
+            
+                <a href="../install/installing.html">
+            
+                    
+                    Installing
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../install/exporting.html">
+            
+                <a href="../install/exporting.html">
+            
+                    
+                    Exporting
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../install/packaging.html">
+            
+                <a href="../install/packaging.html">
+            
+                    
+                    Packaging
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../packages.html">
+            
+                <a href="../packages.html">
+            
+                    
+                    Looking for Libraries (Packages)
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../packages/CUDA.html">
+            
+                <a href="../packages/CUDA.html">
+            
+                    
+                    CUDA
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../packages/OpenMP.html">
+            
+                <a href="../packages/OpenMP.html">
+            
+                    
+                    OpenMP
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../packages/Boost.html">
+            
+                <a href="../packages/Boost.html">
+            
+                    
+                    Boost
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../packages/MPI.html">
+            
+                <a href="../packages/MPI.html">
+            
+                    
+                    MPI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../packages/ROOT.html">
+            
+                <a href="../packages/ROOT.html">
+            
+                    
+                    ROOT
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.5.1" data-path="../../examples/root-usefile/">
+            
+                <a href="../../examples/root-usefile/">
+            
+                    
+                    UseFile Example
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.2" data-path="../../examples/root-simple/">
+            
+                <a href="../../examples/root-simple/">
+            
+                    
+                    Simple Example
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.3" data-path="../../examples/root-dict/">
+            
+                <a href="../../examples/root-dict/">
+            
+                    
+                    Dictionary Example
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="../packages/Minuit2.html">
+            
+                <a href="../packages/Minuit2.html">
+            
+                    
+                    Minuit2
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >What's new in CMake</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="whats-new-in-in-cmake">What&apos;s new in in CMake</h1>
+<p>This is an abbreviated version of the CMake changlog with just the highlights for authors. Names for each release are arbitrarily picked by the author.</p>
+<h2 id="cmake-30--interface-libraries"><a href="https://cmake.org/cmake/help/latest/release/3.0.html" target="_blank">CMake 3.0</a> : Interface libraries</h2>
+<p>There were a ton of additions to this version of CMake, primarily to fill out the target interface. Some bits of needed functionality were missed and implemented in CMake 3.1 instead.</p>
+<ul>
+<li>Initially released <a href="https://blog.kitware.com/cmake-3-0-0-available-for-download/" target="_blank">June 10, 2014</a></li>
+<li>New documentation</li>
+<li>INTERFACE libraries</li>
+<li>Project VERSION support</li>
+<li>Exporting build trees easily</li>
+<li>Bracket arguments and comments available (not widely used)</li>
+<li>Lots of improvements</li>
+</ul>
+<h2 id="cmake-31--c11-and-compile-features"><a href="https://cmake.org/cmake/help/latest/release/3.1.html" target="_blank">CMake 3.1</a> : C++11 and compile features</h2>
+<p>This is the first release of CMake to support C++11. Combined with fixes to the new features of CMake 3.0, this is currently a common minimum version of CMake for libraries that want to support old CMake builds.</p>
+<ul>
+<li>Initially released <a href="https://blog.kitware.com/cmake-3-1-0-released/" target="_blank">December 17, 2014</a></li>
+<li>C++11 Support</li>
+<li>Compile features support</li>
+<li>Sources can be added later with <code>target_sources</code></li>
+<li>Better support for generator expressions and INTERFACE targets</li>
+</ul>
+<h2 id="cmake-32--utf8"><a href="https://cmake.org/cmake/help/latest/release/3.2.html" target="_blank">CMake 3.2</a> : UTF8</h2>
+<p>This is a smaller release, with mostly small features and fixes. Internal changes, like better Windows and UTF8 support, were the focus.</p>
+<ul>
+<li>Initially released <a href="https://blog.kitware.com/cmake-3-2-1-released/" target="_blank">March 11, 2015</a></li>
+<li><code>continue()</code> inside loops</li>
+<li>File and directory locks added</li>
+</ul>
+<h2 id="cmake-33--if-inlist"><a href="https://cmake.org/cmake/help/latest/release/3.3.html" target="_blank">CMake 3.3</a> : if IN_LIST</h2>
+<p>This is notable for the useful <code>IN_LIST</code> option for if, but it also added better library search using <code>$PATH</code> (See CMake 3.6), dependencies for INTERFACE libraries, and several other useful improvements. The addition of a <code>COMPILE_LANGUAGE</code> generator expression would prove very useful in the future as more languages are added. Makefiles now produce better output in parallel.</p>
+<ul>
+<li>Initially released <a href="https://blog.kitware.com/cmake-3-3-0-released/" target="_blank">July 23, 2015</a></li>
+<li><code>IN_LIST</code> added to <code>if</code></li>
+<li><code>*_INCLUDE_WHAT_YOU_USE</code> property added</li>
+<li><code>COMPILE_LANGUAGE</code> generator expression (limited support in some generators)</li>
+</ul>
+<h2 id="cmake-34--swift--ccache"><a href="https://cmake.org/cmake/help/latest/release/3.4.html" target="_blank">CMake 3.4</a> : Swift &amp; CCache</h2>
+<p>This release adds lots of useful tools, support for the Swift language, and the usual improvements. It also started supporting compiler launchers, like CCache.</p>
+<ul>
+<li>Initially released <a href="https://blog.kitware.com/cmake-3-4-0-released/" target="_blank">November 12, 2015</a></li>
+<li>Added <code>Swift</code> language</li>
+<li>Added <code>BASE_DIR</code> to <code>get_filename_component</code></li>
+<li><code>if(TEST ...)</code> added</li>
+<li><code>string(APPEND ...)</code> added</li>
+<li><code>CMAKE_*_COMPILER_LAUNCHER</code> added for make and ninja</li>
+<li><code>TARGET_MESSAGES</code> allow makefiles to print messages after target is completed</li>
+<li>Imported targets are beginning to show up in the official <code>Find*.cmake</code> files</li>
+</ul>
+<h2 id="cmake-35--arm"><a href="https://cmake.org/cmake/help/latest/release/3.5.html" target="_blank">CMake 3.5</a> : ARM</h2>
+<p>This release expanded CMake to more platforms, and make warnings easier to control from the command line.</p>
+<ul>
+<li>Initially released <a href="https://blog.kitware.com/cmake-3-5-0-available-for-download/" target="_blank">March 8, 2016</a></li>
+<li>Multiple input files supported for several of the <code>cmake -E</code> commands.</li>
+<li><code>cmake_parse_arguments</code> now builtin</li>
+<li>Boost, GTest, and more now support imported targets</li>
+<li>ARMCC now supported, better support for iOS</li>
+<li>XCode backslash fix</li>
+</ul>
+<h2 id="cmake-36--clang-tidy"><a href="https://cmake.org/cmake/help/latest/release/3.6.html" target="_blank">CMake 3.6</a> : Clang-Tidy</h2>
+<p>This release added Clang-Tidy support, along with more utilities and improvements. It also removed the search of <code>$PATH</code> on Unix systems due to problems, instead users should use <code>$CMAKE_PREFIX_PATH</code>.</p>
+<ul>
+<li>Initially released <a href="https://blog.kitware.com/cmake-3-6-0-available-for-download/" target="_blank">July 7, 2016</a></li>
+<li><code>EXCLUDE_FROM_ALL</code> for install</li>
+<li><code>list(FILTER</code> added</li>
+<li><code>CMAKE_*_STANDARD_INCLUDE_DIRECTORIES</code> and <code>CMAKE_*_STANDARD_LIBRARIES</code> added for toolchains</li>
+<li>Try-compile improvements</li>
+<li><code>*_CLANG_TIDY</code> property added</li>
+<li>External projects can now be shallow clones, and other improvements</li>
+</ul>
+<h2 id="cmake-37--android--cmake-server"><a href="https://cmake.org/cmake/help/latest/release/3.7.html" target="_blank">CMake 3.7</a> : Android &amp; CMake Server</h2>
+<p>You can now cross-compile to Android. Useful new if statement options really help clarify code. And the new server mode was supposed to improve integration with IDEs (but is being replaced by a different system in CMake 3.14+). Support for the VIM editor was also improved.</p>
+<ul>
+<li>Initially released <a href="https://blog.kitware.com/cmake-3-7-0-available-for-download/" target="_blank">November 11, 2016</a></li>
+<li><code>PARSE_ARGV</code> mode for <code>cmake_parse_arguments</code></li>
+<li>Better 32-bit support on 64-bit machines</li>
+<li>Lots of useful new if comparisons, like <code>VERSION_GREATER_EQUAL</code> (really, why did it take this long?)</li>
+<li><code>LINK_WHAT_YOU_USE</code> added</li>
+<li>Lots of custom properties related to files and directories</li>
+<li>CMake Server added</li>
+<li>Added <code>--trace-source=&quot;filename&quot;</code> to monitor certain files only</li>
+</ul>
+<h2 id="cmake-38--c--cuda"><a href="https://cmake.org/cmake/help/latest/release/3.8.html" target="_blank">CMake 3.8</a> : C# &amp; CUDA</h2>
+<p>This adds CUDA as a language, as well as <code>cxx_std_11</code> as a compiler meta-feature. The new generator expression could be really useful if you can require CMake 3.8+!</p>
+<ul>
+<li>Initially released <a href="https://blog.kitware.com/cmake-3-8-0-available-for-download/" target="_blank">April 10, 2017</a></li>
+<li>Native support for C# as a language</li>
+<li>Native support for CUDA as a language</li>
+<li>Meta features cxx_std_11 (and 14, 17) added</li>
+<li><code>try_compile</code> has better language support</li>
+<li><code>BUILD_RPATH</code> property added</li>
+<li><code>COMPILE_FLAGS</code> now supports generator expression</li>
+<li><code>*_CPPLINT</code> added</li>
+<li><code>$&lt;IF:cond,true-value,false-value&gt;</code> added (wow!)</li>
+<li><code>source_group(TREE</code> added (finally allowing IDEs to reflect the project folder structure!)</li>
+</ul>
+<h2 id="cmake-39--ipo"><a href="https://cmake.org/cmake/help/latest/release/3.9.html" target="_blank">CMake 3.9</a> : IPO</h2>
+<p>Lots of fixes to CUDA support went into this release, including <code>PTX</code> support and MSVC generators. Interprocedural Optimizations are now supported properly.
+Even more modules provide imported targets, including MPI.</p>
+<ul>
+<li>Initially released <a href="https://blog.kitware.com/cmake-3-9-0-available-for-download/" target="_blank">July 18, 2017</a></li>
+<li>CUDA supported for Windows</li>
+<li>Better object library support in several situations</li>
+<li><code>DESCRIPTION</code> added to <code>project</code></li>
+<li><code>separate_arguments</code> gets <code>NATIVE_COMMAND</code></li>
+<li><code>INTERPROCEDURAL_OPTIMIZATION</code> enforced (and <code>CMAKE_*</code> initializer added, CheckIPOSupported added, Clang and GCC support)</li>
+<li>New <code>GoogleTest</code> module</li>
+<li><code>FindDoxygen</code> drastically improved</li>
+</ul>
+<h2 id="cmake-310--cppcheck"><a href="https://cmake.org/cmake/help/latest/release/3.10.html" target="_blank">CMake 3.10</a> : CppCheck</h2>
+<p>CMake now is built with C++11 compilers. Lots of useful improvements help write cleaner code.</p>
+<ul>
+<li>Initially released <a href="https://blog.kitware.com/cmake-3-10-0-available-for-download/" target="_blank">November 20, 2017</a></li>
+<li>Support for flang Fortran compiler</li>
+<li>Compiler launcher added to CUDA</li>
+<li>Indented <code>#cmakedefines</code> now supported for <code>configure_file</code></li>
+<li><code>include_guard()</code> added to ensure a file gets included only once</li>
+<li><code>string(PREPEND</code> added</li>
+<li><code>*_CPPCHECK</code> property added</li>
+<li><code>LABELS</code> added to directories</li>
+<li>FindMPI vastly expanded</li>
+<li>FindOpenMP improved</li>
+<li>Dynamic test discovery for <code>GoogleTest</code></li>
+</ul>
+<h2 id="cmake-311--faster--imported-interface"><a href="https://cmake.org/cmake/help/latest/release/3.11.html" target="_blank">CMake 3.11</a> : Faster &amp; IMPORTED INTERFACE</h2>
+<p>This release is <a href="https://blog.kitware.com/improving-cmakes-runtime-performance/" target="_blank">supposed to be</a> much faster. You can also finally directly add INTERFACE targets
+to IMPORTED libraries (the internal <code>Find*.cmake</code> scripts should become much cleaner eventually).</p>
+<ul>
+<li>Initially released <a href="https://blog.kitware.com/cmake-3-11-0-available-for-download/" target="_blank">March 28, 2018</a></li>
+<li>Fortran supports compiler launchers</li>
+<li>Xcode and Visual Studio support <code>COMPILE_LANGUAGE</code> generator expressions finally</li>
+<li>You can now add INTERFACE targets directly to IMPORTED INTERFACE libraries (Wow!)</li>
+<li>Source file properties have been expanded</li>
+<li><code>FetchContent</code> module now allows downloads to happen at configure time (Wow)</li>
+</ul>
+<h2 id="cmake-312--version-ranges-and-configuredepends"><a href="https://cmake.org/cmake/help/latest/release/3.12.html" target="_blank">CMake 3.12</a> : Version ranges and CONFIGURE_DEPENDS</h2>
+<p>Very powerful release, containing lots of smaller long-requested features. One of the smaller
+but immediately noticeable changes is the addition of version ranges;
+you can now set both the minimum and maximum known CMake version easily. You can also set
+<code>CONFIGURE_DEPENDS</code> on a <code>GLOB</code>ed set of files, and the build system will check those files and
+rerun if needed! You can use the general <code>PackageName_ROOT</code>
+for all <code>find_package</code> searches. Lots of additions to strings and lists, module updates,
+shiny new Python find module (2 and 3 versions too), and many more.</p>
+<ul>
+<li>Initially released <a href="https://blog.kitware.com/cmake-3-12-0-available-for-download/" target="_blank">July 17, 2018</a></li>
+<li>Support for <code>cmake_minimum_required</code> ranges (backward compatible)</li>
+<li>Support for <code>-j,--parallel</code> in <code>--build</code> mode (passed on to build tool)</li>
+<li>Support for <code>SHELL:</code> strings in compile options (not deduplicated)</li>
+<li>New FindPython module</li>
+<li><code>string(JOIN</code> and <code>list(JOIN</code>, and <code>list(TRANSFORM</code></li>
+<li><code>file(TOUCH</code> and <code>file(GLOB CONFIGURE_DEPENDS</code></li>
+<li>C++20 support</li>
+<li>CUDA as a language improvements: CUDA 7 and 7.5 now supported</li>
+<li>Support for OpenMP on macOS (command line only)</li>
+<li>Several new properties and property initializers</li>
+<li>CPack finally reads <code>CMAKE_PROJECT_VERSION</code> variables</li>
+</ul>
+<h2 id="cmake-313--linking-control"><a href="https://cmake.org/cmake/help/latest/release/3.13.html" target="_blank">CMake 3.13</a> : Linking control</h2>
+<p>You can now make symbolic links on Windows! Lots of new functions that fill out the
+popular requests for CMake, such as <code>add_link_options</code>, <code>target_link_directories</code>, and
+<code>target_link_options</code>. You can now do quite a bit more modification to targets outside
+of the source directory, for better file separation. And, <code>target_sources</code> <em>finally</em> handles relative paths properly (policy 76).</p>
+<ul>
+<li>Initially released <a href="https://blog.kitware.com/cmake-3-13-0-available-for-download/" target="_blank">November 20, 2018</a></li>
+<li>New <code>ctest --progress</code> option for live output</li>
+<li><code>target_link_options</code> and <code>add_link_options</code> added</li>
+<li><code>target_link_directories</code> added</li>
+<li>Symbolic link creation, <code>-E create_symlink</code>, supported on Windows</li>
+<li>IPO supported on Windows</li>
+<li>You can use <code>-S</code> and <code>-B</code> for source and build directories</li>
+<li><code>target_link_libraries</code> and <code>install</code> work outside the current target directory</li>
+<li><code>STATIC_LIBRARY_OPTIONS</code> property added</li>
+<li><code>target_sources</code> is now relative to the current source directory (CMP0076)</li>
+<li>If you use Xcode, you now can experimentally set schema fields</li>
+</ul>
+<h2 id="cmake-314--file-utilities-aka-cmake-&#x3C0;"><a href="https://cmake.org/cmake/help/latest/release/3.14.html" target="_blank">CMake 3.14</a> : File utilities (AKA <a href="https://blog.kitware.com/kitware-gets-mathematical-with-cmake-&#x3C0;-on-pi-day/" target="_blank">CMake &#x3C0;</a>)</h2>
+<p>This release has lots of small cleanups, including several utilities for files. Generator expressions work in a few more places, and list handling is better with empty variables.
+Quite a few more find packages produce targets. The new Visual Studio 16 2019 generator is a bit different than older versions. Windows XP and Vista support has been dropped.</p>
+<ul>
+<li>Initially released <a href="https://blog.kitware.com/cmake-3-14-0-available-for-download/" target="_blank">March 14, 2019</a></li>
+<li>The cmake <code>--build</code> command gained <code>-v/--verbose</code>, to use verbose builds if your build tool supports it</li>
+<li>The FILE command gained <code>CREATE_LINK</code>, <code>READ_SYMLINK</code>, and <code>SIZE</code></li>
+<li><a href="https://cmake.org/cmake/help/latest/command/get_filename_component.html" target="_blank"><code>get_filename_component</code></a> gained <code>LAST_EXT</code> and <code>NAME_WLE</code> to access just the <em>last</em> extension on a file, which would get <code>.zip</code> on a file such as <code>version.1.2.zip</code> (very handy!)</li>
+<li>You can see if a variable is defined in the CACHE with <code>DEFINED CACHE{VAR}</code> in an <a href="https://cmake.org/cmake/help/latest/command/if.html" target="_blank"><code>if</code></a> statement.</li>
+<li><code>BUILD_RPATH_USE_ORIGIN</code> and CMake version were added to improve handling of RPath in the build directory.</li>
+<li>The CMake server mode is now being replaced with a file API, starting in this release. Will affect IDEs in the long run.</li>
+</ul>
+<h2 id="cmake-315--cli-upgrade"><a href="https://cmake.org/cmake/help/latest/release/3.15.html" target="_blank">CMake 3.15</a> : CLI upgrade</h2>
+<p>This release has many smaller polishing changes, include several of improvements to the CMake command line, such as control over the default generator through environment variables (so now it&apos;s easy to change the default generator to Ninja). Multiple targets are supported in <code>--build</code> mode, and <code>--install</code> mode added. CMake finally supports multiple levels of logging. Generator expressions gained a few handy tools. The still very new FindPython module continues to improve, and FindBoost is now more inline with Boost 1.70&apos;s new CONFIG
+module. <code>export(PACKAGE)</code> has drastically changed; it now no longer touches <code>$HOME/.cmake</code> by default (if CMake Minimum version is 3.15 or higher), and requires an extra step if a user wants to use it. This is generally less surprising.</p>
+<ul>
+<li>Initially released <a href="https://blog.kitware.com/cmake-3-15-0-available-for-download/" target="_blank">July 17, 2019</a></li>
+<li><a href="https://cmake.org/cmake/help/latest/envvar/CMAKE_GENERATOR.html" target="_blank"><code>CMAKE_GENERATOR</code></a> environment variable added to control default generator</li>
+<li>Multiple target support in build mode, <code>cmake . --build --target a b</code></li>
+<li>Shortcut <code>-t</code> for <code>--target</code></li>
+<li>Install support, <code>cmake . --install</code>, does not invoke the build system</li>
+<li>Support for <code>--loglevel</code> and <code>NOTICE</code>, <code>VERBOSE</code>, <code>DEBUG</code>, and <code>TRACE</code> for <code>message</code></li>
+<li>The <a href="https://cmake.org/cmake/help/latest/command/list.html" target="_blank"><code>list</code></a> command gained <code>PREPEND</code>, <code>POP_FRONT</code>, and <code>POP_BACK</code></li>
+<li><a href="https://cmake.org/cmake/help/latest/command/execute_process.html" target="_blank"><code>execute_process</code></a> gained <code>COMMAND_ECHO</code> option (<a href="https://cmake.org/cmake/help/latest//CMAKE_EXECUTE_PROCESS_COMMAND_ECHO.html" target="_blank"><code>CMAKE_EXECUTE_PROCESS_COMMAND_ECHO</code></a>) allows you to automatically echo commands before running them</li>
+<li>Several Ninja improvements, include SWIFT language support</li>
+<li>Compiler and list improvements to generator expressions</li>
+</ul>
+<h2 id="cmake-316--unity-builds"><a href="https://cmake.org/cmake/help/latest/release/3.16.html" target="_blank">CMake 3.16</a> : Unity builds</h2>
+<p>A new unity build mode was added, allowing source files to be merged into a single build file. Support for
+precompiled headers (possibly preparing for C++20 modules, perhaps?) was added. Lots of other smaller
+fixes were implemented, especially to newer features, such as to FindPython, FindDoxygen, and others.</p>
+<ul>
+<li>Initially released <a href="https://blog.kitware.com/cmake-3-16-0-available-for-download/" target="_blank">November 26, 2019</a></li>
+<li>Added support for Objective C and Objective C++ languages</li>
+<li>Support for precompiling headers, with <code>target_precompile_headers</code></li>
+<li>Support for &quot;Unity&quot; or &quot;Jumbo&quot; builds (merging source files) with <a href="https://cmake.org/cmake/help/latest//CMAKE_UNITY_BUILD.html" target="_blank"><code>CMAKE_UNITY_BUILD</code></a></li>
+<li>CTest: Can now skip based on regex, expand lists</li>
+<li>Several new features to control RPath.</li>
+<li>Generator expressions work in more places, like build and install paths</li>
+<li>Find locations can now be explicitly controlled through new variables</li>
+</ul>
+<h2 id="cmake-317--more-cuda"><a href="https://cmake.org/cmake/help/latest/release/3.17.html" target="_blank">CMake 3.17</a> : More CUDA</h2>
+<p>A FindCUDAToolkit was finally added, which allows finding and using the CUDA
+toolkit without enabling the CUDA language! CUDA now is a bit more configurable,
+such as linking to shared libraries. Quite a bit more polish in the expected areas,
+as well, like FindPython. Finally, you can now iterate over multiple lists at a time.</p>
+<ul>
+<li>Initially released <a href="https://blog.kitware.com/cmake-3-17-0-available-for-download/" target="_blank">March 20, 2020</a></li>
+<li><code>CUDA_RUNTIME_LIBRARY</code> can finally be set to Shared!</li>
+<li>FindCUDAToolkit finally added</li>
+<li><code>cmake -E rm</code> replaces older remove commands</li>
+<li>CUDA has meta features like <code>cuda_std_03</code>, etc.</li>
+<li>You can track the searches for packages with <code>--debug-find</code></li>
+<li>ExternalProject can now disable recursive checkouts</li>
+<li>FindPython better integration with Conda</li>
+<li>DEPRECATION can be applied to targets</li>
+<li>CMake gained a rm command</li>
+<li>Several new environment variables</li>
+<li>foreach can now do <code>ZIP_LISTS</code> (multiple lists at a time)</li>
+</ul>
+<h2 id="cmake-318--cuda-with-clang--cmake-macro-language"><a href="https://cmake.org/cmake/help/latest/release/3.18.html" target="_blank">CMake 3.18</a> : CUDA with Clang &amp; CMake macro language</h2>
+<p>CUDA now supports Clang (without separable compilation). A new
+<code>CUDA_ARCHITECTURES</code> property was implemented to better support targeting CUDA
+hardware. A new <code>cmake_language</code> command supports calling cmake commands and
+expressions from strings. Lots of other meta changes that could make new
+designs available; calling functions by variable, evaluating arbitrary CMake by
+string, and configure files directly from strings. Many other nice tiny
+features and papercut fixes are sprinkled throughout, a small selection is below.</p>
+<ul>
+<li>Initially released <a href="https://blog.kitware.com/cmake-3-18-0-available-for-download/" target="_blank">July 15, 2020</a></li>
+<li><code>cmake</code> can <code>cat</code> files together now</li>
+<li>New profiling mode for <code>cmake</code></li>
+<li><code>cmake_language</code> with <code>CALL</code> and <code>EVAL</code></li>
+<li><code>export</code> requires <code>APPEND</code> if used multiple times (in CMake language level 3.18+)</li>
+<li>You can archive directly from <code>file()</code></li>
+<li><code>file(CONFIGURE</code> is a nicer from of <code>configure_file</code> if you already have a string to produce</li>
+<li>Other <code>find_*</code> commands gain <code>find_package</code>&apos;s <code>REQUIRED</code> flag</li>
+<li><code>NATURAL</code> sorting in <code>list(SORT</code> added</li>
+<li>More options for handling properties with DIRECTORY scope</li>
+<li><code>CUDA_ARCHITECTURES</code> was added</li>
+<li>New <code>LINK_LANGUAGE</code> generator expressions (<code>DEVICE</code>/<code>HOST</code> versions too)</li>
+<li>Source can be a subdirectory for <code>FetchContent</code></li>
+</ul>
+<h2 id="cmake-319--presets"><a href="https://cmake.org/cmake/help/latest/release/3.19.html" target="_blank">CMake 3.19</a> : Presets</h2>
+<p>You can now add presets in JSON form, and users will get the preset default.
+<code>find_package</code> can now take a version range, and some specialty find modules,
+like FindPython, have custom support for it.  A lot of new controls were added
+for permissions. Further support for generator expressions in more places.</p>
+<ul>
+<li>New <a href="https://cmake.org/cmake/help/latest/manual/cmake-presets.7.html" target="_blank">CMake presets files</a> now supported - you can set defaults for your project per generator, or you can make User presets. PSA: Please add <code>CMakeUserPresets.json</code> to your <code>.gitignore</code>, even if you do not use <code>CMakePresets.json</code>.</li>
+<li>CMake now uses the new build system introduced in XCode 12+</li>
+<li>MSVC for Android now supported</li>
+<li><code>cmake -E create_hardlink</code> was added</li>
+<li><code>add_test</code> finally properly supports whitespace in test names</li>
+<li>You can now <code>DEFER</code> <code>cmake_language</code> to run at the end of the directory processing</li>
+<li>Lots of new <code>file</code> options, like temporary downloads and <code>COMPRESSION_LEVEL</code> for <code>ARCHIVE_CREATE</code></li>
+<li><code>find_package</code> supports a version range</li>
+<li><code>DIRECTORY</code> can now include a binary directory in property commands</li>
+<li>New <code>JSON</code> commands for <code>string</code></li>
+<li>New <code>OPTIMIZE_DEPENDENCIES</code> property and <code>CMAKE_*</code> variable for smartly dropping dependencies of static and object libraries.</li>
+<li>PCH support expanded with <code>PCH_INSTANTIATE_TEMPLATES</code> property and <code>CMAKE_*</code> variable. </li>
+<li>Check modules have been expanded with <code>CUDA</code> and <code>ISPC</code> languages</li>
+<li>FindPython: <code>Python*_LINK_OPTIONS</code> added</li>
+<li><code>compute-sanitizer</code> for ctest now supports CUDA for memcheck</li>
+</ul>
+<h2 id="cmake-320--docs"><a href="https://cmake.org/cmake/help/latest/release/3.20.html" target="_blank">CMake 3.20</a> : Docs</h2>
+<p>The CMake docs received a major boost in productivity by adding &quot;new in&quot; tags
+to quickly see what was added without having to toggle documentation versions!
+C++ 23 support added. Source files must have the extension listed now, and
+LANGUAGE is always respected. Quite a bit of cleanup was done; make sure your
+code is tested with <code>...3.20</code> before deploying that as your maximum. Presets
+continue to be improved.</p>
+<ul>
+<li>Support added for C++23</li>
+<li>CUDAARCHS environment variable for setting CUDA architectures</li>
+<li>The new <code>IntelLLVM</code> compilers are now supported (OneAPI 2021.1), and <code>NVHPC</code> NVIDIA HPC SDK, as well</li>
+<li>Some expanded generator expression support in custom commands/targets, install renaming</li>
+<li>New <code>cmake_path</code> command for working with paths</li>
+<li><code>try_run</code> now has a <code>WORKING_DIRECTORY</code></li>
+<li>More features for the <code>file(GENERATE</code> command</li>
+<li>Several removals, like <code>cmake-server</code>, <code>WriteCompilerDetectionHeader</code> (if policy set to 3.20+), and a few things that have newer methods now.</li>
+<li>Source files must include the extension</li>
+</ul>
+<h2 id="cmake-321--colors"><a href="https://cmake.org/cmake/help/latest/release/3.21.html" target="_blank">CMake 3.21</a> : Colors</h2>
+<p>Different message types now have different colors! There&apos;s now a nice variable
+to see if you are in the top level project. Lots of continued cleanup and
+specialized new features, such as adding the HIP language and C17 and C23
+support. Presets continue to be improved.</p>
+<ul>
+<li>Preliminary support for MSVC 2022</li>
+<li><code>CMAKE_&lt;LANG_LINKER_LAUNCHER</code> added for make and ninja</li>
+<li>HIP added as a language</li>
+<li>C17 and C23 support added</li>
+<li><code>--instal-prefix &lt;dir&gt;</code> and <code>--toolchain &lt;file&gt;</code> added when running CMake</li>
+<li>Messages printed are colored by message type!</li>
+<li>Support for MSYS, including <code>FindMsys</code></li>
+<li>The <code>file(</code> command got several updates, including <code>EXPAND_TILDE</code></li>
+<li>Support for runtime dependencies and artifacts added to <code>install</code></li>
+<li><code>PROJECT_IS_TOP_LEVEL</code> and <code>&lt;PROJECT-NAME&gt;_IS_TOP_LEVEL</code> finally added</li>
+<li>Caching improvements for the <code>find_</code> commands</li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="dodonot.html" class="navigation navigation-prev " aria-label="Previous page: Do's and Don'ts">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../basics.html" class="navigation navigation-next " aria-label="Next page: Introduction to the Basics">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"What's new in CMake","level":"1.1.4","depth":2,"next":{"title":"Introduction to the Basics","level":"1.2","depth":1,"path":"chapters/basics.md","ref":"chapters/basics.md","articles":[{"title":"Variables and the Cache","level":"1.2.1","depth":2,"path":"chapters/basics/variables.md","ref":"chapters/basics/variables.md","articles":[]},{"title":"Programming in CMake","level":"1.2.2","depth":2,"path":"chapters/basics/functions.md","ref":"chapters/basics/functions.md","articles":[]},{"title":"Communicating with your code","level":"1.2.3","depth":2,"path":"chapters/basics/comms.md","ref":"chapters/basics/comms.md","articles":[]},{"title":"How to Structure Your Project","level":"1.2.4","depth":2,"path":"chapters/basics/structure.md","ref":"chapters/basics/structure.md","articles":[]},{"title":"Running Other Programs","level":"1.2.5","depth":2,"path":"chapters/basics/programs.md","ref":"chapters/basics/programs.md","articles":[]},{"title":"A Simple Example","level":"1.2.6","depth":2,"path":"chapters/basics/example.md","ref":"chapters/basics/example.md","articles":[]}]},"previous":{"title":"Do's and Don'ts","level":"1.1.3","depth":2,"path":"chapters/intro/dodonot.md","ref":"chapters/intro/dodonot.md","articles":[]},"dir":"ltr"},"config":{"plugins":["replace","hints","term","include-codeblock","ace"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"ace":{},"search":{},"term":{"copyButtons":true,"fade":true,"lineStyles":true,"prompt":"(?<prompt>[^\\$^#^:]*)(?<pathsep>:?)(?<path>[^\\$^#]*?)(?<delimiter>[\\$#] )(?<command>.*)$","style":"default"},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"replace":{"substitutes":[{"pattern":"«cmake:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/manual/cmake-$1.7.html)"},{"pattern":"«command:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/command/$1.html)"},{"pattern":"«envvar:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/envvar/$1.html)"},{"pattern":"«module:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/module/$1.html)"},{"pattern":"«policy:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/policy/$1.html)"},{"pattern":"«variable:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest//$1.html)"},{"pattern":"«prop:([^:]+):`?([^`^»]+)`?»","flags":"g","substitute":"[`$2`](https://cmake.org/cmake/help/latest/prop_$1/$2.html)"}]},"include-codeblock":{"check":false,"edit":false,"fixlang":true,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Henry Schreiner","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Modern CMake","gitbook":"*","description":"A guide to writing simple, powerful, and clean CMake 3.1+ builds."},"file":{"path":"chapters/intro/newcmake.md","mtime":"2021-07-20T13:16:31.691Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-20T13:17:14.844Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-term/clipboard.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-term/initclip.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-term/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-ace/ace/ace.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-ace/ace.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

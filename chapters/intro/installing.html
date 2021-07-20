@@ -1,0 +1,961 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Installing CMake · Modern CMake</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="Henry Schreiner">
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-hints/plugin-hints.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-term/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ace/ace.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="running.html" />
+    
+    
+    <link rel="prev" href="../../" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    An Introduction to Modern CMake
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.1.1" data-path="installing.html">
+            
+                <a href="installing.html">
+            
+                    
+                    Installing CMake
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.2" data-path="running.html">
+            
+                <a href="running.html">
+            
+                    
+                    Running CMake
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.3" data-path="dodonot.html">
+            
+                <a href="dodonot.html">
+            
+                    
+                    Do's and Don'ts
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.4" data-path="newcmake.html">
+            
+                <a href="newcmake.html">
+            
+                    
+                    What's new in CMake
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../basics.html">
+            
+                <a href="../basics.html">
+            
+                    
+                    Introduction to the Basics
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../basics/variables.html">
+            
+                <a href="../basics/variables.html">
+            
+                    
+                    Variables and the Cache
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../basics/functions.html">
+            
+                <a href="../basics/functions.html">
+            
+                    
+                    Programming in CMake
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../basics/comms.html">
+            
+                <a href="../basics/comms.html">
+            
+                    
+                    Communicating with your code
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../basics/structure.html">
+            
+                <a href="../basics/structure.html">
+            
+                    
+                    How to Structure Your Project
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../basics/programs.html">
+            
+                <a href="../basics/programs.html">
+            
+                    
+                    Running Other Programs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../basics/example.html">
+            
+                <a href="../basics/example.html">
+            
+                    
+                    A Simple Example
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../features.html">
+            
+                <a href="../features.html">
+            
+                    
+                    Adding Features
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../features/cpp11.html">
+            
+                <a href="../features/cpp11.html">
+            
+                    
+                    C++11 and Beyond
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../features/small.html">
+            
+                <a href="../features/small.html">
+            
+                    
+                    Small but common needs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../features/utilities.html">
+            
+                <a href="../features/utilities.html">
+            
+                    
+                    Utilities
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../features/modules.html">
+            
+                <a href="../features/modules.html">
+            
+                    
+                    Useful modules
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../features/ides.html">
+            
+                <a href="../features/ides.html">
+            
+                    
+                    IDEs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="../features/debug.html">
+            
+                <a href="../features/debug.html">
+            
+                    
+                    Debugging
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../projects.html">
+            
+                <a href="../projects.html">
+            
+                    
+                    Including Projects
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../projects/submodule.html">
+            
+                <a href="../projects/submodule.html">
+            
+                    
+                    Submodule
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../projects/download.html">
+            
+                <a href="../projects/download.html">
+            
+                    
+                    DownloadProject
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../projects/fetch.html">
+            
+                <a href="../projects/fetch.html">
+            
+                    
+                    Fetch (CMake 3.11)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../testing.html">
+            
+                <a href="../testing.html">
+            
+                    
+                    Testing
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../testing/googletest.html">
+            
+                <a href="../testing/googletest.html">
+            
+                    
+                    GoogleTest
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../testing/catch.html">
+            
+                <a href="../testing/catch.html">
+            
+                    
+                    Catch
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../install.html">
+            
+                <a href="../install.html">
+            
+                    
+                    Exporting and Installing
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../install/installing.html">
+            
+                <a href="../install/installing.html">
+            
+                    
+                    Installing
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../install/exporting.html">
+            
+                <a href="../install/exporting.html">
+            
+                    
+                    Exporting
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../install/packaging.html">
+            
+                <a href="../install/packaging.html">
+            
+                    
+                    Packaging
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../packages.html">
+            
+                <a href="../packages.html">
+            
+                    
+                    Looking for Libraries (Packages)
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../packages/CUDA.html">
+            
+                <a href="../packages/CUDA.html">
+            
+                    
+                    CUDA
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../packages/OpenMP.html">
+            
+                <a href="../packages/OpenMP.html">
+            
+                    
+                    OpenMP
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../packages/Boost.html">
+            
+                <a href="../packages/Boost.html">
+            
+                    
+                    Boost
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../packages/MPI.html">
+            
+                <a href="../packages/MPI.html">
+            
+                    
+                    MPI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../packages/ROOT.html">
+            
+                <a href="../packages/ROOT.html">
+            
+                    
+                    ROOT
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.5.1" data-path="../../examples/root-usefile/">
+            
+                <a href="../../examples/root-usefile/">
+            
+                    
+                    UseFile Example
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.2" data-path="../../examples/root-simple/">
+            
+                <a href="../../examples/root-simple/">
+            
+                    
+                    Simple Example
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.3" data-path="../../examples/root-dict/">
+            
+                <a href="../../examples/root-dict/">
+            
+                    
+                    Dictionary Example
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="../packages/Minuit2.html">
+            
+                <a href="../packages/Minuit2.html">
+            
+                    
+                    Minuit2
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Installing CMake</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="installing-cmake">Installing CMake</h1>
+<p><div class="alert alert-success hints-alert"><div class="hints-icon"><i class="fa fa-mortar-board"></i></div><div class="hints-container"><p>Your CMake version should be newer than your compiler. It should be newer than the libraries you are using (especially Boost). New versions work better for everyone.</p>
+</div></div></p>
+<p>If you have a built in copy of CMake, it isn&apos;t special or customized for your system. You can easily install a new one instead, either on the system level or the user level. Feel free to instruct your users here if they complain about a CMake requirement being set too high. Especially if they want 3.1+ support. Maybe even if they want 3.21+ support...</p>
+<h4 id="quick-list-more-info-on-each-method-below">Quick list (more info on each method below)</h4>
+<p>Ordered by author preference:</p>
+<ul>
+<li>All<ul>
+<li><a href="https://pypi.org/project/cmake/" target="_blank">Pip</a> (official, sometimes delayed slightly)</li>
+<li><a href="https://anaconda.org/anaconda/cmake" target="_blank">Anaconda</a> / <a href="https://github.com/conda-forge/cmake-feedstock" target="_blank">Conda-Forge</a></li>
+</ul>
+</li>
+<li>Windows<ul>
+<li><a href="https://chocolatey.org/packages/cmake" target="_blank">Chocolatey</a></li>
+<li><a href="https://github.com/ScoopInstaller/Main/blob/master/bucket/cmake.json" target="_blank">Scoop</a></li>
+<li><a href="https://packages.msys2.org/base/mingw-w64-cmake" target="_blank">MSYS2</a></li>
+<li><a href="https://cmake.org/download/" target="_blank">Download binary</a> (official)</li>
+</ul>
+</li>
+<li>MacOS<ul>
+<li><a href="https://formulae.brew.sh/formula/cmake" target="_blank">Homebrew</a></li>
+<li><a href="https://ports.macports.org/port/cmake/summary" target="_blank">MacPorts</a></li>
+<li><a href="https://cmake.org/download/" target="_blank">Download binary</a> (official)</li>
+</ul>
+</li>
+<li>Linux<ul>
+<li><a href="https://snapcraft.io/cmake" target="_blank">Snapcraft</a> (official)</li>
+<li><a href="https://apt.kitware.com/" target="_blank">APT repository</a> (Ubuntu/Debian only) (official)</li>
+<li><a href="https://cmake.org/download/" target="_blank">Download binary</a> (official)</li>
+</ul>
+</li>
+</ul>
+<h2 id="official-package">Official package</h2>
+<p>You can <a href="https://cmake.org/download/" target="_blank">download CMake from KitWare</a>. This is how you will probably get CMake if you are on Windows. It&apos;s not a bad way to get it on macOS either (and a Universal2 version is supplied supporting both Intel and Apple Silicon), but using <code>brew install cmake</code> is much nicer if you use <a href="https://brew.sh" target="_blank">Homebrew</a> (and you should; Apple even supports Homebrew such as during the Apple Silicon rollout). You can also get it on most other package managers, such as <a href="https://chocolatey.org" target="_blank">Chocolatey</a> for Windows or <a href="https://www.macports.org" target="_blank">MacPorts</a> for macOS.</p>
+<p>On Linux, there are several options. Kitware provides a <a href="https://apt.kitware.com/" target="_blank">Debian/Ubunutu apt repository</a>, as well as <a href="https://snapcraft.io/cmake" target="_blank">snap packages</a>. There are universal Linux binaries provided, but you&apos;ll need to pick an install location. If you already use <code>~/.local</code> for user-space packages, the following single line command<sup><a href="#fn_1" id="reffn_1">1</a></sup> will get CMake for you <sup><a href="#fn_2" id="reffn_2">2</a></sup>:</p>
+<p><pre class="term t-default t-fade"><button class="btn t-copy" data-clipboard-text="wget -qO- &quot;https://cmake.org/files/v3.21/cmake-3.21.0-linux-x86_64.tar.gz&quot; | tar --strip-components=1 -xz -C ~/.local"><svg class="octicon octicon-clippy" viewbox="0 0 14 16" version="1.1" width="14" height="14" aria-hidden="true"><path fill-rule="evenodd" d="M2 13h4v1H2v-1zm5-6H2v1h5V7zm2 3V8l-3 3 3 3v-2h5v-2H9zM4.5 9H2v1h2.5V9zM2 12h2.5v-1H2v1zm9 1h1v2c-.02.28-.11.52-.3.7-.19.18-.42.28-.7.3H1c-.55 0-1-.45-1-1V4c0-.55.45-1 1-1h3c0-1.11.89-2 2-2 1.11 0 2 .89 2 2h3c.55 0 1 .45 1 1v5h-1V6H1v9h10v-2zM2 5h8c0-.55-.45-1-1-1H8c-.55 0-1-.45-1-1s-.45-1-1-1-1 .45-1 1-.45 1-1 1H3c-.55 0-1 .45-1 1z"/></svg></button><span class="t-line t-prompt-line"><span class="t-prompt">~ </span><span class="t-delimiter">$ </span><span class="t-command">wget -qO- &quot;https://cmake.org/files/v3.21/cmake-3.21.0-linux-x86_64.tar.gz&quot; | tar --strip-components=1 -xz -C ~/.local</span>
+</span></pre></p>
+<p>The names changed in 3.21; older releases had names like <code>cmake-3.19.7-Linux-x86_64.tar.gz</code>. If you just want a local folder with CMake only:</p>
+<p><pre class="term t-default t-fade"><button class="btn t-copy" data-clipboard-text="mkdir -p cmake-3.21 &amp;&amp; wget -qO- &quot;https://cmake.org/files/v3.21/cmake-3.21.0-linux-x86_64.tar.gz&quot; | tar --strip-components=1 -xz -C cmake-3.21
+export PATH=`pwd`/cmake-3.21/bin:$PATH"><svg class="octicon octicon-clippy" viewbox="0 0 14 16" version="1.1" width="14" height="14" aria-hidden="true"><path fill-rule="evenodd" d="M2 13h4v1H2v-1zm5-6H2v1h5V7zm2 3V8l-3 3 3 3v-2h5v-2H9zM4.5 9H2v1h2.5V9zM2 12h2.5v-1H2v1zm9 1h1v2c-.02.28-.11.52-.3.7-.19.18-.42.28-.7.3H1c-.55 0-1-.45-1-1V4c0-.55.45-1 1-1h3c0-1.11.89-2 2-2 1.11 0 2 .89 2 2h3c.55 0 1 .45 1 1v5h-1V6H1v9h10v-2zM2 5h8c0-.55-.45-1-1-1H8c-.55 0-1-.45-1-1s-.45-1-1-1-1 .45-1 1-.45 1-1 1H3c-.55 0-1 .45-1 1z"/></svg></button><span class="t-line t-prompt-line"><span class="t-prompt">~ </span><span class="t-delimiter">$ </span><span class="t-command">mkdir -p cmake-3.21 &amp;&amp; wget -qO- &quot;https://cmake.org/files/v3.21/cmake-3.21.0-linux-x86_64.tar.gz&quot; | tar --strip-components=1 -xz -C cmake-3.21</span>
+</span><span class="t-line t-prompt-line"><span class="t-prompt">~ </span><span class="t-delimiter">$ </span><span class="t-command">export PATH=`pwd`/cmake-3.21/bin:$PATH</span>
+</span></pre></p>
+<p>You&apos;ll obviously want to append to the PATH every time you start a new terminal, or add it to your <code>.bashrc</code> or to an <a href="http://lmod.readthedocs.io/en/latest/" target="_blank">LMod</a> system.</p>
+<p>And, if you want a system install, install to <code>/usr/local</code>; this is an excellent choice in a Docker container, for example on GitLab CI. Do not try it on a non-containerized system.</p>
+<p><pre class="term t-default t-fade"><button class="btn t-copy" data-clipboard-text="wget -qO- &quot;https://cmake.org/files/v3.21/cmake-3.21.0-linux-x86_64.tar.gz&quot; | tar --strip-components=1 -xz -C /usr/local"><svg class="octicon octicon-clippy" viewbox="0 0 14 16" version="1.1" width="14" height="14" aria-hidden="true"><path fill-rule="evenodd" d="M2 13h4v1H2v-1zm5-6H2v1h5V7zm2 3V8l-3 3 3 3v-2h5v-2H9zM4.5 9H2v1h2.5V9zM2 12h2.5v-1H2v1zm9 1h1v2c-.02.28-.11.52-.3.7-.19.18-.42.28-.7.3H1c-.55 0-1-.45-1-1V4c0-.55.45-1 1-1h3c0-1.11.89-2 2-2 1.11 0 2 .89 2 2h3c.55 0 1 .45 1 1v5h-1V6H1v9h10v-2zM2 5h8c0-.55-.45-1-1-1H8c-.55 0-1-.45-1-1s-.45-1-1-1-1 .45-1 1-.45 1-1 1H3c-.55 0-1 .45-1 1z"/></svg></button><span class="t-line t-prompt-line"><span class="t-prompt">docker </span><span class="t-delimiter">$ </span><span class="t-command">wget -qO- &quot;https://cmake.org/files/v3.21/cmake-3.21.0-linux-x86_64.tar.gz&quot; | tar --strip-components=1 -xz -C /usr/local</span>
+</span></pre></p>
+<p>If you are on a system without wget, replace <code>wget -qO-</code> with <code>curl -s</code>.</p>
+<p>You can also build CMake on any system, it&apos;s pretty easy, but binaries are faster.</p>
+<h2 id="cmake-default-versions">CMake Default Versions</h2>
+<p>Here are some common build environments and the CMake version you&apos;ll find on them. Feel free to install CMake yourself, it&apos;s 1-2 lines and there&apos;s nothing &quot;special&quot; about the built in version. It&apos;s also very backward compatible.</p>
+<h3 id="windows">Windows</h3>
+<p><a href="https://chocolatey.org/packages/cmake" target="_blank"><img src="https://repology.org/badge/version-for-repo/chocolatey/cmake.svg" alt="Chocolatey package"></a>
+<a href="https://packages.msys2.org/base/mingw-w64-cmake" target="_blank"><img src="https://repology.org/badge/version-for-repo/msys2_mingw/cmake.svg" alt="MSYS2 mingw package"></a>
+<a href="https://packages.msys2.org/base/mingw-w64-cmake" target="_blank"><img src="https://repology.org/badge/version-for-repo/msys2_msys2/cmake.svg" alt="MSYS2 msys2 package"></a></p>
+<p>Also <a href="https://github.com/ScoopInstaller/Main/blob/master/bucket/cmake.json" target="_blank">Scoop</a> is generally up to date. The normal installers from CMake.org are common on Windows, too.</p>
+<h3 id="macos">MacOS</h3>
+<p><a href="https://formulae.brew.sh/formula/cmake" target="_blank"><img src="https://repology.org/badge/version-for-repo/homebrew/cmake.svg" alt="Homebrew package"></a>
+<a href="https://formulae.brew.sh/cask/cmake" target="_blank"><img src="https://repology.org/badge/version-for-repo/homebrew_casks/cmake.svg" alt="Homebrew Casks package"></a>
+<a href="https://ports.macports.org/port/cmake/summary" target="_blank"><img src="https://repology.org/badge/version-for-repo/macports/cmake.svg" alt="MacPorts package"></a></p>
+<p>Homebrew is quite a bit more popular nowadays on macOS, at least according to Google Trends.</p>
+<h3 id="linux">Linux</h3>
+<h4 id="rhelcentos">RHEL/CentOS</h4>
+<p><a href="https://rpms.remirepo.net/rpmphp/zoom.php?rpm=cmake" target="_blank"><img src="https://repology.org/badge/version-for-repo/centos_7/cmake.svg?minversion=3.10.0" alt="CentOS 7 package"></a>
+<a href="https://rpms.remirepo.net/rpmphp/zoom.php?rpm=cmake" target="_blank"><img src="https://repology.org/badge/version-for-repo/centos_8/cmake.svg?minversion=3.10.0" alt="CentOS 8 package"></a>
+<a href="https://rpms.remirepo.net/rpmphp/zoom.php?rpm=cmake" target="_blank"><img src="https://repology.org/badge/version-for-repo/epel_7/cmake.svg?minversion=3.10.0" alt="EPEL 7 package"></a></p>
+<p>The default on 8 is not too bad, but you should not use the default on 7. Use the EPEL package instead.</p>
+<h4 id="ubuntu">Ubuntu</h4>
+<p><a href="https://launchpad.net/ubuntu/trusty/+source/cmake" target="_blank"><img src="https://repology.org/badge/version-for-repo/ubuntu_14_04/cmake.svg?minversion=3.10.0" alt="Ubuntu 14.04 package"></a>
+<a href="https://launchpad.net/ubuntu/xenial/+source/cmake" target="_blank"><img src="https://repology.org/badge/version-for-repo/ubuntu_16_04/cmake.svg?minversion=3.10.0" alt="Ubuntu 16.04 package"></a>
+<a href="https://launchpad.net/ubuntu/bionic/+source/cmake" target="_blank"><img src="https://repology.org/badge/version-for-repo/ubuntu_18_04/cmake.svg?minversion=3.10.0" alt="Ubuntu 18.04 package"></a>
+<a href="https://launchpad.net/ubuntu/focal/+source/cmake" target="_blank"><img src="https://repology.org/badge/version-for-repo/ubuntu_20_04/cmake.svg?minversion=3.10.0" alt="Ubuntu 20.04 package"></a></p>
+<p>You should only use the default CMake on 18.04+; it&apos;s an LTS release with a pretty decent minimum version!</p>
+<h4 id="other">Other</h4>
+<p><a href="https://pkgs.alpinelinux.org/packages?name=cmake&amp;branch=v3.12" target="_blank"><img src="https://repology.org/badge/version-for-repo/alpine_3_12/cmake.svg" alt="Alpine Linux 3.12 package"></a>
+<a href="https://repology.org/project/cmake/versions" target="_blank"><img src="https://repology.org/badge/version-for-repo/arch/cmake.svg" alt="Arch package"></a>
+<a href="https://repology.org/project/cmake/versions" target="_blank"><img src="https://repology.org/badge/version-for-repo/debian_stable/cmake.svg" alt="Debian Stable package"></a>
+<a href="https://repology.org/project/cmake/versions" target="_blank"><img src="https://repology.org/badge/version-for-repo/debian_testing/cmake.svg" alt="Debian Testing package"></a>
+<a href="https://repology.org/project/cmake/versions" target="_blank"><img src="https://repology.org/badge/version-for-repo/fedora_32/cmake.svg" alt="Fedora 32 package"></a>
+<a href="https://repology.org/project/cmake/versions" target="_blank"><img src="https://repology.org/badge/version-for-repo/freebsd/cmake.svg" alt="FreeBSD port"></a>
+<a href="https://repology.org/project/cmake/versions" target="_blank"><img src="https://repology.org/badge/version-for-repo/openbsd/cmake.svg" alt="OpenBSD port"></a>
+<a href="https://repology.org/project/cmake/versions" target="_blank"><img src="https://repology.org/badge/version-for-repo/gentoo/cmake.svg" alt="Gentoo package"></a>
+<a href="https://repology.org/project/cmake/versions" target="_blank"><img src="https://repology.org/badge/version-for-repo/opensuse_tumbleweed/cmake.svg" alt="openSUSE Tumbleweed package"></a>
+<a href="https://repology.org/project/cmake/versions" target="_blank"><img src="https://repology.org/badge/version-for-repo/linuxbrew/cmake.svg" alt="Linuxbrew package"></a></p>
+<h3 id="general-tools">General tools</h3>
+<p><a href="https://repology.org/project/cmake/versions" target="_blank"><img src="https://repology.org/badge/version-for-repo/conancenter/cmake.svg" alt="ConanCenter package"></a>
+<a href="https://pypi.org/project/cmake/" target="_blank"><img src="https://img.shields.io/pypi/v/cmake" alt="PyPI"></a>
+<a href="https://github.com/conda-forge/cmake-feedstock" target="_blank"><img src="https://img.shields.io/conda/vn/conda-forge/cmake.svg" alt="Conda-forge"></a>
+<a href="https://anaconda.org/anaconda/cmake" target="_blank"><img src="https://anaconda.org/anaconda/cmake/badges/version.svg?style=flat" alt="Anaconda"></a></p>
+<p>Just <code>pip install cmake</code> on many systems. Add <code>--user</code> if you have to (modern pip does this for you if needed). This does not supply Universal2 wheels yet.</p>
+<h3 id="ci">CI</h3>
+<table>
+<thead>
+<tr>
+<th>Distribution</th>
+<th>CMake version</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://docs.travis-ci.com/user/reference/xenial/#compilers-and-build-toolchain" target="_blank">TravisCI Xenial</a></td>
+<td>3.12.4</td>
+<td>Mid November 2018 this image became ready for widescale use.</td>
+</tr>
+<tr>
+<td><a href="https://docs.travis-ci.com/user/reference/bionic/#compilers-and-build-toolchain" target="_blank">TravisCI Bionic</a></td>
+<td>3.12.4</td>
+<td>Same as Xenial at the moment.</td>
+</tr>
+<tr>
+<td><a href="https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/hosted?view=azure-devops#use-a-microsoft-hosted-agent" target="_blank">Azure DevOps 18.04</a></td>
+<td>3.17.0</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://github.com/actions/virtual-environments/blob/main/images/linux/Ubuntu1804-README.md" target="_blank">GitHub Actions 18.04</a></td>
+<td>3.17.0</td>
+<td>Mostly in sync with Azure DevOps</td>
+</tr>
+<tr>
+<td><a href="https://github.com/actions/virtual-environments/blob/main/images/linux/Ubuntu2004-README.md" target="_blank">GitHub Actions 20.04</a></td>
+<td>3.17.0</td>
+<td>Mostly in sync with Azure DevOps</td>
+</tr>
+</tbody>
+</table>
+<p>If you are using GitHub Actions, also see the <a href="https://github.com/marketplace/actions/actions-setup-cmake" target="_blank">jwlawson/actions-setup-cmake</a> action, which can install your selection of CMake, even in a docker action run.</p>
+<h3 id="full-list">Full list</h3>
+<p>Versions less than 3.10 are marked by a deeper color of red.</p>
+<p><a href="https://repology.org/project/cmake/versions" target="_blank"><img src="https://repology.org/badge/vertical-allrepos/cmake.svg?columns=3&amp;minversion=3.10.0" alt="Full listing"></a></p>
+<p>Also see <a href="https://pkgs.org/download/cmake" target="_blank">pkgs.org/download/cmake</a>.</p>
+<h2 id="pip">Pip</h2>
+<p><a href="https://pypi.org/project/cmake/" target="_blank">This</a> is also provided as an official package, maintained by the authors of CMake at KitWare. It&apos;s a rather new method, and might fail on some systems (Alpine isn&apos;t supported last I checked, but that has a recent CMake), but works really well when it works (like on Travis CI). If you have pip (Python&apos;s package installer), you can do:</p>
+<pre><code class="lang-term"><pre class="term t-default t-fade"><button class="btn t-copy" data-clipboard-text="pip install cmake"><svg class="octicon octicon-clippy" viewbox="0 0 14 16" version="1.1" width="14" height="14" aria-hidden="true"><path fill-rule="evenodd" d="M2 13h4v1H2v-1zm5-6H2v1h5V7zm2 3V8l-3 3 3 3v-2h5v-2H9zM4.5 9H2v1h2.5V9zM2 12h2.5v-1H2v1zm9 1h1v2c-.02.28-.11.52-.3.7-.19.18-.42.28-.7.3H1c-.55 0-1-.45-1-1V4c0-.55.45-1 1-1h3c0-1.11.89-2 2-2 1.11 0 2 .89 2 2h3c.55 0 1 .45 1 1v5h-1V6H1v9h10v-2zM2 5h8c0-.55-.45-1-1-1H8c-.55 0-1-.45-1-1s-.45-1-1-1-1 .45-1 1-.45 1-1 1H3c-.55 0-1 .45-1 1z"/></svg></button><span class="t-line t-prompt-line"><span class="t-prompt">gitbook </span><span class="t-delimiter">$ </span><span class="t-command">pip install cmake</span>
+</span></pre></code></pre>
+<p>And as long as a binary exists for your system, you&apos;ll be up-and-running almost immediately. If a binary doesn&apos;t exist, it will try to use KitWare&apos;s <code>scikit-build</code> package to build, which currently can&apos;t be listed as a dependency in the packaging system, and might even require (an older) copy of CMake to build. So only use this system if binaries exist, which is most of the time.</p>
+<p>This has the benefit of respecting your current virtual environment, as well. It really shines when placed in a <code>pyproject.toml</code> file, however - it will only be installed to build your package, and will not remain afterwords! Fantastic.</p>
+<p><div class="alert alert-info hints-alert"><div class="hints-icon"><i class="fa fa-info-circle"></i></div><div class="hints-container"><p>Personally, on Linux, I put versions of CMake in folders, like <code>/opt/cmake312</code> or <code>~/opt/cmake312</code>, and then add them to [LMod][]. See <a href="https://github.com/CLIUtils/envmodule_setup" target="_blank"><code>envmodule_setup</code></a> for help setting up an LMod system on macOS or Linux. It takes a bit to learn, but is a great way to manage package and compiler versions.</p>
+</div></div></p>
+<blockquote id="fn_1">
+<sup>1</sup>. I assume this is obvious, but you are downloading and running code, which exposes you to a man in the middle attack. If you are in a critical environment, you should download the file and check the checksum. (And, no, simply doing this in two steps does not make you any safer, only a checksum is safer).<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#x21A9;</a>
+</blockquote>
+<blockquote id="fn_2">
+<sup>2</sup>. If you don&apos;t have a <code>.local</code> in your home directory, it&apos;s easy to start. Just make the folder, then add <code>export PATH=&quot;$HOME/.local/bin:$PATH&quot;</code> to your <code>.bashrc</code> or <code>.bash_profile</code> or <code>.profile</code> file in your home directory. Now you can install any packages you build to <code>-DCMAKE_INSTALL_PREFIX=~/.local</code> instead of <code>/usr/local</code>!<a href="#reffn_2" title="Jump back to footnote [2] in the text."> &#x21A9;</a>
+</blockquote>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../../" class="navigation navigation-prev " aria-label="Previous page: An Introduction to Modern CMake">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="running.html" class="navigation navigation-next " aria-label="Next page: Running CMake">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Installing CMake","level":"1.1.1","depth":2,"next":{"title":"Running CMake","level":"1.1.2","depth":2,"path":"chapters/intro/running.md","ref":"chapters/intro/running.md","articles":[]},"previous":{"title":"An Introduction to Modern CMake","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[{"title":"Installing CMake","level":"1.1.1","depth":2,"path":"chapters/intro/installing.md","ref":"chapters/intro/installing.md","articles":[]},{"title":"Running CMake","level":"1.1.2","depth":2,"path":"chapters/intro/running.md","ref":"chapters/intro/running.md","articles":[]},{"title":"Do's and Don'ts","level":"1.1.3","depth":2,"path":"chapters/intro/dodonot.md","ref":"chapters/intro/dodonot.md","articles":[]},{"title":"What's new in CMake","level":"1.1.4","depth":2,"path":"chapters/intro/newcmake.md","ref":"chapters/intro/newcmake.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["replace","hints","term","include-codeblock","ace"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"ace":{},"search":{},"term":{"copyButtons":true,"fade":true,"lineStyles":true,"prompt":"(?<prompt>[^\\$^#^:]*)(?<pathsep>:?)(?<path>[^\\$^#]*?)(?<delimiter>[\\$#] )(?<command>.*)$","style":"default"},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"replace":{"substitutes":[{"pattern":"«cmake:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/manual/cmake-$1.7.html)"},{"pattern":"«command:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/command/$1.html)"},{"pattern":"«envvar:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/envvar/$1.html)"},{"pattern":"«module:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/module/$1.html)"},{"pattern":"«policy:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/policy/$1.html)"},{"pattern":"«variable:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest//$1.html)"},{"pattern":"«prop:([^:]+):`?([^`^»]+)`?»","flags":"g","substitute":"[`$2`](https://cmake.org/cmake/help/latest/prop_$1/$2.html)"}]},"include-codeblock":{"check":false,"edit":false,"fixlang":true,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Henry Schreiner","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Modern CMake","gitbook":"*","description":"A guide to writing simple, powerful, and clean CMake 3.1+ builds."},"file":{"path":"chapters/intro/installing.md","mtime":"2021-07-20T13:16:31.691Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-20T13:17:14.844Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-term/clipboard.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-term/initclip.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-term/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-ace/ace/ace.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-ace/ace.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

@@ -1,0 +1,879 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Useful modules · Modern CMake</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="Henry Schreiner">
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-hints/plugin-hints.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-term/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ace/ace.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="ides.html" />
+    
+    
+    <link rel="prev" href="utilities.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    An Introduction to Modern CMake
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1.1" data-path="../intro/installing.html">
+            
+                <a href="../intro/installing.html">
+            
+                    
+                    Installing CMake
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.2" data-path="../intro/running.html">
+            
+                <a href="../intro/running.html">
+            
+                    
+                    Running CMake
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.3" data-path="../intro/dodonot.html">
+            
+                <a href="../intro/dodonot.html">
+            
+                    
+                    Do's and Don'ts
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.4" data-path="../intro/newcmake.html">
+            
+                <a href="../intro/newcmake.html">
+            
+                    
+                    What's new in CMake
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../basics.html">
+            
+                <a href="../basics.html">
+            
+                    
+                    Introduction to the Basics
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../basics/variables.html">
+            
+                <a href="../basics/variables.html">
+            
+                    
+                    Variables and the Cache
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../basics/functions.html">
+            
+                <a href="../basics/functions.html">
+            
+                    
+                    Programming in CMake
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../basics/comms.html">
+            
+                <a href="../basics/comms.html">
+            
+                    
+                    Communicating with your code
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../basics/structure.html">
+            
+                <a href="../basics/structure.html">
+            
+                    
+                    How to Structure Your Project
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../basics/programs.html">
+            
+                <a href="../basics/programs.html">
+            
+                    
+                    Running Other Programs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../basics/example.html">
+            
+                <a href="../basics/example.html">
+            
+                    
+                    A Simple Example
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../features.html">
+            
+                <a href="../features.html">
+            
+                    
+                    Adding Features
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="cpp11.html">
+            
+                <a href="cpp11.html">
+            
+                    
+                    C++11 and Beyond
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="small.html">
+            
+                <a href="small.html">
+            
+                    
+                    Small but common needs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="utilities.html">
+            
+                <a href="utilities.html">
+            
+                    
+                    Utilities
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3.4" data-path="modules.html">
+            
+                <a href="modules.html">
+            
+                    
+                    Useful modules
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="ides.html">
+            
+                <a href="ides.html">
+            
+                    
+                    IDEs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="debug.html">
+            
+                <a href="debug.html">
+            
+                    
+                    Debugging
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../projects.html">
+            
+                <a href="../projects.html">
+            
+                    
+                    Including Projects
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../projects/submodule.html">
+            
+                <a href="../projects/submodule.html">
+            
+                    
+                    Submodule
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../projects/download.html">
+            
+                <a href="../projects/download.html">
+            
+                    
+                    DownloadProject
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../projects/fetch.html">
+            
+                <a href="../projects/fetch.html">
+            
+                    
+                    Fetch (CMake 3.11)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../testing.html">
+            
+                <a href="../testing.html">
+            
+                    
+                    Testing
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../testing/googletest.html">
+            
+                <a href="../testing/googletest.html">
+            
+                    
+                    GoogleTest
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../testing/catch.html">
+            
+                <a href="../testing/catch.html">
+            
+                    
+                    Catch
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../install.html">
+            
+                <a href="../install.html">
+            
+                    
+                    Exporting and Installing
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../install/installing.html">
+            
+                <a href="../install/installing.html">
+            
+                    
+                    Installing
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../install/exporting.html">
+            
+                <a href="../install/exporting.html">
+            
+                    
+                    Exporting
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../install/packaging.html">
+            
+                <a href="../install/packaging.html">
+            
+                    
+                    Packaging
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../packages.html">
+            
+                <a href="../packages.html">
+            
+                    
+                    Looking for Libraries (Packages)
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../packages/CUDA.html">
+            
+                <a href="../packages/CUDA.html">
+            
+                    
+                    CUDA
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../packages/OpenMP.html">
+            
+                <a href="../packages/OpenMP.html">
+            
+                    
+                    OpenMP
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../packages/Boost.html">
+            
+                <a href="../packages/Boost.html">
+            
+                    
+                    Boost
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../packages/MPI.html">
+            
+                <a href="../packages/MPI.html">
+            
+                    
+                    MPI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../packages/ROOT.html">
+            
+                <a href="../packages/ROOT.html">
+            
+                    
+                    ROOT
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.5.1" data-path="../../examples/root-usefile/">
+            
+                <a href="../../examples/root-usefile/">
+            
+                    
+                    UseFile Example
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.2" data-path="../../examples/root-simple/">
+            
+                <a href="../../examples/root-simple/">
+            
+                    
+                    Simple Example
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.3" data-path="../../examples/root-dict/">
+            
+                <a href="../../examples/root-dict/">
+            
+                    
+                    Dictionary Example
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="../packages/Minuit2.html">
+            
+                <a href="../packages/Minuit2.html">
+            
+                    
+                    Minuit2
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Useful modules</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="useful-modules">Useful Modules</h1>
+<p>There are a ton of useful modules in CMake&apos;s <a href="https://cmake.org/cmake/help/latest/manual/cmake-modules.7.html" target="_blank">modules</a> collection; but some of them are more useful than others. Here are a few highlights.</p>
+<h2 id="cmakedependentoption"><a href="https://cmake.org/cmake/help/latest/module/CMakeDependentOption.html" target="_blank">CMakeDependentOption</a></h2>
+<p>This adds a command <code>cmake_dependent_option</code> that sets an option based on another set of variables being true. It looks like this:</p>
+<pre><code class="lang-cmake"><span class="hljs-keyword">include</span>(CMakeDependentOption)
+cmake_dependent_option(BUILD_TESTS <span class="hljs-string">&quot;Build your tests&quot;</span> <span class="hljs-keyword">ON</span> <span class="hljs-string">&quot;VAL1;VAL2&quot;</span> <span class="hljs-keyword">OFF</span>)
+</code></pre>
+<p>which is just a shortcut for this:</p>
+<pre><code class="lang-cmake"><span class="hljs-keyword">if</span>(VAL1 <span class="hljs-keyword">AND</span> VAL2)
+    <span class="hljs-keyword">set</span>(BUILD_TESTS_DEFAULT <span class="hljs-keyword">ON</span>)
+<span class="hljs-keyword">else</span>()
+    <span class="hljs-keyword">set</span>(BUILD_TESTS_DEFAULT <span class="hljs-keyword">OFF</span>)
+<span class="hljs-keyword">endif</span>()
+
+<span class="hljs-keyword">option</span>(BUILD_TESTS <span class="hljs-string">&quot;Build your tests&quot;</span> <span class="hljs-variable">${BUILD_TESTS_DEFAULT}</span>)
+
+<span class="hljs-keyword">if</span>(NOT BUILD_TESTS_DEFAULT)
+    <span class="hljs-keyword">mark_as_advanced</span>(BUILD_TESTS)
+<span class="hljs-keyword">endif</span>()
+</code></pre>
+<p>Note that <code>BUILD_TESTING</code> is a better way to check for testing being enabled if you use <code>include(CTest)</code>, since it is defined for you. This is just an example of <code>CMakeDependentOption</code>.</p>
+<h2 id="cmakeprinthelpers"><a href="https://cmake.org/cmake/help/latest/module/CMakePrintHelpers.html" target="_blank">CMakePrintHelpers</a></h2>
+<p>This module has a couple of handy output functions. <code>cmake_print_properties</code> lets you easily print properties.
+And <code>cmake_print_variables</code> will print the names and values of any variables you give it.</p>
+<h2 id="checkcxxcompilerflag"><a href="https://cmake.org/cmake/help/latest/module/CheckCXXCompilerFlag.html" target="_blank">CheckCXXCompilerFlag</a></h2>
+<p>This checks to see if a flag is supported. For example:</p>
+<pre><code class="lang-cmake"><span class="hljs-keyword">include</span>(CheckCXXCompilerFlag)
+check_cxx_compiler_flag(-someflag OUTPUT_VARIABLE)
+</code></pre>
+<p>Note that <code>OUTPUT_VARIABLE</code> will also appear in the configuration printout, so choose a good name.</p>
+<p>This is just one of many similar modules, such as <code>CheckIncludeFileCXX</code>, <code>CheckStructHasMember</code>, <code>TestBigEndian</code>, and <code>CheckTypeSize</code> that allow you
+to check for information about the system (and you can communicate that to your source code).</p>
+<h2 id="trycompiletryrun"><a href="https://cmake.org/cmake/help/latest/command/try_compile.html" target="_blank"><code>try_compile</code></a>/<a href="https://cmake.org/cmake/help/latest/command/try_run.html" target="_blank"><code>try_run</code></a></h2>
+<p>This is not exactly a module, but is crucial to many of the modules listed above. You can attempt to compile (and possibly run) a bit of code at configure time. This can allow you to get information about the capabilities of your system. The basic syntax is:</p>
+<pre><code class="lang-cmake"><span class="hljs-keyword">try_compile</span>(
+  RESULT_VAR
+    bindir
+  SOURCES
+    source.cpp
+)
+</code></pre>
+<p>There are lots of options you can add, like <code>COMPILE_DEFINITIONS</code>. In CMake 3.8+, this will honor the CMake C/C++/CUDA standard settings. If you use <code>try_run</code> instead, it will run the resulting program and give you the output in <code>RUN_OUTPUT_VARIABLE</code>.</p>
+<h2 id="featuresummary"><a href="https://cmake.org/cmake/help/latest/module/FeatureSummary.html" target="_blank">FeatureSummary</a></h2>
+<p>This is a fairly useful but rather odd module. It allows you to print out a list of packages what were searched for, as well as any options you explicity mark. It&apos;s partially but not completely tied into <a href="https://cmake.org/cmake/help/latest/command/find_package.html" target="_blank"><code>find_package</code></a>. You first include the module, as always:</p>
+<pre><code class="lang-cmake"><span class="hljs-keyword">include</span>(FeatureSummary)
+</code></pre>
+<p>Then, for any find packages you have run or will run, you can extend the default information:</p>
+<pre><code class="lang-cmake">set_package_properties(OpenMP PROPERTIES
+    URL <span class="hljs-string">&quot;http://www.openmp.org&quot;</span>
+    DESCRIPTION <span class="hljs-string">&quot;Parallel compiler directives&quot;</span>
+    PURPOSE <span class="hljs-string">&quot;This is what it does in my package&quot;</span>)
+</code></pre>
+<p>You can also set the <code>TYPE</code> of a package to <code>RUNTIME</code>, <code>OPTIONAL</code>, <code>RECOMMENDED</code>, or <code>REQUIRED</code>; you can&apos;t, however, lower the type of a package; if you have already added a <code>REQUIRED</code> package through <a href="https://cmake.org/cmake/help/latest/command/find_package.html" target="_blank"><code>find_package</code></a> based on an option, you&apos;ll see it listed as <code>REQUIRED</code>.</p>
+<p>And, you can mark any options as part of the feature summary. If you choose the same name as a package, the two interact with each other.</p>
+<pre><code class="lang-cmake">add_feature_info(WITH_OPENMP OpenMP_CXX_FOUND <span class="hljs-string">&quot;OpenMP (Thread safe FCNs only)&quot;</span>)
+</code></pre>
+<p>Then, you can print out the summary of features, either to the screen or a log file:</p>
+<pre><code class="lang-cmake"><span class="hljs-keyword">if</span>(CMAKE_PROJECT_NAME <span class="hljs-keyword">STREQUAL</span> PROJECT_NAME)
+    feature_summary(WHAT ENABLED_FEATURES DISABLED_FEATURES PACKAGES_FOUND)
+    feature_summary(FILENAME <span class="hljs-variable">${CMAKE_CURRENT_BINARY_DIR}</span>/features.log WHAT ALL)
+<span class="hljs-keyword">endif</span>()
+</code></pre>
+<p>You can build any collection of <code>WHAT</code> items that you like, or just use <code>ALL</code>.</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="utilities.html" class="navigation navigation-prev " aria-label="Previous page: Utilities">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="ides.html" class="navigation navigation-next " aria-label="Next page: IDEs">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Useful modules","level":"1.3.4","depth":2,"next":{"title":"IDEs","level":"1.3.5","depth":2,"path":"chapters/features/ides.md","ref":"chapters/features/ides.md","articles":[]},"previous":{"title":"Utilities","level":"1.3.3","depth":2,"path":"chapters/features/utilities.md","ref":"chapters/features/utilities.md","articles":[]},"dir":"ltr"},"config":{"plugins":["replace","hints","term","include-codeblock","ace"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"ace":{},"search":{},"term":{"copyButtons":true,"fade":true,"lineStyles":true,"prompt":"(?<prompt>[^\\$^#^:]*)(?<pathsep>:?)(?<path>[^\\$^#]*?)(?<delimiter>[\\$#] )(?<command>.*)$","style":"default"},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"replace":{"substitutes":[{"pattern":"«cmake:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/manual/cmake-$1.7.html)"},{"pattern":"«command:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/command/$1.html)"},{"pattern":"«envvar:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/envvar/$1.html)"},{"pattern":"«module:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/module/$1.html)"},{"pattern":"«policy:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/policy/$1.html)"},{"pattern":"«variable:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest//$1.html)"},{"pattern":"«prop:([^:]+):`?([^`^»]+)`?»","flags":"g","substitute":"[`$2`](https://cmake.org/cmake/help/latest/prop_$1/$2.html)"}]},"include-codeblock":{"check":false,"edit":false,"fixlang":true,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Henry Schreiner","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Modern CMake","gitbook":"*","description":"A guide to writing simple, powerful, and clean CMake 3.1+ builds."},"file":{"path":"chapters/features/modules.md","mtime":"2021-07-20T13:16:31.691Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-20T13:17:14.844Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-term/clipboard.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-term/initclip.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-term/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-ace/ace/ace.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-ace/ace.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

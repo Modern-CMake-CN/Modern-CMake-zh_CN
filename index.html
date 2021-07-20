@@ -1,0 +1,886 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>An Introduction to Modern CMake · Modern CMake</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="Henry Schreiner">
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-hints/plugin-hints.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-term/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-ace/ace.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="chapters/intro/installing.html" />
+    
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter active" data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    An Introduction to Modern CMake
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1.1" data-path="chapters/intro/installing.html">
+            
+                <a href="chapters/intro/installing.html">
+            
+                    
+                    Installing CMake
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.2" data-path="chapters/intro/running.html">
+            
+                <a href="chapters/intro/running.html">
+            
+                    
+                    Running CMake
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.3" data-path="chapters/intro/dodonot.html">
+            
+                <a href="chapters/intro/dodonot.html">
+            
+                    
+                    Do's and Don'ts
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.4" data-path="chapters/intro/newcmake.html">
+            
+                <a href="chapters/intro/newcmake.html">
+            
+                    
+                    What's new in CMake
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="chapters/basics.html">
+            
+                <a href="chapters/basics.html">
+            
+                    
+                    Introduction to the Basics
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="chapters/basics/variables.html">
+            
+                <a href="chapters/basics/variables.html">
+            
+                    
+                    Variables and the Cache
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="chapters/basics/functions.html">
+            
+                <a href="chapters/basics/functions.html">
+            
+                    
+                    Programming in CMake
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="chapters/basics/comms.html">
+            
+                <a href="chapters/basics/comms.html">
+            
+                    
+                    Communicating with your code
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="chapters/basics/structure.html">
+            
+                <a href="chapters/basics/structure.html">
+            
+                    
+                    How to Structure Your Project
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="chapters/basics/programs.html">
+            
+                <a href="chapters/basics/programs.html">
+            
+                    
+                    Running Other Programs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="chapters/basics/example.html">
+            
+                <a href="chapters/basics/example.html">
+            
+                    
+                    A Simple Example
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="chapters/features.html">
+            
+                <a href="chapters/features.html">
+            
+                    
+                    Adding Features
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="chapters/features/cpp11.html">
+            
+                <a href="chapters/features/cpp11.html">
+            
+                    
+                    C++11 and Beyond
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="chapters/features/small.html">
+            
+                <a href="chapters/features/small.html">
+            
+                    
+                    Small but common needs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="chapters/features/utilities.html">
+            
+                <a href="chapters/features/utilities.html">
+            
+                    
+                    Utilities
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="chapters/features/modules.html">
+            
+                <a href="chapters/features/modules.html">
+            
+                    
+                    Useful modules
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="chapters/features/ides.html">
+            
+                <a href="chapters/features/ides.html">
+            
+                    
+                    IDEs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="chapters/features/debug.html">
+            
+                <a href="chapters/features/debug.html">
+            
+                    
+                    Debugging
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="chapters/projects.html">
+            
+                <a href="chapters/projects.html">
+            
+                    
+                    Including Projects
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="chapters/projects/submodule.html">
+            
+                <a href="chapters/projects/submodule.html">
+            
+                    
+                    Submodule
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="chapters/projects/download.html">
+            
+                <a href="chapters/projects/download.html">
+            
+                    
+                    DownloadProject
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="chapters/projects/fetch.html">
+            
+                <a href="chapters/projects/fetch.html">
+            
+                    
+                    Fetch (CMake 3.11)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="chapters/testing.html">
+            
+                <a href="chapters/testing.html">
+            
+                    
+                    Testing
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="chapters/testing/googletest.html">
+            
+                <a href="chapters/testing/googletest.html">
+            
+                    
+                    GoogleTest
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="chapters/testing/catch.html">
+            
+                <a href="chapters/testing/catch.html">
+            
+                    
+                    Catch
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="chapters/install.html">
+            
+                <a href="chapters/install.html">
+            
+                    
+                    Exporting and Installing
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="chapters/install/installing.html">
+            
+                <a href="chapters/install/installing.html">
+            
+                    
+                    Installing
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="chapters/install/exporting.html">
+            
+                <a href="chapters/install/exporting.html">
+            
+                    
+                    Exporting
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="chapters/install/packaging.html">
+            
+                <a href="chapters/install/packaging.html">
+            
+                    
+                    Packaging
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="chapters/packages.html">
+            
+                <a href="chapters/packages.html">
+            
+                    
+                    Looking for Libraries (Packages)
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="chapters/packages/CUDA.html">
+            
+                <a href="chapters/packages/CUDA.html">
+            
+                    
+                    CUDA
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="chapters/packages/OpenMP.html">
+            
+                <a href="chapters/packages/OpenMP.html">
+            
+                    
+                    OpenMP
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="chapters/packages/Boost.html">
+            
+                <a href="chapters/packages/Boost.html">
+            
+                    
+                    Boost
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="chapters/packages/MPI.html">
+            
+                <a href="chapters/packages/MPI.html">
+            
+                    
+                    MPI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="chapters/packages/ROOT.html">
+            
+                <a href="chapters/packages/ROOT.html">
+            
+                    
+                    ROOT
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.5.1" data-path="examples/root-usefile/">
+            
+                <a href="examples/root-usefile/">
+            
+                    
+                    UseFile Example
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.2" data-path="examples/root-simple/">
+            
+                <a href="examples/root-simple/">
+            
+                    
+                    Simple Example
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.3" data-path="examples/root-dict/">
+            
+                <a href="examples/root-dict/">
+            
+                    
+                    Dictionary Example
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="chapters/packages/Minuit2.html">
+            
+                <a href="chapters/packages/Minuit2.html">
+            
+                    
+                    Minuit2
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >An Introduction to Modern CMake</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="an-introduction-to-modern-cmake">An Introduction to Modern CMake</h1>
+<p>People love to hate build systems.
+Just watch the talks from CppCon17 to see examples of developers making the state of build systems the brunt of jokes.
+This raises the question: Why?
+Certainly there are no shortage of problems when building.
+But I think that, in 2020, we have a very good solution to quite a few of those problems.
+It&apos;s CMake. Not CMake 2.8 though; that was released before C++11 even existed!
+Nor the horrible examples out there for CMake (even those posted on KitWare&apos;s own tutorials list).
+I&apos;m talking about Modern CMake. CMake 3.4+, maybe even CMake 3.21+!
+It&apos;s clean, powerful, and elegant, so you can spend most of your time coding, not adding lines to an unreadable, unmaintainable Make (Or CMake 2) file.
+And CMake 3.11+ is supposed to be significantly faster, as well!</p>
+<p><div class="alert alert-warning hints-alert"><div class="hints-icon"><i class="fa fa-wrench"></i></div><div class="hints-container"><p>This book is meant to be a living document. You can raise an issue or put in a merge request on <a href="https://gitlab.com/CLIUtils/modern-cmake" target="_blank">GitLab</a>.
+You can also <a href="https://CLIUtils.gitlab.io/modern-cmake/modern-cmake.pdf" target="_blank">download a copy as a PDF</a>. Be sure to check the [HSF CMake Training][], as well!</p>
+</div></div></p>
+<p>In short, here are the most likely questions in your mind if you are considering Modern CMake:</p>
+<h2 id="why-do-i-need-a-good-build-system">Why do I need a good build system?</h2>
+<p>Do any of the following apply to you?</p>
+<ul>
+<li>You want to avoid hard-coding paths</li>
+<li>You need to build a package on more than one computer</li>
+<li>You want to use CI (continuous integration)</li>
+<li>You need to support different OSs (maybe even just flavors of Unix)</li>
+<li>You want to support multiple compilers</li>
+<li>You want to use an IDE, but maybe not all of the time</li>
+<li>You want to describe how your program is structured logically, not flags and commands</li>
+<li>You want to use a library</li>
+<li>You want to use tools, like Clang-Tidy, to help you code</li>
+<li>You want to use a debugger</li>
+</ul>
+<p>If so, you&apos;ll benefit from a CMake-like build system.</p>
+<h2 id="why-must-the-answer-be-cmake">Why must the answer be CMake?</h2>
+<p>Build systems is a hot topic. Of course there are many options. But even a really good one, or one that re-uses a familiar syntax, can&apos;t come close to CMake.
+Why?
+Support.
+Every IDE supports CMake (or CMake supports that IDE).
+More packages use CMake than any other system.
+So, if you use a library that is designed to be included in your code, you have a choice: Make your own build system, or use one of the provided ones, and that will almost always include CMake.
+And that will quickly be the common denominator if you include multiple projects.
+And, if you need a library that&apos;s preinstalled, the chances of it having a find CMake script or config CMake script are excellent.</p>
+<h2 id="why-use-a-modern-cmake">Why use a Modern CMake?</h2>
+<p>Around CMake 2.6-2.8, CMake started taking over. It was in most of the package managers for Linux OS&apos;s, and was being used in lots of packages.</p>
+<p>Then Python 3 came out.</p>
+<p>I know, this should have nothing whatsoever to do with CMake.</p>
+<p>But it had a 3.
+And it followed 2.
+And it was a hard, ugly, transition that is still ongoing in some places, even today.</p>
+<p>I believe that CMake 3 had the bad luck to follow Python 3.<sup><a href="#fn_1" id="reffn_1">1</a></sup>
+Even though every version of CMake is insanely backward compatible, the 3 series was treated as if it were something new.
+And so, you&apos;ll find OSs like CentOS7 with GCC 4.8, with almost-complete C++14 support, and CMake 2.8, which came out years before C++11.</p>
+<p>You really should <em>at least</em> use a version of CMake that came out after your compiler, since it needs to know compiler flags, etc, for that version.
+And, since CMake will dumb itself down to the minimum required version in your CMake file, installing a new CMake, even system wide, is pretty safe.
+You should <em>at least</em> install it locally.
+It&apos;s easy (1-2 lines in many cases), and you&apos;ll find that 5 minutes of work will save you hundreds of lines and hours of <code>CMakeLists.txt</code> writing, and will be much easier to maintain in the long run.</p>
+<p>This book tries to solve the problem of the poor examples and best practices that you&apos;ll find proliferating the web.</p>
+<h2 id="other-sources">Other sources</h2>
+<p>Other material from the original author of this book:</p>
+<ul>
+<li><a href="https://hsf-training.github.io/hsf-training-cmake-webpage/01-intro/index.html" target="_blank">HSF CMake Training</a></li>
+<li><a href="https://gitlab.com/CLIUtils/modern-cmake-interactive-talk" target="_blank">Interactive Modern CMake talk</a></li>
+</ul>
+<p>There are some other places to find good information on the web. Here are some of them:</p>
+<ul>
+<li><a href="https://cmake.org/cmake/help/latest/" target="_blank">The official help</a>: Really amazing documentation. Nicely organized, great search, and you can toggle versions at the top. It just doesn&apos;t have a great &quot;best practices tutorial&quot;, which is what this book tries to fill in.</li>
+<li><a href="https://gist.github.com/mbinna/c61dbb39bca0e4fb7d1f73b0d66a4fd1" target="_blank">Effective Modern CMake</a>: A great list of do&apos;s and don&apos;ts.</li>
+<li><a href="https://steveire.wordpress.com/2017/11/05/embracing-modern-cmake/" target="_blank">Embracing Modern CMake</a>: A post with good description of the term</li>
+<li><a href="https://pabloariasal.github.io/2018/02/19/its-time-to-do-cmake-right/" target="_blank">It&apos;s time to do CMake Right</a>: A nice set of best practices for Modern CMake projects.</li>
+<li><a href="https://rix0r.nl/blog/2015/08/13/cmake-guide/" target="_blank">The Ultimate Guide to Modern CMake</a>: A slightly dated post with similar intent.</li>
+<li><a href="https://youtu.be/y7ndUhdQuU8" target="_blank">More Modern CMake</a>: A great presentation from Meeting C++ 2018 that recommends CMake 3.12+. This talk makes calls CMake 3.0+ &quot;Modern CMake&quot; and CMake 3.12+ &quot;More Modern CMake&quot;.</li>
+<li><a href="https://www.youtube.com/watch?v=y9kSr5enrSk" target="_blank">Oh No! More Modern CMake</a>: The sequel to More Modern CMake.</li>
+<li><a href="https://github.com/toeb/moderncmake" target="_blank">toeb/moderncmake</a>: A nice presentation and examples about CMake 3.5+, with intro to syntax through project organization</li>
+</ul>
+<h2 id="credits">Credits</h2>
+<p>Modern CMake was originally written by <a href="https://iscinumpy.gitlab.io" target="_blank">Henry Schreiner</a>. Other contributors can be found <a href="https://gitlab.com/CLIUtils/modern-cmake/-/network/master" target="_blank">listed on GitLab</a>.</p>
+<blockquote id="fn_1">
+<sup>1</sup>. CMake 3.0 also removed several long deprecated features from very old versions of CMake and make one very tiny backwards incompatible change to syntax related to square brackets, so this is not entirely fair; there might be some very, very old CMake files that would stop working with 3. I&apos;ve never seen one, though.<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#x21A9;</a>
+</blockquote>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                
+                <a href="chapters/intro/installing.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Installing CMake">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"An Introduction to Modern CMake","level":"1.1","depth":1,"next":{"title":"Installing CMake","level":"1.1.1","depth":2,"path":"chapters/intro/installing.md","ref":"chapters/intro/installing.md","articles":[]},"dir":"ltr"},"config":{"plugins":["replace","hints","term","include-codeblock","ace"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"ace":{},"search":{},"term":{"copyButtons":true,"fade":true,"lineStyles":true,"prompt":"(?<prompt>[^\\$^#^:]*)(?<pathsep>:?)(?<path>[^\\$^#]*?)(?<delimiter>[\\$#] )(?<command>.*)$","style":"default"},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"replace":{"substitutes":[{"pattern":"«cmake:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/manual/cmake-$1.7.html)"},{"pattern":"«command:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/command/$1.html)"},{"pattern":"«envvar:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/envvar/$1.html)"},{"pattern":"«module:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/module/$1.html)"},{"pattern":"«policy:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/policy/$1.html)"},{"pattern":"«variable:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest//$1.html)"},{"pattern":"«prop:([^:]+):`?([^`^»]+)`?»","flags":"g","substitute":"[`$2`](https://cmake.org/cmake/help/latest/prop_$1/$2.html)"}]},"include-codeblock":{"check":false,"edit":false,"fixlang":true,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Henry Schreiner","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Modern CMake","gitbook":"*","description":"A guide to writing simple, powerful, and clean CMake 3.1+ builds."},"file":{"path":"README.md","mtime":"2021-07-20T13:16:31.691Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-20T13:17:14.844Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-term/clipboard.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-term/initclip.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-term/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-ace/ace/ace.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-ace/ace.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

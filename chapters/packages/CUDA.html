@@ -1,0 +1,902 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>CUDA · Modern CMake</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="Henry Schreiner">
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-hints/plugin-hints.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-term/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ace/ace.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="OpenMP.html" />
+    
+    
+    <link rel="prev" href="../packages.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    An Introduction to Modern CMake
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1.1" data-path="../intro/installing.html">
+            
+                <a href="../intro/installing.html">
+            
+                    
+                    Installing CMake
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.2" data-path="../intro/running.html">
+            
+                <a href="../intro/running.html">
+            
+                    
+                    Running CMake
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.3" data-path="../intro/dodonot.html">
+            
+                <a href="../intro/dodonot.html">
+            
+                    
+                    Do's and Don'ts
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.4" data-path="../intro/newcmake.html">
+            
+                <a href="../intro/newcmake.html">
+            
+                    
+                    What's new in CMake
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../basics.html">
+            
+                <a href="../basics.html">
+            
+                    
+                    Introduction to the Basics
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../basics/variables.html">
+            
+                <a href="../basics/variables.html">
+            
+                    
+                    Variables and the Cache
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../basics/functions.html">
+            
+                <a href="../basics/functions.html">
+            
+                    
+                    Programming in CMake
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../basics/comms.html">
+            
+                <a href="../basics/comms.html">
+            
+                    
+                    Communicating with your code
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../basics/structure.html">
+            
+                <a href="../basics/structure.html">
+            
+                    
+                    How to Structure Your Project
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../basics/programs.html">
+            
+                <a href="../basics/programs.html">
+            
+                    
+                    Running Other Programs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../basics/example.html">
+            
+                <a href="../basics/example.html">
+            
+                    
+                    A Simple Example
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../features.html">
+            
+                <a href="../features.html">
+            
+                    
+                    Adding Features
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../features/cpp11.html">
+            
+                <a href="../features/cpp11.html">
+            
+                    
+                    C++11 and Beyond
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../features/small.html">
+            
+                <a href="../features/small.html">
+            
+                    
+                    Small but common needs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../features/utilities.html">
+            
+                <a href="../features/utilities.html">
+            
+                    
+                    Utilities
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../features/modules.html">
+            
+                <a href="../features/modules.html">
+            
+                    
+                    Useful modules
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../features/ides.html">
+            
+                <a href="../features/ides.html">
+            
+                    
+                    IDEs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="../features/debug.html">
+            
+                <a href="../features/debug.html">
+            
+                    
+                    Debugging
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../projects.html">
+            
+                <a href="../projects.html">
+            
+                    
+                    Including Projects
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../projects/submodule.html">
+            
+                <a href="../projects/submodule.html">
+            
+                    
+                    Submodule
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../projects/download.html">
+            
+                <a href="../projects/download.html">
+            
+                    
+                    DownloadProject
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../projects/fetch.html">
+            
+                <a href="../projects/fetch.html">
+            
+                    
+                    Fetch (CMake 3.11)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../testing.html">
+            
+                <a href="../testing.html">
+            
+                    
+                    Testing
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../testing/googletest.html">
+            
+                <a href="../testing/googletest.html">
+            
+                    
+                    GoogleTest
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../testing/catch.html">
+            
+                <a href="../testing/catch.html">
+            
+                    
+                    Catch
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../install.html">
+            
+                <a href="../install.html">
+            
+                    
+                    Exporting and Installing
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../install/installing.html">
+            
+                <a href="../install/installing.html">
+            
+                    
+                    Installing
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../install/exporting.html">
+            
+                <a href="../install/exporting.html">
+            
+                    
+                    Exporting
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../install/packaging.html">
+            
+                <a href="../install/packaging.html">
+            
+                    
+                    Packaging
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../packages.html">
+            
+                <a href="../packages.html">
+            
+                    
+                    Looking for Libraries (Packages)
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.7.1" data-path="CUDA.html">
+            
+                <a href="CUDA.html">
+            
+                    
+                    CUDA
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="OpenMP.html">
+            
+                <a href="OpenMP.html">
+            
+                    
+                    OpenMP
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="Boost.html">
+            
+                <a href="Boost.html">
+            
+                    
+                    Boost
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="MPI.html">
+            
+                <a href="MPI.html">
+            
+                    
+                    MPI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="ROOT.html">
+            
+                <a href="ROOT.html">
+            
+                    
+                    ROOT
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.5.1" data-path="../../examples/root-usefile/">
+            
+                <a href="../../examples/root-usefile/">
+            
+                    
+                    UseFile Example
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.2" data-path="../../examples/root-simple/">
+            
+                <a href="../../examples/root-simple/">
+            
+                    
+                    Simple Example
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.3" data-path="../../examples/root-dict/">
+            
+                <a href="../../examples/root-dict/">
+            
+                    
+                    Dictionary Example
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="Minuit2.html">
+            
+                <a href="Minuit2.html">
+            
+                    
+                    Minuit2
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >CUDA</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="cuda">CUDA</h1>
+<p>CUDA support is available in two flavors. The new method, introduced in CMake 3.8 (3.9 for Windows), should be strongly preferred over the old, hacky method - I only mention the old method due to the high chances of an old package somewhere having it. Unlike the older languages, CUDA support has been rapidly evolving, and building CUDA is hard, so I would recommend you <em>require a very recent version</em> of CMake! CMake 3.17 and 3.18 have a lot of improvements directly targeting CUDA.</p>
+<p>A good resource for CUDA and Modern CMake is <a href="http://on-demand.gputechconf.com/gtc/2017/presentation/S7438-robert-maynard-build-systems-combining-cuda-and-machine-learning.pdf" target="_blank">this talk</a> by CMake developer Robert Maynard at GTC 2017.</p>
+<h2 id="adding-the-cuda-language">Adding the CUDA Language</h2>
+<p>There are two ways to enable CUDA support. If CUDA is not optional:</p>
+<pre><code class="lang-cmake"><span class="hljs-keyword">project</span>(MY_PROJECT LANGUAGES CUDA CXX)
+</code></pre>
+<p>You&apos;ll probably want <code>CXX</code> listed here also. And, if CUDA is optional, you&apos;ll
+want to put this in somewhere conditionally:</p>
+<pre><code class="lang-cmake"><span class="hljs-keyword">enable_language</span>(CUDA)
+</code></pre>
+<p>To check to see if CUDA is available, use CheckLanuage:</p>
+<pre><code class="lang-cmake"><span class="hljs-keyword">include</span>(CheckLanguage)
+check_language(CUDA)
+</code></pre>
+<p>You can see if CUDA is present by checking <code>CMAKE_CUDA_COMPILER</code> (was missing
+until CMake 3.11).</p>
+<p>You can check variables like <code>CMAKE_CUDA_COMPILER_ID</code> (for nvcc, this is
+<code>&quot;NVIDIA&quot;</code>, Clang was added in CMake 3.18).  You can check the version with
+<code>CMAKE_CUDA_COMPILER_VERSION</code>.</p>
+<h2 id="variables-for-cuda">Variables for CUDA</h2>
+<p>Many variables with <code>CXX</code> in the name have a CUDA version with <code>CUDA</code> instead.
+For example, to set the C++ standard required for CUDA,</p>
+<pre><code>if(NOT DEFINED CMAKE_CUDA_STANDARD)
+    set(CMAKE_CUDA_STANDARD 11)
+    set(CMAKE_CUDA_STANDARD_REQUIRED ON)
+endif()
+</code></pre><p>If you are looking for CUDA&apos;s standard level, in CMake 3.17 a new collection of
+compiler features were added, like <code>cuda_std_11</code>. These have the same benefits that
+you are already used to from the <code>cxx</code> versions.</p>
+<h3 id="adding-a-library--executable">Adding a library / executable</h3>
+<p>This is the easy part; as long as you use <code>.cu</code> for CUDA files, you can just add libraries <em>exactly like you normally would</em>.</p>
+<p>You can also use separable compilation:</p>
+<pre><code class="lang-cmake"><span class="hljs-keyword">set_target_properties</span>(mylib PROPERTIES
+                            CUDA_SEPARABLE_COMPILATION <span class="hljs-keyword">ON</span>)
+</code></pre>
+<p>You can also directly make a PTX file with the <code>CUDA_PTX_COMPILATION</code> property.</p>
+<h3 id="targeting-architectures">Targeting architectures</h3>
+<p>When you build CUDA code, you generally should be targeting an architecture. If you don&apos;t, you compile &apos;ptx&apos;, which provide the basic instructions but is compiled at runtime, making it potentially much slower to load.</p>
+<p>All cards have an architecture level, like &quot;7.2&quot;. You have two choices; the first is the code level; this will report to the code being compiled a version, like &quot;5.0&quot;, and it will take advantage of all the features up to 5.0 but not past (assuming well written code / standard libraries). Then there&apos;s a target architecture, which must be equal or greater to the code architecture. This needs to have the same major number as your target card, and be equal to or less than the target card. So 7.0 would be a common choice for our 7.2 card. Finally, you can also generate PTX; this will work on all future cards, but will compile just in time.</p>
+<p>In CMake 3.18, it became very easy to target architectures. If you have a version range that includes 3.18 or newer, you will be using <code>CMAKE_CUDA_ARCHITECTURES</code> variable and the <code>CUDA_ARCHITECTURES</code> property on targets. You can list values (without the <code>.</code>), like 50 for arch 5.0. If set to OFF, it will not pass architectures.</p>
+<h3 id="working-with-targets">Working with targets</h3>
+<p>Using targets should work similarly to CXX, but there&apos;s a problem. If you include a target that includes compiler options (flags), most of the time, the options will not be protected by the correct includes (and the chances of them having the correct CUDA wrapper is even smaller). Here&apos;s what a correct compiler options line should look like:</p>
+<pre><code class="lang-cmake"><span class="hljs-string">&quot;$&lt;$&lt;BUILD_INTERFACE:$&lt;COMPILE_LANGUAGE:CXX&gt;&gt;:-fopenmp&gt;$&lt;$&lt;BUILD_INTERFACE:$&lt;COMPILE_LANGUAGE:CUDA&gt;&gt;:-Xcompiler=-fopenmp&gt;&quot;</span>
+</code></pre>
+<p>However, if you using almost any find_package, and using the Modern CMake methods of targets and inheritance, everything will break. I&apos;ve learned that the hard way.</p>
+<p>For now, here&apos;s a pretty reasonable solution, <em>as long as you know the un-aliased target name</em>. It&apos;s a function that will fix a C++ only target by wrapping the flags if using a CUDA compiler:</p>
+<pre><code class="lang-cmake"><span class="hljs-keyword">function</span>(CUDA_CONVERT_FLAGS EXISTING_TARGET)
+    <span class="hljs-keyword">get_property</span>(old_flags TARGET <span class="hljs-variable">${EXISTING_TARGET}</span> PROPERTY INTERFACE_COMPILE_OPTIONS)
+    <span class="hljs-keyword">if</span>(NOT <span class="hljs-string">&quot;${old_flags}&quot;</span> <span class="hljs-keyword">STREQUAL</span> <span class="hljs-string">&quot;&quot;</span>)
+        <span class="hljs-keyword">string</span>(REPLACE <span class="hljs-string">&quot;;&quot;</span> <span class="hljs-string">&quot;,&quot;</span> CUDA_flags <span class="hljs-string">&quot;${old_flags}&quot;</span>)
+        <span class="hljs-keyword">set_property</span>(TARGET <span class="hljs-variable">${EXISTING_TARGET}</span> PROPERTY INTERFACE_COMPILE_OPTIONS
+            <span class="hljs-string">&quot;$&lt;$&lt;BUILD_INTERFACE:$&lt;COMPILE_LANGUAGE:CXX&gt;&gt;:${old_flags}&gt;$&lt;$&lt;BUILD_INTERFACE:$&lt;COMPILE_LANGUAGE:CUDA&gt;&gt;:-Xcompiler=${CUDA_flags}&gt;&quot;</span>
+            )
+    <span class="hljs-keyword">endif</span>()
+<span class="hljs-keyword">endfunction</span>()
+</code></pre>
+<h3 id="useful-variables">Useful variables</h3>
+<ul>
+<li><code>CMAKE_CUDA_TOOLKIT_INCLUDE_DIRECTORIES</code>: Place for built-in Thrust, etc</li>
+<li><code>CMAKE_CUDA_COMPILER</code>: NVCC with location</li>
+</ul>
+<p>You can use
+<a href="https://cmake.org/cmake/help/git-stage/module/FindCUDAToolkit.html" target="_blank"><code>FindCUDAToolkit</code></a>
+to find a variety of useful targets and variables even without enabling the
+CUDA language.</p>
+<blockquote>
+<h3 id="note-that-findcuda-is-deprecated-but-for-for-versions-of-cmake--318-the-following-functions-required-findcuda">Note that FindCUDA is deprecated, but for for versions of CMake &lt; 3.18, the following functions required FindCUDA:</h3>
+<ul>
+<li>CUDA version checks / picking a version</li>
+<li>Architecture detection (Note: 3.12 fixes this partially)</li>
+<li>Linking to CUDA libraries from non-.cu files</li>
+</ul>
+</blockquote>
+<h2 id="classic-findcuda-warning-do-not-use-for-reference-only">Classic FindCUDA [WARNING: DO NOT USE] (for reference only)</h2>
+<p>If you want to support an older version of CMake, I recommend at least including the FindCUDA from CMake version 3.9 in your cmake folder (see the CLIUtils github organization for a <a href="https://github.com/CLIUtils/cuda_support" target="_blank">git repository</a>). You&apos;ll want two features that were added: <code>CUDA_LINK_LIBRARIES_KEYWORD</code> and <code>cuda_select_nvcc_arch_flags</code>, along with the newer architectures and CUDA versions.</p>
+<p>To use the old CUDA support, you use <code>find_package</code>:</p>
+<pre><code class="lang-cmake"><span class="hljs-keyword">find_package</span>(CUDA <span class="hljs-number">7.0</span> REQUIRED)
+<span class="hljs-keyword">message</span>(STATUS <span class="hljs-string">&quot;Found CUDA ${CUDA_VERSION_STRING} at ${CUDA_TOOLKIT_ROOT_DIR}&quot;</span>)
+</code></pre>
+<p>You can control the CUDA flags with <code>CUDA_NVCC_FLAGS</code> (list append) and you can control separable compilation with <code>CUDA_SEPARABLE_COMPILATION</code>. You&apos;ll also want to make sure CUDA plays nice and adds keywords to the targets (CMake 3.9+):</p>
+<pre><code class="lang-cmake"><span class="hljs-keyword">set</span>(CUDA_LINK_LIBRARIES_KEYWORD PUBLIC)
+</code></pre>
+<p>You&apos;ll also might want to allow a user to check for the arch flags of their current hardware:</p>
+<pre><code class="lang-cmake">cuda_select_nvcc_arch_flags(ARCH_FLAGS) <span class="hljs-comment"># optional argument for arch to add</span>
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../packages.html" class="navigation navigation-prev " aria-label="Previous page: Looking for Libraries (Packages)">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="OpenMP.html" class="navigation navigation-next " aria-label="Next page: OpenMP">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"CUDA","level":"1.7.1","depth":2,"next":{"title":"OpenMP","level":"1.7.2","depth":2,"path":"chapters/packages/OpenMP.md","ref":"chapters/packages/OpenMP.md","articles":[]},"previous":{"title":"Looking for Libraries (Packages)","level":"1.7","depth":1,"path":"chapters/packages.md","ref":"chapters/packages.md","articles":[{"title":"CUDA","level":"1.7.1","depth":2,"path":"chapters/packages/CUDA.md","ref":"chapters/packages/CUDA.md","articles":[]},{"title":"OpenMP","level":"1.7.2","depth":2,"path":"chapters/packages/OpenMP.md","ref":"chapters/packages/OpenMP.md","articles":[]},{"title":"Boost","level":"1.7.3","depth":2,"path":"chapters/packages/Boost.md","ref":"chapters/packages/Boost.md","articles":[]},{"title":"MPI","level":"1.7.4","depth":2,"path":"chapters/packages/MPI.md","ref":"chapters/packages/MPI.md","articles":[]},{"title":"ROOT","level":"1.7.5","depth":2,"path":"chapters/packages/ROOT.md","ref":"chapters/packages/ROOT.md","articles":[{"title":"UseFile Example","level":"1.7.5.1","depth":3,"path":"examples/root-usefile/README.md","ref":"examples/root-usefile/README.md","articles":[]},{"title":"Simple Example","level":"1.7.5.2","depth":3,"path":"examples/root-simple/README.md","ref":"examples/root-simple/README.md","articles":[]},{"title":"Dictionary Example","level":"1.7.5.3","depth":3,"path":"examples/root-dict/README.md","ref":"examples/root-dict/README.md","articles":[]}]},{"title":"Minuit2","level":"1.7.6","depth":2,"path":"chapters/packages/Minuit2.md","ref":"chapters/packages/Minuit2.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["replace","hints","term","include-codeblock","ace"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"ace":{},"search":{},"term":{"copyButtons":true,"fade":true,"lineStyles":true,"prompt":"(?<prompt>[^\\$^#^:]*)(?<pathsep>:?)(?<path>[^\\$^#]*?)(?<delimiter>[\\$#] )(?<command>.*)$","style":"default"},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"replace":{"substitutes":[{"pattern":"«cmake:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/manual/cmake-$1.7.html)"},{"pattern":"«command:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/command/$1.html)"},{"pattern":"«envvar:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/envvar/$1.html)"},{"pattern":"«module:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/module/$1.html)"},{"pattern":"«policy:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/policy/$1.html)"},{"pattern":"«variable:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest//$1.html)"},{"pattern":"«prop:([^:]+):`?([^`^»]+)`?»","flags":"g","substitute":"[`$2`](https://cmake.org/cmake/help/latest/prop_$1/$2.html)"}]},"include-codeblock":{"check":false,"edit":false,"fixlang":true,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Henry Schreiner","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Modern CMake","gitbook":"*","description":"A guide to writing simple, powerful, and clean CMake 3.1+ builds."},"file":{"path":"chapters/packages/CUDA.md","mtime":"2021-07-20T13:16:31.691Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-20T13:17:14.844Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-term/clipboard.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-term/initclip.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-term/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-ace/ace/ace.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-ace/ace.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

@@ -1,0 +1,939 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>ROOT · Modern CMake</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="Henry Schreiner">
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-hints/plugin-hints.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-term/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ace/ace.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../../examples/root-usefile/" />
+    
+    
+    <link rel="prev" href="MPI.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    An Introduction to Modern CMake
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1.1" data-path="../intro/installing.html">
+            
+                <a href="../intro/installing.html">
+            
+                    
+                    Installing CMake
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.2" data-path="../intro/running.html">
+            
+                <a href="../intro/running.html">
+            
+                    
+                    Running CMake
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.3" data-path="../intro/dodonot.html">
+            
+                <a href="../intro/dodonot.html">
+            
+                    
+                    Do's and Don'ts
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.4" data-path="../intro/newcmake.html">
+            
+                <a href="../intro/newcmake.html">
+            
+                    
+                    What's new in CMake
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../basics.html">
+            
+                <a href="../basics.html">
+            
+                    
+                    Introduction to the Basics
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../basics/variables.html">
+            
+                <a href="../basics/variables.html">
+            
+                    
+                    Variables and the Cache
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../basics/functions.html">
+            
+                <a href="../basics/functions.html">
+            
+                    
+                    Programming in CMake
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../basics/comms.html">
+            
+                <a href="../basics/comms.html">
+            
+                    
+                    Communicating with your code
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../basics/structure.html">
+            
+                <a href="../basics/structure.html">
+            
+                    
+                    How to Structure Your Project
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../basics/programs.html">
+            
+                <a href="../basics/programs.html">
+            
+                    
+                    Running Other Programs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../basics/example.html">
+            
+                <a href="../basics/example.html">
+            
+                    
+                    A Simple Example
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../features.html">
+            
+                <a href="../features.html">
+            
+                    
+                    Adding Features
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../features/cpp11.html">
+            
+                <a href="../features/cpp11.html">
+            
+                    
+                    C++11 and Beyond
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../features/small.html">
+            
+                <a href="../features/small.html">
+            
+                    
+                    Small but common needs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../features/utilities.html">
+            
+                <a href="../features/utilities.html">
+            
+                    
+                    Utilities
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../features/modules.html">
+            
+                <a href="../features/modules.html">
+            
+                    
+                    Useful modules
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../features/ides.html">
+            
+                <a href="../features/ides.html">
+            
+                    
+                    IDEs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="../features/debug.html">
+            
+                <a href="../features/debug.html">
+            
+                    
+                    Debugging
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../projects.html">
+            
+                <a href="../projects.html">
+            
+                    
+                    Including Projects
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../projects/submodule.html">
+            
+                <a href="../projects/submodule.html">
+            
+                    
+                    Submodule
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../projects/download.html">
+            
+                <a href="../projects/download.html">
+            
+                    
+                    DownloadProject
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../projects/fetch.html">
+            
+                <a href="../projects/fetch.html">
+            
+                    
+                    Fetch (CMake 3.11)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../testing.html">
+            
+                <a href="../testing.html">
+            
+                    
+                    Testing
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../testing/googletest.html">
+            
+                <a href="../testing/googletest.html">
+            
+                    
+                    GoogleTest
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../testing/catch.html">
+            
+                <a href="../testing/catch.html">
+            
+                    
+                    Catch
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../install.html">
+            
+                <a href="../install.html">
+            
+                    
+                    Exporting and Installing
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../install/installing.html">
+            
+                <a href="../install/installing.html">
+            
+                    
+                    Installing
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../install/exporting.html">
+            
+                <a href="../install/exporting.html">
+            
+                    
+                    Exporting
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../install/packaging.html">
+            
+                <a href="../install/packaging.html">
+            
+                    
+                    Packaging
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../packages.html">
+            
+                <a href="../packages.html">
+            
+                    
+                    Looking for Libraries (Packages)
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="CUDA.html">
+            
+                <a href="CUDA.html">
+            
+                    
+                    CUDA
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="OpenMP.html">
+            
+                <a href="OpenMP.html">
+            
+                    
+                    OpenMP
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="Boost.html">
+            
+                <a href="Boost.html">
+            
+                    
+                    Boost
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="MPI.html">
+            
+                <a href="MPI.html">
+            
+                    
+                    MPI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.7.5" data-path="ROOT.html">
+            
+                <a href="ROOT.html">
+            
+                    
+                    ROOT
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.5.1" data-path="../../examples/root-usefile/">
+            
+                <a href="../../examples/root-usefile/">
+            
+                    
+                    UseFile Example
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.2" data-path="../../examples/root-simple/">
+            
+                <a href="../../examples/root-simple/">
+            
+                    
+                    Simple Example
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.3" data-path="../../examples/root-dict/">
+            
+                <a href="../../examples/root-dict/">
+            
+                    
+                    Dictionary Example
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="Minuit2.html">
+            
+                <a href="Minuit2.html">
+            
+                    
+                    Minuit2
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >ROOT</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="root">ROOT</h1>
+<p>ROOT is a C++ Toolkit for High Energy Physics. It is huge. There are really a lot of ways to use it in CMake, though many/most of the examples you&apos;ll find are probably wrong. Here&apos;s my recommendation.</p>
+<p>Most importantly, there are <em>lots of improvements</em> in CMake support in more recent versions of ROOT - Using 6.16+ is much, much easier! If you really must support 6.14 or earlier, see the section at the end. There were further improvements in 6.20, as well, it behaves much more like a proper CMake project, and exports C++ standard features for targets, etc.</p>
+<h2 id="finding-root">Finding ROOT</h2>
+<p>ROOT 6.10+ supports config file discovery, so you can just do:</p>
+<pre><code class="lang-cmake"><span class="hljs-keyword">find_package</span>(ROOT <span class="hljs-number">6.16</span> CONFIG REQUIRED)
+</code></pre>
+<p>to attempt to find ROOT. If you don&apos;t have your paths set up, you can pass <code>-DROOT_DIR=$ROOTSYS/cmake</code> to find ROOT. (But, really, you should source <code>thisroot.sh</code>).</p>
+<h2 id="the-right-way-targets">The right way (Targets)</h2>
+<p>ROOT 6.12 and earlier do not add the include directory for imported targets. ROOT 6.14+ has corrected this error, and required target properties have been getting better. This method is rapidly becoming easier to use (see the example at the end of this page for the older ROOT details).</p>
+<p>To link, just pick the libraries you want to use:</p>
+<pre><code class="lang-cmake"><span class="hljs-keyword">add_executable</span>(RootSimpleExample SimpleExample.cxx)
+<span class="hljs-keyword">target_link_libraries</span>(RootSimpleExample PUBLIC ROOT::Physics)
+</code></pre>
+<p>If you&apos;d like to see the default list, run <code>root-config --libs</code> on the command line. In Homebrew ROOT 6.18 this would be:</p>
+<ul>
+<li><code>ROOT::Core</code></li>
+<li><code>ROOT::Gpad</code></li>
+<li><code>ROOT::Graf3d</code></li>
+<li><code>ROOT::Graf</code></li>
+<li><code>ROOT::Hist</code></li>
+<li><code>ROOT::Imt</code></li>
+<li><code>ROOT::MathCore</code></li>
+<li><code>ROOT::Matrix</code></li>
+<li><code>ROOT::MultiProc</code></li>
+<li><code>ROOT::Net</code></li>
+<li><code>ROOT::Physics</code></li>
+<li><code>ROOT::Postscript</code></li>
+<li><code>ROOT::RIO</code></li>
+<li><code>ROOT::ROOTDataFrame</code></li>
+<li><code>ROOT::ROOTVecOps</code></li>
+<li><code>ROOT::Rint</code></li>
+<li><code>ROOT::Thread</code></li>
+<li><code>ROOT::TreePlayer</code></li>
+<li><code>ROOT::Tree</code></li>
+</ul>
+<h2 id="the-old-global-way">The old global way</h2>
+<p>ROOT <a href="https://root.cern.ch/how/integrate-root-my-project-cmake" target="_blank">provides a utility</a> to set up a ROOT project, which you can activate using <code>include(&quot;${ROOT_USE_FILE}&quot;)</code>. This will automatically make ugly directory level and global variables for you. It will save you a little time setting up, and will waste massive amounts of time later if you try to do anything tricky. As long as you aren&apos;t making a library, it&apos;s probably fine for simple scripts. Includes and flags are set globally, but you&apos;ll still need to link to <code>${ROOT_LIBRARIES}</code> yourself, along with possibly <code>ROOT_EXE_LINKER_FLAGS</code> (You will have to <code>separate_arguments</code> first before linking or you will get an error if there are multiple flags, like on macOS). Also, before 6.16, you have to manually fix a bug in the spacing.</p>
+<p>Here&apos;s what it would look like:</p>
+<pre><code class="lang-cmake"><span class="hljs-comment"># Sets up global settings</span>
+<span class="hljs-keyword">include</span>(<span class="hljs-string">&quot;${ROOT_USE_FILE}&quot;</span>)
+
+<span class="hljs-comment"># This is required for ROOT &lt; 6.16</span>
+<span class="hljs-comment"># string(REPLACE &quot;-L &quot; &quot;-L&quot; ROOT_EXE_LINKER_FLAGS &quot;${ROOT_EXE_LINKER_FLAGS}&quot;)</span>
+
+<span class="hljs-comment"># This is required on if there is more than one flag (like on macOS)</span>
+<span class="hljs-keyword">separate_arguments</span>(ROOT_EXE_LINKER_FLAGS)
+
+<span class="hljs-keyword">add_executable</span>(RootUseFileExample SimpleExample.cxx)
+<span class="hljs-keyword">target_link_libraries</span>(RootUseFileExample PUBLIC <span class="hljs-variable">${ROOT_LIBRARIES}</span>
+                                                <span class="hljs-variable">${ROOT_EXE_LINKER_FLAGS}</span>)
+</code></pre>
+<h2 id="components">Components</h2>
+<p>Find ROOT allows you to specify components. It will add anything you list to <code>${ROOT_LIBRARIES}</code>, so you might want to build your own target using that to avoid listing the components twice. This did not solve dependencies; it was an error to list <code>RooFit</code> but not <code>RooFitCore</code>. If you link to <code>ROOT::RooFit</code> instead of <code>${ROOT_LIBRARIES}</code>, then <code>RooFitCore</code> is not required.</p>
+<h2 id="dictionary-generation">Dictionary generation</h2>
+<p>Dictionary generation is ROOT&apos;s way of working around the missing reflection feature in C++. It allows ROOT to learn the details of your class so it can save it, show methods in the Cling interpreter, etc. Your source code will need the following modifications to support dictionary generation:</p>
+<ul>
+<li>Your class definition should end with <code>ClassDef(MyClassName, 1)</code></li>
+<li>Your class implementation should have <code>ClassImp(MyClassName)</code> in it</li>
+</ul>
+<p>ROOT provides <code>rootcling</code> and <code>genreflex</code> (a legacy interface to <code>rootcling</code>) binaries which produce the source files required to build the dictionary. It also defines <code>root_generate_dictionary</code>, a CMake function to invoke <code>rootcling</code> during the build process. </p>
+<p>To load this function, first include the ROOT macros:  </p>
+<pre><code class="lang-cmake"><span class="hljs-keyword">include</span>(<span class="hljs-string">&quot;${ROOT_DIR}/modules/RootNewMacros.cmake&quot;</span>)
+<span class="hljs-comment"># For ROOT versions than 6.16, things break </span>
+<span class="hljs-comment"># if nothing is in the global include list!</span>
+<span class="hljs-keyword">if</span> (<span class="hljs-variable">${ROOT_VERSION}</span> VERSION_LESS <span class="hljs-string">&quot;6.16&quot;</span>)
+    <span class="hljs-keyword">include_directories</span>(ROOT_NONEXISTENT_DIRECTORY_HACK)
+<span class="hljs-keyword">endif</span>()
+</code></pre>
+<p>The <code>if(...)</code> condition is added to fix a bug in the NewMacros file that causes dictionary generation to fail if there is not at least one global include directory or a <code>inc</code> folder. Here I&apos;m including a non-existent directory just to make it work. There is no <code>ROOT_NONEXISTENT_DIRECTORY_HACK</code> directory.</p>
+<p><code>rootcling</code> uses a special header file with a <a href="https://root.cern.ch/selecting-dictionary-entries-linkdefh" target="_blank">specific formula</a> to determine which parts to generate dictionaries for. The name of this file may have any prefix, but <strong>must</strong> end with <code>LinkDef.h</code>. Once you have written this header file, the dictionary generation function can be invoked.</p>
+<h3 id="manually-building-the-dictionary">Manually building the dictionary</h3>
+<p>Sometimes, you might want to ask ROOT to generate the dictionary, and then add the source file to your library target yourself. You can call the <code>root_generate_dictionary</code> with the name of the dictionary, e.g. <code>G__Example</code>, any required header files, and finally the special <code>LinkDef.h</code> file, listed after <code>LINKDEF</code>:</p>
+<pre><code class="lang-cmake">root_generate_dictionary(G__Example Example.h LINKDEF ExampleLinkDef.h)
+</code></pre>
+<p>This command will create three files:</p>
+<ul>
+<li><code>${NAME}.cxx</code>: This file should be included in your sources when you make your library.</li>
+<li><code>lib{NAME}.rootmap</code> (<code>G__</code> prefix removed): The rootmap file in plain text</li>
+<li><code>lib{NAME}_rdict.pcm</code> (<code>G__</code> prefix removed): A <a href="https://inspirehep.net/literature/1413967" target="_blank">ROOT pre-compiled module file</a>
+The name (<code>${NAME}</code>) of the targetthat you must create is determined by the dictionary name; if the dictionary name starts with <code>G__</code>, it will be removed. Otherwise, the name is used directly.</li>
+</ul>
+<p>The final two output files must sit next to the library output. This is done by checking <code>CMAKE_LIBRARY_OUTPUT_DIRECTORY</code> (it will not pick up local target settings). If you have a libdir set but you don&apos;t have (global) install locations set, you&apos;ll also need to set <code>ARG_NOINSTALL</code> to <code>TRUE</code>.</p>
+<h3 id="building-the-dictionary-with-an-existing-target">Building the dictionary with an existing target</h3>
+<p>Instead of manually adding the generated to your library sources, you can ask ROOT to do this for you by passing a <code>MODULE</code> argument. This argument should specify the name of an existing build target:</p>
+<pre><code class="lang-cmake"><span class="hljs-keyword">add_library</span>(Example)
+root_generate_dictionary(G__Example Example.h MODULE Example LINKDEF ExampleLinkDef.h)
+</code></pre>
+<p>The full name of the dictionary (e.g. <code>G__Example</code>) should not be identical to the <code>MODULE</code> argument. </p>
+<hr>
+<h1 id="using-old-root">Using Old ROOT</h1>
+<p>If you really have to use older ROOT, you&apos;ll need something like this:</p>
+<pre><code class="lang-cmake"><span class="hljs-comment"># ROOT targets are missing includes and flags in ROOT 6.10 and 6.12</span>
+<span class="hljs-keyword">set_property</span>(TARGET ROOT::Core PROPERTY
+    INTERFACE_INCLUDE_DIRECTORIES <span class="hljs-string">&quot;${ROOT_INCLUDE_DIRS}&quot;</span>)
+
+<span class="hljs-comment"># Early ROOT does not include the flags required on targets</span>
+<span class="hljs-keyword">add_library</span>(ROOT::Flags_CXX IMPORTED INTERFACE)
+
+
+<span class="hljs-comment"># ROOT 6.14 and earlier have a spacing bug in the linker flags</span>
+<span class="hljs-keyword">string</span>(REPLACE <span class="hljs-string">&quot;-L &quot;</span> <span class="hljs-string">&quot;-L&quot;</span> ROOT_EXE_LINKER_FLAGS <span class="hljs-string">&quot;${ROOT_EXE_LINKER_FLAGS}&quot;</span>)
+
+<span class="hljs-comment"># Fix for ROOT_CXX_FLAGS not actually being a CMake list</span>
+<span class="hljs-keyword">separate_arguments</span>(ROOT_CXX_FLAGS)
+<span class="hljs-keyword">set_property</span>(TARGET ROOT::Flags_CXX APPEND PROPERTY
+    INTERFACE_COMPILE_OPTIONS <span class="hljs-variable">${ROOT_CXX_FLAGS}</span>)
+
+<span class="hljs-comment"># Add definitions</span>
+<span class="hljs-keyword">separate_arguments</span>(ROOT_DEFINITIONS)
+<span class="hljs-keyword">foreach</span>(_flag <span class="hljs-variable">${ROOT_EXE_LINKER_FLAG_LIST}</span>)
+    <span class="hljs-comment"># Remove -D or /D if present</span>
+    <span class="hljs-keyword">string</span>(REGEX REPLACE [=[^[-//]D]=] <span class="hljs-string">&quot;&quot;</span> _flag <span class="hljs-variable">${_flag}</span>)
+    <span class="hljs-keyword">set_property</span>(TARGET ROOT::Flags APPEND PROPERTY INTERFACE_LINK_LIBRARIES <span class="hljs-variable">${_flag}</span>)
+<span class="hljs-keyword">endforeach</span>()
+
+<span class="hljs-comment"># This also fixes a bug in the linker flags</span>
+<span class="hljs-keyword">separate_arguments</span>(ROOT_EXE_LINKER_FLAGS)
+<span class="hljs-keyword">set_property</span>(TARGET ROOT::Flags_CXX APPEND PROPERTY
+    INTERFACE_LINK_LIBRARIES <span class="hljs-variable">${ROOT_EXE_LINKER_FLAGS}</span>)
+
+<span class="hljs-comment"># Make sure you link with ROOT::Flags_CXX too!</span>
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="MPI.html" class="navigation navigation-prev " aria-label="Previous page: MPI">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../../examples/root-usefile/" class="navigation navigation-next " aria-label="Next page: UseFile Example">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"ROOT","level":"1.7.5","depth":2,"next":{"title":"UseFile Example","level":"1.7.5.1","depth":3,"path":"examples/root-usefile/README.md","ref":"examples/root-usefile/README.md","articles":[]},"previous":{"title":"MPI","level":"1.7.4","depth":2,"path":"chapters/packages/MPI.md","ref":"chapters/packages/MPI.md","articles":[]},"dir":"ltr"},"config":{"plugins":["replace","hints","term","include-codeblock","ace"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"ace":{},"search":{},"term":{"copyButtons":true,"fade":true,"lineStyles":true,"prompt":"(?<prompt>[^\\$^#^:]*)(?<pathsep>:?)(?<path>[^\\$^#]*?)(?<delimiter>[\\$#] )(?<command>.*)$","style":"default"},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"replace":{"substitutes":[{"pattern":"«cmake:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/manual/cmake-$1.7.html)"},{"pattern":"«command:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/command/$1.html)"},{"pattern":"«envvar:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/envvar/$1.html)"},{"pattern":"«module:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/module/$1.html)"},{"pattern":"«policy:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/policy/$1.html)"},{"pattern":"«variable:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest//$1.html)"},{"pattern":"«prop:([^:]+):`?([^`^»]+)`?»","flags":"g","substitute":"[`$2`](https://cmake.org/cmake/help/latest/prop_$1/$2.html)"}]},"include-codeblock":{"check":false,"edit":false,"fixlang":true,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Henry Schreiner","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Modern CMake","gitbook":"*","description":"A guide to writing simple, powerful, and clean CMake 3.1+ builds."},"file":{"path":"chapters/packages/ROOT.md","mtime":"2021-07-20T13:16:31.691Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-20T13:17:14.844Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-term/clipboard.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-term/initclip.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-term/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-ace/ace/ace.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-ace/ace.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
