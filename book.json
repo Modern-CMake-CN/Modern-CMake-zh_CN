@@ -1,0 +1,22 @@
+{
+    "title": "Modern CMake",
+    "description": "A guide to writing simple, powerful, and clean CMake 3.1+ builds.",
+    "author": "Henry Schreiner",
+    "plugins": ["replace", "hints", "term", "include-codeblock", "ace"],
+    "pluginsConfig": {
+         "include-codeblock": {
+             "fixlang": true
+         },
+         "replace": {
+             "substitutes": [
+                 {"pattern": "«cmake:([^`^»]+)»", "flags": "g", "substitute": "[$1](https://cmake.org/cmake/help/latest/manual/cmake-$1.7.html)"},
+                 {"pattern": "«command:`?([^`^»]+)`?»", "flags": "g", "substitute": "[`$1`](https://cmake.org/cmake/help/latest/command/$1.html)"},
+                 {"pattern": "«envvar:`?([^`^»]+)`?»", "flags": "g", "substitute": "[`$1`](https://cmake.org/cmake/help/latest/envvar/$1.html)"},
+                 {"pattern": "«module:([^`^»]+)»", "flags": "g", "substitute": "[$1](https://cmake.org/cmake/help/latest/module/$1.html)"},
+                 {"pattern": "«policy:([^`^»]+)»", "flags": "g", "substitute": "[$1](https://cmake.org/cmake/help/latest/policy/$1.html)"},
+                 {"pattern": "«variable:`?([^`^»]+)`?»", "flags": "g", "substitute": "[`$1`](https://cmake.org/cmake/help/latest//$1.html)"},
+                 {"pattern": "«prop:([^:]+):`?([^`^»]+)`?»", "flags": "g", "substitute": "[`$2`](https://cmake.org/cmake/help/latest/prop_$1/$2.html)"}
+             ]
+         }
+    }
+}
