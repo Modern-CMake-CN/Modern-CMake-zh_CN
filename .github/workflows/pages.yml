@@ -1,0 +1,15 @@
+name: 'Gitbook Action Build'
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout action
+      uses: actions/checkout@v2
+    - name: Gitbook Action
+      uses: ZanderZhao/gitbook-action@v1.2.4
+      with:
+        token: ${{ secrets.PERSONAL_TOKEN }}
