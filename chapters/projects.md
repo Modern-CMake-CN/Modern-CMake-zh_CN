@@ -1,6 +1,5 @@
-# Including Small Projects
+# 包含子项目
 
-This is where a good Git system plus CMake shines. You might not be able to solve all the world's problems, but
-this is pretty close for C++!
+这就是将一个好的Git系统与CMake共同使用的优势所在。虽然靠这种方法无法解决世界上所有的问题，但可以解决大部分基于c++的工程包含子项目的问题!
 
-There are several methods listed in the chapters in this section.
+本章中列出了几种包含子项目的方法。
