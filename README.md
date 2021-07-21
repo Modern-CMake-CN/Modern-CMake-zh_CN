@@ -13,7 +13,7 @@ CppCon17 的讲座就是一个开发者们将构建系统当成头等笑话的�
 
 {% hint style='working' %}
 本书是一篇持续维护的文档。你可以在 [GitLab](https://gitlab.com/CLIUtils/modern-cmake) 上提 issue 或是 合并请求。
-你也可以 [下载PDF](https://CLIUtils.gitlab.io/modern-cmake/modern-cmake.pdf) 格式的副本。请务必查看一下 [HSF CMake Training][] （也是一个 CMake 教程）!
+你也可以 [下载PDF](https://CLIUtils.gitlab.io/modern-cmake/modern-cmake.pdf) 格式的副本。请务必查看一下 [HSF CMake Training](https://hsf-training.github.io/hsf-training-cmake-webpage/01-intro/index.html) （也是一个 CMake 教程）!
 {% endhint %}
 
 简而言之, 如果你正在考虑使用Modern CMake，以下是你心中最可能存在的问题:
@@ -73,7 +73,7 @@ CppCon17 的讲座就是一个开发者们将构建系统当成头等笑话的�
 
 本书原作者的其他资料:
 
-* [HSF CMake Training][]
+* [HSF CMake Training](https://hsf-training.github.io/hsf-training-cmake-webpage/01-intro/index.html)
 * [Interactive Modern CMake talk](https://gitlab.com/CLIUtils/modern-cmake-interactive-talk)
 
 在网上还有一些其他的地方可以找到好的资讯。下面是其中的一些:
