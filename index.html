@@ -712,81 +712,79 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="an-introduction-to-modern-cmake">An Introduction to Modern CMake</h1>
-<p>People love to hate build systems.
-Just watch the talks from CppCon17 to see examples of developers making the state of build systems the brunt of jokes.
-This raises the question: Why?
-Certainly there are no shortage of problems when building.
-But I think that, in 2020, we have a very good solution to quite a few of those problems.
-It&apos;s CMake. Not CMake 2.8 though; that was released before C++11 even existed!
-Nor the horrible examples out there for CMake (even those posted on KitWare&apos;s own tutorials list).
-I&apos;m talking about Modern CMake. CMake 3.4+, maybe even CMake 3.21+!
-It&apos;s clean, powerful, and elegant, so you can spend most of your time coding, not adding lines to an unreadable, unmaintainable Make (Or CMake 2) file.
-And CMake 3.11+ is supposed to be significantly faster, as well!</p>
-<p><div class="alert alert-warning hints-alert"><div class="hints-icon"><i class="fa fa-wrench"></i></div><div class="hints-container"><p>This book is meant to be a living document. You can raise an issue or put in a merge request on <a href="https://gitlab.com/CLIUtils/modern-cmake" target="_blank">GitLab</a>.
-You can also <a href="https://CLIUtils.gitlab.io/modern-cmake/modern-cmake.pdf" target="_blank">download a copy as a PDF</a>. Be sure to check the [HSF CMake Training][], as well!</p>
+                                <h1 id="&#x73B0;&#x4EE3;&#x7684;-cmake-&#x7684;&#x4ECB;&#x7ECD;">&#x73B0;&#x4EE3;&#x7684; CMake &#x7684;&#x4ECB;&#x7ECD;</h1>
+<p>&#x4EBA;&#x4EEC;&#x559C;&#x7231;&#x8BA8;&#x538C;&#x6784;&#x5EFA;&#x7CFB;&#x7EDF;&#x3002;
+CppCon17 &#x7684;&#x8BB2;&#x5EA7;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x5F00;&#x53D1;&#x8005;&#x4EEC;&#x5C06;&#x6784;&#x5EFA;&#x7CFB;&#x7EDF;&#x5F53;&#x6210;&#x5934;&#x7B49;&#x7B11;&#x8BDD;&#x7684;&#x4F8B;&#x5B50;&#x3002;
+&#x8FD9;&#x5F15;&#x51FA;&#x4E86;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#xFF1A;&#x4E3A;&#x4EC0;&#x4E48;&#xFF08;&#x4EBA;&#x4EEC;&#x8FD9;&#x6837;&#x8BA4;&#x4E3A;&#xFF09;&#xFF1F;
+&#x786E;&#x5B9E;&#xFF0C;&#x4F7F;&#x7528;&#x6784;&#x5EFA;&#x7CFB;&#x7EDF;&#x6784;&#x5EFA;&#x9879;&#x76EE;&#x65F6;&#x4E0D;&#x4E4F;&#x8FD9;&#x6837;&#x90A3;&#x6837;&#x7684;&#x95EE;&#x9898;&#x3002;
+&#x4F46;&#x6211;&#x8BA4;&#x4E3A;&#xFF0C;&#x5728; 2020 &#x5E74;&#xFF0C;&#x6211;&#x4EEC;&#x6709;&#x4E00;&#x4E2A;&#x975E;&#x5E38;&#x597D;&#x7684;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x6765;&#x6D88;&#x9664;&#x5176;&#x4E2D;&#x7684;&#x4E00;&#x4E9B;&#x95EE;&#x9898;&#x3002;
+&#x90A3;&#x5C31;&#x662F; CMake &#x3002;&#x4F46;&#x4E0D;&#x662F; CMake 2.8 &#xFF0C;&#x5B83;&#x6BD4; c++11 &#x8FD8;&#x8981;&#x65E9;&#x51FA;&#x73B0;&#x3002;
+&#x4E5F;&#x4E0D;&#x662F;&#x90A3;&#x4E9B;&#x7CDF;&#x7CD5;&#x7684; CMake &#x4F8B;&#x7A0B;&#xFF08;&#x751A;&#x81F3;&#x5305;&#x62EC;&#x90A3;&#x4E9B; KitWare &#x81EA;&#x5DF1;&#x7684;&#x6559;&#x7A0B;&#x91CC;&#x53D1;&#x5E03;&#x7684;&#x4F8B;&#x5B50;&#xFF09;&#x3002;
+&#x6211;&#x6307;&#x7684;&#x662F;&#x73B0;&#x4EE3;&#x7684; CMake &#x3002;&#x662F; CMake 3.4+ &#xFF0C;&#x751A;&#x81F3;&#x662F; CMake 3.21+ &#xFF01;
+&#x5B83;&#x7B80;&#x6D01;&#x3001;&#x5F3A;&#x5927;&#x3001;&#x4F18;&#x96C5;&#xFF0C;&#x6240;&#x4EE5;&#x4F60;&#x80FD;&#x591F;&#x82B1;&#x8D39;&#x4F60;&#x7684;&#x5927;&#x90E8;&#x5206;&#x65F6;&#x95F4;&#x5728;&#x7F16;&#x5199;&#x4EE3;&#x7801;&#x4E0A;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x5728;&#x4E00;&#x4E2A;&#x4E0D;&#x53EF;&#x8BFB;&#x3001;&#x4E0D;&#x53EF;&#x7EF4;&#x62A4;&#x7684; Make &#xFF08;&#x6216; CMake 2&#xFF09; &#x6587;&#x4EF6;&#x4E0A;&#x6D6A;&#x8D39;&#x65F6;&#x95F4;&#x3002;
+&#x5E76;&#x4E14; CMake 3.11+ &#x7684;&#x6784;&#x5EFA;&#x901F;&#x5EA6;&#x5E94;&#x8BE5;&#x4E5F;&#x4F1A;&#x66F4;&#x52A0;&#x7684;&#x5FEB;&#xFF01;&#xFF01;&#xFF01;</p>
+<p><div class="alert alert-warning hints-alert"><div class="hints-icon"><i class="fa fa-wrench"></i></div><div class="hints-container"><p>&#x672C;&#x4E66;&#x662F;&#x4E00;&#x7BC7;&#x6301;&#x7EED;&#x7EF4;&#x62A4;&#x7684;&#x6587;&#x6863;&#x3002;&#x4F60;&#x53EF;&#x4EE5;&#x5728; <a href="https://gitlab.com/CLIUtils/modern-cmake" target="_blank">GitLab</a> &#x4E0A;&#x63D0; issue &#x6216;&#x662F; &#x5408;&#x5E76;&#x8BF7;&#x6C42;&#x3002;
+&#x4F60;&#x4E5F;&#x53EF;&#x4EE5; <a href="https://CLIUtils.gitlab.io/modern-cmake/modern-cmake.pdf" target="_blank">&#x4E0B;&#x8F7D;PDF</a> &#x683C;&#x5F0F;&#x7684;&#x526F;&#x672C;&#x3002;&#x8BF7;&#x52A1;&#x5FC5;&#x67E5;&#x770B;&#x4E00;&#x4E0B; [HSF CMake Training][] &#xFF08;&#x4E5F;&#x662F;&#x4E00;&#x4E2A; CMake &#x6559;&#x7A0B;&#xFF09;!</p>
 </div></div></p>
-<p>In short, here are the most likely questions in your mind if you are considering Modern CMake:</p>
-<h2 id="why-do-i-need-a-good-build-system">Why do I need a good build system?</h2>
-<p>Do any of the following apply to you?</p>
+<p>&#x7B80;&#x800C;&#x8A00;&#x4E4B;, &#x5982;&#x679C;&#x4F60;&#x6B63;&#x5728;&#x8003;&#x8651;&#x4F7F;&#x7528;Modern CMake&#xFF0C;&#x4EE5;&#x4E0B;&#x662F;&#x4F60;&#x5FC3;&#x4E2D;&#x6700;&#x53EF;&#x80FD;&#x5B58;&#x5728;&#x7684;&#x95EE;&#x9898;:</p>
+<h2 id="&#x4E3A;&#x4EC0;&#x4E48;&#x6211;&#x9700;&#x8981;&#x4E00;&#x4E2A;&#x597D;&#x7684;&#x6784;&#x5EFA;&#x7CFB;&#x7EDF;&#xFF1F;">&#x4E3A;&#x4EC0;&#x4E48;&#x6211;&#x9700;&#x8981;&#x4E00;&#x4E2A;&#x597D;&#x7684;&#x6784;&#x5EFA;&#x7CFB;&#x7EDF;&#xFF1F;</h2>
+<p>&#x4EE5;&#x4E0B;&#x60C5;&#x51B5;&#x662F;&#x5426;&#x9002;&#x7528;&#x4E8E;&#x4F60;&#xFF1F;</p>
 <ul>
-<li>You want to avoid hard-coding paths</li>
-<li>You need to build a package on more than one computer</li>
-<li>You want to use CI (continuous integration)</li>
-<li>You need to support different OSs (maybe even just flavors of Unix)</li>
-<li>You want to support multiple compilers</li>
-<li>You want to use an IDE, but maybe not all of the time</li>
-<li>You want to describe how your program is structured logically, not flags and commands</li>
-<li>You want to use a library</li>
-<li>You want to use tools, like Clang-Tidy, to help you code</li>
-<li>You want to use a debugger</li>
+<li>&#x4F60;&#x60F3;&#x907F;&#x514D;&#x5C06;&#x8DEF;&#x5F84;&#x786C;&#x7F16;&#x7801;</li>
+<li>&#x4F60;&#x9700;&#x8981;&#x5728;&#x4E0D;&#x6B62;&#x4E00;&#x53F0;&#x7535;&#x8111;&#x4E0A;&#x6784;&#x5EFA;&#x8F6F;&#x4EF6;&#x5305;</li>
+<li>&#x4F60;&#x60F3;&#x5728;&#x9879;&#x76EE;&#x4E2D;&#x4F7F;&#x7528;CI&#xFF08;&#x6301;&#x7EED;&#x96C6;&#x6210;&#xFF09;</li>
+<li>&#x4F60;&#x9700;&#x8981;&#x652F;&#x6301;&#x4E0D;&#x540C;&#x7684;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#xFF08;&#x751A;&#x81F3;&#x53EF;&#x80FD;&#x53EA;&#x662F;Unix&#x7684;&#x4E0D;&#x540C;&#x7248;&#x672C;&#xFF09;</li>
+<li>&#x4F60;&#x60F3;&#x652F;&#x6301;&#x591A;&#x4E2A;&#x7F16;&#x8BD1;&#x5668;</li>
+<li>&#x4F60;&#x60F3;&#x4F7F;&#x7528;IDE&#xFF0C;&#x4F46;&#x4E5F;&#x8BB8;&#x4E0D;&#x603B;&#x662F;&#x4F7F;&#x7528;</li>
+<li>&#x4F60;&#x60F3;&#x4ECE;&#x903B;&#x8F91;&#x4E0A;&#x63CF;&#x8FF0;&#x4F60;&#x7684;&#x7A0B;&#x5E8F;&#x662F;&#x5982;&#x4F55;&#x7ED3;&#x6784;&#x7684;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x901A;&#x8FC7;&#x67D0;&#x4E9B;&#x6807;&#x5FD7;&#x548C;&#x547D;&#x4EE4;</li>
+<li>&#x4F60;&#x60F3;&#x4F7F;&#x7528;&#x4E00;&#x4E2A;&#x7B2C;&#x4E09;&#x65B9;&#x5E93;</li>
+<li>&#x4F60;&#x60F3;&#x4F7F;&#x7528;&#x5DE5;&#x5177;&#xFF0C;&#x6BD4;&#x5982;Clang-Tidy&#xFF0C;&#x6765;&#x5E2E;&#x52A9;&#x4F60;&#x7F16;&#x7801;</li>
+<li>&#x4F60;&#x60F3;&#x4F7F;&#x7528;&#x8C03;&#x8BD5;&#x5668;&#x6765;debug</li>
 </ul>
-<p>If so, you&apos;ll benefit from a CMake-like build system.</p>
-<h2 id="why-must-the-answer-be-cmake">Why must the answer be CMake?</h2>
-<p>Build systems is a hot topic. Of course there are many options. But even a really good one, or one that re-uses a familiar syntax, can&apos;t come close to CMake.
-Why?
-Support.
-Every IDE supports CMake (or CMake supports that IDE).
-More packages use CMake than any other system.
-So, if you use a library that is designed to be included in your code, you have a choice: Make your own build system, or use one of the provided ones, and that will almost always include CMake.
-And that will quickly be the common denominator if you include multiple projects.
-And, if you need a library that&apos;s preinstalled, the chances of it having a find CMake script or config CMake script are excellent.</p>
-<h2 id="why-use-a-modern-cmake">Why use a Modern CMake?</h2>
-<p>Around CMake 2.6-2.8, CMake started taking over. It was in most of the package managers for Linux OS&apos;s, and was being used in lots of packages.</p>
-<p>Then Python 3 came out.</p>
-<p>I know, this should have nothing whatsoever to do with CMake.</p>
-<p>But it had a 3.
-And it followed 2.
-And it was a hard, ugly, transition that is still ongoing in some places, even today.</p>
-<p>I believe that CMake 3 had the bad luck to follow Python 3.<sup><a href="#fn_1" id="reffn_1">1</a></sup>
-Even though every version of CMake is insanely backward compatible, the 3 series was treated as if it were something new.
-And so, you&apos;ll find OSs like CentOS7 with GCC 4.8, with almost-complete C++14 support, and CMake 2.8, which came out years before C++11.</p>
-<p>You really should <em>at least</em> use a version of CMake that came out after your compiler, since it needs to know compiler flags, etc, for that version.
-And, since CMake will dumb itself down to the minimum required version in your CMake file, installing a new CMake, even system wide, is pretty safe.
-You should <em>at least</em> install it locally.
-It&apos;s easy (1-2 lines in many cases), and you&apos;ll find that 5 minutes of work will save you hundreds of lines and hours of <code>CMakeLists.txt</code> writing, and will be much easier to maintain in the long run.</p>
-<p>This book tries to solve the problem of the poor examples and best practices that you&apos;ll find proliferating the web.</p>
-<h2 id="other-sources">Other sources</h2>
-<p>Other material from the original author of this book:</p>
+<p>&#x5982;&#x679C;&#x662F;&#x8FD9;&#x6837;&#xFF0C;&#x4F60;&#x4F1A;&#x4ECE;&#x7C7B;&#x4F3C;CMake&#x7684;&#x6784;&#x5EFA;&#x7CFB;&#x7EDF;&#x4E2D;&#x53D7;&#x76CA;&#x3002;</p>
+<h2 id="&#x4E3A;&#x4EC0;&#x4E48;&#x7B54;&#x6848;&#x4E00;&#x5B9A;&#x662F;cmake&#xFF1F;">&#x4E3A;&#x4EC0;&#x4E48;&#x7B54;&#x6848;&#x4E00;&#x5B9A;&#x662F;CMake&#xFF1F;</h2>
+<p>&#x6784;&#x5EFA;&#x7CFB;&#x7EDF;&#x662F;&#x4E00;&#x4E2A;&#x70ED;&#x95E8;&#x8BDD;&#x9898;&#x3002;&#x5F53;&#x7136;&#xFF0C;&#x6709;&#x5F88;&#x591A;&#x6784;&#x5EFA;&#x7CFB;&#x7EDF;&#x53EF;&#x9009;&#x3002;&#x4F46;&#x662F;&#xFF0C;&#x5373;&#x4F7F;&#x662F;&#x4E00;&#x4E2A;&#x771F;&#x7684;&#x975E;&#x5E38;&#x597D;&#x7684;&#x6784;&#x5EFA;&#x7CFB;&#x7EDF;&#xFF0C;&#x6216;&#x8005;&#x4E00;&#x4E2A;&#x4F7F;&#x7528;&#x7C7B;&#x4F3C;&#xFF08;CMake&#xFF09;&#x7684;&#x8BED;&#x6CD5;&#x7684;&#xFF0C;&#x4E5F;&#x4E0D;&#x80FD;&#x8FBE;&#x5230; CMake &#x7684;&#x4F7F;&#x7528;&#x4F53;&#x9A8C;&#x3002;
+&#x4E3A;&#x4EC0;&#x4E48;&#xFF1F;
+&#x56E0;&#x4E3A;&#x751F;&#x6001;&#x3002;
+&#x6BCF;&#x4E2A; IDE &#x90FD;&#x652F;&#x6301; CMake&#xFF08;&#x6216;&#x8005;&#x662F; CMake &#x652F;&#x6301;&#x90A3;&#x4E2A; IDE&#xFF09;&#x3002;
+&#x4F7F;&#x7528; CMake &#x6784;&#x5EFA;&#x7684;&#x8F6F;&#x4EF6;&#x5305;&#x6BD4;&#x4F7F;&#x7528;&#x5176;&#x4ED6;&#x4EFB;&#x4F55;&#x6784;&#x5EFA;&#x7CFB;&#x7EDF;&#x7684;&#x90FD;&#x591A;&#x3002;
+&#x6240;&#x4EE5;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x60F3;&#x8981;&#x5728;&#x4F60;&#x7684;&#x4EE3;&#x7801;&#x4E2D;&#x5305;&#x542B;&#x4E00;&#x4E2A;&#x5E93;&#xFF0C;&#x4F60;&#x6709;&#x4E24;&#x4E2A;&#x9009;&#x62E9;&#xFF0C;&#x8981;&#x4E48;&#x81EA;&#x5DF1;&#x5199;&#x4E00;&#x4E2A;&#x6784;&#x5EFA;&#x7CFB;&#x7EDF;&#xFF0C;&#x8981;&#x4E48;&#x4F7F;&#x7528;&#x8BE5;&#x5E93;&#x652F;&#x6301;&#x7684;&#x6784;&#x5EFA;&#x7CFB;&#x7EDF;&#x4E2D;&#x7684;&#x67D0;&#x4E2A;&#x3002;&#x800C;&#x90A3;&#x901A;&#x5E38;&#x5305;&#x542B; CMake&#x3002;
+&#x5982;&#x4F55;&#x4F60;&#x7684;&#x5DE5;&#x7A0B;&#x5305;&#x542B;&#x7684;&#x5E93;&#x591A;&#x4E86;&#xFF0C;CMake &#x6216;&#x5F88;&#x5FEB;&#x6210;&#x4E3A;&#x90A3;&#x4E9B;&#x5E93;&#x6240;&#x652F;&#x6301;&#x7684;&#x6784;&#x5EFA;&#x7CFB;&#x7EDF;&#x7684;&#x4EA4;&#x96C6;&#x3002;&#x5E76;&#x4E14;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x4F7F;&#x7528;&#x4E00;&#x4E2A;&#x9884;&#x88C5;&#x5728;&#x7CFB;&#x7EDF;&#x4E2D;&#x7684;&#x5E93;&#xFF0C;&#x5B83;&#x6709;&#x5F88;&#x5927;&#x53EF;&#x80FD;&#x6709;&#x4E00;&#x4E2A; find CMake &#x6216;&#x8005;&#x662F;&#x4E00;&#x4E2A; config CMake &#x7684;&#x811A;&#x672C;&#x3002;</p>
+<h2 id="&#x4E3A;&#x4EC0;&#x4E48;&#x4F7F;&#x7528;&#x73B0;&#x4EE3;&#x7684;-cmake-&#xFF1F;">&#x4E3A;&#x4EC0;&#x4E48;&#x4F7F;&#x7528;&#x73B0;&#x4EE3;&#x7684; CMake &#xFF1F;</h2>
+<p>&#x5927;&#x6982;&#x5728; CMake 2.6-2.8 &#x65F6;&#xFF0C; CMake &#x5F00;&#x59CB;&#x6210;&#x4E3A;&#x4E3B;&#x6D41;&#x3002;&#x5B83;&#x51FA;&#x73B0;&#x5728;&#x5927;&#x591A;&#x6570; Linux &#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x7684;&#x5305;&#x7BA1;&#x7406;&#x5668;&#x4E2D;&#xFF0C;&#x5E76;&#x88AB;&#x7528;&#x4E8E;&#x8BB8;&#x591A;&#x5305;&#x4E2D;&#x3002;</p>
+<p>&#x63A5;&#x7740; Python 3 &#x51FA;&#x73B0;&#x4E86;&#x3002;</p>
+<p>&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x76F4;&#x5230;&#x73B0;&#x5728;&#x67D0;&#x4E9B;&#x7684;&#x5DE5;&#x7A0B;&#x4E2D;&#x8FDB;&#x884C;&#x7684;&#x975E;&#x5E38;&#x8270;&#x96BE;&#x3001;&#x4E11;&#x964B;&#x7684;&#x8FC1;&#x79FB;&#x3002;</p>
+<p>&#x6211;&#x77E5;&#x9053;&#xFF0C;&#x8FD9;&#x548C; CMake &#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x5173;&#x7CFB;&#x3002;</p>
+<p>&#x4F46;&#x5B83;&#x4EEC;&#x6709;&#x4E00;&#x4E2A; 3 ,&#x5E76;&#x4E14;&#x90FD;&#x8DDF;&#x5728; 2 &#x540E;&#x9762;&#x3002;</p>
+<p>&#x6240;&#x4EE5;&#x6211;&#x76F8;&#x4FE1; CMake 3 &#x8DDF;&#x5728; Python 3 &#x540E;&#x9762;&#x771F;&#x662F;&#x5341;&#x5206;&#x5012;&#x9709;&#x3002;<sup><a href="#fn_1" id="reffn_1">1</a></sup>
+&#x56E0;&#x4E3A;&#x5C3D;&#x7BA1;&#x6BCF;&#x4E00;&#x4E2A;&#x7248;&#x672C;&#x7684;CMake&#x90FD;&#x6709;&#x826F;&#x597D;&#x7684;&#x5411;&#x540E;&#x517C;&#x5BB9;&#x6027;&#xFF0C;&#x4F46; CMake 3 &#x5374;&#x603B;&#x662F;&#x88AB;&#x5F53;&#x4F5C;&#x65B0;&#x4E8B;&#x7269;&#x6765;&#x5BF9;&#x5F85;&#x3002;
+&#x4F60;&#x4F1A;&#x53D1;&#x73B0;&#x50CF; CentOS7 &#x8FD9;&#x6837;&#x7684;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#xFF0C;&#x5176;&#x4E0A;&#x7684; GCC 4.8&#x51E0;&#x4E4E;&#x5B8C;&#x5168;&#x652F;&#x6301; C++14 &#xFF0C;&#x800C; CMake &#x5219;&#x662F;&#x5728; C++11 &#x4E4B;&#x524D;&#x51E0;&#x5E74;&#x5C31;&#x5DF2;&#x7ECF;&#x51FA;&#x73B0;&#x7684; CMake 2.8 &#x3002;</p>
+<p>&#x4F60;&#x5E94;&#x8BE5;&#x81F3;&#x5C11;&#x4F7F;&#x7528;&#x5728;&#x4F60;&#x7684;&#x7F16;&#x8BD1;&#x5668;&#x4E4B;&#x540E;&#x51FA;&#x73B0;&#x7684; CMake &#x7248;&#x672C;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x9700;&#x8981;&#x77E5;&#x9053;&#x8BE5;&#x7248;&#x672C;&#x7684;&#x7F16;&#x8BD1;&#x5668;&#x6807;&#x5FD7;&#x7B49;&#x4FE1;&#x606F;&#x3002;
+&#x800C;&#x4E14;&#xFF0C;&#x7531;&#x4E8E;&#x53EA;&#x4F1A;CMake&#x4F1A;&#x542F;&#x7528;CMakeLists.txt&#x4E2D;&#x7684;&#x751F;&#x547D;&#x529B;&#x7684;&#x6700;&#x4F4E;CMake&#x7248;&#x672C;&#x6240;&#x5BF9;&#x5E94;&#x7684;&#x7279;&#x6027;&#xFF0C;&#x6240;&#x4EE5;&#x5373;&#x4F7F;&#x662F;&#x5728;&#x7CFB;&#x7EDF;&#x8303;&#x56F4;&#x5185;&#x5B89;&#x88C5;&#x4E00;&#x4E2A;&#x65B0;&#x7248;&#x672C;&#x7684;CMake&#x4E5F;&#x662F;&#x76F8;&#x5F53;&#x5B89;&#x5168;&#x7684;&#x3002;
+&#x4F60;&#x81F3;&#x5C11;&#x5E94;&#x8BE5;&#x5728;&#x672C;&#x5730;&#x5B89;&#x88C5;&#x5B83;&#x3002;&#x8FD9;&#x5F88;&#x5BB9;&#x6613;&#xFF08;&#x5728;&#x8BB8;&#x591A;&#x60C5;&#x51B5;&#x4E0B;&#x662F; 1-2 &#x884C;&#x547D;&#x4EE4;&#xFF09;&#xFF0C;&#x4F60;&#x4F1A;&#x53D1;&#x73B0; 5 &#x5206;&#x949F;&#x7684;&#x5DE5;&#x4F5C;&#x5C06;&#x4E3A;&#x4F60;&#x8282;&#x7701;&#x6570;&#x767E;&#x884C;&#x548C;&#x6570;&#x5C0F;&#x65F6;&#x7684; CMakeLists.txt &#x7F16;&#x5199;&#xFF0C;&#x800C;&#x4E14;&#x4ECE;&#x957F;&#x8FDC;&#x6765;&#x770B;&#xFF0C;&#x5C06;&#x66F4;&#x5BB9;&#x6613;&#x7EF4;&#x62A4;&#x3002;</p>
+<p>&#x672C;&#x4E66;&#x8BD5;&#x56FE;&#x89E3;&#x51B3;&#x4F60;&#x4F1A;&#x53D1;&#x73B0;&#x5728;&#x7F51;&#x7EDC;&#x4E0A;&#x6CDB;&#x6EE5;&#x7684;&#x90A3;&#x4E9B;&#x7CDF;&#x7CD5;&#x7684;&#x4F8B;&#x5B50;&#x548C;&#x201D;&#x6700;&#x4F73;&#x5B9E;&#x8DF5;&#x201C;&#x7684;&#x95EE;&#x9898;&#x3002;</p>
+<h2 id="&#x5176;&#x4ED6;&#x8D44;&#x6599;">&#x5176;&#x4ED6;&#x8D44;&#x6599;</h2>
+<p>&#x672C;&#x4E66;&#x539F;&#x4F5C;&#x8005;&#x7684;&#x5176;&#x4ED6;&#x8D44;&#x6599;:</p>
 <ul>
 <li><a href="https://hsf-training.github.io/hsf-training-cmake-webpage/01-intro/index.html" target="_blank">HSF CMake Training</a></li>
 <li><a href="https://gitlab.com/CLIUtils/modern-cmake-interactive-talk" target="_blank">Interactive Modern CMake talk</a></li>
 </ul>
-<p>There are some other places to find good information on the web. Here are some of them:</p>
+<p>&#x5728;&#x7F51;&#x4E0A;&#x8FD8;&#x6709;&#x4E00;&#x4E9B;&#x5176;&#x4ED6;&#x7684;&#x5730;&#x65B9;&#x53EF;&#x4EE5;&#x627E;&#x5230;&#x597D;&#x7684;&#x8D44;&#x8BAF;&#x3002;&#x4E0B;&#x9762;&#x662F;&#x5176;&#x4E2D;&#x7684;&#x4E00;&#x4E9B;:</p>
 <ul>
-<li><a href="https://cmake.org/cmake/help/latest/" target="_blank">The official help</a>: Really amazing documentation. Nicely organized, great search, and you can toggle versions at the top. It just doesn&apos;t have a great &quot;best practices tutorial&quot;, which is what this book tries to fill in.</li>
-<li><a href="https://gist.github.com/mbinna/c61dbb39bca0e4fb7d1f73b0d66a4fd1" target="_blank">Effective Modern CMake</a>: A great list of do&apos;s and don&apos;ts.</li>
-<li><a href="https://steveire.wordpress.com/2017/11/05/embracing-modern-cmake/" target="_blank">Embracing Modern CMake</a>: A post with good description of the term</li>
-<li><a href="https://pabloariasal.github.io/2018/02/19/its-time-to-do-cmake-right/" target="_blank">It&apos;s time to do CMake Right</a>: A nice set of best practices for Modern CMake projects.</li>
-<li><a href="https://rix0r.nl/blog/2015/08/13/cmake-guide/" target="_blank">The Ultimate Guide to Modern CMake</a>: A slightly dated post with similar intent.</li>
-<li><a href="https://youtu.be/y7ndUhdQuU8" target="_blank">More Modern CMake</a>: A great presentation from Meeting C++ 2018 that recommends CMake 3.12+. This talk makes calls CMake 3.0+ &quot;Modern CMake&quot; and CMake 3.12+ &quot;More Modern CMake&quot;.</li>
-<li><a href="https://www.youtube.com/watch?v=y9kSr5enrSk" target="_blank">Oh No! More Modern CMake</a>: The sequel to More Modern CMake.</li>
-<li><a href="https://github.com/toeb/moderncmake" target="_blank">toeb/moderncmake</a>: A nice presentation and examples about CMake 3.5+, with intro to syntax through project organization</li>
+<li><a href="https://cmake.org/cmake/help/latest/" target="_blank">The official help</a>: &#x975E;&#x5E38;&#x68D2;&#x7684;&#x6587;&#x6863;&#x3002;&#x7EC4;&#x7EC7;&#x5F97;&#x5F88;&#x597D;&#xFF0C;&#x6709;&#x5F88;&#x597D;&#x7684;&#x641C;&#x7D22;&#x529F;&#x80FD;&#xFF0C;&#x800C;&#x4E14;&#x4F60;&#x53EF;&#x4EE5;&#x5728;&#x9876;&#x90E8;&#x5207;&#x6362;&#x7248;&#x672C;&#x3002;&#x5B83;&#x53EA;&#x662F;&#x6CA1;&#x6709;&#x4E00;&#x4E2A;&#x5F88;&#x597D;&#x7684; &#x201C;&#x6700;&#x4F73;&#x5B9E;&#x8DF5;&#x6559;&#x7A0B;&#x201D;&#xFF0C;&#x800C;&#x8FD9;&#x6B63;&#x662F;&#x672C;&#x4E66;&#x8BD5;&#x56FE;&#x89E3;&#x51B3;&#x7684;&#x5185;&#x5BB9;&#x3002;</li>
+<li><a href="https://gist.github.com/mbinna/c61dbb39bca0e4fb7d1f73b0d66a4fd1" target="_blank">Effective Modern CMake</a>: 
+&#x4E00;&#x4E2A;&#x5F88;&#x597D;&#x7684; do&apos;s and don&apos;ts &#x7684;&#x6E05;&#x5355;&#x3002;</li>
+<li><a href="https://steveire.wordpress.com/2017/11/05/embracing-modern-cmake/" target="_blank">Embracing Modern CMake</a>: &#x4E00;&#x7BC7;&#x5BF9;&#x672F;&#x8BED;&#x6709;&#x5F88;&#x597D;&#x63CF;&#x8FF0;&#x7684;&#x6587;&#x7AE0;&#x3002;</li>
+<li><a href="https://pabloariasal.github.io/2018/02/19/its-time-to-do-cmake-right/" target="_blank">It&apos;s time to do CMake Right</a>: &#x4E00;&#x4E9B;&#x73B0;&#x4EE3;&#x7684; CMake &#x9879;&#x76EE;&#x7684;&#x6700;&#x4F73;&#x5B9E;&#x8DF5;&#x3002;</li>
+<li><a href="https://rix0r.nl/blog/2015/08/13/cmake-guide/" target="_blank">The Ultimate Guide to Modern CMake</a>: &#x4E00;&#x7BC7;&#x6709;&#x7740;&#x672C;&#x4E66;&#x7C7B;&#x4F3C;&#x76EE;&#x7684;&#x7A0D;&#x663E;&#x8FC7;&#x65F6;&#x7684;&#x6587;&#x7AE0;&#x3002;</li>
+<li><a href="https://youtu.be/y7ndUhdQuU8" target="_blank">More Modern CMake</a>: &#x6765;&#x81EA; Meeting C++ 2018 &#x7684;&#x4E00;&#x4E2A;&#x5F88;&#x68D2;&#x7684;&#x6F14;&#x8BB2;&#xFF0C;&#x63A8;&#x8350;&#x4F7F;&#x7528; CMake 3.12 &#x4EE5;&#x4E0A;&#x7248;&#x672C;&#x3002;&#x8BE5;&#x6F14;&#x8BB2;&#x5C06; CMake 3.0+ &#x79F0;&#x4E3A; &#x201C;&#x73B0;&#x4EE3; CMake&#x201D;&#xFF0C;&#x5C06; CMake 3.12+ &#x79F0;&#x4E3A; &#x201C;&#x66F4;&#x73B0;&#x4EE3;&#x7684; CMake&#x201D;&#x3002;</li>
+<li><a href="https://www.youtube.com/watch?v=y9kSr5enrSk" target="_blank">Oh No! More Modern CMake</a>: More Modern CMake &#x7684;&#x7EED;&#x7BC7;&#x3002;</li>
+<li><a href="https://github.com/toeb/moderncmake" target="_blank">toeb/moderncmake</a>: &#x5173;&#x4E8E; CMake 3.5+ &#x7684;&#x5F88;&#x597D;&#x7684;&#x4ECB;&#x7ECD;&#x548C;&#x4F8B;&#x5B50;&#xFF0C;&#x5305;&#x62EC;&#x4ECE;&#x8BED;&#x6CD5;&#x5230;&#x9879;&#x76EE;&#x7EC4;&#x7EC7;&#x7684;&#x4ECB;&#x7ECD;&#x3002;</li>
 </ul>
-<h2 id="credits">Credits</h2>
-<p>Modern CMake was originally written by <a href="https://iscinumpy.gitlab.io" target="_blank">Henry Schreiner</a>. Other contributors can be found <a href="https://gitlab.com/CLIUtils/modern-cmake/-/network/master" target="_blank">listed on GitLab</a>.</p>
+<h2 id="&#x5236;&#x4F5C;">&#x5236;&#x4F5C;</h2>
+<p>Modern CMake &#x6700;&#x521D;&#x7531; <a href="https://iscinumpy.gitlab.io" target="_blank">Henry Schreiner</a> &#x7F16;&#x5199;. &#x5176;&#x4ED6;&#x7684;&#x8D21;&#x732E;&#x8005;&#x53EF;&#x4EE5;&#x5728; <a href="https://gitlab.com/CLIUtils/modern-cmake/-/network/master" target="_blank">Gitlab&#x7684;&#x5217;&#x8868;</a> &#x4E2D;&#x627E;&#x5230;.</p>
 <blockquote id="fn_1">
-<sup>1</sup>. CMake 3.0 also removed several long deprecated features from very old versions of CMake and make one very tiny backwards incompatible change to syntax related to square brackets, so this is not entirely fair; there might be some very, very old CMake files that would stop working with 3. I&apos;ve never seen one, though.<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#x21A9;</a>
+<sup>1</sup>. CMake 3.0 &#x540C;&#x6837;&#x4ECE;&#x975E;&#x5E38;&#x8001;&#x7684;CMake&#x7248;&#x672C;&#x4E2D;&#x5220;&#x9664;&#x4E86;&#x51E0;&#x4E2A;&#x65E9;&#x5DF2;&#x5E9F;&#x5F03;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x5E76;&#x5BF9;&#x4E0E;&#x65B9;&#x62EC;&#x53F7;&#x6709;&#x5173;&#x7684;&#x8BED;&#x6CD5;&#x505A;&#x4E86;&#x4E00;&#x4E2A;&#x975E;&#x5E38;&#x5FAE;&#x5C0F;&#x7684;&#x5411;&#x540E;&#x4E0D;&#x517C;&#x5BB9;&#x7684;&#x4FEE;&#x6539;&#xFF0C;&#x6240;&#x4EE5;&#x8FD9;&#x4E2A;&#x8BF4;&#x6CD5;&#x5E76;&#x4E0D;&#x5B8C;&#x5168;&#x516C;&#x6B63;&#xFF1B;&#x53EF;&#x80FD;&#x6709;&#x4E00;&#x4E9B;&#x975E;&#x5E38;&#x975E;&#x5E38;&#x8001;&#x7684;CMake&#x6587;&#x4EF6;&#x4F1A;&#x5728; CMake 3.0+ &#x4E2D;&#x505C;&#x6B62;&#x5DE5;&#x4F5C;&#xFF0C;&#x4F46;&#x6211;&#x4ECE;&#x672A;&#x9047;&#x5230;&#x8FC7;&#x3002;<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#x21A9;</a>
 </blockquote>
 
                                 
@@ -827,7 +825,7 @@ It&apos;s easy (1-2 lines in many cases), and you&apos;ll find that 5 minutes of
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"An Introduction to Modern CMake","level":"1.1","depth":1,"next":{"title":"Installing CMake","level":"1.1.1","depth":2,"path":"chapters/intro/installing.md","ref":"chapters/intro/installing.md","articles":[]},"dir":"ltr"},"config":{"plugins":["replace","hints","term","include-codeblock","ace"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"ace":{},"search":{},"term":{"copyButtons":true,"fade":true,"lineStyles":true,"prompt":"(?<prompt>[^\\$^#^:]*)(?<pathsep>:?)(?<path>[^\\$^#]*?)(?<delimiter>[\\$#] )(?<command>.*)$","style":"default"},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"replace":{"substitutes":[{"pattern":"«cmake:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/manual/cmake-$1.7.html)"},{"pattern":"«command:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/command/$1.html)"},{"pattern":"«envvar:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/envvar/$1.html)"},{"pattern":"«module:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/module/$1.html)"},{"pattern":"«policy:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/policy/$1.html)"},{"pattern":"«variable:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest//$1.html)"},{"pattern":"«prop:([^:]+):`?([^`^»]+)`?»","flags":"g","substitute":"[`$2`](https://cmake.org/cmake/help/latest/prop_$1/$2.html)"}]},"include-codeblock":{"check":false,"edit":false,"fixlang":true,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Henry Schreiner","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Modern CMake","gitbook":"*","description":"A guide to writing simple, powerful, and clean CMake 3.1+ builds."},"file":{"path":"README.md","mtime":"2021-07-20T20:24:08.207Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-20T20:24:58.224Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"An Introduction to Modern CMake","level":"1.1","depth":1,"next":{"title":"Installing CMake","level":"1.1.1","depth":2,"path":"chapters/intro/installing.md","ref":"chapters/intro/installing.md","articles":[]},"dir":"ltr"},"config":{"plugins":["replace","hints","term","include-codeblock","ace"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"ace":{},"search":{},"term":{"copyButtons":true,"fade":true,"lineStyles":true,"prompt":"(?<prompt>[^\\$^#^:]*)(?<pathsep>:?)(?<path>[^\\$^#]*?)(?<delimiter>[\\$#] )(?<command>.*)$","style":"default"},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"replace":{"substitutes":[{"pattern":"«cmake:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/manual/cmake-$1.7.html)"},{"pattern":"«command:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/command/$1.html)"},{"pattern":"«envvar:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/envvar/$1.html)"},{"pattern":"«module:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/module/$1.html)"},{"pattern":"«policy:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/policy/$1.html)"},{"pattern":"«variable:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest//$1.html)"},{"pattern":"«prop:([^:]+):`?([^`^»]+)`?»","flags":"g","substitute":"[`$2`](https://cmake.org/cmake/help/latest/prop_$1/$2.html)"}]},"include-codeblock":{"check":false,"edit":false,"fixlang":true,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Henry Schreiner","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Modern CMake","gitbook":"*","description":"A guide to writing simple, powerful, and clean CMake 3.1+ builds."},"file":{"path":"README.md","mtime":"2021-07-21T07:13:55.310Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-21T07:14:39.539Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
