@@ -1,39 +1,20 @@
-# Introduction to the basics
+# 基础知识简介
 
+## 最低版本要求
 
-## Minimum Version
-
-Here's the first line of every `CMakeLists.txt`, which is the required name of
-the file CMake looks for:
+这是每个 `CMakeLists.txt` 都必须包含的第一行
 
 ```cmake
 cmake_minimum_required(VERSION 3.1)
 ```
 
-Let's mention a bit of CMake syntax. The command name
-«command:`cmake_minimum_required`» is case insensitive, so the common practice
-is to use lower case. [^1] The `VERSION` is a special keyword for this
-function. And the value of the version follows the keyword. Like everywhere in
-this book, just click on the command name to see the official documentation,
-and use the dropdown to switch documentation between CMake versions.
+顺便提一下关于CMake的语法。命令 «command:`cmake_minimum_required`»  是不区分大小写的，所以常用的做法是使用小写[^1]。 `VERSION` 和它后面的版本号是这个函数的特殊关键字。在这本书中，你可以点击命令的名称来查看它的官方文档，并且可以使用下拉菜单来切换 `CMake` 的版本。
 
-This line is special! [^2] The version of CMake will also dictate the policies,
-which define behavior changes. So, if you set `minimum_required` to `VERSION
-2.8`, you'll get the wrong linking behavior on macOS, for example, even in the
-newest CMake versions. If you set it to 3.3 or less, you'll get the wrong
-hidden symbols behaviour, etc. A list of policies and versions is available at
-«cmake:policies».
+这一行很特殊[^2]！ `CMake` 的版本与它的特性(policies)相互关联，这意味着它也定义了 `CMake` 行为的变化。因此，如果你将 `cmake_minimum_required` 中的 `VERSION` 设定为 `2.8`，那么你将会在 macOS 上产生链接错误，例如，即使在 `CMake` 最新的版本中，如果你将它设置为 `3.3` 或者更低，那么你将会得到一个隐藏的标志行为(symbols behaviour)错误等。你可以在 «cmake:policies» 中得到一系列 policies 与 versions 的说明。
 
-Starting in CMake 3.12, this supports a range, such as `VERSION 3.1...3.15`;
-this means you support as low as 3.1 but have also tested it with the new
-policy settings up to 3.15. This is much nicer on users that need the better
-settings, and due to a trick in the syntax, it's backward compatible with older
-versions of CMake (though actually running CMake 3.1-3.11 will only set the 3.1
-version of the policies in this example, since those versions didn't treat this
-specially). New versions of policies tend to be most important for macOS and
-Windows users, who also usually have a very recent version of CMake.
+从 CMake 3.12 开始，版本号可以声明为一个范围，例如 `VERSION 3.1...3.15`；这意味着这个工程最低可以支持 `3.1` 版本，但是也最高在 `3.15` 版本上测试成功过。这对需要更精确(better)设置的用户体验很好，并且由于一个语法上的小技巧，它可以向后兼容更低版本的CMake(尽管在这里例子中虽然声明为 `CMake 3.1-3.15` 实际只会设置为 `3.1` 版本的特性，因为这些版本处理这个工程没有什么差异)。新的版本特性往往对 macOS 和 Windows 用户是最重要的，他们通常使用非常新版本的 CMake。
 
-This is what new projects should do:
+当你开始一个新项目，起始推荐这么写：
 
 ```cmake
 cmake_minimum_required(VERSION 3.7...3.21)
@@ -43,15 +24,9 @@ if(${CMAKE_VERSION} VERSION_LESS 3.12)
 endif()
 ```
 
-If CMake version is less than 3.12, the if block will be true, and the policy
-will be set to the current CMake version. If CMake is 3.12 or higher, the if
-block will be false, but the new syntax in `cmake_minimum_required` will be
-respected and this will continue to work properly!
+如果 CMake的版本低于3.12，`if` 块条件为真，CMake将会被设置为当前版本。如果CMake版本是3.12或者更高，`if` 块条件为假，将会遵守 `cmake_minimum_required` 中的规定，程序将继续正常运行。
 
-WARNING: MSVC's CMake server mode [originally had a
-bug](https://github.com/fmtlib/fmt/issues/809) in reading this format, so if
-you need to support non-command line Windows builds for older MSVC versions,
-you will want to do this instead:
+**WARNING**: MSVC的CMake服务器模式起初解析这个语法的时候[有一个bug](https://github.com/fmtlib/fmt/issues/809)，所以如果你需要支持旧版本的MSVC的非命令行的 Windows 构建，你应该这么写：
 
 ```cmake
 cmake_minimum_required(VERSION 3.7)
@@ -63,17 +38,15 @@ else()
 endif()
 ```
 
-
 {% hint style='info' %}
-If you really need to set to a low value here, you can use
-«command:`cmake_policy`» to conditionally increase the policy level or set a
-specific policy. Please at least do this for your macOS users!
+
+如果你真的需要在这里设置为一个低版本，你可以使用«command:`cmake_policy`» 来有条件的提高特性级别或者设置一个特殊的特性。请至少为你的macOS用户进行设置！
 {% endhint %}
 
 
-## Setting a project
+## 设置一个项目
 
-Now, every top-level CMake file will have the next line:
+现在，每一个顶层CMake文件都应该有下面这一行：
 
 ```cmake
 project(MyProject VERSION 1.0
@@ -81,77 +54,66 @@ project(MyProject VERSION 1.0
                   LANGUAGES CXX)
 ```
 
-Now we see even more syntax. Strings are quoted, whitespace doesn't matter, and
-the name of the project is the first argument (positional). All the keyword
-arguments here are optional. The version sets a bunch of variables, like
-`MyProject_VERSION` and `PROJECT_VERSION`. The languages are `C`, `CXX`,
-`Fortran`, `ASM`, `CUDA` (CMake 3.8+), `CSharp` (3.8+), and `SWIFT` (CMake
-3.15+ experimental). `C CXX` is the default. In CMake 3.9, `DESCRIPTION` was
-added to set a project description, as well. The documentation for
-«command:`project`» may be helpful.
+现在我们看到了更多的语法。这里的字符串是带引号的，因此内容中可以带有空格。项目名称是这里的第一个参数。所有的关键字参数都可选的。`VERSION` 设置了一系列变量，例如 `MyProject_VERSION` 和 `PROJECT_VERSION`。语言可以是  `C`、`CXX`、`Fortran`、`ASM`、`CUDA`(CMake 3.8+)、`CSharp`(3.8+)、`SWIFT`(CMake 3.15+  experimental)，默认是`C CXX`。在 CMake 3.9，可以通过`DESCRIPTION` 关键词来添加项目的描述。这个关于 «command:`project`»  的文档可能会有用。
 
 {% hint style='info' %}
-You can add
-[comments](https://cmake.org/cmake/help/latest/manual/cmake-language.7.html#comments)
-with the `#` character. CMake does have an inline syntax for comments too, but
-it's rarely used.
+
+你可以用`#` 来添加[注释](https://cmake.org/cmake/help/latest/manual/cmake-language.7.html#comments)。CMake也有一个用于注释的内联语法，但是那极少用到。
 {% endhint %}
 
-There's really nothing special about the project name. No targets are added at this point.
+项目名称没有什么特别的用处。这里没有添加任何的目标(target)。
 
-## Making an executable
+## 生成一个可执行文件
 
-Although libraries are much more interesting, and we'll spend most of our time
-with them, let's start with a simple executable.
+尽管库要有趣的多，并且我们会将把大部分时间花在其上。但是现在，先让我们从一个简单的可执行文件开始吧！
 
 ```cmake
 add_executable(one two.cpp three.h)
 ```
 
-There are several things to unpack here. `one` is both the name of the executable file generated, and the name of the CMake target created (you'll hear a lot more about targets soon, I promise). The source file list comes next, and you can list as many as you'd like. CMake is smart, and will only compile source file extensions. The headers will be, for most intents and purposes, ignored; the only reason to list them is to get them to show up in IDEs. Targets show up as folders in many IDEs. More about the general build system and targets is available at «cmake:buildsystem».
+这里有一些语法需要解释。`one` 既是生成的可执行文件的名称，也是创建的 `CMake` 目标(target)的名称(我保证，你很快会听到更多关于目标的内容)。紧接着的是源文件的列表，你想列多少个都可以。CMake很聪明 ，它根据拓展名只编译源文件。在大多数情况下，头文件将会被忽略；列出他们的唯一原因是为了让他们在IDE中被展示出来，目标文件在许多IDE中被显示为文件夹。你可以在 «cmake:buildsystem» 中找到更多关于一般构建系统与目标的信息。
 
+## 生成一个库
 
-## Making a library
-
-Making a library is done with «command:`add_library`», and is just about as simple:
+制作一个库是通过 «command:`add_library`» 命令完成的，并且非常简单：
 
 ```cmake
 add_library(one STATIC two.cpp three.h)
 ```
 
-You get to pick a type of library, STATIC, SHARED, or MODULE. If you leave this choice off, the value of `BUILD_SHARED_LIBS` will be used to pick between STATIC and SHARED.
+你可以选择库的类型，可以是 `STATIC`,`SHARED`, 或者`MODULE`.如果你不选择它，CMake将会通过 `BUILD_SHARED_LIBS` 的值来选择构建 STATIC 还是 SHARED 类型的库。
 
-As you'll see in the following sections, often you'll need to make a fictional target, that is, one where nothing needs to be compiled, for example, for a header-only library. That is called an INTERFACE library, and is another choice; the only difference is it cannot be followed by filenames.
+在下面的章节中你将会看到，你经常需要生成一个虚构的目标，也就是说，一个不需要编译的目标。例如，只有一个头文件的库。这被叫做 `INTERFACE` 库，这是另一种选择，和上面唯一的区别是后面不能有文件名。
 
-You can also make an `ALIAS` library with an existing library, which simply gives you a new name for a target. The one benefit to this is that you can make libraries with `::` in the name (which you'll see later). [^3]
+你也可以用一个现有的库做一个 `ALIAS` 库，这只是给已有的目标起一个别名。这么做的一个好处是，你可以制作名称中带有 `::` 的库（你将会在后面看到）[^3] 。
 
-## Targets are your friend
+## 目标时常伴随着你
 
-Now we've specified a target, how do we add information about it? For example, maybe it needs an include directory:
+现在我们已经指定了一个目标，那我们如何添加关于它的信息呢？例如，它可能需要包含一个目录：
 
 ```cmake
 target_include_directories(one PUBLIC include)
 ```
 
-«command:`target_include_directories» adds an include directory to a target. `PUBLIC` doesn't mean much for an executable; for a library it lets CMake know that any targets that link to this target must also need that include directory. Other options are `PRIVATE` (only affect the current target, not dependencies), and `INTERFACE` (only needed for dependencies).
+«command:`target_include_directories`»  为目标添加了一个目录。 `PUBLIC` 对于一个二进制目标没有什么含义；但对于库来说，它让CMake知道，任何链接到这个目标的目标也必须包含这个目录。其他选项还有 `PRIVATE`（只影响当前目标，不影响依赖），以及 `INTERFACE`（只影响依赖）。
 
-We can then chain targets:
+接下来我们可以将目标之间链接起来：
 
 ```cmake
 add_library(another STATIC another.cpp another.h)
 target_link_libraries(another PUBLIC one)
 ```
 
-«command:`target_link_libraries`» is probably the most useful and confusing command in CMake. It takes a target (`another`) and adds a dependency if a target is given. If no target of that name (`one`) exists, then it adds a link to a library called `one` on your path (hence the name of the command). Or you can give it a full path to a library. Or a linker flag. Just to add a final bit of confusion, classic CMake allowed you to skip the keyword selection of `PUBLIC`, etc. If this was done on a target, you'll get an error if you try to mix styles further down the chain.
+«command:`target_link_libraries`» 可能是CMake中最有用也最令人迷惑的命令。它指定一个目标，并且在给出目标的情况下添加一个依赖关系。如果不存在名称为 `one` 的目标，那他会添加一个链接到你路径中 `one` 库（这也是命令叫`target_link_libraries`的原因）。或者你可以给定一个库的完整路径，或者是链接器标志。最后再说一个有些迷惑性的知识：），经典的CMake允许你省略 `PUBLIC` 关键字，但是你在目标链中省略与不省略混用，那么CMake会报出错误。
 
-Focus on using targets everywhere, and keywords everywhere, and you'll be fine.
+只要记得在任何使用目标的地方都指定关键字，那么就不会有问题。
 
-Targets can have include directories, linked libraries (or linked targets), compile options, compile definitions, compile features (see the C++11 chapter), and more. As you'll see in the two including projects chapters, you can often get targets (and always make targets) to represent all the libraries you use. Even things that are not true libraries, like OpenMP, can be represented with targets. This is why Modern CMake is great!
+目标可以有包含的目录、链接库（或链接目标）、编译选项、编译定义、编译特性（见C++11 章节）等等。正如你将在之后的两个项目章节中看到的，你经常可以得到目标（并且经常是指定目标）来代表所有你使用的库。甚至有些不是真正的库，像 `OpenMP`，就可以用目标来表示。这也是为什么现代CMake如此的棒！
 
 
-## Dive in
+## 更进一步
 
-See if you can follow the following file. It makes a simple C++11 library and a program using it. No dependencies. I'll discuss more C++ standard options later, using the CMake 3.8 system for now.
+看看你是否能理解以下文件。它生成了一个简单的C++11 的库并且在程序中使用了它。没有依赖。我将在之后讨论更多的C++ 标准选项，代码中使用的是CMake 3.8。
 
 ```cmake
 cmake_minimum_required(VERSION 3.8)
@@ -167,9 +129,7 @@ target_link_libraries(calc PUBLIC calclib)
 
 ```
 
+[^1]: 在这本书中，我主要避免向你展示错误的做事方式。你可以在网上找到很多关于这个的例子。我偶尔会提到替代方法，但除非是绝对必要，否则不推荐使用这些替代的方法，通常他们只是为了帮助你阅读更旧的CMake代码。
+[^2]: 有时你会在这里看到 `FATAL_ERROR`，那是为了支持在CMake<2.6时的错误，现在应该不会有问题了。
+[^3]: `::` 语法最初是为了 `INTERFACE IMPORTED` 库准备的，这些库应该是在当前项目之外定义的。但是，因为如此，大多数的 `target_*` 命令对 `IMPORTED` 库不起作用，这使得它们难以自己设置。所以，暂时不要使用 `IMPORTED` 关键字，而使用 `ALIAS` 目标；它在你开始导出目标之前，都表现的很好。这个限制在 CMake 3.11中得以修复。
 
-[^1]: In this book, I'll mostly avoid showing you the wrong way to do things; you can find plenty of examples of that online. I'll mention alternatives occasionally, but these are not recommended unless they are absolutely necessary; often they are just there to help you read older CMake code.
-
-[^2]: You will sometimes see `FATAL_ERROR` here, that was needed to support nice failures when running this in CMake <2.6, which should not be a problem anymore.
-
-[^3]: The `::` syntax was originally intended for `INTERFACE IMPORTED` libraries, which were explicitly supposed to be libraries defined outside the current project. But, because of this, most of the `target_*` commands don't work on `IMPORTED` libraries, making them hard to set up yourself. So don't use the `IMPORTED` keyword for now, and use an `ALIAS` target instead; it will be fine until you start exporting targets. This limitation was fixed in CMake 3.11.
