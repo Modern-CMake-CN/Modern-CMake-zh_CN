@@ -48,6 +48,6 @@ endif()
 
 这样，你就可以在 CMake 3.11+ 里使用 CMake 3.14+ 的语法了。
 
-[查看](https://gitlab.com/CLIUtils/modern-cmake/-/tree/master/examples/fetch)例子。
+可以在这里[查看](https://gitlab.com/CLIUtils/modern-cmake/-/tree/master/examples/fetch)例子。
 
 [FetchContent]: https://cmake.org/cmake/help/latest/module/FetchContent.html
