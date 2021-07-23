@@ -1,6 +1,6 @@
 # Summary
 
-* [现代的 CMake 的介绍](README.md)
+* [现代的 CMake 的介绍](README_GitBook.md)
     * [Installing CMake](chapters/intro/installing.md)
     * [Running CMake](chapters/intro/running.md)
     * [Do's and Don'ts](chapters/intro/dodonot.md)
