@@ -4,7 +4,7 @@
 你的CMake版本应该比你的编译器要更新，它应该比你使用的所有库（尤其是Boost）都要更新。新版本对任何一个人来说都是有好处的。
 {% endhint %}
 
-如果你拥有一个CMake的内置副本，这对你的系统来说并不特殊。你可以在系统层面或用户层面轻松地安装一个新的来代替它。如果你的用户抱怨CMake的要求被设置得太高，请随时在这里指导他们。尤其是当他们想要3.1版本以上，甚至是3.21以上版本的支持的话......
+如果你拥有一个CMake的内置副本，这对你的系统来说并不特殊。你可以在系统层面或用户层面轻松地安装一个新的来代替它。如果你的用户抱怨CMake的要求被设置得太高，请随时使用这里的内容来指导他们。尤其是当他们想要3.1版本以上，甚至是3.21以上版本的时候......
 
 #### 快速一览（下面有关于每种方法的更多信息)
 
@@ -84,7 +84,7 @@ docker $ wget -qO- "https://cmake.org/files/v3.21/cmake-3.21.0-linux-x86_64.tar.
 [![CentOS 8 package](https://repology.org/badge/version-for-repo/centos_8/cmake.svg?minversion=3.10.0)][centos]
 [![EPEL 7 package](https://repology.org/badge/version-for-repo/epel_7/cmake.svg?minversion=3.10.0)][centos]
 
-8上的默认值不算太糟，但你不应该使用7上的默认值。请使用EPEL包来代替。
+CentOS 8上的默认安装包不算太差，但最好不要使用CentOS 7上的默认安装包。请使用EPEL包来代替它。
 
 #### Ubuntu
 
@@ -117,7 +117,7 @@ docker $ wget -qO- "https://cmake.org/files/v3.21/cmake-3.21.0-linux-x86_64.tar.
 [![Anaconda](https://anaconda.org/anaconda/cmake/badges/version.svg?style=flat)][Anaconda]
 
 
-在许多系统上只需`pip install cmake`。如果需要的话，请添加`--user'（如果需要的话，modern pip会为你做好这个）。然而它目前还没有提供Universal2的轮子。
+在许多系统上只需`pip install cmake`。如果需要的话，请添加`--user'（如果需要的话，modern pip会为你做好这个）。然而它目前还没有提供Universal2的轮子（wheels）。
 
 
 ### CI
@@ -160,7 +160,7 @@ gitbook $ pip install cmake
 {% endhint %}
 
 [^1]: 我想这是显而易见的，但你现在正在下载和运行代码，这会使你暴露在其他人的攻击之下。如果你是在一个重要的环境中，你应该下载文件并检查校验码。(注意，简单地分两步做并不能使你更安全，只有校验和码更安全)
-[^2]: 如果你的主目录中没有`.local`，这很容易开始。只要建立这个文件夹，然后把`export PATH="$HOME/.local/bin:$PATH"`添加到你的`.bashrc`或`.bash_profile`或`.profile`文件中。现在你可以把你构建的任何软件包安装到`-DCMAKE_INSTALL_PREFIX=~/.local`而不是`/usr/local`!
+[^2]: 如果你的主目录中没有`.local`，想要开始也很容易。只要建立这个文件夹，然后把`export PATH="$HOME/.local/bin:$PATH"`添加到你的`.bashrc`或`.bash_profile`或`.profile`文件中。现在你可以把你构建的任何软件包安装到`-DCMAKE_INSTALL_PREFIX=~/.local`而不是`/usr/local`!
 
 [repology]:      https://repology.org/project/cmake/versions
 [LMod]:          http://lmod.readthedocs.io/en/latest/
