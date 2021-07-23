@@ -29,6 +29,6 @@
          }
     },
     "structure": {
-        "readme" : "README_GitBook.md"
+        "readme" : "introduction.md"
     }
 }
