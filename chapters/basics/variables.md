@@ -23,7 +23,7 @@ set(MY_LIST "one;two")
 
 有一些和 `list( ` 进行协同的命令， `separate_arguments` 可以把一个以空格分隔的字符串分割成一个列表。需要注意的是，在 CMake 中如果一个值没有空格，那么加和不加引号的效果是一样的。这使你可以在处理知道不可能含有空格的值时不加引号。
 
-当一个变量用 `${}` 括起来的时候，空格的解析规则和上述相同。对于路径来说要特别小心，路径很有可能会包含空格，因此你应该总是将解析变量得到的值用引号括起来，也就是，应该这样 `${MY_PATH}` 。
+当一个变量用 `${}` 括起来的时候，空格的解析规则和上述相同。对于路径来说要特别小心，路径很有可能会包含空格，因此你应该总是将解析变量得到的值用引号括起来，也就是，应该这样 `"${MY_PATH}"` 。
 
 ## 缓存变量
 
@@ -52,7 +52,7 @@ set(MY_CACHE_VARIABLE "VALUE" CACHE INTERNAL "")
  option(MY_OPTION "This is settable from the command line" OFF)
  ```
 
-对于 `BOOL` 这种数据类型，对于它的 `ON` 和 `OFF` 有几种不同的说辞(wordings)。
+对于 `BOOL` 这种数据类型，对于它的 `ON` 和 `OFF` 有几种不同的说辞 (wordings) 。
 
 你可以查看 [cmake-variables] 来查看 CMake 中已知变量的清单。
 
