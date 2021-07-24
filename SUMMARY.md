@@ -1,12 +1,12 @@
 # Summary
 
 * [现代的 CMake 的介绍](README_GitBook.md)
-    * [Installing CMake](chapters/intro/installing.md)
+    * [安装 CMake](chapters/intro/installing.md)
     * [Running CMake](chapters/intro/running.md)
     * [Do's and Don'ts](chapters/intro/dodonot.md)
     * [What's new in CMake](chapters/intro/newcmake.md)
 * [基础知识简介](chapters/basics.md)
-    * [Variables and the Cache](chapters/basics/variables.md)
+    * [变量与缓存](chapters/basics/variables.md)
     * [Programming in CMake](chapters/basics/functions.md)
     * [Communicating with your code](chapters/basics/comms.md)
     * [How to Structure Your Project](chapters/basics/structure.md)
