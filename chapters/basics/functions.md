@@ -1,8 +1,8 @@
-# Programming in CMake
+# 用CMake进行编程
 
-## Control flow
+## 控制流程
 
-CMake has an «command:`if`» statement, though over the years it has become rather complex. There are a series of all caps keywords you can use inside an if statement, and you can often refer to variables by either directly by name or using the `${}` syntax (the if statement historically predates variable expansion). An example if statement:
+CMake 有一个 «command:`if`» 语句，尽管经过多次版本迭代它已经变得非常复杂。这里有一些全大写的变量你可以在 `if` 语句中使用，并且你既可以直接引用也可以利用 `${}` 来对他进行解析（ `if` 语句在历史上比变量拓展出现的更早）。这是一个 `if` 语句的例子：
 
 ```cmake
 if(variable)
@@ -13,7 +13,7 @@ endif()
 # If variable does not expand to one of the above, CMake will expand it then try again
 ```
 
-Since this can be a little confusing if you explicitly put a variable expansion, like `${variable}`, due to the potential expansion of an expansion, a policy («policy:CMP0054») was added in CMake 3.1+ that keeps a quoted expansion from being expanded yet again. So, as long as the minimum version of CMake is 3.1+, you can do:
+如果你在这里使用 `${variable}` 可能会有一些奇怪，因为看起来它好像 `variable` 被展开 (expansion) 了两次。在 CMake 3.1+ 版本中加入了一个新的特性 («policy:CMP0054») ，CMake 不会再展开已经被引号括起来的展开变量。也就是说，如果你的 CMake 版本大于 `3.1` ，那么你可以这么写：
 
 ```cmake
 if("${variable}")
@@ -23,36 +23,40 @@ else()
 endif()
 ```
 
-There are a variety of keywords as well, such as:
+这里还有一些关键字可以设置，例如：
 
-* Unary: `NOT`, `TARGET`, `EXISTS` (file), `DEFINED`, etc.
-* Binary: `STREQUAL`, `AND`, `OR`, `MATCHES` (regular expression), `VERSION_LESS`, `VERSION_LESS_EQUAL` (CMake 3.7+), etc.
-* Parentheses can be used to group
+* 一元的: `NOT`, `TARGET`, `EXISTS` (文件), `DEFINED`, 等。
+* 二元的: `STREQUAL`, `AND`, `OR`, `MATCHES` (正则表达式), `VERSION_LESS`, `VERSION_LESS_EQUAL` (CMake 3.7+), 等。
+* 括号可以用来分组
 
 
 ## «cmake:generator-expressions»
 
-«cmake:generator-expressions» are really powerful, but a bit odd and specialized. Most CMake commands happen at configure time, include the if statements seen above. But what if you need logic to occur at build time or even install time? Generator expressions were added for this purpose.[^1] They are evaluated in target properties.
+«cmake:generator-expressions» 语句十分强大，不过有点奇怪和专业 (specialized) 。大多数 CMake 命令在配置的时候执行，包括我们上面看到的 `if` 语句。但是如果你想要他们在构建或者安装的时候运行呢，应该怎么写？ 生成器表达式就是为此而生[^1]。它们在目标属性中被评估（evaluate）：
 
-The simplest generator expressions are informational expressions, and are of the form `$<KEYWORD>`; they evaluate to a piece of information relevant for the current configuration. The other form is `$<KEYWORD:value>`, where `KEYWORD` is a keyword that controls the evaluation, and value is the item to evaluate (an informational expression keyword is allowed here, too). If KEYWORD is a generator expression or variable that evaluates to 0 or 1, `value` is substituted
-if 1 and not if 0. You can nest generator expressions, and you can use variables to make reading nested variables bearable. Some
-expressions allow multiple values, separated by commas.[^2]
+最简单的生成器表达式是信息表达式，其形式为 `$<KEYWORD>`；它会评估和当前配置相关的一系列信息。信息表达式的另一个形式是 `${KEYWORD:value}`，其中 `KEYWORD` 是一个控制评估的关键字，而 `value` 则是需要进行比较的值（这里的 `KEYWORD` 也允许使用信息表达式）。如果 `KEYWORD` 是一个生成器表达式或者变量为 0 或者是 1，那么 `value` 将会被替换为 1 而不是 0 。你可以使用嵌套的生成器表达式，你也可以使用变量来使得自己更容易理解嵌套的变量。一些表达式也可以有多个值，值之间通过逗号分隔[^2]。
 
-If you want to put a compile flag only for the DEBUG configuration, for example, you could do:
+{% hint style='info' %}
+
+译者注：这里有点类似于 C 语言中的条件运算符。这里由于译者英语水平的问题，翻译的不够清楚，后续会改善。
+
+{% endhint %}
+
+如果你有一个只想在 DEBUG 模式下开启的编译标志（flag），你可以这样做：
 
 ```
 target_compile_options(MyTarget PRIVATE "$<$<CONFIG:Debug>:--my-flag>")
 ```
 
-This is a newer, better way to add things than using specialized `*_DEBUG` variables, and generalized to all the things generator expressions support. Note that you should never, never use the configure time value for the current configuration, because multi-configuration generators like IDEs do not have a "current" configuration at configure time, only at build time through generator expressions and custom `*_<CONFIG>` variables.
+这是一个相比与指定一些形如 `*_DEBUG` 这样的变量更加新颖并且更加优雅的方式，并且这对所有支持生成器表达式的设置都通用。需要注意的是，你应该永远都不要使用配置时间的值作为当前的配置，因为像 IDE 这种多配置生成器不会在配置过程中生成配置时间，只有在构建时可以通过生成器表达式和 `*_<CONFIG>` 这类变量可以获得。
 
-Other common uses for generator expressions:
+一些生成器表达式的其他用途：
 
-* Limiting an item to a certain language only, such as CXX, to avoid it mixing with something like CUDA, or wrapping it so that it is different depending on target language.
-* Accessing configuration dependent properties, like target file location.
-* Giving a different location for build and install directories.
++ 限制某个项目的语言，例如可以限制其语言为 CXX 来避免它和 CUDA 等语言混在一起，或者可以通过封装它来使得他对不同的语言有不同的表现。
++ 获得与属性相关的配置，例如文件的位置。
++ 为构建和安装生成不同的位置。
 
-That last one is very common. You'll see something like this in almost every package that supports installing:
+最后一个是常见的。你几乎会在所有支持安装的软件包中看到如下代码：
 
 ```cmake
 target_include_directories(
@@ -63,12 +67,11 @@ target_include_directories(
 )
 ```
 
-## Macros and Functions
+## 宏定义与函数
 
-You can define your own CMake «command:`function`» or «command:`macro`» easily. The only difference between a function and a macro is scope; macros don't have one. So, if you set a variable in a function and want it to be visible outside, you'll need `PARENT_SCOPE`. Nesting functions therefore is a bit tricky, since you'll have to explicitly set the variables you want visible to the outside world to `PARENT_SCOPE` in each function. But, functions don't "leak" all their variables like macros do. For the
-following examples, I'll use functions.
+你可以轻松地定义你自己的 CMake «command:`function`» 或 «command:`macro`» 。函数和宏只有作用域上存在区别，宏没有作用域的限制。所以说，如果你想让函数中定义的变量对外部可见，你需要使用 `PARENT_SCOPE` 来改变其作用域。如果是在嵌套函数中，这会变得异常繁琐，因为你必须在想要变量对外的可见的所有函数中添加 `PARENT_SCOPE` 标志。但是这样也有好处，函数不会像宏那样对外“泄漏”所有的变量。接下来用函数举一个例子：
 
-An example of a simple function is as follows:
+下面十一个简单的函数的例子：
 
 ```cmake
 function(SIMPLE REQUIRED_ARG)
@@ -80,18 +83,18 @@ simple(This Foo Bar)
 message("Output: ${This}")
 ```
 
-The output would be:
+输出如下：
 
 ```
 -- Simple arguments: This, followed by Foo;Bar
 Output: From SIMPLE
 ```
 
-If you want positional arguments, they are listed explicitly, and all other arguments are collected in `ARGN` (`ARGV` holds all arguments, even the ones you list). You have to work around the fact that CMake does not have return values by setting variables. In the example above, you can explicitly give a variable name to set.
+如果你想要有一个指定的参数，你应该在列表中明确的列出，初此之外的所有参数都会被存储在 `ARGN` 这个变量中（ `ARGV` 中存储了所有的变量，包括你明确列出的）。CMake 的函数没有返回值，你可以通过设定变量值的形式来达到同样地目的（译者注：类似于引用）。在上面的例子中，你可以通过指定变量名来设置一个变量的值。
 
-## Arguments
+## 参数的控制
 
-CMake has a named variable system that you've already seen in most of the build in CMake functions. You can use it with the «command:`cmake_parse_arguments`» function. If you want to support a version of CMake less than 3.5, you'll want to also include the «module:CMakeParseArguments» module, which is where it used to live before becoming a built in command. Here is an example of how to use it:
+你应该已经在很多 CMake 函数中见到过，CMake 拥有一个变量命名系统。你可以通过 «command:`cmake_parse_arguments`» 函数来对变量进行命名与解析。如果你想在低于 3.5 版本的CMake 系统中使用它，你应该包含 «module:CMakeParseArguments» 模块，此函数在 CMake 3.5 之前一直存在与上述模块中。这是使用它的一个例子：
 
 ```cmake
 function(COMPLEX)
@@ -107,7 +110,7 @@ endfunction()
 complex(SINGLE ONE_VALUE value MULTI_VALUES some other values)
 ```
 
-Inside the function after this call, you'll find:
+在调用这个函数后，会生成以下变量：
 
 ```cmake
 COMPLEX_PREFIX_SINGLE = TRUE
@@ -117,8 +120,7 @@ COMPLEX_PREFIX_ALSO_ONE_VALUE = <UNDEFINED>
 COMPLEX_PREFIX_MULTI_VALUES = "some;other;values"
 ```
 
-If you look at the official page, you'll see a slightly different method using set to avoid explicitly writing the semicolons in the list; feel free to use the structure you like best. You can mix it with the positional arguments listed above; any remaining arguments (therefore optional positional arguments) are in `COMPLEX_PREFIX_UNPARSED_ARGUMENTS`.
+如果你查看了官方文档，你会发现可以通过 set 来避免在 list 中使用分号，你可以根据个人喜好来确定使用哪种结构。你可以在上面列出的位置参数中混用这两种写法。此外，其他剩余的参数（因此参数的指定是可选的）都会被保存在 `COMPLEX_PREFIX_UNPARSED_ARGUMENTS` 变量中。
 
-
-[^1]: They act as if they are evaluated at build/install time, though actually they are evaluated for each build configuration.
-[^2]: The CMake docs splits expressions into Informational, Logical, and Output.
+[^1]: 他们看起来像是在构建或安装时被评估的，但实际上他们只对每个构建中的配置进行评估。
+[^2]: CMake 官方文档中将表达式分为信息表达式，逻辑表达式和输出表达式。
