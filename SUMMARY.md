@@ -7,7 +7,7 @@
     * [What's new in CMake](chapters/intro/newcmake.md)
 * [基础知识简介](chapters/basics.md)
     * [变量与缓存](chapters/basics/variables.md)
-    * [Programming in CMake](chapters/basics/functions.md)
+    * [用 CMake 进行编程](chapters/basics/functions.md)
     * [Communicating with your code](chapters/basics/comms.md)
     * [How to Structure Your Project](chapters/basics/structure.md)
     * [Running Other Programs](chapters/basics/programs.md)
