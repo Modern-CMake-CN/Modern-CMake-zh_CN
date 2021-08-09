@@ -1,7 +1,7 @@
 # 变量与缓存
 
 ## 本地变量
-我们首先讨论变量。你可以这样声明一个本地 (local) 变量：
+我们首先讨论变量。你可以这样声明一个本地 ( local ) 变量：
 
 ```CMake
 set(MY_VARIABLE "value")
@@ -27,7 +27,7 @@ set(MY_LIST "one;two")
 
 ## 缓存变量
 
-CMake提供了一个缓存变量来允许你从命令行中设置变量。CMake中已经有一些预置的变量，像 `CMAKE_BUILD_TYPE` 。如果一个变量还没有被定义，你可以这样声明并设置它。
+CMake 提供了一个缓存变量来允许你从命令行中设置变量。CMake 中已经有一些预置的变量，像 `CMAKE_BUILD_TYPE` 。如果一个变量还没有被定义，你可以这样声明并设置它。
 
 ```cmake
 set(MY_CACHE_VARIABLE "VALUE" CACHE STRING "Description")
@@ -78,7 +78,7 @@ set_target_properties(TargetName PROPERTIES
                       CXX_STANDARD 11)
 ```
 
-第一种方式更加通用 (general) ，它可以一次性设置多个目标、文件、或测试，并且有一些非常有用的选项。第二种方式是为一个目标设置多个属性的快捷方式。此外，你可以通过类似于下面的方式来获得属性：
+第一种方式更加通用 ( general ) ，它可以一次性设置多个目标、文件、或测试，并且有一些非常有用的选项。第二种方式是为一个目标设置多个属性的快捷方式。此外，你可以通过类似于下面的方式来获得属性：
 
 ```cmake
 get_property(ResultVariable TARGET TargetName PROPERTY CXX_STANDARD)
