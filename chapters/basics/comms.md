@@ -1,10 +1,10 @@
-# Communication with your code
+# 与你的代码交互
 
-## Configure File
+## 通过 CMake 配置文件
 
-CMake allows you to access CMake variables from your code using `configure_file`. This command copies a file (traditionally ending in `.in`) from one place to another, substituting all CMake variables it finds. If you want to avoid replacing existing `${}` syntax in your input file, use the `@ONLY` keyword. There's also a `COPY_ONLY` keyword if you are just using this as a replacement for `file(COPY`.
+CMake 允许你在代码中使用 `configure_file` 来访问 CMake 变量。该命令将一个文件（一般以 `.in` 结尾）的内容复制到另一个文件中，并替换其中它找到的所有 CMake 变量。如果你想要在你的输入文件中避免替换掉使用  `${}` 包含的内容，你可以使用 `@ONLY` 关键字。还有一个关键字 `COPY_ONLY` 可以用来作为 `file(COPY` 的替代字（译者注：还不是很懂是啥意思）
 
-This functionality is used quite frequently; for example, on `Version.h.in`:
+这个功能在 CMake 中使用的相当频繁，例如在下面的 `Version.h.in`  中：
 
 #### Version.h.in
 
@@ -26,13 +26,13 @@ configure_file (
 )
 ```
 
-You should include the binary include directory as well when building your project. If you want to put any true/false variables in a header, CMake has C specific `#cmakedefine` and `#cmakedefine01` replacements to make appropriate define lines.
+在构建你的项目时，你也应该包括二进制头文件路径。如果你想要在头文件中包含一些 `true/false` 类型的变量，CMake 对 C 语言有特有的 `#cmakedefine` 和 `#cmakedefine01` 替换符来完成上述需求。
 
-You can also (and often do) use this to produce `.cmake` files, such as the configure files (see [installing](https://cliutils.gitlab.io/modern-cmake/chapters/install/installing.html)).
+你也可以使用（并且是常用）这个来生成 `.cmake` 文件，例如配置文件（见 [installing](https://cliutils.gitlab.io/modern-cmake/chapters/install/installing.html)）。
 
-## Reading files
+## 读入文件
 
-The other direction can be done too; you can read in something (like a version) from your source files. If you have a header only library that you'd like to make available with or without CMake, for example, then this would be the best way to handle a version. This would look something like this:
+另外一个方向也是行得通的， 你也可以从源文件中读取一些东西（例如版本号）。例如，你有一个仅包含头文件的库，你想要其在无论有无 CMake 的情况下都可以使用，上述方式将是你处理版本的最优方案。可以像下面这么写：
 
 ```cmake
 # Assuming the canonical version is listed in a single line
@@ -50,4 +50,4 @@ string(REGEX REPLACE ${VERSION_REGEX} "\\1" VERSION_STRING "${VERSION_STRING}")
 project(My LANGUAGES CXX VERSION ${VERSION_STRING})
 ```
 
-Above, `file(STRINGS file_name variable_name REGEX regex)` picks lines that match a regex; and the same regex is used to then pick out the parentheses capture group with the version part. Replace is used with back substitution to output only that one group.
+如上所示， `file(STRINGS file_name variable_name REGEX regex)` 选择了与正则表达式相匹配的行，并且使用了相同的正则表达式来匹配出其中版本号的部分。
