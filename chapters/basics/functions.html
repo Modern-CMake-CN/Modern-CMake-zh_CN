@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Programming in CMake · Modern CMake</title>
+        <title>用 CMake 进行编程 · Modern CMake</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -226,7 +226,7 @@
                 <a href="functions.html">
             
                     
-                    Programming in CMake
+                    用 CMake 进行编程
             
                 </a>
             
@@ -239,7 +239,7 @@
                 <a href="comms.html">
             
                     
-                    Communicating with your code
+                    与你的代码交互
             
                 </a>
             
@@ -721,7 +721,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >Programming in CMake</a>
+        <a href="../.." >用 CMake 进行编程</a>
     </h1>
 </div>
 
@@ -736,9 +736,9 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="programming-in-cmake">Programming in CMake</h1>
-<h2 id="control-flow">Control flow</h2>
-<p>CMake has an <a href="https://cmake.org/cmake/help/latest/command/if.html" target="_blank"><code>if</code></a> statement, though over the years it has become rather complex. There are a series of all caps keywords you can use inside an if statement, and you can often refer to variables by either directly by name or using the <code>${}</code> syntax (the if statement historically predates variable expansion). An example if statement:</p>
+                                <h1 id="&#x7528;-cmake-&#x8FDB;&#x884C;&#x7F16;&#x7A0B;">&#x7528; CMake &#x8FDB;&#x884C;&#x7F16;&#x7A0B;</h1>
+<h2 id="&#x63A7;&#x5236;&#x6D41;&#x7A0B;">&#x63A7;&#x5236;&#x6D41;&#x7A0B;</h2>
+<p>CMake &#x6709;&#x4E00;&#x4E2A; <a href="https://cmake.org/cmake/help/latest/command/if.html" target="_blank"><code>if</code></a> &#x8BED;&#x53E5;&#xFF0C;&#x5C3D;&#x7BA1;&#x7ECF;&#x8FC7;&#x591A;&#x6B21;&#x7248;&#x672C;&#x8FED;&#x4EE3;&#x5B83;&#x5DF2;&#x7ECF;&#x53D8;&#x5F97;&#x975E;&#x5E38;&#x590D;&#x6742;&#x3002;&#x8FD9;&#x91CC;&#x6709;&#x4E00;&#x4E9B;&#x5168;&#x5927;&#x5199;&#x7684;&#x53D8;&#x91CF;&#x4F60;&#x53EF;&#x4EE5;&#x5728; <code>if</code> &#x8BED;&#x53E5;&#x4E2D;&#x4F7F;&#x7528;&#xFF0C;&#x5E76;&#x4E14;&#x4F60;&#x65E2;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x5F15;&#x7528;&#x4E5F;&#x53EF;&#x4EE5;&#x5229;&#x7528; <code>${}</code> &#x6765;&#x5BF9;&#x4ED6;&#x8FDB;&#x884C;&#x89E3;&#x6790;&#xFF08; <code>if</code> &#x8BED;&#x53E5;&#x5728;&#x5386;&#x53F2;&#x4E0A;&#x6BD4;&#x53D8;&#x91CF;&#x62D3;&#x5C55;&#x51FA;&#x73B0;&#x7684;&#x66F4;&#x65E9;&#xFF09;&#x3002;&#x8FD9;&#x662F;&#x4E00;&#x4E2A; <code>if</code> &#x8BED;&#x53E5;&#x7684;&#x4F8B;&#x5B50;&#xFF1A;</p>
 <pre><code class="lang-cmake"><span class="hljs-keyword">if</span>(variable)
     <span class="hljs-comment"># If variable is `ON`, `YES`, `TRUE`, `Y`, or non zero number</span>
 <span class="hljs-keyword">else</span>()
@@ -746,34 +746,34 @@
 <span class="hljs-keyword">endif</span>()
 <span class="hljs-comment"># If variable does not expand to one of the above, CMake will expand it then try again</span>
 </code></pre>
-<p>Since this can be a little confusing if you explicitly put a variable expansion, like <code>${variable}</code>, due to the potential expansion of an expansion, a policy (<a href="https://cmake.org/cmake/help/latest/policy/CMP0054.html" target="_blank">CMP0054</a>) was added in CMake 3.1+ that keeps a quoted expansion from being expanded yet again. So, as long as the minimum version of CMake is 3.1+, you can do:</p>
+<p>&#x5982;&#x679C;&#x4F60;&#x5728;&#x8FD9;&#x91CC;&#x4F7F;&#x7528; <code>${variable}</code> &#x53EF;&#x80FD;&#x4F1A;&#x6709;&#x4E00;&#x4E9B;&#x5947;&#x602A;&#xFF0C;&#x56E0;&#x4E3A;&#x770B;&#x8D77;&#x6765;&#x5B83;&#x597D;&#x50CF; <code>variable</code> &#x88AB;&#x5C55;&#x5F00; (expansion) &#x4E86;&#x4E24;&#x6B21;&#x3002;&#x5728; CMake 3.1+ &#x7248;&#x672C;&#x4E2D;&#x52A0;&#x5165;&#x4E86;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x7279;&#x6027; (<a href="https://cmake.org/cmake/help/latest/policy/CMP0054.html" target="_blank">CMP0054</a>) &#xFF0C;CMake &#x4E0D;&#x4F1A;&#x518D;&#x5C55;&#x5F00;&#x5DF2;&#x7ECF;&#x88AB;&#x5F15;&#x53F7;&#x62EC;&#x8D77;&#x6765;&#x7684;&#x5C55;&#x5F00;&#x53D8;&#x91CF;&#x3002;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x7684; CMake &#x7248;&#x672C;&#x5927;&#x4E8E; <code>3.1</code> &#xFF0C;&#x90A3;&#x4E48;&#x4F60;&#x53EF;&#x4EE5;&#x8FD9;&#x4E48;&#x5199;&#xFF1A;</p>
 <pre><code class="lang-cmake"><span class="hljs-keyword">if</span>(<span class="hljs-string">&quot;${variable}&quot;</span>)
     <span class="hljs-comment"># True if variable is not false-like</span>
 <span class="hljs-keyword">else</span>()
     <span class="hljs-comment"># Note that undefined variables would be `&quot;&quot;` thus false</span>
 <span class="hljs-keyword">endif</span>()
 </code></pre>
-<p>There are a variety of keywords as well, such as:</p>
+<p>&#x8FD9;&#x91CC;&#x8FD8;&#x6709;&#x4E00;&#x4E9B;&#x5173;&#x952E;&#x5B57;&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;</p>
 <ul>
-<li>Unary: <code>NOT</code>, <code>TARGET</code>, <code>EXISTS</code> (file), <code>DEFINED</code>, etc.</li>
-<li>Binary: <code>STREQUAL</code>, <code>AND</code>, <code>OR</code>, <code>MATCHES</code> (regular expression), <code>VERSION_LESS</code>, <code>VERSION_LESS_EQUAL</code> (CMake 3.7+), etc.</li>
-<li>Parentheses can be used to group</li>
+<li>&#x4E00;&#x5143;&#x7684;: <code>NOT</code>, <code>TARGET</code>, <code>EXISTS</code> (&#x6587;&#x4EF6;), <code>DEFINED</code>, &#x7B49;&#x3002;</li>
+<li>&#x4E8C;&#x5143;&#x7684;: <code>STREQUAL</code>, <code>AND</code>, <code>OR</code>, <code>MATCHES</code> (&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;), <code>VERSION_LESS</code>, <code>VERSION_LESS_EQUAL</code> (CMake 3.7+), &#x7B49;&#x3002;</li>
+<li>&#x62EC;&#x53F7;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x5206;&#x7EC4;</li>
 </ul>
 <h2 id="generator-expressions"><a href="https://cmake.org/cmake/help/latest/manual/cmake-generator-expressions.7.html" target="_blank">generator-expressions</a></h2>
-<p><a href="https://cmake.org/cmake/help/latest/manual/cmake-generator-expressions.7.html" target="_blank">generator-expressions</a> are really powerful, but a bit odd and specialized. Most CMake commands happen at configure time, include the if statements seen above. But what if you need logic to occur at build time or even install time? Generator expressions were added for this purpose.<sup><a href="#fn_1" id="reffn_1">1</a></sup> They are evaluated in target properties.</p>
-<p>The simplest generator expressions are informational expressions, and are of the form <code>$&lt;KEYWORD&gt;</code>; they evaluate to a piece of information relevant for the current configuration. The other form is <code>$&lt;KEYWORD:value&gt;</code>, where <code>KEYWORD</code> is a keyword that controls the evaluation, and value is the item to evaluate (an informational expression keyword is allowed here, too). If KEYWORD is a generator expression or variable that evaluates to 0 or 1, <code>value</code> is substituted
-if 1 and not if 0. You can nest generator expressions, and you can use variables to make reading nested variables bearable. Some
-expressions allow multiple values, separated by commas.<sup><a href="#fn_2" id="reffn_2">2</a></sup></p>
-<p>If you want to put a compile flag only for the DEBUG configuration, for example, you could do:</p>
+<p><a href="https://cmake.org/cmake/help/latest/manual/cmake-generator-expressions.7.html" target="_blank">generator-expressions</a> &#x8BED;&#x53E5;&#x5341;&#x5206;&#x5F3A;&#x5927;&#xFF0C;&#x4E0D;&#x8FC7;&#x6709;&#x70B9;&#x5947;&#x602A;&#x548C;&#x4E13;&#x4E1A; (specialized) &#x3002;&#x5927;&#x591A;&#x6570; CMake &#x547D;&#x4EE4;&#x5728;&#x914D;&#x7F6E;&#x7684;&#x65F6;&#x5019;&#x6267;&#x884C;&#xFF0C;&#x5305;&#x62EC;&#x6211;&#x4EEC;&#x4E0A;&#x9762;&#x770B;&#x5230;&#x7684; <code>if</code> &#x8BED;&#x53E5;&#x3002;&#x4F46;&#x662F;&#x5982;&#x679C;&#x4F60;&#x60F3;&#x8981;&#x4ED6;&#x4EEC;&#x5728;&#x6784;&#x5EFA;&#x6216;&#x8005;&#x5B89;&#x88C5;&#x7684;&#x65F6;&#x5019;&#x8FD0;&#x884C;&#x5462;&#xFF0C;&#x5E94;&#x8BE5;&#x600E;&#x4E48;&#x5199;&#xFF1F; &#x751F;&#x6210;&#x5668;&#x8868;&#x8FBE;&#x5F0F;&#x5C31;&#x662F;&#x4E3A;&#x6B64;&#x800C;&#x751F;<sup><a href="#fn_1" id="reffn_1">1</a></sup>&#x3002;&#x5B83;&#x4EEC;&#x5728;&#x76EE;&#x6807;&#x5C5E;&#x6027;&#x4E2D;&#x88AB;&#x8BC4;&#x4F30;&#xFF08;evaluate&#xFF09;&#xFF1A;</p>
+<p>&#x6700;&#x7B80;&#x5355;&#x7684;&#x751F;&#x6210;&#x5668;&#x8868;&#x8FBE;&#x5F0F;&#x662F;&#x4FE1;&#x606F;&#x8868;&#x8FBE;&#x5F0F;&#xFF0C;&#x5176;&#x5F62;&#x5F0F;&#x4E3A; <code>$&lt;KEYWORD&gt;</code>&#xFF1B;&#x5B83;&#x4F1A;&#x8BC4;&#x4F30;&#x548C;&#x5F53;&#x524D;&#x914D;&#x7F6E;&#x76F8;&#x5173;&#x7684;&#x4E00;&#x7CFB;&#x5217;&#x4FE1;&#x606F;&#x3002;&#x4FE1;&#x606F;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x53E6;&#x4E00;&#x4E2A;&#x5F62;&#x5F0F;&#x662F; <code>${KEYWORD:value}</code>&#xFF0C;&#x5176;&#x4E2D; <code>KEYWORD</code> &#x662F;&#x4E00;&#x4E2A;&#x63A7;&#x5236;&#x8BC4;&#x4F30;&#x7684;&#x5173;&#x952E;&#x5B57;&#xFF0C;&#x800C; <code>value</code> &#x5219;&#x662F;&#x9700;&#x8981;&#x8FDB;&#x884C;&#x6BD4;&#x8F83;&#x7684;&#x503C;&#xFF08;&#x8FD9;&#x91CC;&#x7684; <code>KEYWORD</code> &#x4E5F;&#x5141;&#x8BB8;&#x4F7F;&#x7528;&#x4FE1;&#x606F;&#x8868;&#x8FBE;&#x5F0F;&#xFF09;&#x3002;&#x5982;&#x679C; <code>KEYWORD</code> &#x662F;&#x4E00;&#x4E2A;&#x751F;&#x6210;&#x5668;&#x8868;&#x8FBE;&#x5F0F;&#x6216;&#x8005;&#x53D8;&#x91CF;&#x4E3A; 0 &#x6216;&#x8005;&#x662F; 1&#xFF0C;&#x90A3;&#x4E48; <code>value</code> &#x5C06;&#x4F1A;&#x88AB;&#x66FF;&#x6362;&#x4E3A; 1 &#x800C;&#x4E0D;&#x662F; 0 &#x3002;&#x4F60;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x5D4C;&#x5957;&#x7684;&#x751F;&#x6210;&#x5668;&#x8868;&#x8FBE;&#x5F0F;&#xFF0C;&#x4F60;&#x4E5F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x53D8;&#x91CF;&#x6765;&#x4F7F;&#x5F97;&#x81EA;&#x5DF1;&#x66F4;&#x5BB9;&#x6613;&#x7406;&#x89E3;&#x5D4C;&#x5957;&#x7684;&#x53D8;&#x91CF;&#x3002;&#x4E00;&#x4E9B;&#x8868;&#x8FBE;&#x5F0F;&#x4E5F;&#x53EF;&#x4EE5;&#x6709;&#x591A;&#x4E2A;&#x503C;&#xFF0C;&#x503C;&#x4E4B;&#x95F4;&#x901A;&#x8FC7;&#x9017;&#x53F7;&#x5206;&#x9694;<sup><a href="#fn_2" id="reffn_2">2</a></sup>&#x3002;</p>
+<p><div class="alert alert-info hints-alert"><div class="hints-icon"><i class="fa fa-info-circle"></i></div><div class="hints-container"><p>&#x8BD1;&#x8005;&#x6CE8;&#xFF1A;&#x8FD9;&#x91CC;&#x6709;&#x70B9;&#x7C7B;&#x4F3C;&#x4E8E; C &#x8BED;&#x8A00;&#x4E2D;&#x7684;&#x6761;&#x4EF6;&#x8FD0;&#x7B97;&#x7B26;&#x3002;&#x8FD9;&#x91CC;&#x7531;&#x4E8E;&#x8BD1;&#x8005;&#x82F1;&#x8BED;&#x6C34;&#x5E73;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x7FFB;&#x8BD1;&#x7684;&#x4E0D;&#x591F;&#x6E05;&#x695A;&#xFF0C;&#x540E;&#x7EED;&#x4F1A;&#x6539;&#x5584;&#x3002;</p>
+</div></div></p>
+<p>&#x5982;&#x679C;&#x4F60;&#x6709;&#x4E00;&#x4E2A;&#x53EA;&#x60F3;&#x5728; DEBUG &#x6A21;&#x5F0F;&#x4E0B;&#x5F00;&#x542F;&#x7684;&#x7F16;&#x8BD1;&#x6807;&#x5FD7;&#xFF08;flag&#xFF09;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x8FD9;&#x6837;&#x505A;&#xFF1A;</p>
 <pre><code>target_compile_options(MyTarget PRIVATE &quot;$&lt;$&lt;CONFIG:Debug&gt;:--my-flag&gt;&quot;)
-</code></pre><p>This is a newer, better way to add things than using specialized <code>*_DEBUG</code> variables, and generalized to all the things generator expressions support. Note that you should never, never use the configure time value for the current configuration, because multi-configuration generators like IDEs do not have a &quot;current&quot; configuration at configure time, only at build time through generator expressions and custom <code>*_&lt;CONFIG&gt;</code> variables.</p>
-<p>Other common uses for generator expressions:</p>
+</code></pre><p>&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x76F8;&#x6BD4;&#x4E0E;&#x6307;&#x5B9A;&#x4E00;&#x4E9B;&#x5F62;&#x5982; <code>*_DEBUG</code> &#x8FD9;&#x6837;&#x7684;&#x53D8;&#x91CF;&#x66F4;&#x52A0;&#x65B0;&#x9896;&#x5E76;&#x4E14;&#x66F4;&#x52A0;&#x4F18;&#x96C5;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x5E76;&#x4E14;&#x8FD9;&#x5BF9;&#x6240;&#x6709;&#x652F;&#x6301;&#x751F;&#x6210;&#x5668;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x8BBE;&#x7F6E;&#x90FD;&#x901A;&#x7528;&#x3002;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x4F60;&#x5E94;&#x8BE5;&#x6C38;&#x8FDC;&#x90FD;&#x4E0D;&#x8981;&#x4F7F;&#x7528;&#x914D;&#x7F6E;&#x65F6;&#x95F4;&#x7684;&#x503C;&#x4F5C;&#x4E3A;&#x5F53;&#x524D;&#x7684;&#x914D;&#x7F6E;&#xFF0C;&#x56E0;&#x4E3A;&#x50CF; IDE &#x8FD9;&#x79CD;&#x591A;&#x914D;&#x7F6E;&#x751F;&#x6210;&#x5668;&#x4E0D;&#x4F1A;&#x5728;&#x914D;&#x7F6E;&#x8FC7;&#x7A0B;&#x4E2D;&#x751F;&#x6210;&#x914D;&#x7F6E;&#x65F6;&#x95F4;&#xFF0C;&#x53EA;&#x6709;&#x5728;&#x6784;&#x5EFA;&#x65F6;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x751F;&#x6210;&#x5668;&#x8868;&#x8FBE;&#x5F0F;&#x548C; <code>*_&lt;CONFIG&gt;</code> &#x8FD9;&#x7C7B;&#x53D8;&#x91CF;&#x53EF;&#x4EE5;&#x83B7;&#x5F97;&#x3002;</p>
+<p>&#x4E00;&#x4E9B;&#x751F;&#x6210;&#x5668;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x5176;&#x4ED6;&#x7528;&#x9014;&#xFF1A;</p>
 <ul>
-<li>Limiting an item to a certain language only, such as CXX, to avoid it mixing with something like CUDA, or wrapping it so that it is different depending on target language.</li>
-<li>Accessing configuration dependent properties, like target file location.</li>
-<li>Giving a different location for build and install directories.</li>
+<li>&#x9650;&#x5236;&#x67D0;&#x4E2A;&#x9879;&#x76EE;&#x7684;&#x8BED;&#x8A00;&#xFF0C;&#x4F8B;&#x5982;&#x53EF;&#x4EE5;&#x9650;&#x5236;&#x5176;&#x8BED;&#x8A00;&#x4E3A; CXX &#x6765;&#x907F;&#x514D;&#x5B83;&#x548C; CUDA &#x7B49;&#x8BED;&#x8A00;&#x6DF7;&#x5728;&#x4E00;&#x8D77;&#xFF0C;&#x6216;&#x8005;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5C01;&#x88C5;&#x5B83;&#x6765;&#x4F7F;&#x5F97;&#x4ED6;&#x5BF9;&#x4E0D;&#x540C;&#x7684;&#x8BED;&#x8A00;&#x6709;&#x4E0D;&#x540C;&#x7684;&#x8868;&#x73B0;&#x3002;</li>
+<li>&#x83B7;&#x5F97;&#x4E0E;&#x5C5E;&#x6027;&#x76F8;&#x5173;&#x7684;&#x914D;&#x7F6E;&#xFF0C;&#x4F8B;&#x5982;&#x6587;&#x4EF6;&#x7684;&#x4F4D;&#x7F6E;&#x3002;</li>
+<li>&#x4E3A;&#x6784;&#x5EFA;&#x548C;&#x5B89;&#x88C5;&#x751F;&#x6210;&#x4E0D;&#x540C;&#x7684;&#x4F4D;&#x7F6E;&#x3002;</li>
 </ul>
-<p>That last one is very common. You&apos;ll see something like this in almost every package that supports installing:</p>
+<p>&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x662F;&#x5E38;&#x89C1;&#x7684;&#x3002;&#x4F60;&#x51E0;&#x4E4E;&#x4F1A;&#x5728;&#x6240;&#x6709;&#x652F;&#x6301;&#x5B89;&#x88C5;&#x7684;&#x8F6F;&#x4EF6;&#x5305;&#x4E2D;&#x770B;&#x5230;&#x5982;&#x4E0B;&#x4EE3;&#x7801;&#xFF1A;</p>
 <pre><code class="lang-cmake">target_include_directories(
     MyTarget
   PUBLIC
@@ -781,10 +781,9 @@ expressions allow multiple values, separated by commas.<sup><a href="#fn_2" id="
     $&lt;INSTALL_INTERFACE:<span class="hljs-keyword">include</span>&gt;
 )
 </code></pre>
-<h2 id="macros-and-functions">Macros and Functions</h2>
-<p>You can define your own CMake <a href="https://cmake.org/cmake/help/latest/command/function.html" target="_blank"><code>function</code></a> or <a href="https://cmake.org/cmake/help/latest/command/macro.html" target="_blank"><code>macro</code></a> easily. The only difference between a function and a macro is scope; macros don&apos;t have one. So, if you set a variable in a function and want it to be visible outside, you&apos;ll need <code>PARENT_SCOPE</code>. Nesting functions therefore is a bit tricky, since you&apos;ll have to explicitly set the variables you want visible to the outside world to <code>PARENT_SCOPE</code> in each function. But, functions don&apos;t &quot;leak&quot; all their variables like macros do. For the
-following examples, I&apos;ll use functions.</p>
-<p>An example of a simple function is as follows:</p>
+<h2 id="&#x5B8F;&#x5B9A;&#x4E49;&#x4E0E;&#x51FD;&#x6570;">&#x5B8F;&#x5B9A;&#x4E49;&#x4E0E;&#x51FD;&#x6570;</h2>
+<p>&#x4F60;&#x53EF;&#x4EE5;&#x8F7B;&#x677E;&#x5730;&#x5B9A;&#x4E49;&#x4F60;&#x81EA;&#x5DF1;&#x7684; CMake <a href="https://cmake.org/cmake/help/latest/command/function.html" target="_blank"><code>function</code></a> &#x6216; <a href="https://cmake.org/cmake/help/latest/command/macro.html" target="_blank"><code>macro</code></a> &#x3002;&#x51FD;&#x6570;&#x548C;&#x5B8F;&#x53EA;&#x6709;&#x4F5C;&#x7528;&#x57DF;&#x4E0A;&#x5B58;&#x5728;&#x533A;&#x522B;&#xFF0C;&#x5B8F;&#x6CA1;&#x6709;&#x4F5C;&#x7528;&#x57DF;&#x7684;&#x9650;&#x5236;&#x3002;&#x6240;&#x4EE5;&#x8BF4;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x60F3;&#x8BA9;&#x51FD;&#x6570;&#x4E2D;&#x5B9A;&#x4E49;&#x7684;&#x53D8;&#x91CF;&#x5BF9;&#x5916;&#x90E8;&#x53EF;&#x89C1;&#xFF0C;&#x4F60;&#x9700;&#x8981;&#x4F7F;&#x7528; <code>PARENT_SCOPE</code> &#x6765;&#x6539;&#x53D8;&#x5176;&#x4F5C;&#x7528;&#x57DF;&#x3002;&#x5982;&#x679C;&#x662F;&#x5728;&#x5D4C;&#x5957;&#x51FD;&#x6570;&#x4E2D;&#xFF0C;&#x8FD9;&#x4F1A;&#x53D8;&#x5F97;&#x5F02;&#x5E38;&#x7E41;&#x7410;&#xFF0C;&#x56E0;&#x4E3A;&#x4F60;&#x5FC5;&#x987B;&#x5728;&#x60F3;&#x8981;&#x53D8;&#x91CF;&#x5BF9;&#x5916;&#x7684;&#x53EF;&#x89C1;&#x7684;&#x6240;&#x6709;&#x51FD;&#x6570;&#x4E2D;&#x6DFB;&#x52A0; <code>PARENT_SCOPE</code> &#x6807;&#x5FD7;&#x3002;&#x4F46;&#x662F;&#x8FD9;&#x6837;&#x4E5F;&#x6709;&#x597D;&#x5904;&#xFF0C;&#x51FD;&#x6570;&#x4E0D;&#x4F1A;&#x50CF;&#x5B8F;&#x90A3;&#x6837;&#x5BF9;&#x5916;&#x201C;&#x6CC4;&#x6F0F;&#x201D;&#x6240;&#x6709;&#x7684;&#x53D8;&#x91CF;&#x3002;&#x63A5;&#x4E0B;&#x6765;&#x7528;&#x51FD;&#x6570;&#x4E3E;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#xFF1A;</p>
+<p>&#x4E0B;&#x9762;&#x5341;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x51FD;&#x6570;&#x7684;&#x4F8B;&#x5B50;&#xFF1A;</p>
 <pre><code class="lang-cmake"><span class="hljs-keyword">function</span>(SIMPLE REQUIRED_ARG)
     <span class="hljs-keyword">message</span>(STATUS <span class="hljs-string">&quot;Simple arguments: ${REQUIRED_ARG}, followed by ${ARGN}&quot;</span>)
     <span class="hljs-keyword">set</span>(<span class="hljs-variable">${REQUIRED_ARG}</span> <span class="hljs-string">&quot;From SIMPLE&quot;</span> PARENT_SCOPE)
@@ -793,12 +792,12 @@ following examples, I&apos;ll use functions.</p>
 simple(This Foo Bar)
 <span class="hljs-keyword">message</span>(<span class="hljs-string">&quot;Output: ${This}&quot;</span>)
 </code></pre>
-<p>The output would be:</p>
+<p>&#x8F93;&#x51FA;&#x5982;&#x4E0B;&#xFF1A;</p>
 <pre><code>-- Simple arguments: This, followed by Foo;Bar
 Output: From SIMPLE
-</code></pre><p>If you want positional arguments, they are listed explicitly, and all other arguments are collected in <code>ARGN</code> (<code>ARGV</code> holds all arguments, even the ones you list). You have to work around the fact that CMake does not have return values by setting variables. In the example above, you can explicitly give a variable name to set.</p>
-<h2 id="arguments">Arguments</h2>
-<p>CMake has a named variable system that you&apos;ve already seen in most of the build in CMake functions. You can use it with the <a href="https://cmake.org/cmake/help/latest/command/cmake_parse_arguments.html" target="_blank"><code>cmake_parse_arguments</code></a> function. If you want to support a version of CMake less than 3.5, you&apos;ll want to also include the <a href="https://cmake.org/cmake/help/latest/module/CMakeParseArguments.html" target="_blank">CMakeParseArguments</a> module, which is where it used to live before becoming a built in command. Here is an example of how to use it:</p>
+</code></pre><p>&#x5982;&#x679C;&#x4F60;&#x60F3;&#x8981;&#x6709;&#x4E00;&#x4E2A;&#x6307;&#x5B9A;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x4F60;&#x5E94;&#x8BE5;&#x5728;&#x5217;&#x8868;&#x4E2D;&#x660E;&#x786E;&#x7684;&#x5217;&#x51FA;&#xFF0C;&#x521D;&#x6B64;&#x4E4B;&#x5916;&#x7684;&#x6240;&#x6709;&#x53C2;&#x6570;&#x90FD;&#x4F1A;&#x88AB;&#x5B58;&#x50A8;&#x5728; <code>ARGN</code> &#x8FD9;&#x4E2A;&#x53D8;&#x91CF;&#x4E2D;&#xFF08; <code>ARGV</code> &#x4E2D;&#x5B58;&#x50A8;&#x4E86;&#x6240;&#x6709;&#x7684;&#x53D8;&#x91CF;&#xFF0C;&#x5305;&#x62EC;&#x4F60;&#x660E;&#x786E;&#x5217;&#x51FA;&#x7684;&#xFF09;&#x3002;CMake &#x7684;&#x51FD;&#x6570;&#x6CA1;&#x6709;&#x8FD4;&#x56DE;&#x503C;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8BBE;&#x5B9A;&#x53D8;&#x91CF;&#x503C;&#x7684;&#x5F62;&#x5F0F;&#x6765;&#x8FBE;&#x5230;&#x540C;&#x6837;&#x5730;&#x76EE;&#x7684;&#xFF08;&#x8BD1;&#x8005;&#x6CE8;&#xFF1A;&#x7C7B;&#x4F3C;&#x4E8E;&#x5F15;&#x7528;&#xFF09;&#x3002;&#x5728;&#x4E0A;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#x4E2D;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x6307;&#x5B9A;&#x53D8;&#x91CF;&#x540D;&#x6765;&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;&#x53D8;&#x91CF;&#x7684;&#x503C;&#x3002;</p>
+<h2 id="&#x53C2;&#x6570;&#x7684;&#x63A7;&#x5236;">&#x53C2;&#x6570;&#x7684;&#x63A7;&#x5236;</h2>
+<p>&#x4F60;&#x5E94;&#x8BE5;&#x5DF2;&#x7ECF;&#x5728;&#x5F88;&#x591A; CMake &#x51FD;&#x6570;&#x4E2D;&#x89C1;&#x5230;&#x8FC7;&#xFF0C;CMake &#x62E5;&#x6709;&#x4E00;&#x4E2A;&#x53D8;&#x91CF;&#x547D;&#x540D;&#x7CFB;&#x7EDF;&#x3002;&#x4F60;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; <a href="https://cmake.org/cmake/help/latest/command/cmake_parse_arguments.html" target="_blank"><code>cmake_parse_arguments</code></a> &#x51FD;&#x6570;&#x6765;&#x5BF9;&#x53D8;&#x91CF;&#x8FDB;&#x884C;&#x547D;&#x540D;&#x4E0E;&#x89E3;&#x6790;&#x3002;&#x5982;&#x679C;&#x4F60;&#x60F3;&#x5728;&#x4F4E;&#x4E8E; 3.5 &#x7248;&#x672C;&#x7684;CMake &#x7CFB;&#x7EDF;&#x4E2D;&#x4F7F;&#x7528;&#x5B83;&#xFF0C;&#x4F60;&#x5E94;&#x8BE5;&#x5305;&#x542B; <a href="https://cmake.org/cmake/help/latest/module/CMakeParseArguments.html" target="_blank">CMakeParseArguments</a> &#x6A21;&#x5757;&#xFF0C;&#x6B64;&#x51FD;&#x6570;&#x5728; CMake 3.5 &#x4E4B;&#x524D;&#x4E00;&#x76F4;&#x5B58;&#x5728;&#x4E0E;&#x4E0A;&#x8FF0;&#x6A21;&#x5757;&#x4E2D;&#x3002;&#x8FD9;&#x662F;&#x4F7F;&#x7528;&#x5B83;&#x7684;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#xFF1A;</p>
 <pre><code class="lang-cmake"><span class="hljs-keyword">function</span>(COMPLEX)
     cmake_parse_arguments(
         COMPLEX_PREFIX
@@ -811,19 +810,19 @@ Output: From SIMPLE
 
 complex(SINGLE ONE_VALUE value MULTI_VALUES some other values)
 </code></pre>
-<p>Inside the function after this call, you&apos;ll find:</p>
+<p>&#x5728;&#x8C03;&#x7528;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x540E;&#xFF0C;&#x4F1A;&#x751F;&#x6210;&#x4EE5;&#x4E0B;&#x53D8;&#x91CF;&#xFF1A;</p>
 <pre><code class="lang-cmake">COMPLEX_PREFIX_SINGLE = <span class="hljs-keyword">TRUE</span>
 COMPLEX_PREFIX_ANOTHER = <span class="hljs-keyword">FALSE</span>
 COMPLEX_PREFIX_ONE_VALUE = <span class="hljs-string">&quot;value&quot;</span>
 COMPLEX_PREFIX_ALSO_ONE_VALUE = &lt;UNDEFINED&gt;
 COMPLEX_PREFIX_MULTI_VALUES = <span class="hljs-string">&quot;some;other;values&quot;</span>
 </code></pre>
-<p>If you look at the official page, you&apos;ll see a slightly different method using set to avoid explicitly writing the semicolons in the list; feel free to use the structure you like best. You can mix it with the positional arguments listed above; any remaining arguments (therefore optional positional arguments) are in <code>COMPLEX_PREFIX_UNPARSED_ARGUMENTS</code>.</p>
+<p>&#x5982;&#x679C;&#x4F60;&#x67E5;&#x770B;&#x4E86;&#x5B98;&#x65B9;&#x6587;&#x6863;&#xFF0C;&#x4F60;&#x4F1A;&#x53D1;&#x73B0;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; set &#x6765;&#x907F;&#x514D;&#x5728; list &#x4E2D;&#x4F7F;&#x7528;&#x5206;&#x53F7;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x6839;&#x636E;&#x4E2A;&#x4EBA;&#x559C;&#x597D;&#x6765;&#x786E;&#x5B9A;&#x4F7F;&#x7528;&#x54EA;&#x79CD;&#x7ED3;&#x6784;&#x3002;&#x4F60;&#x53EF;&#x4EE5;&#x5728;&#x4E0A;&#x9762;&#x5217;&#x51FA;&#x7684;&#x4F4D;&#x7F6E;&#x53C2;&#x6570;&#x4E2D;&#x6DF7;&#x7528;&#x8FD9;&#x4E24;&#x79CD;&#x5199;&#x6CD5;&#x3002;&#x6B64;&#x5916;&#xFF0C;&#x5176;&#x4ED6;&#x5269;&#x4F59;&#x7684;&#x53C2;&#x6570;&#xFF08;&#x56E0;&#x6B64;&#x53C2;&#x6570;&#x7684;&#x6307;&#x5B9A;&#x662F;&#x53EF;&#x9009;&#x7684;&#xFF09;&#x90FD;&#x4F1A;&#x88AB;&#x4FDD;&#x5B58;&#x5728; <code>COMPLEX_PREFIX_UNPARSED_ARGUMENTS</code> &#x53D8;&#x91CF;&#x4E2D;&#x3002;</p>
 <blockquote id="fn_1">
-<sup>1</sup>. They act as if they are evaluated at build/install time, though actually they are evaluated for each build configuration.<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#x21A9;</a>
+<sup>1</sup>. &#x4ED6;&#x4EEC;&#x770B;&#x8D77;&#x6765;&#x50CF;&#x662F;&#x5728;&#x6784;&#x5EFA;&#x6216;&#x5B89;&#x88C5;&#x65F6;&#x88AB;&#x8BC4;&#x4F30;&#x7684;&#xFF0C;&#x4F46;&#x5B9E;&#x9645;&#x4E0A;&#x4ED6;&#x4EEC;&#x53EA;&#x5BF9;&#x6BCF;&#x4E2A;&#x6784;&#x5EFA;&#x4E2D;&#x7684;&#x914D;&#x7F6E;&#x8FDB;&#x884C;&#x8BC4;&#x4F30;&#x3002;<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#x21A9;</a>
 </blockquote>
 <blockquote id="fn_2">
-<sup>2</sup>. The CMake docs splits expressions into Informational, Logical, and Output.<a href="#reffn_2" title="Jump back to footnote [2] in the text."> &#x21A9;</a>
+<sup>2</sup>. CMake &#x5B98;&#x65B9;&#x6587;&#x6863;&#x4E2D;&#x5C06;&#x8868;&#x8FBE;&#x5F0F;&#x5206;&#x4E3A;&#x4FE1;&#x606F;&#x8868;&#x8FBE;&#x5F0F;&#xFF0C;&#x903B;&#x8F91;&#x8868;&#x8FBE;&#x5F0F;&#x548C;&#x8F93;&#x51FA;&#x8868;&#x8FBE;&#x5F0F;&#x3002;<a href="#reffn_2" title="Jump back to footnote [2] in the text."> &#x21A9;</a>
 </blockquote>
 
                                 
@@ -857,7 +856,7 @@ COMPLEX_PREFIX_MULTI_VALUES = <span class="hljs-string">&quot;some;other;values&
                 </a>
                 
                 
-                <a href="comms.html" class="navigation navigation-next " aria-label="Next page: Communicating with your code">
+                <a href="comms.html" class="navigation navigation-next " aria-label="Next page: 与你的代码交互">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -868,7 +867,7 @@ COMPLEX_PREFIX_MULTI_VALUES = <span class="hljs-string">&quot;some;other;values&
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Programming in CMake","level":"1.3.2","depth":2,"next":{"title":"Communicating with your code","level":"1.3.3","depth":2,"path":"chapters/basics/comms.md","ref":"chapters/basics/comms.md","articles":[]},"previous":{"title":"变量与缓存","level":"1.3.1","depth":2,"path":"chapters/basics/variables.md","ref":"chapters/basics/variables.md","articles":[]},"dir":"ltr"},"config":{"plugins":["replace","hints","term","include-codeblock","ace","github-edit"],"root":".","styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"ace":{},"search":{},"term":{"copyButtons":true,"fade":true,"lineStyles":true,"prompt":"(?<prompt>[^\\$^#^:]*)(?<pathsep>:?)(?<path>[^\\$^#]*?)(?<delimiter>[\\$#] )(?<command>.*)$","style":"default"},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"lunr":{"ignoreSpecialCharacters":false,"maxIndexSize":1000000},"fontsettings":{"family":"sans","size":2,"theme":"white"},"highlight":{},"github-edit":{"repo":"Modern-CMake-CN/Modern-CMake-zh_CN","branch":"master"},"replace":{"substitutes":[{"pattern":"«cmake:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/manual/cmake-$1.7.html)"},{"pattern":"«command:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/command/$1.html)"},{"pattern":"«envvar:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/envvar/$1.html)"},{"pattern":"«module:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/module/$1.html)"},{"pattern":"«policy:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/policy/$1.html)"},{"pattern":"«variable:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest//$1.html)"},{"pattern":"«prop:([^:]+):`?([^`^»]+)`?»","flags":"g","substitute":"[`$2`](https://cmake.org/cmake/help/latest/prop_$1/$2.html)"}]},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}}},"theme":"default","author":"Henry Schreiner","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Modern CMake","language":"zh-hans","links":{"sidebar":{"GitHub Repo":"https://github.com/Modern-CMake-CN/Modern-CMake-zh_CN"}},"gitbook":"3.x.x","description":"A guide to writing simple, powerful, and clean CMake 3.1+ builds."},"file":{"path":"chapters/basics/functions.md","mtime":"2021-08-09T08:53:06.908Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-09T08:55:32.529Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"用 CMake 进行编程","level":"1.3.2","depth":2,"next":{"title":"与你的代码交互","level":"1.3.3","depth":2,"path":"chapters/basics/comms.md","ref":"chapters/basics/comms.md","articles":[]},"previous":{"title":"变量与缓存","level":"1.3.1","depth":2,"path":"chapters/basics/variables.md","ref":"chapters/basics/variables.md","articles":[]},"dir":"ltr"},"config":{"plugins":["replace","hints","term","include-codeblock","ace","github-edit"],"root":".","styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"ace":{},"search":{},"term":{"copyButtons":true,"fade":true,"lineStyles":true,"prompt":"(?<prompt>[^\\$^#^:]*)(?<pathsep>:?)(?<path>[^\\$^#]*?)(?<delimiter>[\\$#] )(?<command>.*)$","style":"default"},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"lunr":{"ignoreSpecialCharacters":false,"maxIndexSize":1000000},"fontsettings":{"family":"sans","size":2,"theme":"white"},"highlight":{},"github-edit":{"repo":"Modern-CMake-CN/Modern-CMake-zh_CN","branch":"master"},"replace":{"substitutes":[{"pattern":"«cmake:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/manual/cmake-$1.7.html)"},{"pattern":"«command:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/command/$1.html)"},{"pattern":"«envvar:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/envvar/$1.html)"},{"pattern":"«module:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/module/$1.html)"},{"pattern":"«policy:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/policy/$1.html)"},{"pattern":"«variable:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest//$1.html)"},{"pattern":"«prop:([^:]+):`?([^`^»]+)`?»","flags":"g","substitute":"[`$2`](https://cmake.org/cmake/help/latest/prop_$1/$2.html)"}]},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}}},"theme":"default","author":"Henry Schreiner","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Modern CMake","language":"zh-hans","links":{"sidebar":{"GitHub Repo":"https://github.com/Modern-CMake-CN/Modern-CMake-zh_CN"}},"gitbook":"3.x.x","description":"A guide to writing simple, powerful, and clean CMake 3.1+ builds."},"file":{"path":"chapters/basics/functions.md","mtime":"2021-08-09T12:52:49.983Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-09T12:54:53.202Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
