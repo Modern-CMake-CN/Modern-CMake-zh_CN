@@ -34,11 +34,13 @@ configure_file (
 
 在构建你的项目时，你也应该包括二进制头文件路径。如果你想要在头文件中包含一些 `true/false` 类型的变量，CMake 对 C 语言有特有的 `#cmakedefine` 和 `#cmakedefine01` 替换符来完成上述需求。
 
+
 你也可以使用（ 并且是常用 ）这个来生成 `.cmake` 文件，例如配置文件（ 见 [installing](https://cliutils.gitlab.io/modern-cmake/chapters/install/installing.html) ）。
 
 ## 读入文件
 
 另外一个方向也是行得通的， 你也可以从源文件中读取一些东西（ 例如版本号 ）。例如，你有一个仅包含头文件的库，你想要其在无论有无 CMake 的情况下都可以使用，上述方式将是你处理版本的最优方案。可以像下面这么写：
+
 
 ```cmake
 # Assuming the canonical version is listed in a single line

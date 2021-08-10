@@ -2,7 +2,9 @@
 
 ## 控制流程
 
+
 CMake 有一个 «command:`if`» 语句，尽管经过多次版本迭代它已经变得非常复杂。这里有一些全大写的变量你可以在 `if` 语句中使用，并且你既可以直接引用也可以利用 `${}` 来对他进行解析（  `if` 语句在历史上比变量拓展出现的更早 ）。这是一个 `if` 语句的例子：
+
 
 ```cmake
 if(variable)
@@ -13,7 +15,9 @@ endif()
 # If variable does not expand to one of the above, CMake will expand it then try again
 ```
 
+
 如果你在这里使用 `${variable}` 可能会有一些奇怪，因为看起来它好像 `variable` 被展开 ( expansion ) 了两次。在 CMake 3.1+ 版本中加入了一个新的特性 ( «policy:CMP0054» ) ，CMake 不会再展开已经被引号括起来的展开变量。也就是说，如果你的 CMake 版本大于 `3.1` ，那么你可以这么写：
+
 
 ```cmake
 if("${variable}")
@@ -26,21 +30,26 @@ endif()
 这里还有一些关键字可以设置，例如：
 
 * 一元的: `NOT`, `TARGET`, `EXISTS` (文件), `DEFINED`, 等。
+
 * 二元的: `STREQUAL`, `AND`, `OR`, `MATCHES` ( 正则表达式 ), `VERSION_LESS`, `VERSION_LESS_EQUAL` ( CMake 3.7+ ), 等。
+
 * 括号可以用来分组
 
 
 ## «cmake:generator-expressions»
 
+
 «cmake:generator-expressions» 语句十分强大，不过有点奇怪和专业 ( specialized ) 。大多数 CMake 命令在配置的时候执行，包括我们上面看到的 `if` 语句。但是如果你想要他们在构建或者安装的时候运行呢，应该怎么写？ 生成器表达式就是为此而生[^1]。它们在目标属性中被评估（ evaluate ）：
 
 最简单的生成器表达式是信息表达式，其形式为 `$<KEYWORD>`；它会评估和当前配置相关的一系列信息。信息表达式的另一个形式是 `${KEYWORD:value}`，其中 `KEYWORD` 是一个控制评估的关键字，而 `value` 则是需要进行比较的值（ 这里的 `KEYWORD` 也允许使用信息表达式 ）。如果 `KEYWORD` 是一个生成器表达式或者变量为 0 或者是 1，那么 `value` 将会被替换为 1 而不是 0 。你可以使用嵌套的生成器表达式，你也可以使用变量来使得自己更容易理解嵌套的变量。一些表达式也可以有多个值，值之间通过逗号分隔[^2]。
+
 
 {% hint style='info' %}
 
 译者注：这里有点类似于 C 语言中的条件运算符。这里由于译者英语水平的问题，翻译的不够清楚，后续会改善。
 
 {% endhint %}
+
 
 如果你有一个只想在 DEBUG 模式下开启的编译标志（ flag ），你可以这样做：
 
@@ -90,7 +99,9 @@ message("Output: ${This}")
 Output: From SIMPLE
 ```
 
+
 如果你想要有一个指定的参数，你应该在列表中明确的列出，初此之外的所有参数都会被存储在 `ARGN` 这个变量中（  `ARGV` 中存储了所有的变量，包括你明确列出的 ）。CMake 的函数没有返回值，你可以通过设定变量值的形式来达到同样地目的（ 译者注：类似于引用 ）。在上面的例子中，你可以通过指定变量名来设置一个变量的值。
+
 
 ## 参数的控制
 
