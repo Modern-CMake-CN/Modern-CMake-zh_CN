@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>How to Structure Your Project · Modern CMake</title>
+        <title>如何组织你的项目 · Modern CMake</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -252,7 +252,7 @@
                 <a href="structure.html">
             
                     
-                    How to Structure Your Project
+                    如何组织你的项目
             
                 </a>
             
@@ -265,7 +265,7 @@
                 <a href="programs.html">
             
                     
-                    Running Other Programs
+                    在 CMake 中运行其他程序
             
                 </a>
             
@@ -278,7 +278,7 @@
                 <a href="example.html">
             
                     
-                    A Simple Example
+                    一个简单的例子
             
                 </a>
             
@@ -721,7 +721,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >How to Structure Your Project</a>
+        <a href="../.." >如何组织你的项目</a>
     </h1>
 </div>
 
@@ -736,14 +736,14 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="how-to-structure-your-project">How to structure your project</h1>
-<p>The following information is biased. But in a good way, I think. I&apos;m going to tell you how to structure the directories in your project. This is based on convention, but will help you:</p>
+                                <h1 id="&#x5982;&#x4F55;&#x7EC4;&#x7EC7;&#x4F60;&#x7684;&#x9879;&#x76EE;">&#x5982;&#x4F55;&#x7EC4;&#x7EC7;&#x4F60;&#x7684;&#x9879;&#x76EE;</h1>
+<p>&#x4E0B;&#x9762;&#x7684;&#x8BF4;&#x6CD5;&#x53EF;&#x80FD;&#x5B58;&#x5728;&#x4E00;&#x4E9B;&#x504F;&#x89C1;&#xFF0C;&#x4F46;&#x6211;&#x8BA4;&#x4E3A;&#x8FD9;&#x662F;&#x4E00;&#x79CD;&#x597D;&#x7684;&#x7EC4;&#x7EC7;&#x65B9;&#x5F0F;&#x3002;&#x6211;&#x5C06;&#x4F1A;&#x8BB2;&#x89E3;&#x5982;&#x4F55;&#x7EC4;&#x7EC7;&#x9879;&#x76EE;&#x7684;&#x76EE;&#x5F55;&#x7ED3;&#x6784;&#xFF0C;&#x8FD9;&#x662F;&#x57FA;&#x4E8E;&#x4EE5;&#x5F80;&#x7684;&#x60EF;&#x4F8B;&#x6765;&#x5199;&#x7684;&#xFF0C;&#x8FD9;&#x4E48;&#x505A;&#x5BF9;&#x4F60;&#x6709;&#x4EE5;&#x4E0B;&#x597D;&#x5904;&#xFF1A;</p>
 <ul>
-<li>Easily read other projects following the same patterns,</li>
-<li>Avoid a pattern that causes conflicts,</li>
-<li>Keep from muddling and complicating your build.</li>
+<li>&#x53EF;&#x4EE5;&#x5F88;&#x5BB9;&#x6613;&#x9605;&#x8BFB;&#x4EE5;&#x76F8;&#x540C;&#x6A21;&#x5F0F;&#x7EC4;&#x7EC7;&#x7684;&#x9879;&#x76EE;</li>
+<li>&#x907F;&#x514D;&#x53EF;&#x80FD;&#x9020;&#x6210;&#x51B2;&#x7A81;&#x7684;&#x7EC4;&#x7EC7;&#x5F62;&#x5F0F;</li>
+<li>&#x907F;&#x514D;&#x4F7F;&#x76EE;&#x5F55;&#x7ED3;&#x6784;&#x53D8;&#x5F97;&#x6DF7;&#x4E71;&#x548C;&#x590D;&#x6742;</li>
 </ul>
-<p>First, this is what your files should look like when you start if your project is creatively called <code>project</code>, with a library called <code>lib</code>, and a executable called <code>app</code>:</p>
+<p>&#x9996;&#x5148;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x540D;&#x4E3A; <code>project</code> &#x7684;&#x9879;&#x76EE;&#xFF0C;&#x5B83;&#x6709;&#x4E00;&#x4E2A;&#x540D;&#x4E3A; <code>lib</code> &#x7684;&#x5E93;&#xFF0C;&#x6709;&#x4E00;&#x4E2A;&#x540D;&#x4E3A; <code>app</code> &#x7684;&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#xFF0C;&#x90A3;&#x4E48;&#x76EE;&#x5F55;&#x7ED3;&#x6784;&#x5E94;&#x8BE5;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
 <pre><code>- project
   - .gitignore
   - README.md
@@ -770,21 +770,22 @@
     - googletest
   - scripts
     - helper.py
-</code></pre><p>The names are not absolute; you&apos;ll see contention about <code>test/</code> vs. <code>tests/</code>, and the application folder may be called something else (or not exist for a library-only project). You&apos;ll also sometime see a <code>python</code> folder for python bindings, or a <code>cmake</code> folder for helper CMake files, like <code>Find&lt;library&gt;.cmake</code> files. But the basics are there.</p>
-<p>Notice a few things already apparent; the <code>CMakeLists.txt</code> files are split up over all source directories, and are not in the include directories. This is because you should be able to copy the contents of the include directory to <code>/usr/include</code> or similar directly (except for configuration headers, which I go over in another chapter), and not have any extra files or cause any conflicts. That&apos;s also why there is a directory for your project inside the include directory. Use <code>add_subdirectory</code> to add a subdirectory containing a <code>CMakeLists.txt</code>.</p>
-<p>You often want a <code>cmake</code> folder, with all of your helper modules. This is where your <code>Find*.cmake</code> files go. An set of some common helpers is at <a href="https://github.com/CLIUtils/cmake" target="_blank">github.com/CLIUtils/cmake</a>. To add this folder to your CMake path:</p>
+</code></pre><p>&#x5176;&#x4E2D;&#xFF0C;&#x6587;&#x4EF6;&#x7684;&#x540D;&#x79F0;&#x4E0D;&#x662F;&#x7EDD;&#x5BF9;&#x7684;&#xFF0C;&#x4F60;&#x53EF;&#x80FD;&#x4F1A;&#x770B;&#x5230;&#x5173;&#x4E8E;&#x6587;&#x4EF6;&#x5939;&#x540D;&#x79F0;&#x4E3A; <code>tests</code>  &#x8FD8;&#x662F; <code>test</code> &#x7684;&#x4E89;&#x8BBA;&#xFF0C;&#x5E76;&#x4E14;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x6240;&#x5728;&#x7684;&#x6587;&#x4EF6;&#x5939;&#x53EF;&#x80FD;&#x4E3A;&#x5176;&#x4ED6;&#x7684;&#x540D;&#x79F0;&#xFF08; &#x6216;&#x8005;&#x4E00;&#x4E2A;&#x9879;&#x76EE;&#x53EA;&#x6709;&#x5E93;&#x6587;&#x4EF6; &#xFF09;&#x3002;&#x4F60;&#x4E5F;&#x8BB8;&#x4E5F;&#x4F1A;&#x770B;&#x5230;&#x4E00;&#x4E2A;&#x540D;&#x4E3A; <code>python</code> &#x7684;&#x6587;&#x4EF6;&#x5939;&#xFF0C;&#x90A3;&#x91CC;&#x5B58;&#x50A8;&#x5173;&#x4E8E; python &#x7ED1;&#x5B9A;&#x5668;&#x7684;&#x5185;&#x5BB9;&#xFF0C;&#x6216;&#x8005;&#x662F;&#x4E00;&#x4E2A; <code>cmake</code> &#x6587;&#x4EF6;&#x5939;&#x7528;&#x4E8E;&#x5B58;&#x50A8;&#x5982; <code>Find&lt;library&gt;.cmake</code> &#x8FD9;&#x6837;&#x7684; <code>.cmake</code> &#x8F85;&#x52A9;&#x6587;&#x4EF6;&#x3002;&#x4F46;&#x662F;&#x4E00;&#x4E9B;&#x6BD4;&#x8F83;&#x57FA;&#x7840;&#x7684;&#x4E1C;&#x897F;&#x90FD;&#x5728;&#x4E0A;&#x9762;&#x5305;&#x62EC;&#x4E86;&#x3002;</p>
+<p>&#x53EF;&#x4EE5;&#x6CE8;&#x610F;&#x5230;&#x4E00;&#x4E9B;&#x5F88;&#x660E;&#x663E;&#x7684;&#x95EE;&#x9898;&#xFF0C; <code>CMakeLists.txt</code> &#x6587;&#x4EF6;&#x88AB;&#x5206;&#x5272;&#x5230;&#x9664;&#x4E86; <code>include</code> &#x76EE;&#x5F55;&#x5916;&#x7684;&#x6240;&#x6709;&#x6E90;&#x4EE3;&#x7801;&#x76EE;&#x5F55;&#x4E0B;&#x3002;&#x8FD9;&#x662F;&#x4E3A;&#x4E86;&#x80FD;&#x591F;&#x5C06; <code>include</code> &#x76EE;&#x5F55;&#x4E0B;&#x7684;&#x6240;&#x6709;&#x6587;&#x4EF6;&#x62F7;&#x8D1D;&#x5230; <code>/usr/include</code> &#x76EE;&#x5F55;&#x6216;&#x5176;&#x4ED6;&#x7C7B;&#x4F3C;&#x7684;&#x76EE;&#x5F55;&#x4E0B;&#xFF08;&#x9664;&#x4E86;&#x914D;&#x7F6E;&#x7684;&#x5934;&#x6587;&#x4EF6;&#xFF0C;&#x8FD9;&#x4E2A;&#x6211;&#x5C06;&#x4F1A;&#x5728;&#x53E6;&#x4E00;&#x7AE0;&#x8BB2;&#x5230;&#xFF09;&#xFF0C;&#x56E0;&#x6B64;&#x4E3A;&#x4E86;&#x907F;&#x514D;&#x51B2;&#x7A81;&#x7B49;&#x95EE;&#x9898;&#xFF0C;&#x5176;&#x4E2D;&#x4E0D;&#x80FD;&#x6709;&#x9664;&#x4E86;&#x5934;&#x6587;&#x4EF6;&#x5916;&#x7684;&#x5176;&#x4ED6;&#x6587;&#x4EF6;&#x3002;&#x8FD9;&#x4E5F;&#x662F;&#x4E3A;&#x4EC0;&#x4E48;&#x5728; <code>include</code> &#x76EE;&#x5F55;&#x4E0B;&#x6709;&#x4E00;&#x4E2A;&#x540D;&#x4E3A;&#x9879;&#x76EE;&#x540D;&#x7684;&#x76EE;&#x5F55;&#x3002;&#x9876;&#x5C42; <code>CMakeLists.txt</code> &#x4E2D;&#x5E94;&#x4F7F;&#x7528; <code>add_subdirectory</code> &#x547D;&#x4EE4;&#x6765;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x5305;&#x542B; <code>CMakeLists.txt</code> &#x7684;&#x5B50;&#x76EE;&#x5F55;&#x3002;</p>
+<p>&#x4F60;&#x7ECF;&#x5E38;&#x4F1A;&#x9700;&#x8981;&#x4E00;&#x4E2A; <code>cmake</code> &#x6587;&#x4EF6;&#x5939;&#xFF0C;&#x91CC;&#x9762;&#x5305;&#x542B;&#x6240;&#x6709;&#x7528;&#x5230;&#x7684;&#x8F85;&#x52A9;&#x6A21;&#x5757;&#x3002;&#x8FD9;&#x662F;&#x4F60;&#x653E;&#x7F6E;&#x6240;&#x6709; <code>Find*.cmake</code> &#x7684;&#x6587;&#x4EF6;&#x3002;&#x4F60;&#x53EF;&#x4EE5;&#x5728; <a href="https://github.com/CLIUtils/cmake" target="_blank">github.com/CLIUtils/cmake</a> &#x627E;&#x5230;&#x4E00;&#x4E9B;&#x5E38;&#x89C1;&#x7684;&#x8F85;&#x52A9;&#x6A21;&#x5757;&#x96C6;&#x5408;&#x3002;&#x4F60;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4EE5;&#x4E0B;&#x8BED;&#x53E5;&#x5C06;&#x6B64;&#x76EE;&#x5F55;&#x6DFB;&#x52A0;&#x5230;&#x4F60;&#x7684; CMake Path &#x4E2D;&#xFF1A;</p>
 <pre><code class="lang-cmake"><span class="hljs-keyword">set</span>(CMAKE_MODULE_PATH <span class="hljs-string">&quot;${PROJECT_SOURCE_DIR}/cmake&quot;</span> <span class="hljs-variable">${CMAKE_MODULE_PATH}</span>)
 </code></pre>
-<p>Your <code>extern</code> folder should contain git submodules almost exclusively. That way, you can control the version of the dependencies explicitly, but still upgrade easily. See the Testing chapter for an example of adding a submodule.</p>
-<p>You should have something like <code>/build*</code> in your <code>.gitignore</code>, so that users can make build directories in the source directory and use those to build. A few packages prohibit this, but it&apos;s much better than doing a true out-of-source build and having to type something different for each package you build.</p>
-<p>If you want to avoid the build directory being in a valid source directory, add this near the top of your CMakeLists:</p>
+<p>&#x4F60;&#x7684; <code>extern</code> &#x5E94;&#x8BE5;&#x51E0;&#x4E4E;&#x53EA;&#x5305;&#x542B; git &#x5B50;&#x6A21;&#x5757;&#xFF08; submodule &#xFF09;&#x3002;&#x901A;&#x8FC7;&#x6B64;&#x65B9;&#x5F0F;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x660E;&#x786E;&#x5730;&#x63A7;&#x5236;&#x4F9D;&#x8D56;&#x7684;&#x7248;&#x672C;&#xFF0C;&#x5E76;&#x4E14;&#x53EF;&#x4EE5;&#x975E;&#x5E38;&#x8F7B;&#x677E;&#x5730;&#x5347;&#x7EA7;&#x3002;&#x5173;&#x4E8E;&#x6DFB;&#x52A0;&#x5B50;&#x6A21;&#x5757;&#x7684;&#x4F8B;&#x5B50;&#xFF0C;&#x53EF;&#x4EE5;&#x53C2;&#x89C1; <a href="https://modern-cmake-cn.github.io/Modern-CMake-zh_CN/chapters/testing.html" target="_blank">Testing</a> &#x7AE0;&#x8282;&#x3002;</p>
+<p>&#x4F60;&#x5E94;&#x8BE5;&#x5728; <code>.gitignore</code> &#x4E2D;&#x6DFB;&#x52A0;&#x5F62;&#x5982; <code>/build*</code> &#x7684;&#x89C4;&#x5219;&#xFF0C;&#x8FD9;&#x6837;&#x7528;&#x6237;&#x5C31;&#x53EF;&#x4EE5;&#x5728;&#x6E90;&#x4EE3;&#x7801;&#x76EE;&#x5F55;&#x4E0B;&#x521B;&#x5EFA; <code>build</code> &#x76EE;&#x5F55;&#x6765;&#x6784;&#x5EFA;&#x9879;&#x76EE;&#xFF0C;&#x800C;&#x4E0D;&#x7528;&#x62C5;&#x5FC3;&#x5C06;&#x751F;&#x6210;&#x7684;&#x76EE;&#x6807;&#x6587;&#x4EF6;&#x6DFB;&#x52A0;&#x5230; <code>.git</code> &#x4E2D;&#x3002;&#x6709;&#x4E00;&#x4E9B;&#x8F6F;&#x4EF6;&#x5305;&#x7981;&#x6B62;&#x8FD9;&#x4E48;&#x505A;&#xFF0C;&#x4E0D;&#x8FC7;&#x8FD9;&#x8FD8;&#x662F;&#x76F8;&#x6BD4;<strong>&#x505A;&#x4E00;&#x4E2A;&#x771F;&#x6B63;&#x7684;&#x5916;&#x90E8;&#x6784;&#x5EFA;&#x5E76;&#x4E14;&#x9488;&#x5BF9;&#x4E0D;&#x540C;&#x7684;&#x5305;&#x6765;&#x4F7F;&#x7528;&#x4E0D;&#x540C;&#x7684;&#x6784;&#x5EFA;</strong>&#x8981;&#x597D;&#x7684;&#x591A;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x4F60;&#x60F3;&#x8981;&#x907F;&#x514D;&#x6784;&#x5EFA;&#x76EE;&#x5F55;&#x5728;&#x6709;&#x6548;&#x7684;&#xFF08; valid &#xFF09;&#x6E90;&#x4EE3;&#x7801;&#x76EE;&#x5F55;&#x4E2D;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x5728;&#x9876;&#x5C42; <code>CMakeLists.txt</code> &#x6587;&#x4EF6;&#x5934;&#x90E8;&#x6DFB;&#x52A0;&#x5982;&#x4E0B;&#x8BED;&#x53E5;&#xFF1A;</p>
 <pre><code class="lang-cmake"><span class="hljs-comment">### Require out-of-source builds</span>
 file(TO_CMAKE_PATH <span class="hljs-string">&quot;${PROJECT_BINARY_DIR}/CMakeLists.txt&quot;</span> LOC_PATH)
 <span class="hljs-keyword">if</span>(EXISTS <span class="hljs-string">&quot;${LOC_PATH}&quot;</span>)
     <span class="hljs-keyword">message</span>(FATAL_ERROR <span class="hljs-string">&quot;You cannot build in a source directory (or any directory with a CMakeLists.txt file). Please make a build subdirectory. Feel free to remove CMakeCache.txt and CMakeFiles.&quot;</span>)
 <span class="hljs-keyword">endif</span>()
 </code></pre>
-<p>See the <a href="https://gitlab.com/CLIUtils/modern-cmake/tree/master/examples/extended-project" target="_blank">extended code example here</a>.</p>
+<p>&#x53EF;&#x4EE5;&#x5728;&#x8FD9;&#x91CC;&#x67E5;&#x770B; <a href="">&#x62D3;&#x5C55;&#x4EE3;&#x7801;&#x6837;&#x4F8B;</a></p>
+<p>See the <a href="https://github.com/Modern-CMake-CN/Modern-CMake-zh_CN/tree/master/examples/extended-project" target="_blank">extended code example here</a>.</p>
 
                                 
                                 </section>
@@ -817,7 +818,7 @@ file(TO_CMAKE_PATH <span class="hljs-string">&quot;${PROJECT_BINARY_DIR}/CMakeLi
                 </a>
                 
                 
-                <a href="programs.html" class="navigation navigation-next " aria-label="Next page: Running Other Programs">
+                <a href="programs.html" class="navigation navigation-next " aria-label="Next page: 在 CMake 中运行其他程序">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -828,7 +829,7 @@ file(TO_CMAKE_PATH <span class="hljs-string">&quot;${PROJECT_BINARY_DIR}/CMakeLi
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"How to Structure Your Project","level":"1.3.4","depth":2,"next":{"title":"Running Other Programs","level":"1.3.5","depth":2,"path":"chapters/basics/programs.md","ref":"chapters/basics/programs.md","articles":[]},"previous":{"title":"与你的代码交互","level":"1.3.3","depth":2,"path":"chapters/basics/comms.md","ref":"chapters/basics/comms.md","articles":[]},"dir":"ltr"},"config":{"plugins":["replace","hints","term","include-codeblock","ace","github-edit"],"root":".","styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"ace":{},"search":{},"term":{"copyButtons":true,"fade":true,"lineStyles":true,"prompt":"(?<prompt>[^\\$^#^:]*)(?<pathsep>:?)(?<path>[^\\$^#]*?)(?<delimiter>[\\$#] )(?<command>.*)$","style":"default"},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"lunr":{"ignoreSpecialCharacters":false,"maxIndexSize":1000000},"fontsettings":{"family":"sans","size":2,"theme":"white"},"highlight":{},"github-edit":{"repo":"Modern-CMake-CN/Modern-CMake-zh_CN","branch":"master"},"replace":{"substitutes":[{"pattern":"«cmake:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/manual/cmake-$1.7.html)"},{"pattern":"«command:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/command/$1.html)"},{"pattern":"«envvar:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/envvar/$1.html)"},{"pattern":"«module:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/module/$1.html)"},{"pattern":"«policy:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/policy/$1.html)"},{"pattern":"«variable:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest//$1.html)"},{"pattern":"«prop:([^:]+):`?([^`^»]+)`?»","flags":"g","substitute":"[`$2`](https://cmake.org/cmake/help/latest/prop_$1/$2.html)"}]},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}}},"theme":"default","author":"Henry Schreiner","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Modern CMake","language":"zh-hans","links":{"sidebar":{"GitHub Repo":"https://github.com/Modern-CMake-CN/Modern-CMake-zh_CN"}},"gitbook":"3.x.x","description":"A guide to writing simple, powerful, and clean CMake 3.1+ builds."},"file":{"path":"chapters/basics/structure.md","mtime":"2021-08-10T02:15:42.108Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-10T02:17:52.657Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"如何组织你的项目","level":"1.3.4","depth":2,"next":{"title":"在 CMake 中运行其他程序","level":"1.3.5","depth":2,"path":"chapters/basics/programs.md","ref":"chapters/basics/programs.md","articles":[]},"previous":{"title":"与你的代码交互","level":"1.3.3","depth":2,"path":"chapters/basics/comms.md","ref":"chapters/basics/comms.md","articles":[]},"dir":"ltr"},"config":{"plugins":["replace","hints","term","include-codeblock","ace","github-edit"],"root":".","styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"ace":{},"search":{},"term":{"copyButtons":true,"fade":true,"lineStyles":true,"prompt":"(?<prompt>[^\\$^#^:]*)(?<pathsep>:?)(?<path>[^\\$^#]*?)(?<delimiter>[\\$#] )(?<command>.*)$","style":"default"},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"lunr":{"ignoreSpecialCharacters":false,"maxIndexSize":1000000},"fontsettings":{"family":"sans","size":2,"theme":"white"},"highlight":{},"github-edit":{"repo":"Modern-CMake-CN/Modern-CMake-zh_CN","branch":"master"},"replace":{"substitutes":[{"pattern":"«cmake:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/manual/cmake-$1.7.html)"},{"pattern":"«command:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/command/$1.html)"},{"pattern":"«envvar:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/envvar/$1.html)"},{"pattern":"«module:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/module/$1.html)"},{"pattern":"«policy:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/policy/$1.html)"},{"pattern":"«variable:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest//$1.html)"},{"pattern":"«prop:([^:]+):`?([^`^»]+)`?»","flags":"g","substitute":"[`$2`](https://cmake.org/cmake/help/latest/prop_$1/$2.html)"}]},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}}},"theme":"default","author":"Henry Schreiner","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Modern CMake","language":"zh-hans","links":{"sidebar":{"GitHub Repo":"https://github.com/Modern-CMake-CN/Modern-CMake-zh_CN"}},"gitbook":"3.x.x","description":"A guide to writing simple, powerful, and clean CMake 3.1+ builds."},"file":{"path":"chapters/basics/structure.md","mtime":"2021-08-10T11:20:46.304Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-10T11:23:04.805Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
