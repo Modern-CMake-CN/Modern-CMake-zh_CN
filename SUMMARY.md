@@ -18,7 +18,7 @@
     * [Utilities](chapters/features/utilities.md)
     * [Useful modules](chapters/features/modules.md)
     * [IDEs](chapters/features/ides.md)
-    * [Debugging](chapters/features/debug.md)
+    * [调试](chapters/features/debug.md)
 * [包含子项目](chapters/projects.md)
     * [子模组](chapters/projects/submodule.md)
     * [使用 CMake 下载项目](chapters/projects/download.md)
