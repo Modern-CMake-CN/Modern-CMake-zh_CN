@@ -14,7 +14,7 @@
 message(STATUS "MY_VARIABLE=${MY_VARIABLE}")
 ```
 
-然而，一个内置的模组 `CMakePrintHelpers` 让打印变量变得更简单：
+然而，通过一个内置的模组 `CMakePrintHelpoers` 可以更方便的打印变量：
 
 ```cmake
 include(CMakePrintHelpers)
@@ -33,7 +33,7 @@ cmake_print_properties(
 
 ### 跟踪运行
 
-你是否曾经想知道构建的时你的 CMake 文件究竟发生了什么，以及这些都是如何发生的？`--trace-source="filename"` 特性很不错。会打印出你指定的文件运行到的那一行，让你可以知道当前具体在发生什么。还有一些类似的选项，但这些命令通常给出一大堆输出，让你找不着头脑。
+你可能想知道构建项目的时候你的 CMake 文件究竟发生了什么，以及这些都是如何发生的？用 `--trace-source="filename"` 就很不错，它会打印出你指定的文件现在运行到哪一行，让你可以知道当前具体在发生什么。另外还有一些类似的选项，但这些命令通常给出一大堆输出，让你找不着头脑。
 
 例子：
 
