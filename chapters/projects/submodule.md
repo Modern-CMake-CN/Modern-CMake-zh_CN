@@ -1,14 +1,14 @@
-# Git Submodule Method
+# Git 子模组
 
-If you want to add a Git repository on the same service (GitHub, GitLab, BitBucket, etc), the following is the correct Git command to set that up as a submodule in the `extern` directory:
+如果你想要添加一个 Git 仓库，它与你的项目仓库使用相同的 Git 托管服务（诸如 GitHub、GitLab、BitBucker 等等），下面是正确的添加一个子模组到 `extern` 目录中的命令：
 
 ```term
 gitbook $ git submodule add ../../owner/repo.git extern/repo
 ```
 
-The relative path to the repo is important; it allows you to keep the same access method (ssh or https) as the parent repository. This works very well in most ways. When you are inside the submodule, you can treat it just like a normal repo, and when you are in the parent repository, you can "add" to change the current commit pointer.
+此处的关键是使用相对于你的项目仓库的相对路径，它可以保证你使用与主仓库相同的访问方式（ ssh 或 https ）访问子模组。这在大多数情况都能工作得相当好。当你在一个子模组里的时候，你可以把它看作一个正常的仓库，而当你在主仓库里时，你可以用 `add` 来改变当前的提交指针。
 
-But the traditional downside is that you either have to have your users know git submodule commands, so they can `init` and `update` the repo, or they have to add `--recursive` when they initially clone your repo. CMake can offer a solution:
+但缺点是你的用户必须懂 git submodule 命令，这样他们才可以 `init` 和 `update` 仓库，或者他们可以在最开始克隆你的仓库的时候加上 `--recursive` 选项。针对这种情况，CMake 提供了一种解决方案：
 
 ```cmake
 find_package(Git QUIET)
@@ -31,22 +31,22 @@ if(NOT EXISTS "${PROJECT_SOURCE_DIR}/extern/repo/CMakeLists.txt")
 endif()
 ```
 
-The first line checks for Git using CMake's built in `FindGit.cmake`. Then, if you are in a git checkout of your source, add an option (defaulting to `ON`) that allows developers to turn off the feature if they need to. We then run the command to get all repositories, and fail if that command fails, with a nice error message. Finally, we verify that the repositories exist before continuing, regardless of the method used to obtain them. You can use `OR` to list several.
+第一行使用 CMake 自带的 `FindGit.cmake` 检测是否安装了 Git 。然后，如果项目源目录是一个 git 仓库，则添加一个选项（默认值为 `ON`），用户可以自行决定是否打开这个功能。然后我们运行命令来获取所有需要的仓库，如果该命令出错了，则 CMake 配置失败，同时会有一份很好的报错信息。最后无论我们以什么方式获取了子模组，CMake都会检查仓库是否已经被拉取到本地。你也可以使用 `OR` 来列举其中的几个。
 
-Now, your users can be completely oblivious to the existence of the submodules, and you can still keep up good development practices! The only thing to watch out for is for developers; you will reset the submodule when you rerun CMake if you are developing inside the submodule. Just add new commits to the parent staging area, and you'll be fine.
+现在，你的用户可以完全忽视子模组的存在了，而你同时可以拥有良好的开发体验！唯一需要开发者注意的一点是，如果你正在子模组里开发，你会在重新运行 CMake 的时候重置你的子模组。只需要添加一个新的提交到主仓库的暂存区，就可以避免这个问题。
 
-You can then include projects that provide good CMake support:
+然后你就可以添加对 CMake 有良好支持的项目了：
 
 ```cmake
 add_subdirectory(extern/repo)
 ```
 
-Or, you can build an interface library target yourself if it is a header only project. Or, you can use `find_package` if that is supported, probably preparing the initial search directory to be the one you've added (check the docs or the file for the `Find*.cmake` file you are using). You can also include a CMake helper file directory if you append to your `CMAKE_MODULE_PATH`, for example to add `pybind11`'s improved `FindPython*.cmake` files.
+或者，如果这是一个只有头文件的库，你可以创建一个接口库目标 (interface library target) 。或者，如果支持的话，你可以使用`find_package`，可能初始的搜索目录就是你所添加的目录（查看文档或你所使用的`Find*.cmake`文件）。如果你追加到你的`CMAKE_MODULE_PATH`，你也可以包括一个CMake帮助文件目录，例如添加`pybind11`改进过的`FindPython*.cmake`文件。
 
 
-### Bonus: Git version number
+### 小贴士：获取 Git 版本号
 
-Move this to Git section:
+将下面的命令加入到上述 Git 更新子仓库的那段中：
 
 ```cmake
 execute_process(COMMAND ${GIT_EXECUTABLE} rev-parse --short HEAD
