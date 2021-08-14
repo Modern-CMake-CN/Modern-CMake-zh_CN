@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Adding Features · Modern CMake</title>
+        <title>为 CMake 项目添加特性 · Modern CMake</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -296,7 +296,7 @@
                 <a href="features.html">
             
                     
-                    Adding Features
+                    为 CMake 项目添加特性
             
                 </a>
             
@@ -310,7 +310,7 @@
                 <a href="features/cpp11.html">
             
                     
-                    C++11 and Beyond
+                    C++11 及后续版本
             
                 </a>
             
@@ -721,7 +721,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Adding Features</a>
+        <a href=".." >为 CMake 项目添加特性</a>
     </h1>
 </div>
 
@@ -736,11 +736,10 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="adding-features">Adding features</h1>
-<p>This section covers adding common features to your CMake project. You&apos;ll learn how to add a variety of options commonly needed in C++ projects, like C++11 support, as well as how to support IDEs and more.</p>
-<h2 id="default-build-type">Default build type</h2>
-<p>CMake normally does a &quot;non-release, non debug&quot; empty build type; if you prefer to set the default build type yourself, you can follow this
-recipe for the default build type modified from the <a href="https://blog.kitware.com/cmake-and-the-default-build-type/" target="_blank">Kitware blog</a>:</p>
+                                <h1 id="&#x4E3A;-cmake-&#x9879;&#x76EE;&#x6DFB;&#x52A0;&#x7279;&#x6027;">&#x4E3A; CMake &#x9879;&#x76EE;&#x6DFB;&#x52A0;&#x7279;&#x6027;</h1>
+<p>&#x672C;&#x8282;&#x5C06;&#x4F1A;&#x6DB5;&#x76D6;&#x5982;&#x4F55;&#x4E3A;&#x4F60;&#x7684; CMake &#x9879;&#x76EE;&#x6DFB;&#x52A0;&#x7279;&#x6027;&#x3002;&#x4F60;&#x5C06;&#x4F1A;&#x5B66;&#x5230;&#x5982;&#x4F55;&#x4E3A;&#x4F60;&#x7684; C++ &#x9879;&#x76EE;&#x6DFB;&#x52A0;&#x4E00;&#x4E9B;&#x5E38;&#x7528;&#x7684;&#x9009;&#x9879;&#xFF0C;&#x5982; C++11 &#x652F;&#x6301;&#xFF0C;&#x4EE5;&#x53CA;&#x5982;&#x4F55;&#x652F;&#x6301; IDE &#x5DE5;&#x5177;&#x7B49;&#x3002;</p>
+<h2 id="&#x9ED8;&#x8BA4;&#x7684;&#x6784;&#x5EFA;&#x7C7B;&#x578B;">&#x9ED8;&#x8BA4;&#x7684;&#x6784;&#x5EFA;&#x7C7B;&#x578B;</h2>
+<p>CMake &#x901A;&#x5E38;&#x4F1A;&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A; &#x201C;&#x65E2;&#x4E0D;&#x662F; Release &#x4E5F;&#x4E0D;&#x662F;Debug&#x201D; &#x7684;&#x7A7A;&#x6784;&#x5EFA;&#x7C7B;&#x578B;&#x6765;&#x4F5C;&#x4E3A;&#x9ED8;&#x8BA4;&#x7684;&#x6784;&#x5EFA;&#x7C7B;&#x578B;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x60F3;&#x8981;&#x81EA;&#x5DF1;&#x8BBE;&#x7F6E;&#x9ED8;&#x8BA4;&#x7684;&#x6784;&#x5EFA;&#x7C7B;&#x578B;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x53C2;&#x8003; <a href="https://blog.kitware.com/cmake-and-the-default-build-type/" target="_blank">Kitware blog</a> &#x4E2D;&#x6307;&#x51FA;&#x7684;&#x65B9;&#x6CD5;&#x3002;</p>
 <pre><code class="lang-cmake"><span class="hljs-keyword">set</span>(default_build_type <span class="hljs-string">&quot;Release&quot;</span>)
 <span class="hljs-keyword">if</span>(NOT CMAKE_BUILD_TYPE <span class="hljs-keyword">AND</span> NOT CMAKE_CONFIGURATION_TYPES)
   <span class="hljs-keyword">message</span>(STATUS <span class="hljs-string">&quot;Setting build type to &apos;${default_build_type}&apos; as none was specified.&quot;</span>)
@@ -783,7 +782,7 @@ recipe for the default build type modified from the <a href="https://blog.kitwar
                 </a>
                 
                 
-                <a href="features/cpp11.html" class="navigation navigation-next " aria-label="Next page: C++11 and Beyond">
+                <a href="features/cpp11.html" class="navigation navigation-next " aria-label="Next page: C++11 及后续版本">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -794,7 +793,7 @@ recipe for the default build type modified from the <a href="https://blog.kitwar
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Adding Features","level":"1.4","depth":1,"next":{"title":"C++11 and Beyond","level":"1.4.1","depth":2,"path":"chapters/features/cpp11.md","ref":"chapters/features/cpp11.md","articles":[]},"previous":{"title":"一个简单的例子","level":"1.3.6","depth":2,"path":"chapters/basics/example.md","ref":"chapters/basics/example.md","articles":[]},"dir":"ltr"},"config":{"plugins":["replace","hints","term","include-codeblock","ace","github-edit"],"root":".","styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"ace":{},"search":{},"term":{"copyButtons":true,"fade":true,"lineStyles":true,"prompt":"(?<prompt>[^\\$^#^:]*)(?<pathsep>:?)(?<path>[^\\$^#]*?)(?<delimiter>[\\$#] )(?<command>.*)$","style":"default"},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"lunr":{"ignoreSpecialCharacters":false,"maxIndexSize":1000000},"fontsettings":{"family":"sans","size":2,"theme":"white"},"highlight":{},"github-edit":{"repo":"Modern-CMake-CN/Modern-CMake-zh_CN","branch":"master"},"replace":{"substitutes":[{"pattern":"«cmake:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/manual/cmake-$1.7.html)"},{"pattern":"«command:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/command/$1.html)"},{"pattern":"«envvar:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/envvar/$1.html)"},{"pattern":"«module:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/module/$1.html)"},{"pattern":"«policy:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/policy/$1.html)"},{"pattern":"«variable:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest//$1.html)"},{"pattern":"«prop:([^:]+):`?([^`^»]+)`?»","flags":"g","substitute":"[`$2`](https://cmake.org/cmake/help/latest/prop_$1/$2.html)"}]},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}}},"theme":"default","author":"Henry Schreiner","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Modern CMake","language":"zh-hans","links":{"sidebar":{"GitHub Repo":"https://github.com/Modern-CMake-CN/Modern-CMake-zh_CN"}},"gitbook":"3.x.x","description":"A guide to writing simple, powerful, and clean CMake 3.1+ builds."},"file":{"path":"chapters/features.md","mtime":"2021-08-13T13:03:50.867Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-13T13:05:35.310Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"为 CMake 项目添加特性","level":"1.4","depth":1,"next":{"title":"C++11 及后续版本","level":"1.4.1","depth":2,"path":"chapters/features/cpp11.md","ref":"chapters/features/cpp11.md","articles":[]},"previous":{"title":"一个简单的例子","level":"1.3.6","depth":2,"path":"chapters/basics/example.md","ref":"chapters/basics/example.md","articles":[]},"dir":"ltr"},"config":{"plugins":["replace","hints","term","include-codeblock","ace","github-edit"],"root":".","styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"ace":{},"search":{},"term":{"copyButtons":true,"fade":true,"lineStyles":true,"prompt":"(?<prompt>[^\\$^#^:]*)(?<pathsep>:?)(?<path>[^\\$^#]*?)(?<delimiter>[\\$#] )(?<command>.*)$","style":"default"},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"lunr":{"ignoreSpecialCharacters":false,"maxIndexSize":1000000},"fontsettings":{"family":"sans","size":2,"theme":"white"},"highlight":{},"github-edit":{"repo":"Modern-CMake-CN/Modern-CMake-zh_CN","branch":"master"},"replace":{"substitutes":[{"pattern":"«cmake:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/manual/cmake-$1.7.html)"},{"pattern":"«command:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/command/$1.html)"},{"pattern":"«envvar:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/envvar/$1.html)"},{"pattern":"«module:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/module/$1.html)"},{"pattern":"«policy:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/policy/$1.html)"},{"pattern":"«variable:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest//$1.html)"},{"pattern":"«prop:([^:]+):`?([^`^»]+)`?»","flags":"g","substitute":"[`$2`](https://cmake.org/cmake/help/latest/prop_$1/$2.html)"}]},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}}},"theme":"default","author":"Henry Schreiner","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Modern CMake","language":"zh-hans","links":{"sidebar":{"GitHub Repo":"https://github.com/Modern-CMake-CN/Modern-CMake-zh_CN"}},"gitbook":"3.x.x","description":"A guide to writing simple, powerful, and clean CMake 3.1+ builds."},"file":{"path":"chapters/features.md","mtime":"2021-08-14T10:53:20.824Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-14T10:55:18.971Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
