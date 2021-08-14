@@ -1,33 +1,31 @@
-# C++11 and beyond
+# C++11 及后续版本
 
-C++11 is supported by CMake. Really. Just not in CMake 2.8, because, guess what, C++11 didn't exist in 2009 when 2.0 was released. As long as you are using CMake 3.1 or newer, you should be fine, there are two different ways to enable support. And as you'll soon see, there's even better support in CMake 3.8+. I'll start with that, since this is Modern CMake.
+CMake 中支持 C++11，但是这是针对于 CMake 2.8 及以后的版本来说的。这是为什么？很容易可以猜到， C++11 在 2009年——CMake 2.0 发布的时候还不存在。只要你使用 CMake 的是 CMake 3.1 或者更新的版本，你将会得到 C++11 的完美支持，不过这里有两种不同的方式来启用支持。 并且你将看到，在 CMake 3.8+ 中对 C++11 有着更好的支持。我将会在 CMake 3.8+ 的基础上讲解，因为这才叫做 Modern CMake。 
 
 
-## CMake 3.8+: Meta compiler features
+## CMake 3.8+: 元编译器选项
 
-As long as you can require that a user install CMake, you'll have access to the newest way to enable C++ standards. This is the most powerful way, with the nicest syntax and the best support for new standards, and the best target behavior for mixing standards and options. Assuming you have a target named `myTarget`, it looks like this:
+只要你使用新版的 CMake 来组织你的项目，那你就能够使用最新的方式来启用 C++ 的标准。这个方式功能强大，语法优美，并且对最新的标准有着很好的支持。此外，它对目标 (target) 进行混合标准与选项设置有着非常优秀的表现。假设你有一个名叫 `myTarget` 的目标，它看起来像这样：
 
 ```cmake
 target_compile_features(myTarget PUBLIC cxx_std_11)
 set_target_properties(myTarget PROPERTIES CXX_EXTENSIONS OFF)
 ```
 
-For the first line, we get to pick between `cxx_std_11`,  `cxx_std_14`, and `cxx_std_17`. The second line is optional, but will avoid extensions being added; without it you'd get things like  `-std=g++11` replacing `-std=c++11`. The first line even works on `INTERFACE` targets; only actual compiled targets can use the second line.
+对于第一行，我们可以在 `cxx_std_11`、`cxx_std_14` 和 `cxx_std_17` 之间选择。第二行是可选的，但是添加了可以避免 CMake 对选项进行拓展。如果不添加它，CMake 将会添加选项 `-std=g++11` 而不是 `-std=c++11` 。第一行对 `INTERFACE` 这种目标 (target) 也会起作用，第二行只会对实际被编译的目标有效。
 
-If a target further down the dependency chain specifies a higher C++ level, this interacts nicely. It's really just a more advanced version of the following method, so it interacts nicely with that, too.
+如果在目标的依赖链中有目标指定了更高的 C++ 标准，上述代码也可以很好的生效。这只是下述方法的一个更高级的版本，因此可以很好的生效。
 
+## CMake 3.1+: 编译器选项
 
+你可以指定开启某个特定的编译器选项。这相比与直接指定 C++ 编译器的版本更加细化，尽管去指定一个包使用的所有编译器选项可能有点困难，除非这个包是你自己写的或者你的记忆力非凡。最后 CMake 会检查你编译器支持的所有选项，并默认设置使用其中每个最新的版本。因此，你不必指定所有你需要的选项，只需要指定那些和默认有出入的。设置的语法和上一部分相同，只是你需要挑选一个列表里面存在的选项而不像是 `cxx_std_*` 。这里有包含[所有选项的列表](https://cmake.org/cmake/help/latest/prop_gbl/CMAKE_CXX_KNOWN_FEATURES.html)。
 
-## CMake 3.1+: Compiler features
-
-You can ask for specific compiler features to be available. This was more granular than asking for a C++ version, though it's a bit tricky to pick out just the features a package is using unless you wrote the package and have a good memory. Since this ultimately checks against a list of options CMake knows your compiler supports and picks the highest flag indicated in that list, you don't have to specify all the options you need, just the rarest ones. The syntax is identical to the section above, you just have a list of options to pick instead of `cxx_std_*` options. See the [whole list here](https://cmake.org/cmake/help/latest/prop_gbl/CMAKE_CXX_KNOWN_FEATURES.html).
-
-If you have optional features, you can use the list `CMAKE_CXX_COMPILE_FEATURES` and use `if(... IN_LIST ...)` from CMake 3.3+ to see if that feature is supported, and add it conditionally. See [the docs here](https://cmake.org/cmake/help/latest/manual/cmake-compile-features.7.html) for other use cases.
+如果你需要可选的选项，在 CMake 3.3+ 中你可以使用列表 `CMAKE_CXX_COMPILE_FEATURES` 及 `if(... INLIST ...) ` 来查看此选项是否在此项目中被选用，然后来决定是否添加它。可以 [在此](https://cmake.org/cmake/help/latest/manual/cmake-compile-features.7.html) 查看一些其他的使用情况。
 
 
-## CMake 3.1+: Global and property settings
+## CMake 3.1+: 全局设置以及属性设置
 
-There is another way that C++ standards are supported; a specific set of three properties (both global and target level). The global properties are:
+这是支持 C++ 标准的另一种方式，（在目标及全局级别）设置三个特定属性的值。这是全局的属性：
 
 ```cmake
 set(CMAKE_CXX_STANDARD 11 CACHE STRING "The C++ standard to use")
@@ -35,7 +33,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 ```
 
-The first line sets a C++ standard level, and the second tells CMake to use it, and the final line is optional and ensures `-std=c++11` vs. something like `-std=g++11`. This method isn't bad for a final package, but shouldn't be used by a library. You should always set this as a cached variable, so you can override it to try a new version easily (or if this gets used as a library, this is the only way to override it - but again, don't use this for libraries). You can also set these values on a target:
+第一行设置了 C++ 标准的级别， 第二行告诉 CMake 使用上述设置， 最后一行关闭了拓展，来明确自己使用了 `-std=c++11` 还是 `-std=g++11` 。这个方法中可以在最终包 (final package) 中使用，但是不推荐在库中使用。你应该总是把它设置为一个缓存变量，这样你就可以很容易地重写其内容来尝试新的标准（或者如果你在库中使用它的话，这是重写它的唯一方式。**不过再重申一遍**，不要在库中使用此方式）。你也可以对目标来设置这些属性：
 
 ```cmake
 set_target_properties(myTarget PROPERTIES
@@ -45,12 +43,13 @@ set_target_properties(myTarget PROPERTIES
 )
 ```
 
-Which is better, but still doesn't have the sort of explicit control that compiler features have for populating `PRIVATE` and `INTERFACE` properties, so it really is only useful on final targets.
+这种方式相比于上面来说更好，但是仍然没法对 `PRIVATE` 和 `INTERFACE` 目标的属性有明确的控制，所以他们也仍然只对最终目标 (final targets) 有用。
 
-You can find more information about the final two methods on [Craig Scott's useful blog post][crascit].
+你可以在 [Craig Scott's useful blog post][crascit] 这里找到更多关于后面两种方法的信息。 
 
 {% hint style='danger' %}
-Don't set manual flags yourself. You'll then become responsible for mainting correct flags for every release of every compiler, error messages for unsupported compilers won't be useful, and some IDEs might not pick up the manual flags.
+
+不要自己设置手动标志。如果这么做，你必须对每个编译器的每个发行版设置正确的标志，你无法通过不支持的编译器的报错信息来解决错误，并且 IDE 可能不会去关心手动设置的标志。
 {% endhint %}
 
 [crascit]: https://crascit.com/2015/03/28/enabling-cxx11-in-cmake/

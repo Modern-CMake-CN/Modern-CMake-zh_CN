@@ -1,12 +1,11 @@
-# Adding features
+# 为 CMake 项目添加特性
 
-This section covers adding common features to your CMake project. You'll learn how to add a variety of options commonly needed in C++ projects, like C++11 support, as well as how to support IDEs and more.
+本节将会涵盖如何为你的 CMake 项目添加特性。你将会学到如何为你的 C++ 项目添加一些常用的选项，如 C++11 支持，以及如何支持 IDE 工具等。
 
 
-## Default build type
+## 默认的构建类型
 
-CMake normally does a "non-release, non debug" empty build type; if you prefer to set the default build type yourself, you can follow this
-recipe for the default build type modified from the [Kitware blog](https://blog.kitware.com/cmake-and-the-default-build-type/):
+CMake 通常会设置一个 “既不是 Release 也不是Debug” 的空构建类型来作为默认的构建类型，如果你想要自己设置默认的构建类型，你可以参考 [Kitware blog](https://blog.kitware.com/cmake-and-the-default-build-type/) 中指出的方法。
 
 ```cmake
 set(default_build_type "Release")
@@ -19,3 +18,4 @@ if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
     "Debug" "Release" "MinSizeRel" "RelWithDebInfo")
 endif()
 ```
+
