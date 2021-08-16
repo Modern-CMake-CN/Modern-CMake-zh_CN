@@ -1,30 +1,30 @@
-# Adding Features
+# 为 CMake 项目添加选项
 
-There are lots of compiler and linker settings. When you need to add something special, you could check first to see if CMake supports it; if it does, you can avoid explicitly tying yourself to a compiler version. And, better yet, you explain what you mean in your CMakeLists, rather than spewing flags.
+CMake 中有许多关于编译器和链接器的设置。当你需要添加一些特殊的需求，你应该首先检查 CMake 是否支持这个需求，如果支持的话，你就可以不用关系编译器的版本，一切交给 CMake 来做即可。 更好的是，你可以在 `CMakeLists.txt` 表明你的意图，而不是通过开启一系列标志 (flag) 。
 
-The first and most common feature was C++ standards support, which got it's own chapter.
+其中最首要，并且最普遍的需求是对 C++ 标准的设定与支持，这个将会单独开一章节讲解。
 
-## Position independent code
+## 地址无关代码(Position independent code)
 
-[This](https://cmake.org/cmake/help/latest/variable/CMAKE_POSITION_INDEPENDENT_CODE.html) is best known as the `-fPIC` flag. Much of the time, you don't need to do anything. CMake will include the flag for `SHARED` or `MODULE` libraries. If you do explicitly need it:
+用标志 `-fPIC` 来设置[这个](https://cmake.org/cmake/help/latest/variable/CMAKE_POSITION_INDEPENDENT_CODE.html)是最常见的。大部分情况下，你不需要去显式的声明它的值。CMake 将会在 `SHARED` 以及 `MODULE` 类型的库中自动的包含此标志。如果你需要显式的声明，可以这么写： 
 
 ```cmake
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 ```
 
-will do it globally, or:
+这样会对全局的目标进行此设置，或者可以这么写：
 
 ```cmake
 set_target_properties(lib1 PROPERTIES POSITION_INDEPENDENT_CODE ON)
 ```
 
-to explicitly turn it `ON` (or `OFF`) for a target.
+来对某个目标进行设置是否开启此标志。
 
 ## Little libraries
 
-If you need to link to the `dl` library, with `-ldl` on Linux, just use the built-in CMake variable [`${CMAKE_DL_LIBS}`](https://cmake.org/cmake/help/latest/variable/CMAKE_DL_LIBS.html) in a `target_link_libraries` command. No module or `find_package` needed. (This adds whatever is needed to get `dlopen` and `dlclose`)
+如果你需要链接到 `dl` 库，在 Linux 上可以使用 `-ldl` 标志，不过在 CMake 中只需要在 `target_link_libraries` 命令中使用内置的 CMake 变量 [`${CMAKE_DL_LIBS}` ](https://cmake.org/cmake/help/latest/variable/CMAKE_DL_LIBS.html)。这里不需要模组或者使用 `find_package` 来寻找它。（这个命令包含了调用 `dlopen` 与 `dlclose` 的一切依赖）
 
-Unfortunately, the math library is not so lucky. If you need to explicitly link to it, you can always do `target_link_libraries(MyTarget PUBLIC m)`, but it might be better to use CMake's generic [`find_library`](https://cmake.org/cmake/help/latest/command/find_library.html):
+不幸的是，想要链接到数学库没这么简单。如果你需要明确地链接到它，你可以使用 `target_link_libraries(MyTarget PUBLIC m)`，但是使用 CMake 通用的 [`find_library`](https://cmake.org/cmake/help/latest/command/find_library.html) 可能更好，如下是一个例子：
 
 ```cmake
 find_library(MATH_LIBRARY m)
@@ -33,13 +33,11 @@ if(MATH_LIBRARY)
 endif()
 ```
 
-You can pretty easily find `Find*.cmake`'s for this and other libraries that you need with a quick search; most major packages have a helper library of CMake modules. See the chapter on existing package inclusion for more.
+通过快速搜索，你可以很容易地找到这个和其他你需要的库的 `Find*.cmake` 文件，大多数主要软件包都具有这个 CMake 模组的辅助库。更多信息请参见**包含现有软件包**的章节。
 
+## 程序间优化(Interprocedural optimization)
 
-
-## Interprocedural optimization
-
-«prop:tgt:INTERPROCEDURAL_OPTIMIZATION», best known as *link time optimization* and the `-flto` flag, is available on very recent versions of CMake. You can turn this on with «variable:CMAKE_INTERPROCEDURAL_OPTIMIZATION» (CMake 3.9+ only) or the «prop:tgt:INTERPROCEDURAL_OPTIMIZATION» property on targets. Support for GCC and Clang was added in CMake 3.8. If you set `cmake_minimum_required(VERSION 3.9)` or better (see «policy:CMP0069»), setting this to `ON` on a target is an error if the compiler doesn't support it. You can use check_ipo_supported(), from the built-in «module:CheckIPOSupported» module, to see if support is available before hand. An example of 3.9 style usage:
+«prop:tgt:INTERPROCEDURAL_OPTIMIZATION»，最有名的是 *链接时间优化* 以及 `-flto` 标志，这在最新的几个 CMake 版本中可用。你可以通过变量 «variable:CMAKE_INTERPROCEDURAL_OPTIMIZATION»（ CMake 3.9+ 可用）或对目标指定 «prop:tgt:INTERPROCEDURAL_OPTIMIZATION» 属性来打开它。在 CMake 3.8 中添加了对 GCC 及 Clang 的支持。如果你设置了 `cmake_minimum_required(VERSION 3.9)` 或者更高的版本（参考 «policy:CMP0069»），当在编译器不支持 «prop:tgt:INTERPROCEDURAL_OPTIMIZATION» 时，通过变量或属性启用该优化会产生报错。你可以使用内置模块 «module:CheckIPOSupported» 中的 `check_ipo_supported()` 来检查编译器是否支持 IPO 。下面是基于 CMake 3.9 的一个例子：
 
 ```cmake
 include(CheckIPOSupported)

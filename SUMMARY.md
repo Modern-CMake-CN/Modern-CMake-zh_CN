@@ -14,7 +14,7 @@
     * [一个简单的例子](chapters/basics/example.md)
 * [为 CMake 项目添加特性](chapters/features.md)
     * [C++11 及后续版本](chapters/features/cpp11.md)
-    * [Small but common needs](chapters/features/small.md)
+    * [一些小而常见的需求](chapters/features/small.md)
     * [Utilities](chapters/features/utilities.md)
     * [Useful modules](chapters/features/modules.md)
     * [IDEs](chapters/features/ides.md)
