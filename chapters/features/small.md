@@ -6,7 +6,7 @@ CMake 中有许多关于编译器和链接器的设置。当你需要添加一�
 
 ## 地址无关代码(Position independent code)
 
-[这个]((https://cmake.org/cmake/help/latest/variable/CMAKE_POSITION_INDEPENDENT_CODE.html))是最著名的 `-fPIC` 标志。大部分情况下，你不需要去显式的声明它的值。CMake 将会在 `SHARED` 以及 `MODULE` 类型的库中自动的包含此标志。如果你需要显式的声明，可以这么写： 
+用标志 `-fPIC` 来设置[这个](https://cmake.org/cmake/help/latest/variable/CMAKE_POSITION_INDEPENDENT_CODE.html)是最常见的。大部分情况下，你不需要去显式的声明它的值。CMake 将会在 `SHARED` 以及 `MODULE` 类型的库中自动的包含此标志。如果你需要显式的声明，可以这么写： 
 
 ```cmake
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
@@ -22,7 +22,7 @@ set_target_properties(lib1 PROPERTIES POSITION_INDEPENDENT_CODE ON)
 
 ## Little libraries
 
-如果你需要链接到 `dl` 库，在 Linux 上多使用 `-ldl` 标志，在 CMake 中只需要在 `target_link_libraries` 中使用内置的 CMake 变量 [`${CMAKE_DL_LIBS}` ](https://cmake.org/cmake/help/latest/variable/CMAKE_DL_LIBS.html)。这里不需要模组或者使用 `find_package` 来寻找它。（这个命令包含了调用 `dlopen` 与 `dlclose` 的一切依赖）
+如果你需要链接到 `dl` 库，在 Linux 上可以使用 `-ldl` 标志，不过在 CMake 中只需要在 `target_link_libraries` 命令中使用内置的 CMake 变量 [`${CMAKE_DL_LIBS}` ](https://cmake.org/cmake/help/latest/variable/CMAKE_DL_LIBS.html)。这里不需要模组或者使用 `find_package` 来寻找它。（这个命令包含了调用 `dlopen` 与 `dlclose` 的一切依赖）
 
 不幸的是，想要链接到数学库没这么简单。如果你需要明确地链接到它，你可以使用 `target_link_libraries(MyTarget PUBLIC m)`，但是使用 CMake 通用的 [`find_library`](https://cmake.org/cmake/help/latest/command/find_library.html) 可能更好，如下是一个例子：
 
