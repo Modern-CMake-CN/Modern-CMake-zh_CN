@@ -3,7 +3,7 @@
 * [现代的 CMake 的介绍](README_GitBook.md)
     * [安装 CMake](chapters/intro/installing.md)
     * [运行 CMake](chapters/intro/running.md)
-    * [Do's and Don'ts](chapters/intro/dodonot.md)
+    * [CMake 行为准则](chapters/intro/dodonot.md)
     * [What's new in CMake](chapters/intro/newcmake.md)
 * [基础知识简介](chapters/basics.md)
     * [变量与缓存](chapters/basics/variables.md)
