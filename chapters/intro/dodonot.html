@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Do's and Don'ts · Modern CMake</title>
+        <title>CMake 行为准则 · Modern CMake</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -168,7 +168,7 @@
                 <a href="dodonot.html">
             
                     
-                    Do's and Don'ts
+                    CMake 行为准则
             
                 </a>
             
@@ -336,7 +336,7 @@
                 <a href="../features/utilities.html">
             
                     
-                    Utilities
+                    CMake 中一些实用的工具
             
                 </a>
             
@@ -721,7 +721,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >Do's and Don'ts</a>
+        <a href="../.." >CMake 行为准则</a>
     </h1>
 </div>
 
@@ -736,26 +736,26 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="dos-and-donts">Do&apos;s and Don&apos;ts</h1>
-<h2 id="cmake-antipatterns">CMake Antipatterns</h2>
-<p>The next two lists are heavily based on the excellent gist <a href="https://gist.github.com/mbinna/c61dbb39bca0e4fb7d1f73b0d66a4fd1" target="_blank">Effective Modern CMake</a>. That list is much longer and more detailed, feel free to read it as well.</p>
+                                <h1 id="cmake-&#x884C;&#x4E3A;&#x51C6;&#x5219;dos-and-donts">CMake &#x884C;&#x4E3A;&#x51C6;&#x5219;(Do&apos;s and Don&apos;ts)</h1>
+<h2 id="cmake-&#x5E94;&#x907F;&#x514D;&#x7684;&#x884C;&#x4E3A;">CMake &#x5E94;&#x907F;&#x514D;&#x7684;&#x884C;&#x4E3A;</h2>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x7684;&#x4E24;&#x4E2A;&#x5217;&#x8868;&#x5F88;&#x5927;&#x7A0B;&#x5EA6;&#x4E0A;&#x57FA;&#x4E8E;&#x4F18;&#x79C0;&#x7684; gist <a href="https://gist.github.com/mbinna/c61dbb39bca0e4fb7d1f73b0d66a4fd1" target="_blank">Effective Modern CMake</a>. &#x90A3;&#x4E2A;&#x5217;&#x8868;&#x66F4;&#x957F;&#x4E14;&#x66F4;&#x8BE6;&#x7EC6;&#xFF0C;&#x4E5F;&#x975E;&#x5E38;&#x6B22;&#x8FCE;&#x4F60;&#x53BB;&#x4ED4;&#x7EC6;&#x9605;&#x8BFB;&#x5B83;&#x3002;</p>
 <ul>
-<li><strong>Do not use global functions</strong>: This includes <code>link_directories</code>, <code>include_libraries</code>, and similar.</li>
-<li><strong>Don&apos;t add unneeded PUBLIC requirements</strong>: You should avoid forcing something on users that is not required (<code>-Wall</code>). Make these PRIVATE instead.</li>
-<li><strong>Don&apos;t GLOB files</strong>: Make or another tool will not know if you add files without rerunning CMake. Note that CMake 3.12 adds a <code>CONFIGURE_DEPENDS</code> flag that makes this far better if you need to use it.</li>
-<li><strong>Link to built files directly</strong>: Always link to targets if available.</li>
-<li><strong>Never skip PUBLIC/PRIVATE when linking</strong>: This causes all future linking to be keyword-less.</li>
+<li><strong>&#x4E0D;&#x8981;&#x4F7F;&#x7528;&#x5177;&#x6709;&#x5168;&#x5C40;&#x4F5C;&#x7528;&#x57DF;&#x7684;&#x51FD;&#x6570;</strong>&#xFF1A;&#x8FD9;&#x5305;&#x542B; <code>link_directories</code>&#x3001; <code>include_libraries</code> &#x7B49;&#x76F8;&#x4F3C;&#x7684;&#x51FD;&#x6570;&#x3002;</li>
+<li><strong>&#x4E0D;&#x8981;&#x6DFB;&#x52A0;&#x6BD4;&#x4E0D;&#x8981;&#x7684; PUBLIC &#x8981;&#x6C42;</strong>&#xFF1A;&#x4F60;&#x5E94;&#x8BE5;&#x907F;&#x514D;&#x628A;&#x4E00;&#x4E9B;&#x4E0D;&#x5FC5;&#x8981;&#x7684;&#x4E1C;&#x897F;&#x5F3A;&#x52A0;&#x7ED9;&#x7528;&#x6237;&#xFF08;-Wall&#xFF09;&#x3002;&#x76F8;&#x6BD4;&#x4E0E; <strong>PUBLIC</strong>&#xFF0C;&#x66F4;&#x5E94;&#x8BE5;&#x628A;&#x4ED6;&#x4EEC;&#x58F0;&#x660E;&#x4E3A; <strong>PRIVATE</strong>&#x3002;</li>
+<li><strong>&#x4E0D;&#x8981;&#x5728;file&#x51FD;&#x6570;&#x4E2D;&#x6DFB;&#x52A0; GLOB &#x6587;&#x4EF6;</strong>&#xFF1A;&#x5982;&#x679C;&#x4E0D;&#x91CD;&#x65B0;&#x8FD0;&#x884C; CMake&#xFF0C;Make &#x6216;&#x8005;&#x5176;&#x4ED6;&#x7684;&#x5DE5;&#x5177;&#x5C06;&#x4E0D;&#x4F1A;&#x77E5;&#x9053;&#x4F60;&#x662F;&#x5426;&#x6DFB;&#x52A0;&#x4E86;&#x67D0;&#x4E2A;&#x6587;&#x4EF6;&#x3002;&#x503C;&#x5F97;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;CMake 3.12 &#x6DFB;&#x52A0;&#x4E86;&#x4E00;&#x4E2A; <code>CONFIGURE_DEPENDS</code> &#x6807;&#x5FD7;&#x80FD;&#x591F;&#x4F7F;&#x4F60;&#x66F4;&#x597D;&#x7684;&#x5B8C;&#x6210;&#x8FD9;&#x4EF6;&#x4E8B;&#x3002;</li>
+<li><strong>&#x5C06;&#x5E93;&#x76F4;&#x63A5;&#x94FE;&#x63A5;&#x5230;&#x9700;&#x8981;&#x6784;&#x5EFA;&#x7684;&#x76EE;&#x6807;&#x4E0A;</strong>&#xFF1A;&#x5982;&#x679C;&#x53EF;&#x4EE5;&#x7684;&#x8BDD;&#xFF0C;&#x603B;&#x662F;&#x663E;&#x5F0F;&#x7684;&#x5C06;&#x5E93;&#x94FE;&#x63A5;&#x5230;&#x76EE;&#x6807;&#x4E0A;&#x3002;</li>
+<li><strong>&#x5F53;&#x94FE;&#x63A5;&#x5E93;&#x6587;&#x4EF6;&#x65F6;&#xFF0C;&#x4E0D;&#x8981;&#x7701;&#x7565; PUBLIC&#x6216;PRIVATE &#x5173;&#x952E;&#x5B57;</strong>&#xFF1A;&#x8FD9;&#x5C06;&#x4F1A;&#x5BFC;&#x81F4;&#x540E;&#x7EED;&#x6240;&#x6709;&#x7684;&#x94FE;&#x63A5;&#x90FD;&#x662F;&#x7F3A;&#x7701;&#x7684;&#x3002;</li>
 </ul>
-<h2 id="cmake-patterns">CMake Patterns</h2>
+<h2 id="cmake-&#x5E94;&#x9075;&#x5B88;&#x7684;&#x89C4;&#x8303;">CMake &#x5E94;&#x9075;&#x5B88;&#x7684;&#x89C4;&#x8303;</h2>
 <ul>
-<li><strong>Treat CMake as code</strong>: It is code. It should be as clean and readable as all other code.</li>
-<li><strong>Think in targets</strong>: Your targets should represent concepts. Make an (IMPORTED) INTERFACE target for anything that should stay together and link to that.</li>
-<li><strong>Export your interface</strong>: You should be able to run from build or install.</li>
-<li><strong>Write a Config.cmake file</strong>: This is what a library author should do to support clients.</li>
-<li><strong>Make ALIAS targets to keep usage consistent</strong>: Using <code>add_subdirectory</code> and <code>find_package</code> should provide the same targets and namespaces.</li>
-<li><strong>Combine common functionality into clearly documented functions or macros</strong>: Functions are better usually.</li>
-<li><strong>Use lowercase function names</strong>: CMake functions and macros can be called lower or upper case. Always use lower case. Upper case is for variables.</li>
-<li><strong>Use <code>cmake_policy</code> and/or range of versions</strong>: Policies change for a reason. Only piecemeal set OLD policies if you have to.</li>
+<li><strong>&#x628A; CMake &#x7A0B;&#x5E8F;&#x89C6;&#x4F5C;&#x4EE3;&#x7801;</strong>&#xFF1A;&#x5B83;&#x662F;&#x4EE3;&#x7801;&#x3002;&#x5B83;&#x5E94;&#x8BE5;&#x548C;&#x5176;&#x4ED6;&#x7684;&#x4EE3;&#x7801;&#x4E00;&#x6837;&#xFF0C;&#x662F;&#x6574;&#x6D01;&#x5E76;&#x4E14;&#x53EF;&#x8BFB;&#x7684;&#x3002;</li>
+<li><strong>&#x5EFA;&#x7ACB;&#x76EE;&#x6807;&#x7684;&#x89C2;&#x5FF5;</strong>&#xFF1A;&#x4F60;&#x7684;&#x76EE;&#x6807;&#x5E94;&#x8BE5;&#x4EE3;&#x8868;&#x4E00;&#x7CFB;&#x5217;&#x7684;&#x6982;&#x5FF5;&#x3002;&#x4E3A;&#x4EFB;&#x4F55;&#x9700;&#x8981;&#x4FDD;&#x6301;&#x4E00;&#x81F4;&#x7684;&#x4E1C;&#x897F;&#x6307;&#x5B9A;&#x4E00;&#x4E2A; &#xFF08;&#x5BFC;&#x5165;&#x578B;&#xFF09;INTERFACE &#x76EE;&#x6807;&#xFF0C;&#x7136;&#x540E;&#x6BCF;&#x6B21;&#x90FD;&#x94FE;&#x63A5;&#x5230;&#x8BE5;&#x76EE;&#x6807;&#x3002;</li>
+<li><strong>&#x5BFC;&#x51FA;&#x4F60;&#x7684;&#x63A5;&#x53E3;</strong>&#xFF1A;&#x4F60;&#x7684; CMake &#x9879;&#x76EE;&#x5E94;&#x8BE5;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x6784;&#x5EFA;&#x6216;&#x8005;&#x5B89;&#x88C5;&#x3002;</li>
+<li><strong>&#x4E3A;&#x5E93;&#x4E66;&#x5199;&#x4E00;&#x4E2A; Config.cmake &#x6587;&#x4EF6;</strong>&#xFF1A;&#x8FD9;&#x662F;&#x5E93;&#x4F5C;&#x8005;&#x4E3A;&#x652F;&#x6301;&#x5BA2;&#x6237;&#x7684;&#x4F53;&#x9A8C;&#x800C;&#x5E94;&#x8BE5;&#x505A;&#x7684;&#x3002;</li>
+<li><strong>&#x58F0;&#x660E;&#x4E00;&#x4E2A; ALIAS &#x76EE;&#x6807;&#x4EE5;&#x4FDD;&#x6301;&#x4F7F;&#x7528;&#x7684;&#x4E00;&#x81F4;&#x6027;</strong>&#xFF1A;&#x4F7F;&#x7528; <code>add_subdirectory</code> &#x548C; <code>find_package</code> &#x5E94;&#x8BE5;&#x63D0;&#x4F9B;&#x76F8;&#x540C;&#x7684;&#x76EE;&#x6807;&#x548C;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x3002;</li>
+<li><strong>&#x5C06;&#x5E38;&#x89C1;&#x7684;&#x529F;&#x80FD;&#x5408;&#x5E76;&#x5230;&#x6709;&#x8BE6;&#x7EC6;&#x6587;&#x6863;&#x7684;&#x51FD;&#x6570;&#x6216;&#x5B8F;&#x4E2D;</strong>&#xFF1A;&#x51FD;&#x6570;&#x5F80;&#x5F80;&#x662F;&#x66F4;&#x597D;&#x7684;&#x9009;&#x62E9;&#x3002;</li>
+<li><strong>&#x4F7F;&#x7528;&#x5C0F;&#x5199;&#x7684;&#x51FD;&#x6570;&#x540D;</strong>&#xFF1A; CMake &#x7684;&#x51FD;&#x6570;&#x548C;&#x5B8F;&#x7684;&#x540D;&#x5B57;&#x53EF;&#x4EE5;&#x5B9A;&#x4E49;&#x4E3A;&#x5927;&#x5199;&#x6216;&#x5C0F;&#x5199;&#xFF0C;&#x4F46;&#x662F;&#x4E00;&#x822C;&#x90FD;&#x4F7F;&#x7528;&#x5C0F;&#x5199;&#xFF0C;&#x53D8;&#x91CF;&#x540D;&#x7528;&#x5927;&#x5199;&#x3002;</li>
+<li><strong>&#x4F7F;&#x7528; <code>cmake_policy</code> &#x548C;/&#x6216; &#x9650;&#x5B9A;&#x7248;&#x672C;&#x53F7;&#x8303;&#x56F4;</strong>&#xFF1A; &#x6BCF;&#x6B21;&#x6539;&#x53D8;&#x7248;&#x672C;&#x7279;&#x6027; (policy) &#x90FD;&#x8981;&#x6709;&#x636E;&#x53EF;&#x4F9D;&#x3002;&#x5E94;&#x8BE5;&#x53EA;&#x6709;&#x4E0D;&#x5F97;&#x4E0D;&#x4F7F;&#x7528;&#x65E7;&#x7279;&#x6027;&#x65F6;&#x624D;&#x964D;&#x4F4E;&#x7279;&#x6027; (policy) &#x7248;&#x672C;&#x3002;</li>
 </ul>
 
                                 
@@ -800,7 +800,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Do's and Don'ts","level":"1.2.3","depth":2,"next":{"title":"What's new in CMake","level":"1.2.4","depth":2,"path":"chapters/intro/newcmake.md","ref":"chapters/intro/newcmake.md","articles":[]},"previous":{"title":"运行 CMake","level":"1.2.2","depth":2,"path":"chapters/intro/running.md","ref":"chapters/intro/running.md","articles":[]},"dir":"ltr"},"config":{"plugins":["replace","hints","term","include-codeblock","ace","github-edit"],"root":".","styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"ace":{},"search":{},"term":{"copyButtons":true,"fade":true,"lineStyles":true,"prompt":"(?<prompt>[^\\$^#^:]*)(?<pathsep>:?)(?<path>[^\\$^#]*?)(?<delimiter>[\\$#] )(?<command>.*)$","style":"default"},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"lunr":{"ignoreSpecialCharacters":false,"maxIndexSize":1000000},"fontsettings":{"family":"sans","size":2,"theme":"white"},"highlight":{},"github-edit":{"repo":"Modern-CMake-CN/Modern-CMake-zh_CN","branch":"master"},"replace":{"substitutes":[{"pattern":"«cmake:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/manual/cmake-$1.7.html)"},{"pattern":"«command:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/command/$1.html)"},{"pattern":"«envvar:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/envvar/$1.html)"},{"pattern":"«module:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/module/$1.html)"},{"pattern":"«policy:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/policy/$1.html)"},{"pattern":"«variable:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest//$1.html)"},{"pattern":"«prop:([^:]+):`?([^`^»]+)`?»","flags":"g","substitute":"[`$2`](https://cmake.org/cmake/help/latest/prop_$1/$2.html)"}]},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}}},"theme":"default","author":"Henry Schreiner","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Modern CMake","language":"zh-hans","links":{"sidebar":{"GitHub Repo":"https://github.com/Modern-CMake-CN/Modern-CMake-zh_CN"}},"gitbook":"3.x.x","description":"A guide to writing simple, powerful, and clean CMake 3.1+ builds."},"file":{"path":"chapters/intro/dodonot.md","mtime":"2021-08-16T05:24:13.417Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-16T05:26:27.202Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"CMake 行为准则","level":"1.2.3","depth":2,"next":{"title":"What's new in CMake","level":"1.2.4","depth":2,"path":"chapters/intro/newcmake.md","ref":"chapters/intro/newcmake.md","articles":[]},"previous":{"title":"运行 CMake","level":"1.2.2","depth":2,"path":"chapters/intro/running.md","ref":"chapters/intro/running.md","articles":[]},"dir":"ltr"},"config":{"plugins":["replace","hints","term","include-codeblock","ace","github-edit"],"root":".","styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"ace":{},"search":{},"term":{"copyButtons":true,"fade":true,"lineStyles":true,"prompt":"(?<prompt>[^\\$^#^:]*)(?<pathsep>:?)(?<path>[^\\$^#]*?)(?<delimiter>[\\$#] )(?<command>.*)$","style":"default"},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"lunr":{"ignoreSpecialCharacters":false,"maxIndexSize":1000000},"fontsettings":{"family":"sans","size":2,"theme":"white"},"highlight":{},"github-edit":{"repo":"Modern-CMake-CN/Modern-CMake-zh_CN","branch":"master"},"replace":{"substitutes":[{"pattern":"«cmake:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/manual/cmake-$1.7.html)"},{"pattern":"«command:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/command/$1.html)"},{"pattern":"«envvar:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/envvar/$1.html)"},{"pattern":"«module:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/module/$1.html)"},{"pattern":"«policy:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/policy/$1.html)"},{"pattern":"«variable:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest//$1.html)"},{"pattern":"«prop:([^:]+):`?([^`^»]+)`?»","flags":"g","substitute":"[`$2`](https://cmake.org/cmake/help/latest/prop_$1/$2.html)"}]},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}}},"theme":"default","author":"Henry Schreiner","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Modern CMake","language":"zh-hans","links":{"sidebar":{"GitHub Repo":"https://github.com/Modern-CMake-CN/Modern-CMake-zh_CN"}},"gitbook":"3.x.x","description":"A guide to writing simple, powerful, and clean CMake 3.1+ builds."},"file":{"path":"chapters/intro/dodonot.md","mtime":"2021-08-17T17:01:37.223Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-17T17:03:47.688Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Utilities · Modern CMake</title>
+        <title>CMake 中一些实用的工具 · Modern CMake</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -168,7 +168,7 @@
                 <a href="../intro/dodonot.html">
             
                     
-                    Do's and Don'ts
+                    CMake 行为准则
             
                 </a>
             
@@ -336,7 +336,7 @@
                 <a href="utilities.html">
             
                     
-                    Utilities
+                    CMake 中一些实用的工具
             
                 </a>
             
@@ -721,7 +721,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >Utilities</a>
+        <a href="../.." >CMake 中一些实用的工具</a>
     </h1>
 </div>
 
@@ -736,70 +736,73 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="ccache-and-utilities">CCache and Utilities</h1>
-<p>Over the versions, common utilities that help you write good code have had support added to CMake. This is usually in the form of a property and matching <code>CMAKE_*</code> initialization variable. The feature is not meant to be tied to one special program, but rather any program that is somewhat similar in behavior.</p>
-<p>All of these take <code>;</code> separated values (a standard list in CMake) that describe the program and options that you should run on the source files of this target.</p>
-<h2 id="ccache">CCache</h2>
-<p>Set the <code>CMAKE_&lt;LANG&gt;_COMPILER_LAUNCHER</code> variable or the <code>&lt;LANG&gt;_COMPILER_LAUNCHER</code> property on a target to use something like CCache to &quot;wrap&quot; the compilation of the target. Support for CCache has been expanding in the latest versions of CMake. In practice, this tends to look like this:</p>
+                                <h1 id="ccache-&#x548C;&#x4E00;&#x4E9B;&#x5176;&#x4ED6;&#x7684;&#x5B9E;&#x7528;&#x5DE5;&#x5177;">CCache &#x548C;&#x4E00;&#x4E9B;&#x5176;&#x4ED6;&#x7684;&#x5B9E;&#x7528;&#x5DE5;&#x5177;</h1>
+<p>&#x5728;&#x8FC7;&#x53BB;&#x7684;&#x4E00;&#x4E9B;&#x7248;&#x672C;&#x4E2D;&#xFF0C;&#x4E00;&#x4E9B;&#x80FD;&#x591F;&#x5E2E;&#x52A9;&#x4F60;&#x5199;&#x597D;&#x4EE3;&#x7801;&#x7684;&#x5B9E;&#x7528;&#x5DE5;&#x5177;&#x5DF2;&#x7ECF;&#x88AB;&#x6DFB;&#x52A0;&#x5230;&#x4E86; CMake &#x4E2D;&#x3002;&#x5F80;&#x5F80;&#x662F;&#x901A;&#x8FC7;&#x4E3A;&#x76EE;&#x6807;&#x6307;&#x5B9A;&#x5C5E;&#x6027;&#xFF0C;&#x6216;&#x662F;&#x8BBE;&#x5B9A;&#x5F62;&#x5982; <code>CMAKE_*</code> &#x7684;&#x521D;&#x59CB;&#x5316;&#x53D8;&#x91CF;&#x7684;&#x503C;&#x7684;&#x5F62;&#x5F0F;&#x542F;&#x7528;&#x76F8;&#x5E94;&#x5DE5;&#x5177;&#x3002;&#x8FD9;&#x4E2A;&#x542F;&#x7528;&#x7684;&#x89C4;&#x5219;&#x4E0D;&#x53EA;&#x662F;&#x5BF9;&#x67D0;&#x4E2A;&#x7279;&#x5B9A;&#x7684;&#x5DE5;&#x5177;&#xFF08;program&#xFF09;&#x8D77;&#x4F5C;&#x7528;&#xFF0C;&#x4E00;&#x4E9B;&#x884C;&#x4E3A;&#x76F8;&#x4F3C;&#x7684;&#x5DE5;&#x5177;&#x90FD;&#x7B26;&#x5408;&#x6B64;&#x89C4;&#x5219;&#x3002;</p>
+<p>&#x5F53;&#x9700;&#x8981;&#x542F;&#x7528;&#x591A;&#x4E2A;&#x5DE5;&#x5177;&#x65F6;&#xFF0C;&#x6240;&#x6709;&#x7684;&#x8FD9;&#x4E9B;&#x53D8;&#x91CF;&#x90FD;&#x901A;&#x8FC7; <code>;</code> &#x5206;&#x9694;&#xFF08;CMake &#x4E2D;&#x5217;&#x8868;&#x7684;&#x5206;&#x9694;&#x6807;&#x51C6;&#xFF09;&#x6765;&#x63CF;&#x8FF0;&#x4F60;&#x5728;&#x76EE;&#x6807;&#x6E90;&#x7A0B;&#x5E8F;&#x4E0A;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x7684;&#x5DE5;&#x5177;( program) &#x4EE5;&#x53CA;&#x9009;&#x9879;&#x3002;</p>
+<h2 id="ccache1">CCache<sup><a href="#fn_1" id="reffn_1">1</a></sup></h2>
+<p>&#x901A;&#x8FC7;&#x8BBE;&#x7F6E;&#x53D8;&#x91CF; <code>CMAKE_&lt;LANG&gt;_COMPILER_LAUNCHER</code> &#x6216;&#x8BBE;&#x7F6E;&#x76EE;&#x6807;&#x7684; <code>&lt;LANG&gt;_COMPILER_LAUNCHER</code> &#x5C5E;&#x6027;&#x6765;&#x4F7F;&#x7528;&#x4E00;&#x4E9B;&#x50CF; CCache &#x7684;&#x65B9;&#x5F0F;&#x6765;&#x201C;&#x5C01;&#x88C5;&#x201D;&#x76EE;&#x6807;&#x7684;&#x7F16;&#x8BD1;&#x3002;&#x5728; CMake &#x7684;&#x6700;&#x65B0;&#x7248;&#x672C;&#x4E2D;&#x62D3;&#x5C55;&#x4E86;&#x5BF9; CCache &#x7684;&#x652F;&#x6301;&#x3002;&#x5728;&#x4F7F;&#x7528;&#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x8FD9;&#x4E48;&#x5199;&#xFF1A;</p>
 <pre><code class="lang-cmake"><span class="hljs-keyword">find_program</span>(CCACHE_PROGRAM ccache)
 <span class="hljs-keyword">if</span>(CCACHE_PROGRAM)
     <span class="hljs-keyword">set</span>(CMAKE_CXX_COMPILER_LAUNCHER <span class="hljs-string">&quot;${CCACHE_PROGRAM}&quot;</span>)
     <span class="hljs-keyword">set</span>(CMAKE_CUDA_COMPILER_LAUNCHER <span class="hljs-string">&quot;${CCACHE_PROGRAM}&quot;</span>) <span class="hljs-comment"># CMake 3.9+</span>
 <span class="hljs-keyword">endif</span>()
 </code></pre>
-<h2 id="utilities">Utilities</h2>
-<p>Set the following properties or <code>CMAKE_*</code> initializer variables to the command line for the tools. Most of them are limited to C or CXX with make or ninja generators.</p>
+<h2 id="&#x4E00;&#x4E9B;&#x5B9E;&#x7528;&#x5DE5;&#x5177;">&#x4E00;&#x4E9B;&#x5B9E;&#x7528;&#x5DE5;&#x5177;</h2>
+<p>&#x8BBE;&#x7F6E;&#x4EE5;&#x4E0B;&#x5C5E;&#x6027;&#x6216;&#x662F;&#x5728;&#x547D;&#x4EE4;&#x884C;&#x4E2D;&#x8BBE;&#x7F6E;&#x4EE5; <code>CMAKE_*</code> &#x4E3A;&#x8D77;&#x59CB;&#x7684;&#x53D8;&#x91CF;&#x6765;&#x542F;&#x52A8;&#x8FD9;&#x4E9B;&#x529F;&#x80FD;&#x3002;&#x5B83;&#x4EEC;&#x5927;&#x90E8;&#x5206;&#x53EA;&#x5728; make &#x6216; ninja &#x751F;&#x6210;&#x5668;&#x751F;&#x6210; C &#x548C; CXX &#x9879;&#x76EE;&#x65F6;&#x8D77;&#x4F5C;&#x7528;&#x3002;</p>
 <ul>
 <li><code>&lt;LANG&gt;_CLANG_TIDY</code>: CMake 3.6+</li>
 <li><code>&lt;LANG&gt;_CPPCHECK</code></li>
 <li><code>&lt;LANG&gt;_CPPLINT</code></li>
 <li><code>&lt;LANG&gt;_INCLUDE_WHAT_YOU_USE</code></li>
 </ul>
-<h2 id="clang-tidy">Clang tidy</h2>
-<p>This is the command line for running clang-tidy, as a list (remember, a semicolon separated string is a list).</p>
-<p>Here is a simple example of using Clang-Tidy:</p>
+<h2 id="clang-tidy2">Clang tidy<sup><a href="#fn_2" id="reffn_2">2</a></sup></h2>
+<p>&#x8FD9;&#x662F;&#x5728;&#x547D;&#x4EE4;&#x884C;&#x4E2D;&#x8FD0;&#x884C; clang-tidy&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x4F7F;&#x7528;&#x7684;&#x662F;&#x4E00;&#x4E2A;&#x5217;&#x8868;&#xFF08;&#x8BB0;&#x4F4F;&#xFF0C;&#x7528;&#x5206;&#x53F7;&#x5206;&#x9694;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x662F;&#x4E00;&#x4E2A;&#x5217;&#x8868;&#xFF09;&#x3002;</p>
+<p>&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x4F7F;&#x7528; Clang-Tidy &#x7684;&#x7B80;&#x5355;&#x4F8B;&#x5B50;&#xFF1A;</p>
 <pre><code class="lang-term"><pre class="term t-default t-fade"><button class="btn t-copy" data-clipboard-text="cmake -S . -B build-tidy -DCMAKE_CXX_CLANG_TIDY=&quot;$(which clang-tidy);-fix&quot;
 cmake --build build -j 1"><svg class="octicon octicon-clippy" viewbox="0 0 14 16" version="1.1" width="14" height="14" aria-hidden="true"><path fill-rule="evenodd" d="M2 13h4v1H2v-1zm5-6H2v1h5V7zm2 3V8l-3 3 3 3v-2h5v-2H9zM4.5 9H2v1h2.5V9zM2 12h2.5v-1H2v1zm9 1h1v2c-.02.28-.11.52-.3.7-.19.18-.42.28-.7.3H1c-.55 0-1-.45-1-1V4c0-.55.45-1 1-1h3c0-1.11.89-2 2-2 1.11 0 2 .89 2 2h3c.55 0 1 .45 1 1v5h-1V6H1v9h10v-2zM2 5h8c0-.55-.45-1-1-1H8c-.55 0-1-.45-1-1s-.45-1-1-1-1 .45-1 1-.45 1-1 1H3c-.55 0-1 .45-1 1z"/></svg></button><span class="t-line t-prompt-line"><span class="t-prompt">~/package </span><span class="t-delimiter"># </span><span class="t-command">cmake -S . -B build-tidy -DCMAKE_CXX_CLANG_TIDY=&quot;$(which clang-tidy);-fix&quot;</span>
 </span><span class="t-line t-prompt-line"><span class="t-prompt">~/package </span><span class="t-delimiter"># </span><span class="t-command">cmake --build build -j 1</span>
 </span></pre></code></pre>
-<p>The <code>-fix</code> part is optional, and will modify your source files to try to fix
-the tidy warning issued. If you are working in a git repository, this is fairly
-safe as you can see what has changed. However, make sure you <strong>do not run your
-makefile/ninja build in parallel</strong>! This will not work very well at all if it
-tries to fix the same header twice.</p>
-<p>If you want to explicitly use the target form to ensure you only call this on
-your local targets, you can set a variable (maybe something like
-<code>DO_CLANG_TIDY</code>) instead of the <code>CMAKE_CXX_CLANG_TIDY</code> variable, then add it to
-your target properties as you create them. You can find clang-tidy in your path
-like this:</p>
+<p>&#x8FD9;&#x91CC;&#x7684; <code>-fix</code> &#x90E8;&#x5206;&#x662F;&#x53EF;&#x9009;&#x7684;&#xFF0C;&#x5C06;&#x4F1A;&#x4FEE;&#x6539;&#x4F60;&#x7684;&#x6E90;&#x6587;&#x4EF6;&#x6765;&#x5C1D;&#x8BD5;&#x4FEE;&#x590D; clang-tidy &#x8B66;&#x544A; (warning) &#x7684;&#x95EE;&#x9898;&#x3002;&#x5982;&#x679C;&#x4F60;&#x5728;&#x4E00;&#x4E2A; git &#x4ED3;&#x5E93;&#x4E2D;&#x5DE5;&#x4F5C;&#x7684;&#x8BDD;&#xFF0C;&#x4F7F;&#x7528; <code>-fix</code> &#x662F;&#x76F8;&#x5F53;&#x5B89;&#x5168;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;&#x4F60;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x4EE3;&#x7801;&#x4E2D;&#x54EA;&#x90E8;&#x5206;&#x88AB;&#x6539;&#x53D8;&#x4E86;&#x3002;&#x4E0D;&#x8FC7;&#xFF0C;&#x8BF7;&#x786E;&#x4FDD;<strong>&#x4E0D;&#x8981;&#x540C;&#x65F6;&#x8FD0;&#x884C;&#x4F60;&#x7684; makefile/ninja &#x6765;&#x8FDB;&#x884C;&#x6784;&#x5EFA;</strong>&#xFF01;&#x5982;&#x679C;&#x5B83;&#x5C1D;&#x8BD5;&#x4FEE;&#x590D;&#x4E00;&#x4E2A;&#x76F8;&#x540C;&#x7684;&#x5934;&#x6587;&#x4EF6;&#x4E24;&#x6B21;&#xFF0C;&#x53EF;&#x80FD;&#x4F1A;&#x51FA;&#x73B0;&#x9884;&#x671F;&#x5916;&#x7684;&#x9519;&#x8BEF;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x4F60;&#x60F3;&#x660E;&#x786E;&#x7684;&#x4F7F;&#x7528;&#x76EE;&#x6807;&#x7684;&#x5F62;&#x5F0F;&#x6765;&#x786E;&#x4FDD;&#x81EA;&#x5DF1;&#x5BF9;&#x67D0;&#x4E9B;&#x7279;&#x5B9A;&#x7684;&#x76EE;&#x6807;&#x8C03;&#x7528;&#x4E86; clang-tidy&#xFF0C;&#x4E3A;&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;&#x53D8;&#x91CF;&#xFF08;&#x4F8B;&#x5982;&#x50CF; <code>DO_CLANG_TIDY</code>&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x540D;&#x4E3A; <code>CMAKE_CXX_CLANG_TIDY</code> &#x7684;&#x53D8;&#x91CF;&#xFF09;&#xFF0C;&#x7136;&#x540E;&#x5728;&#x521B;&#x5EFA;&#x76EE;&#x6807;&#x65F6;&#xFF0C;&#x5C06;&#x5B83;&#x6DFB;&#x52A0;&#x4E3A;&#x76EE;&#x6807;&#x7684;&#x5C5E;&#x6027;&#x3002;&#x4F60;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4EE5;&#x4E0B;&#x65B9;&#x5F0F;&#x627E;&#x5230;&#x8DEF;&#x5F84;&#x4E2D;&#x7684; clang-tidy&#xFF1A;</p>
 <pre><code class="lang-cmake"><span class="hljs-keyword">find_program</span>(
     CLANG_TIDY_EXE
     NAMES <span class="hljs-string">&quot;clang-tidy&quot;</span>
     DOC <span class="hljs-string">&quot;Path to clang-tidy executable&quot;</span>
 )
 </code></pre>
-<h2 id="include-what-you-use">Include what you use</h2>
-<p>This is an example for using include what you use. First, you&apos;ll need to have
-the tool, such as in a docker container or with brew (macOS) with <code>brew install
-include-what-you-use</code>.  Then, you can pass this into your build without
-modifying the source:</p>
+<h2 id="include-what-you-use3">Include what you use<sup><a href="#fn_3" id="reffn_3">3</a></sup></h2>
+<p>&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x4F7F;&#x7528; <code>include what you use</code> &#x7684;&#x4F8B;&#x5B50;&#x3002;&#x9996;&#x5148;&#xFF0C;&#x4F60;&#x9700;&#x8981;&#x786E;&#x4FDD;&#x7CFB;&#x7EDF;&#x4E2D;&#x6709;&#x8FD9;&#x4E2A;&#x5DE5;&#x5177;&#xFF0C;&#x4F8B;&#x5982;&#x5728;&#x4E00;&#x4E2A; docker &#x5BB9;&#x5668;&#x4E2D;&#x6216;&#x8005;&#x901A;&#x8FC7; macOS &#x4E0A;&#x7684; brew &#x5229;&#x7528; <code>brew install include-what-you-use</code> &#x6765;&#x5B89;&#x88C5;&#x5B83;&#x3002;&#x7136;&#x540E;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x6B64;&#x65B9;&#x5F0F;&#x4F7F;&#x7528;&#x6B64;&#x5DE5;&#x5177;&#xFF0C;&#x800C;&#x4E0D;&#x9700;&#x8981;&#x4FEE;&#x6539;&#x4F60;&#x7684;&#x6E90;&#x4EE3;&#x7801;&#xFF1A;</p>
 <pre><code class="lang-term"><pre class="term t-default t-fade"><button class="btn t-copy" data-clipboard-text="cmake -S . -B build-iwyu -DCMAKE_CXX_INCLUDE_WHAT_YOU_USE=include-what-you-use"><svg class="octicon octicon-clippy" viewbox="0 0 14 16" version="1.1" width="14" height="14" aria-hidden="true"><path fill-rule="evenodd" d="M2 13h4v1H2v-1zm5-6H2v1h5V7zm2 3V8l-3 3 3 3v-2h5v-2H9zM4.5 9H2v1h2.5V9zM2 12h2.5v-1H2v1zm9 1h1v2c-.02.28-.11.52-.3.7-.19.18-.42.28-.7.3H1c-.55 0-1-.45-1-1V4c0-.55.45-1 1-1h3c0-1.11.89-2 2-2 1.11 0 2 .89 2 2h3c.55 0 1 .45 1 1v5h-1V6H1v9h10v-2zM2 5h8c0-.55-.45-1-1-1H8c-.55 0-1-.45-1-1s-.45-1-1-1-1 .45-1 1-.45 1-1 1H3c-.55 0-1 .45-1 1z"/></svg></button><span class="t-line t-prompt-line"><span class="t-prompt">~/package </span><span class="t-delimiter"># </span><span class="t-command">cmake -S . -B build-iwyu -DCMAKE_CXX_INCLUDE_WHAT_YOU_USE=include-what-you-use</span>
 </span></pre></code></pre>
-<p>Finally, you can collect the output and (optionally) apply the fixes:</p>
+<p>&#x6700;&#x540E;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x91CD;&#x5B9A;&#x5411;&#x8F93;&#x51FA;&#x5230;&#x6587;&#x4EF6;&#xFF0C;&#x7136;&#x540E;&#x9009;&#x62E9;&#x662F;&#x5426;&#x5E94;&#x7528;&#x6B64;&#x4FEE;&#x590D;&#xFF1A;</p>
 <pre><code class="lang-term"><pre class="term t-default t-fade"><button class="btn t-copy" data-clipboard-text="cmake --build build-iwyu 2&gt; iwyu.out
 fix_includes.py &lt; iwyu.out"><svg class="octicon octicon-clippy" viewbox="0 0 14 16" version="1.1" width="14" height="14" aria-hidden="true"><path fill-rule="evenodd" d="M2 13h4v1H2v-1zm5-6H2v1h5V7zm2 3V8l-3 3 3 3v-2h5v-2H9zM4.5 9H2v1h2.5V9zM2 12h2.5v-1H2v1zm9 1h1v2c-.02.28-.11.52-.3.7-.19.18-.42.28-.7.3H1c-.55 0-1-.45-1-1V4c0-.55.45-1 1-1h3c0-1.11.89-2 2-2 1.11 0 2 .89 2 2h3c.55 0 1 .45 1 1v5h-1V6H1v9h10v-2zM2 5h8c0-.55-.45-1-1-1H8c-.55 0-1-.45-1-1s-.45-1-1-1-1 .45-1 1-.45 1-1 1H3c-.55 0-1 .45-1 1z"/></svg></button><span class="t-line t-prompt-line"><span class="t-prompt">~/package </span><span class="t-delimiter"># </span><span class="t-command">cmake --build build-iwyu 2&gt; iwyu.out</span>
 </span><span class="t-line t-prompt-line"><span class="t-prompt">~/package </span><span class="t-delimiter"># </span><span class="t-command">fix_includes.py &lt; iwyu.out</span>
 </span></pre></code></pre>
-<p>(You should check the fixes first, or touch them up after applying!)</p>
+<p>&#xFF08;&#x4F60;&#x5E94;&#x8BE5;&#x5148;&#x68C0;&#x67E5;&#x4E00;&#x4E0B;&#x8FD9;&#x4E9B;&#x4FEE;&#x590D;&#x7684;&#x6B63;&#x786E;&#x6027;&#xFF0C;&#x6216;&#x8005;&#x5728;&#x4FEE;&#x590D;&#x540E;&#x5BF9;&#x4EE3;&#x7801;&#x8FDB;&#x884C;&#x6DA6;&#x8272;&#xFF01;&#xFF09;</p>
 <h2 id="link-what-you-use">Link what you use</h2>
-<p>There is a boolean target property, <code>LINK_WHAT_YOU_USE</code>, that will check for extraneous files when linking.</p>
-<h2 id="clang-format">Clang-format</h2>
-<p>Clang-format doesn&apos;t really have an integration with CMake, unfortunately. You could make a custom target (See <a href="https://arcanis.me/en/2015/10/17/cppcheck-and-clang-format" target="_blank">this post</a>, or you can run it manually. An interesting project that I have not really tried is <a href="https://github.com/kbenzie/git-cmake-format" target="_blank">here</a>; it adds a format target and even makes sure that you can&apos;t commit unformatted files.</p>
-<p>The following two line would do that in a git repository in bash (assuming you have a <code>.clang-format</code> file):</p>
+<p>&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x5E03;&#x5C14;&#x7C7B;&#x578B;&#x7684;&#x76EE;&#x6807;&#x5C5E;&#x6027;&#xFF0C;<code>LINK_WHAT_YOU_USE</code>&#xFF0C;&#x5B83;&#x5C06;&#x4F1A;&#x5728;&#x94FE;&#x63A5;&#x65F6;&#x68C0;&#x67E5;&#x4E0E;&#x76EE;&#x6807;&#x4E0D;&#x76F8;&#x5E72;&#x7684;&#x6587;&#x4EF6;&#x3002;</p>
+<h2 id="clang-format4">Clang-format<sup><a href="#fn_4" id="reffn_4">4</a></sup></h2>
+<p>&#x4E0D;&#x5E78;&#x7684;&#x662F;&#xFF0C;Clang-format &#x5E76;&#x6CA1;&#x6709;&#x771F;&#x6B63;&#x7684;&#x4E0E; CMake &#x96C6;&#x6210;&#x3002;&#x4F60;&#x53EF;&#x4EE5;&#x5236;&#x4F5C;&#x4E00;&#x4E2A;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x76EE;&#x6807;&#xFF08;&#x53C2;&#x8003; <a href="https://arcanis.me/en/2015/10/17/cppcheck-and-clang-format" target="_blank">&#x8FD9;&#x7BC7;&#x6587;&#x7AE0;</a>&#xFF0C;&#x6216;&#x8005;&#x4F60;&#x53EF;&#x4EE5;&#x5C1D;&#x8BD5;&#x81EA;&#x5DF1;&#x624B;&#x52A8;&#x7684;&#x53BB;&#x8FD0;&#x884C;&#x5B83;&#x3002;&#xFF09;&#x4E00;&#x4E2A;&#x6709;&#x8DA3;&#x7684;&#x9879;&#x76EE;/&#x60F3;&#x6CD5; <a href="https://github.com/kbenzie/git-cmake-format" target="_blank">&#x5728;&#x8FD9;&#x91CC;</a>&#xFF0C;&#x4E0D;&#x8FC7;&#x6211;&#x8FD8;&#x6CA1;&#x6709;&#x4EB2;&#x81EA;&#x5C1D;&#x8BD5;&#x8FC7;&#x3002;&#x5B83;&#x6DFB;&#x52A0;&#x4E86;&#x4E00;&#x4E2A;&#x683C;&#x5F0F;&#x5316; (format) &#x7684;&#x76EE;&#x6807;&#xFF0C;&#x5E76;&#x4E14;&#x4F60;&#x751A;&#x81F3;&#x6CA1;&#x6CD5;&#x63D0;&#x4EA4;&#x6CA1;&#x6709;&#x683C;&#x5F0F;&#x5316;&#x8FC7;&#x7684;&#x6587;&#x4EF6;&#x3002;</p>
+<p>&#x4E0B;&#x9762;&#x7684;&#x4E24;&#x884C;&#x53EF;&#x4EE5;&#x5728;&#x4E00;&#x4E2A; git &#x4ED3;&#x5E93;&#x4E2D;&#xFF0C;&#x5728; <code>bash</code> &#x4E2D;&#x4F7F;&#x7528; clang-format &#x5DE5;&#x5177;&#xFF08;&#x5047;&#x8BBE;&#x4F60;&#x6709;&#x4E00;&#x4E2A; <code>.clang-format</code> &#x6587;&#x4EF6;&#xFF09;&#xFF1A;</p>
 <pre><code class="lang-term"><pre class="term t-default t-fade"><button class="btn t-copy" data-clipboard-text="git ls-files -- &apos;*.cpp&apos; &apos;*.h&apos; | xargs clang-format -i -style=file
 git diff --exit-code --color"><svg class="octicon octicon-clippy" viewbox="0 0 14 16" version="1.1" width="14" height="14" aria-hidden="true"><path fill-rule="evenodd" d="M2 13h4v1H2v-1zm5-6H2v1h5V7zm2 3V8l-3 3 3 3v-2h5v-2H9zM4.5 9H2v1h2.5V9zM2 12h2.5v-1H2v1zm9 1h1v2c-.02.28-.11.52-.3.7-.19.18-.42.28-.7.3H1c-.55 0-1-.45-1-1V4c0-.55.45-1 1-1h3c0-1.11.89-2 2-2 1.11 0 2 .89 2 2h3c.55 0 1 .45 1 1v5h-1V6H1v9h10v-2zM2 5h8c0-.55-.45-1-1-1H8c-.55 0-1-.45-1-1s-.45-1-1-1-1 .45-1 1-.45 1-1 1H3c-.55 0-1 .45-1 1z"/></svg></button><span class="t-line t-prompt-line"><span class="t-prompt">gitbook </span><span class="t-delimiter">$ </span><span class="t-command">git ls-files -- &apos;*.cpp&apos; &apos;*.h&apos; | xargs clang-format -i -style=file</span>
 </span><span class="t-line t-prompt-line"><span class="t-prompt">gitbook </span><span class="t-delimiter">$ </span><span class="t-command">git diff --exit-code --color</span>
 </span></pre></code></pre>
+<p><div class="alert alert-info hints-alert"><div class="hints-icon"><i class="fa fa-info-circle"></i></div><div class="hints-container"><p>&#x8BD1;&#x8005;&#x6CE8;&#xFF1A;&#x4EE5;&#x4E0B;&#x6240;&#x6709;&#x7684;&#x811A;&#x6CE8;&#x8BF4;&#x660E;&#x90FD;&#x4E3A;&#x8BD1;&#x8005;&#x6DFB;&#x52A0;&#xFF0C;&#x539F;&#x6587;&#x5E76;&#x4E0D;&#x5305;&#x542B;&#x6B64;&#x4FE1;&#x606F;&#x3002;&#x811A;&#x6CE8;&#x7684;&#x8BF4;&#x660E;&#x8D44;&#x6599;&#x5747;&#x6765;&#x81EA;&#x4E8E;&#x4E92;&#x8054;&#x7F51;&#x3002;</p>
+</div></div></p>
+<blockquote id="fn_1">
+<sup>1</sup>. Ccache&#xFF08;&#x6216; &#x201D;ccache&#x201C;&#xFF09;&#x662F;&#x4E00;&#x4E2A;&#x7F16;&#x8BD1;&#x5668;&#x7F13;&#x5B58;&#x3002;&#x5B83;&#x901A;&#x8FC7;&#x7F13;&#x5B58;&#x4E4B;&#x524D;&#x7684;&#x7F16;&#x8BD1;&#x6587;&#x4EF6;&#x5E76;&#x4E14;&#x5229;&#x7528;&#x4E4B;&#x524D;&#x5DF2;&#x7ECF;&#x5B8C;&#x6210;&#x7684;&#x7F16;&#x8BD1;&#x8FC7;&#x7A0B;&#x6765;<a href="(https:/ccache.dev/performance.html">&#x52A0;&#x901F;&#x91CD;&#x7F16;&#x8BD1;</a>)&#x3002;Ccache&#x662F;&#x4E00;&#x4E2A;&#x514D;&#x8D39;&#x7684;&#x8F6F;&#x4EF6;&#xFF0C;&#x57FA;&#x4E8E; <a href="http://www.gnu.org/licenses/gpl.html" target="_blank">GNU General Public License version 3</a> &#x6216;&#x4E4B;&#x540E;&#x66F4;&#x65B0;&#x7684;&#x8BB8;&#x53EF;&#x534F;&#x8BAE;&#x53D1;&#x5E03;&#x3002;&#x53EF;&#x4EE5;&#x67E5;&#x770B;&#x8FD9;&#x91CC;&#x7684; <a href="https://ccache.dev/license.html" target="_blank">&#x8BB8;&#x53EF;&#x534F;&#x8BAE;&#x9875;&#x9762;</a> &#x3002;<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#x21A9;</a>
+</blockquote>
+<blockquote id="fn_2">
+<sup>2</sup>. <strong>clang-tidy</strong> &#x662F;&#x4E00;&#x4E2A;&#x57FA;&#x4E8E; clang &#x7684; C++ &#x4EE3;&#x7801;&#x5206;&#x6790;&#x5DE5;&#x5177;&#x3002;&#x5B83;&#x610F;&#x56FE;&#x63D0;&#x4F9B;&#x4E00;&#x4E2A;&#x53EF;&#x6269;&#x5C55;&#x7684;&#x6846;&#x67B6;&#xFF0C;&#x7528;&#x4E8E;&#x8BCA;&#x65AD;&#x548C;&#x4FEE;&#x590D;&#x5178;&#x578B;&#x7684;&#x7F16;&#x7A0B;&#x9519;&#x8BEF;&#xFF0C;&#x5982;&#x6837;&#x5F0F;&#x8FDD;&#x89C4;&#x3001;&#x63A5;&#x53E3;&#x8BEF;&#x7528;&#x3001;&#x6216;&#x901A;&#x8FC7;&#x9759;&#x6001;&#x5206;&#x6790;&#x63A8;&#x65AD;&#x51FA;&#x7684;&#x9519;&#x8BEF;&#x3002;<strong>clang-tidy</strong> &#x662F;&#x4E00;&#x4E2A;&#x6A21;&#x5757;&#x5316;&#x7684;&#x7A0B;&#x5E8F;&#xFF0C;&#x4E3A;&#x7F16;&#x5199;&#x65B0;&#x7684;&#x68C0;&#x67E5;&#x89C4;&#x5219;&#x63D0;&#x4F9B;&#x4E86;&#x65B9;&#x4FBF;&#x7684;&#x63A5;&#x53E3;&#x3002;<a href="#reffn_2" title="Jump back to footnote [2] in the text."> &#x21A9;</a>
+</blockquote>
+<blockquote id="fn_3">
+<sup>3</sup>. &#x4E00;&#x4E2A;&#x4E0E; <strong>clang</strong> &#x4E00;&#x8D77;&#x4F7F;&#x7528;&#xFF0C;&#x7528;&#x4E8E;&#x5206;&#x6790; C &#x548C; C++ &#x6E90;&#x6587;&#x4EF6;&#x4E2D; <strong>#include</strong> &#x7684;&#x5DE5;&#x5177;&#x3002;<a href="#reffn_3" title="Jump back to footnote [3] in the text."> &#x21A9;</a>
+</blockquote>
+<blockquote id="fn_4">
+<sup>4</sup>.  ClangFormat &#x63CF;&#x8FF0;&#x4E86;&#x4E00;&#x5957;&#x5EFA;&#x7ACB;&#x5728; <a href="https://clang.llvm.org/docs/LibFormat.html" target="_blank">LibFormat</a> &#x4E4B;&#x4E0A;&#x7684;&#x5DE5;&#x5177;&#x3002;&#x5B83;&#x53EF;&#x4EE5;&#x4EE5;&#x5404;&#x79CD;&#x65B9;&#x5F0F;&#x652F;&#x6301;&#x4F60;&#x7684;&#x5DE5;&#x4F5C;&#x6D41;&#x7A0B;&#xFF0C;&#x5305;&#x62EC;&#x72EC;&#x7ACB;&#x7684;&#x5DE5;&#x5177;&#x548C;&#x7F16;&#x8F91;&#x5668;&#x7684;&#x96C6;&#x6210;&#x3002;<a href="#reffn_4" title="Jump back to footnote [4] in the text."> &#x21A9;</a>
+</blockquote>
 
                                 
                                 </section>
@@ -843,7 +846,7 @@ git diff --exit-code --color"><svg class="octicon octicon-clippy" viewbox="0 0 1
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Utilities","level":"1.4.3","depth":2,"next":{"title":"Useful modules","level":"1.4.4","depth":2,"path":"chapters/features/modules.md","ref":"chapters/features/modules.md","articles":[]},"previous":{"title":"一些小而常见的需求","level":"1.4.2","depth":2,"path":"chapters/features/small.md","ref":"chapters/features/small.md","articles":[]},"dir":"ltr"},"config":{"plugins":["replace","hints","term","include-codeblock","ace","github-edit"],"root":".","styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"ace":{},"search":{},"term":{"copyButtons":true,"fade":true,"lineStyles":true,"prompt":"(?<prompt>[^\\$^#^:]*)(?<pathsep>:?)(?<path>[^\\$^#]*?)(?<delimiter>[\\$#] )(?<command>.*)$","style":"default"},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"lunr":{"ignoreSpecialCharacters":false,"maxIndexSize":1000000},"fontsettings":{"family":"sans","size":2,"theme":"white"},"highlight":{},"github-edit":{"repo":"Modern-CMake-CN/Modern-CMake-zh_CN","branch":"master"},"replace":{"substitutes":[{"pattern":"«cmake:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/manual/cmake-$1.7.html)"},{"pattern":"«command:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/command/$1.html)"},{"pattern":"«envvar:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/envvar/$1.html)"},{"pattern":"«module:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/module/$1.html)"},{"pattern":"«policy:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/policy/$1.html)"},{"pattern":"«variable:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest//$1.html)"},{"pattern":"«prop:([^:]+):`?([^`^»]+)`?»","flags":"g","substitute":"[`$2`](https://cmake.org/cmake/help/latest/prop_$1/$2.html)"}]},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}}},"theme":"default","author":"Henry Schreiner","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Modern CMake","language":"zh-hans","links":{"sidebar":{"GitHub Repo":"https://github.com/Modern-CMake-CN/Modern-CMake-zh_CN"}},"gitbook":"3.x.x","description":"A guide to writing simple, powerful, and clean CMake 3.1+ builds."},"file":{"path":"chapters/features/utilities.md","mtime":"2021-08-16T05:24:13.417Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-16T05:26:27.202Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"CMake 中一些实用的工具","level":"1.4.3","depth":2,"next":{"title":"Useful modules","level":"1.4.4","depth":2,"path":"chapters/features/modules.md","ref":"chapters/features/modules.md","articles":[]},"previous":{"title":"一些小而常见的需求","level":"1.4.2","depth":2,"path":"chapters/features/small.md","ref":"chapters/features/small.md","articles":[]},"dir":"ltr"},"config":{"plugins":["replace","hints","term","include-codeblock","ace","github-edit"],"root":".","styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"ace":{},"search":{},"term":{"copyButtons":true,"fade":true,"lineStyles":true,"prompt":"(?<prompt>[^\\$^#^:]*)(?<pathsep>:?)(?<path>[^\\$^#]*?)(?<delimiter>[\\$#] )(?<command>.*)$","style":"default"},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"lunr":{"ignoreSpecialCharacters":false,"maxIndexSize":1000000},"fontsettings":{"family":"sans","size":2,"theme":"white"},"highlight":{},"github-edit":{"repo":"Modern-CMake-CN/Modern-CMake-zh_CN","branch":"master"},"replace":{"substitutes":[{"pattern":"«cmake:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/manual/cmake-$1.7.html)"},{"pattern":"«command:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/command/$1.html)"},{"pattern":"«envvar:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/envvar/$1.html)"},{"pattern":"«module:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/module/$1.html)"},{"pattern":"«policy:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/policy/$1.html)"},{"pattern":"«variable:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest//$1.html)"},{"pattern":"«prop:([^:]+):`?([^`^»]+)`?»","flags":"g","substitute":"[`$2`](https://cmake.org/cmake/help/latest/prop_$1/$2.html)"}]},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}}},"theme":"default","author":"Henry Schreiner","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Modern CMake","language":"zh-hans","links":{"sidebar":{"GitHub Repo":"https://github.com/Modern-CMake-CN/Modern-CMake-zh_CN"}},"gitbook":"3.x.x","description":"A guide to writing simple, powerful, and clean CMake 3.1+ builds."},"file":{"path":"chapters/features/utilities.md","mtime":"2021-08-17T17:01:37.223Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-17T17:03:47.688Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
