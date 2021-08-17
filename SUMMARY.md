@@ -15,7 +15,7 @@
 * [为 CMake 项目添加特性](chapters/features.md)
     * [C++11 及后续版本](chapters/features/cpp11.md)
     * [一些小而常见的需求](chapters/features/small.md)
-    * [Utilities](chapters/features/utilities.md)
+    * [CMake 中一些实用的工具](chapters/features/utilities.md)
     * [Useful modules](chapters/features/modules.md)
     * [IDEs](chapters/features/ides.md)
     * [调试](chapters/features/debug.md)
