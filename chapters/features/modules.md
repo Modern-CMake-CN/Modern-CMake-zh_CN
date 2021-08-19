@@ -1,17 +1,17 @@
-# Useful Modules
+# CMake 中一些有用的模组
 
-There are a ton of useful modules in CMake's «cmake:modules» collection; but some of them are more useful than others. Here are a few highlights.
+在 CMake 的 «cmake:modules» 集合了很多有用的模组，但是有一些模块相比于其他的更有用。以下是一些比较出彩的：
 
 ## «module:CMakeDependentOption»
 
-This adds a command `cmake_dependent_option` that sets an option based on another set of variables being true. It looks like this:
+这增加了命令 `cmake_dependent_option` ，它根据另外一组变量来设定一个选项的值。下面是一个例子：
 
 ```cmake
 include(CMakeDependentOption)
 cmake_dependent_option(BUILD_TESTS "Build your tests" ON "VAL1;VAL2" OFF)
 ```
 
-which is just a shortcut for this:
+如上代码是下面的一个缩写：
 
 ```cmake
 if(VAL1 AND VAL2)
@@ -27,32 +27,29 @@ if(NOT BUILD_TESTS_DEFAULT)
 endif()
 ```
 
-Note that `BUILD_TESTING` is a better way to check for testing being enabled if you use `include(CTest)`, since it is defined for you. This is just an example of `CMakeDependentOption`.
+需要注意的是，如果你使用了 `include(CTest)` ，用 `BUILD_TESTING` 来检测是否启用是更好的方式，因为它就是为此功能而生的。这里只是一个 `CMakeDependentOption` 的例子。
 
 ## «module:CMakePrintHelpers»
 
-
-This module has a couple of handy output functions. `cmake_print_properties` lets you easily print properties.
-And `cmake_print_variables` will print the names and values of any variables you give it.
+这个模块包含了几个方便的输出函数。`cmake_print_properties` 可以让你轻松的打印属性，而 `cmake_print_variables` 将打印出你给它任意变量的名称和值。
 
 
 ## «module:CheckCXXCompilerFlag»
 
-This checks to see if a flag is supported. For example:
+这个模块允许你检查编译器是否支持某个标志，例如：
 
 ```cmake
 include(CheckCXXCompilerFlag)
 check_cxx_compiler_flag(-someflag OUTPUT_VARIABLE)
 ```
 
-Note that `OUTPUT_VARIABLE` will also appear in the configuration printout, so choose a good name.
+需要注意的是 `OUTPUT_VARIABLE` 也会出现在打印的配置输出中，所以请选个不错的变量名。
 
-This is just one of many similar modules, such as `CheckIncludeFileCXX`, `CheckStructHasMember`, `TestBigEndian`, and `CheckTypeSize` that allow you
-to check for information about the system (and you can communicate that to your source code).
+这只是许多类似模块中的一个，例如 `CheckIncludeFileCXX`、`CheckStructHasMember`、`TestBigEndian` 以及`CheckTypeSize`，它们允许你检查系统的信息（并且你可以在代码中使用这些信息）。
 
 ## «command:`try_compile`»/«command:`try_run`»
 
-This is not exactly a module, but is crucial to many of the modules listed above. You can attempt to compile (and possibly run) a bit of code at configure time. This can allow you to get information about the capabilities of your system. The basic syntax is:
+准确的说，这不是一个模块，但是它们对上述列出的许多模块至关重要。通过它你可以在配置时尝试编译（也可能是运行）一部分代码。这可以让你在配置时获取关于系统能力的信息。基本的语法如下：
 
 ```cmake
 try_compile(
@@ -63,17 +60,17 @@ try_compile(
 )
 ```
 
-There are lots of options you can add, like `COMPILE_DEFINITIONS`. In CMake 3.8+, this will honor the CMake C/C++/CUDA standard settings. If you use `try_run` instead, it will run the resulting program and give you the output in `RUN_OUTPUT_VARIABLE`.
+这里有很多可以添加的选项，例如 `COMPILE_DEFINITIONS`。在 CMake 3.8+ 中， 这将默认遵循 CMake 中 C/C++/CUDA 的标准设置。如果你使用的是 `try_run` 而不是 `try_compile`，它将运行生成的程序并将运行结果存储在 `RUN_OUTPUT_VARIABLE` 中。
 
 ## «module:FeatureSummary»
 
-This is a fairly useful but rather odd module. It allows you to print out a list of packages what were searched for, as well as any options you explicity mark. It's partially but not completely tied into «command:`find_package`». You first include the module, as always:
+这是一个十分有用但是也有些奇怪的模块。它能够让你打印出找到的所有软件包以及你明确设定的所有选项。它和  «command:`find_package`» 有一些联系。像其他模块一样，你首先要包括模块：
 
 ```cmake
 include(FeatureSummary)
 ```
 
-Then, for any find packages you have run or will run, you can extend the default information:
+然后，对于任何你已经运行或者将要运行的  «command:`find_package`» ，你可以这样拓展它的默认信息：
 
 ```cmake
 set_package_properties(OpenMP PROPERTIES
@@ -82,15 +79,15 @@ set_package_properties(OpenMP PROPERTIES
     PURPOSE "This is what it does in my package")
 ```
 
-You can also set the `TYPE` of a package to `RUNTIME`, `OPTIONAL`, `RECOMMENDED`, or `REQUIRED`; you can't, however, lower the type of a package; if you have already added a `REQUIRED` package through «command:`find_package`» based on an option, you'll see it listed as `REQUIRED`.
+你也可以将包的 `TYPE` 设置为 `RUNTIME`、`OPTIONAL`、`RECOMMENDED` 或者 `REQUIRED`。但是你不能降低包的类型，如果你已经通过 «command:`find_package`» 添加了一个 `REQUIRED` 类型的包，你将会看到你不能改变它的 `TYPE`：
 
-And, you can mark any options as part of the feature summary. If you choose the same name as a package, the two interact with each other.
+并且，你可以添加任何选项让其成为 `feature summary` 的一部分。如果你添加的选项名与包的名字一样，他们之间会互相产生影响：
 
 ```cmake
 add_feature_info(WITH_OPENMP OpenMP_CXX_FOUND "OpenMP (Thread safe FCNs only)")
 ```
 
-Then, you can print out the summary of features, either to the screen or a log file:
+然后，你可以将所有特性 (features) 的集合打印到屏幕或日志文件中：
 
 ```cmake
 if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
@@ -99,4 +96,4 @@ if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
 endif()
 ```
 
-You can build any collection of `WHAT` items that you like, or just use `ALL`.
+你可以建立一个 `WHAT` 目标来集合任何你想查看的特性 (features)，或者直接使用 `ALL` 目标也行。 
