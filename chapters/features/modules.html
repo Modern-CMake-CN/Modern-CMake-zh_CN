@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Useful modules · Modern CMake</title>
+        <title>一些有用的模组 · Modern CMake</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -336,7 +336,7 @@
                 <a href="utilities.html">
             
                     
-                    CMake 中一些实用的工具
+                    一些实用的工具
             
                 </a>
             
@@ -349,7 +349,7 @@
                 <a href="modules.html">
             
                     
-                    Useful modules
+                    一些有用的模组
             
                 </a>
             
@@ -362,7 +362,7 @@
                 <a href="ides.html">
             
                     
-                    IDEs
+                    CMake 对 IDE 的支持
             
                 </a>
             
@@ -721,7 +721,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >Useful modules</a>
+        <a href="../.." >一些有用的模组</a>
     </h1>
 </div>
 
@@ -736,14 +736,14 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="useful-modules">Useful Modules</h1>
-<p>There are a ton of useful modules in CMake&apos;s <a href="https://cmake.org/cmake/help/latest/manual/cmake-modules.7.html" target="_blank">modules</a> collection; but some of them are more useful than others. Here are a few highlights.</p>
+                                <h1 id="cmake-&#x4E2D;&#x4E00;&#x4E9B;&#x6709;&#x7528;&#x7684;&#x6A21;&#x7EC4;">CMake &#x4E2D;&#x4E00;&#x4E9B;&#x6709;&#x7528;&#x7684;&#x6A21;&#x7EC4;</h1>
+<p>&#x5728; CMake &#x7684; <a href="https://cmake.org/cmake/help/latest/manual/cmake-modules.7.html" target="_blank">modules</a> &#x96C6;&#x5408;&#x4E86;&#x5F88;&#x591A;&#x6709;&#x7528;&#x7684;&#x6A21;&#x7EC4;&#xFF0C;&#x4F46;&#x662F;&#x6709;&#x4E00;&#x4E9B;&#x6A21;&#x5757;&#x76F8;&#x6BD4;&#x4E8E;&#x5176;&#x4ED6;&#x7684;&#x66F4;&#x6709;&#x7528;&#x3002;&#x4EE5;&#x4E0B;&#x662F;&#x4E00;&#x4E9B;&#x6BD4;&#x8F83;&#x51FA;&#x5F69;&#x7684;&#xFF1A;</p>
 <h2 id="cmakedependentoption"><a href="https://cmake.org/cmake/help/latest/module/CMakeDependentOption.html" target="_blank">CMakeDependentOption</a></h2>
-<p>This adds a command <code>cmake_dependent_option</code> that sets an option based on another set of variables being true. It looks like this:</p>
+<p>&#x8FD9;&#x589E;&#x52A0;&#x4E86;&#x547D;&#x4EE4; <code>cmake_dependent_option</code> &#xFF0C;&#x5B83;&#x6839;&#x636E;&#x53E6;&#x5916;&#x4E00;&#x7EC4;&#x53D8;&#x91CF;&#x6765;&#x8BBE;&#x5B9A;&#x4E00;&#x4E2A;&#x9009;&#x9879;&#x7684;&#x503C;&#x3002;&#x4E0B;&#x9762;&#x662F;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#xFF1A;</p>
 <pre><code class="lang-cmake"><span class="hljs-keyword">include</span>(CMakeDependentOption)
 cmake_dependent_option(BUILD_TESTS <span class="hljs-string">&quot;Build your tests&quot;</span> <span class="hljs-keyword">ON</span> <span class="hljs-string">&quot;VAL1;VAL2&quot;</span> <span class="hljs-keyword">OFF</span>)
 </code></pre>
-<p>which is just a shortcut for this:</p>
+<p>&#x5982;&#x4E0A;&#x4EE3;&#x7801;&#x662F;&#x4E0B;&#x9762;&#x7684;&#x4E00;&#x4E2A;&#x7F29;&#x5199;&#xFF1A;</p>
 <pre><code class="lang-cmake"><span class="hljs-keyword">if</span>(VAL1 <span class="hljs-keyword">AND</span> VAL2)
     <span class="hljs-keyword">set</span>(BUILD_TESTS_DEFAULT <span class="hljs-keyword">ON</span>)
 <span class="hljs-keyword">else</span>()
@@ -756,20 +756,18 @@ cmake_dependent_option(BUILD_TESTS <span class="hljs-string">&quot;Build your te
     <span class="hljs-keyword">mark_as_advanced</span>(BUILD_TESTS)
 <span class="hljs-keyword">endif</span>()
 </code></pre>
-<p>Note that <code>BUILD_TESTING</code> is a better way to check for testing being enabled if you use <code>include(CTest)</code>, since it is defined for you. This is just an example of <code>CMakeDependentOption</code>.</p>
+<p>&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x4F7F;&#x7528;&#x4E86; <code>include(CTest)</code> &#xFF0C;&#x7528; <code>BUILD_TESTING</code> &#x6765;&#x68C0;&#x6D4B;&#x662F;&#x5426;&#x542F;&#x7528;&#x662F;&#x66F4;&#x597D;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x5C31;&#x662F;&#x4E3A;&#x6B64;&#x529F;&#x80FD;&#x800C;&#x751F;&#x7684;&#x3002;&#x8FD9;&#x91CC;&#x53EA;&#x662F;&#x4E00;&#x4E2A; <code>CMakeDependentOption</code> &#x7684;&#x4F8B;&#x5B50;&#x3002;</p>
 <h2 id="cmakeprinthelpers"><a href="https://cmake.org/cmake/help/latest/module/CMakePrintHelpers.html" target="_blank">CMakePrintHelpers</a></h2>
-<p>This module has a couple of handy output functions. <code>cmake_print_properties</code> lets you easily print properties.
-And <code>cmake_print_variables</code> will print the names and values of any variables you give it.</p>
+<p>&#x8FD9;&#x4E2A;&#x6A21;&#x5757;&#x5305;&#x542B;&#x4E86;&#x51E0;&#x4E2A;&#x65B9;&#x4FBF;&#x7684;&#x8F93;&#x51FA;&#x51FD;&#x6570;&#x3002;<code>cmake_print_properties</code> &#x53EF;&#x4EE5;&#x8BA9;&#x4F60;&#x8F7B;&#x677E;&#x7684;&#x6253;&#x5370;&#x5C5E;&#x6027;&#xFF0C;&#x800C; <code>cmake_print_variables</code> &#x5C06;&#x6253;&#x5370;&#x51FA;&#x4F60;&#x7ED9;&#x5B83;&#x4EFB;&#x610F;&#x53D8;&#x91CF;&#x7684;&#x540D;&#x79F0;&#x548C;&#x503C;&#x3002;</p>
 <h2 id="checkcxxcompilerflag"><a href="https://cmake.org/cmake/help/latest/module/CheckCXXCompilerFlag.html" target="_blank">CheckCXXCompilerFlag</a></h2>
-<p>This checks to see if a flag is supported. For example:</p>
+<p>&#x8FD9;&#x4E2A;&#x6A21;&#x5757;&#x5141;&#x8BB8;&#x4F60;&#x68C0;&#x67E5;&#x7F16;&#x8BD1;&#x5668;&#x662F;&#x5426;&#x652F;&#x6301;&#x67D0;&#x4E2A;&#x6807;&#x5FD7;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;</p>
 <pre><code class="lang-cmake"><span class="hljs-keyword">include</span>(CheckCXXCompilerFlag)
 check_cxx_compiler_flag(-someflag OUTPUT_VARIABLE)
 </code></pre>
-<p>Note that <code>OUTPUT_VARIABLE</code> will also appear in the configuration printout, so choose a good name.</p>
-<p>This is just one of many similar modules, such as <code>CheckIncludeFileCXX</code>, <code>CheckStructHasMember</code>, <code>TestBigEndian</code>, and <code>CheckTypeSize</code> that allow you
-to check for information about the system (and you can communicate that to your source code).</p>
+<p>&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F; <code>OUTPUT_VARIABLE</code> &#x4E5F;&#x4F1A;&#x51FA;&#x73B0;&#x5728;&#x6253;&#x5370;&#x7684;&#x914D;&#x7F6E;&#x8F93;&#x51FA;&#x4E2D;&#xFF0C;&#x6240;&#x4EE5;&#x8BF7;&#x9009;&#x4E2A;&#x4E0D;&#x9519;&#x7684;&#x53D8;&#x91CF;&#x540D;&#x3002;</p>
+<p>&#x8FD9;&#x53EA;&#x662F;&#x8BB8;&#x591A;&#x7C7B;&#x4F3C;&#x6A21;&#x5757;&#x4E2D;&#x7684;&#x4E00;&#x4E2A;&#xFF0C;&#x4F8B;&#x5982; <code>CheckIncludeFileCXX</code>&#x3001;<code>CheckStructHasMember</code>&#x3001;<code>TestBigEndian</code> &#x4EE5;&#x53CA;<code>CheckTypeSize</code>&#xFF0C;&#x5B83;&#x4EEC;&#x5141;&#x8BB8;&#x4F60;&#x68C0;&#x67E5;&#x7CFB;&#x7EDF;&#x7684;&#x4FE1;&#x606F;&#xFF08;&#x5E76;&#x4E14;&#x4F60;&#x53EF;&#x4EE5;&#x5728;&#x4EE3;&#x7801;&#x4E2D;&#x4F7F;&#x7528;&#x8FD9;&#x4E9B;&#x4FE1;&#x606F;&#xFF09;&#x3002;</p>
 <h2 id="trycompiletryrun"><a href="https://cmake.org/cmake/help/latest/command/try_compile.html" target="_blank"><code>try_compile</code></a>/<a href="https://cmake.org/cmake/help/latest/command/try_run.html" target="_blank"><code>try_run</code></a></h2>
-<p>This is not exactly a module, but is crucial to many of the modules listed above. You can attempt to compile (and possibly run) a bit of code at configure time. This can allow you to get information about the capabilities of your system. The basic syntax is:</p>
+<p>&#x51C6;&#x786E;&#x7684;&#x8BF4;&#xFF0C;&#x8FD9;&#x4E0D;&#x662F;&#x4E00;&#x4E2A;&#x6A21;&#x5757;&#xFF0C;&#x4F46;&#x662F;&#x5B83;&#x4EEC;&#x5BF9;&#x4E0A;&#x8FF0;&#x5217;&#x51FA;&#x7684;&#x8BB8;&#x591A;&#x6A21;&#x5757;&#x81F3;&#x5173;&#x91CD;&#x8981;&#x3002;&#x901A;&#x8FC7;&#x5B83;&#x4F60;&#x53EF;&#x4EE5;&#x5728;&#x914D;&#x7F6E;&#x65F6;&#x5C1D;&#x8BD5;&#x7F16;&#x8BD1;&#xFF08;&#x4E5F;&#x53EF;&#x80FD;&#x662F;&#x8FD0;&#x884C;&#xFF09;&#x4E00;&#x90E8;&#x5206;&#x4EE3;&#x7801;&#x3002;&#x8FD9;&#x53EF;&#x4EE5;&#x8BA9;&#x4F60;&#x5728;&#x914D;&#x7F6E;&#x65F6;&#x83B7;&#x53D6;&#x5173;&#x4E8E;&#x7CFB;&#x7EDF;&#x80FD;&#x529B;&#x7684;&#x4FE1;&#x606F;&#x3002;&#x57FA;&#x672C;&#x7684;&#x8BED;&#x6CD5;&#x5982;&#x4E0B;&#xFF1A;</p>
 <pre><code class="lang-cmake"><span class="hljs-keyword">try_compile</span>(
   RESULT_VAR
     bindir
@@ -777,28 +775,28 @@ to check for information about the system (and you can communicate that to your 
     source.cpp
 )
 </code></pre>
-<p>There are lots of options you can add, like <code>COMPILE_DEFINITIONS</code>. In CMake 3.8+, this will honor the CMake C/C++/CUDA standard settings. If you use <code>try_run</code> instead, it will run the resulting program and give you the output in <code>RUN_OUTPUT_VARIABLE</code>.</p>
+<p>&#x8FD9;&#x91CC;&#x6709;&#x5F88;&#x591A;&#x53EF;&#x4EE5;&#x6DFB;&#x52A0;&#x7684;&#x9009;&#x9879;&#xFF0C;&#x4F8B;&#x5982; <code>COMPILE_DEFINITIONS</code>&#x3002;&#x5728; CMake 3.8+ &#x4E2D;&#xFF0C; &#x8FD9;&#x5C06;&#x9ED8;&#x8BA4;&#x9075;&#x5FAA; CMake &#x4E2D; C/C++/CUDA &#x7684;&#x6807;&#x51C6;&#x8BBE;&#x7F6E;&#x3002;&#x5982;&#x679C;&#x4F60;&#x4F7F;&#x7528;&#x7684;&#x662F; <code>try_run</code> &#x800C;&#x4E0D;&#x662F; <code>try_compile</code>&#xFF0C;&#x5B83;&#x5C06;&#x8FD0;&#x884C;&#x751F;&#x6210;&#x7684;&#x7A0B;&#x5E8F;&#x5E76;&#x5C06;&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#x5B58;&#x50A8;&#x5728; <code>RUN_OUTPUT_VARIABLE</code> &#x4E2D;&#x3002;</p>
 <h2 id="featuresummary"><a href="https://cmake.org/cmake/help/latest/module/FeatureSummary.html" target="_blank">FeatureSummary</a></h2>
-<p>This is a fairly useful but rather odd module. It allows you to print out a list of packages what were searched for, as well as any options you explicity mark. It&apos;s partially but not completely tied into <a href="https://cmake.org/cmake/help/latest/command/find_package.html" target="_blank"><code>find_package</code></a>. You first include the module, as always:</p>
+<p>&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x5341;&#x5206;&#x6709;&#x7528;&#x4F46;&#x662F;&#x4E5F;&#x6709;&#x4E9B;&#x5947;&#x602A;&#x7684;&#x6A21;&#x5757;&#x3002;&#x5B83;&#x80FD;&#x591F;&#x8BA9;&#x4F60;&#x6253;&#x5370;&#x51FA;&#x627E;&#x5230;&#x7684;&#x6240;&#x6709;&#x8F6F;&#x4EF6;&#x5305;&#x4EE5;&#x53CA;&#x4F60;&#x660E;&#x786E;&#x8BBE;&#x5B9A;&#x7684;&#x6240;&#x6709;&#x9009;&#x9879;&#x3002;&#x5B83;&#x548C;  <a href="https://cmake.org/cmake/help/latest/command/find_package.html" target="_blank"><code>find_package</code></a> &#x6709;&#x4E00;&#x4E9B;&#x8054;&#x7CFB;&#x3002;&#x50CF;&#x5176;&#x4ED6;&#x6A21;&#x5757;&#x4E00;&#x6837;&#xFF0C;&#x4F60;&#x9996;&#x5148;&#x8981;&#x5305;&#x62EC;&#x6A21;&#x5757;&#xFF1A;</p>
 <pre><code class="lang-cmake"><span class="hljs-keyword">include</span>(FeatureSummary)
 </code></pre>
-<p>Then, for any find packages you have run or will run, you can extend the default information:</p>
+<p>&#x7136;&#x540E;&#xFF0C;&#x5BF9;&#x4E8E;&#x4EFB;&#x4F55;&#x4F60;&#x5DF2;&#x7ECF;&#x8FD0;&#x884C;&#x6216;&#x8005;&#x5C06;&#x8981;&#x8FD0;&#x884C;&#x7684;  <a href="https://cmake.org/cmake/help/latest/command/find_package.html" target="_blank"><code>find_package</code></a> &#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x8FD9;&#x6837;&#x62D3;&#x5C55;&#x5B83;&#x7684;&#x9ED8;&#x8BA4;&#x4FE1;&#x606F;&#xFF1A;</p>
 <pre><code class="lang-cmake">set_package_properties(OpenMP PROPERTIES
     URL <span class="hljs-string">&quot;http://www.openmp.org&quot;</span>
     DESCRIPTION <span class="hljs-string">&quot;Parallel compiler directives&quot;</span>
     PURPOSE <span class="hljs-string">&quot;This is what it does in my package&quot;</span>)
 </code></pre>
-<p>You can also set the <code>TYPE</code> of a package to <code>RUNTIME</code>, <code>OPTIONAL</code>, <code>RECOMMENDED</code>, or <code>REQUIRED</code>; you can&apos;t, however, lower the type of a package; if you have already added a <code>REQUIRED</code> package through <a href="https://cmake.org/cmake/help/latest/command/find_package.html" target="_blank"><code>find_package</code></a> based on an option, you&apos;ll see it listed as <code>REQUIRED</code>.</p>
-<p>And, you can mark any options as part of the feature summary. If you choose the same name as a package, the two interact with each other.</p>
+<p>&#x4F60;&#x4E5F;&#x53EF;&#x4EE5;&#x5C06;&#x5305;&#x7684; <code>TYPE</code> &#x8BBE;&#x7F6E;&#x4E3A; <code>RUNTIME</code>&#x3001;<code>OPTIONAL</code>&#x3001;<code>RECOMMENDED</code> &#x6216;&#x8005; <code>REQUIRED</code>&#x3002;&#x4F46;&#x662F;&#x4F60;&#x4E0D;&#x80FD;&#x964D;&#x4F4E;&#x5305;&#x7684;&#x7C7B;&#x578B;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x5DF2;&#x7ECF;&#x901A;&#x8FC7; <a href="https://cmake.org/cmake/help/latest/command/find_package.html" target="_blank"><code>find_package</code></a> &#x6DFB;&#x52A0;&#x4E86;&#x4E00;&#x4E2A; <code>REQUIRED</code> &#x7C7B;&#x578B;&#x7684;&#x5305;&#xFF0C;&#x4F60;&#x5C06;&#x4F1A;&#x770B;&#x5230;&#x4F60;&#x4E0D;&#x80FD;&#x6539;&#x53D8;&#x5B83;&#x7684; <code>TYPE</code>&#xFF1A;</p>
+<p>&#x5E76;&#x4E14;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x6DFB;&#x52A0;&#x4EFB;&#x4F55;&#x9009;&#x9879;&#x8BA9;&#x5176;&#x6210;&#x4E3A; <code>feature summary</code> &#x7684;&#x4E00;&#x90E8;&#x5206;&#x3002;&#x5982;&#x679C;&#x4F60;&#x6DFB;&#x52A0;&#x7684;&#x9009;&#x9879;&#x540D;&#x4E0E;&#x5305;&#x7684;&#x540D;&#x5B57;&#x4E00;&#x6837;&#xFF0C;&#x4ED6;&#x4EEC;&#x4E4B;&#x95F4;&#x4F1A;&#x4E92;&#x76F8;&#x4EA7;&#x751F;&#x5F71;&#x54CD;&#xFF1A;</p>
 <pre><code class="lang-cmake">add_feature_info(WITH_OPENMP OpenMP_CXX_FOUND <span class="hljs-string">&quot;OpenMP (Thread safe FCNs only)&quot;</span>)
 </code></pre>
-<p>Then, you can print out the summary of features, either to the screen or a log file:</p>
+<p>&#x7136;&#x540E;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x5C06;&#x6240;&#x6709;&#x7279;&#x6027; (features) &#x7684;&#x96C6;&#x5408;&#x6253;&#x5370;&#x5230;&#x5C4F;&#x5E55;&#x6216;&#x65E5;&#x5FD7;&#x6587;&#x4EF6;&#x4E2D;&#xFF1A;</p>
 <pre><code class="lang-cmake"><span class="hljs-keyword">if</span>(CMAKE_PROJECT_NAME <span class="hljs-keyword">STREQUAL</span> PROJECT_NAME)
     feature_summary(WHAT ENABLED_FEATURES DISABLED_FEATURES PACKAGES_FOUND)
     feature_summary(FILENAME <span class="hljs-variable">${CMAKE_CURRENT_BINARY_DIR}</span>/features.log WHAT ALL)
 <span class="hljs-keyword">endif</span>()
 </code></pre>
-<p>You can build any collection of <code>WHAT</code> items that you like, or just use <code>ALL</code>.</p>
+<p>&#x4F60;&#x53EF;&#x4EE5;&#x5EFA;&#x7ACB;&#x4E00;&#x4E2A; <code>WHAT</code> &#x76EE;&#x6807;&#x6765;&#x96C6;&#x5408;&#x4EFB;&#x4F55;&#x4F60;&#x60F3;&#x67E5;&#x770B;&#x7684;&#x7279;&#x6027; (features)&#xFF0C;&#x6216;&#x8005;&#x76F4;&#x63A5;&#x4F7F;&#x7528; <code>ALL</code> &#x76EE;&#x6807;&#x4E5F;&#x884C;&#x3002; </p>
 
                                 
                                 </section>
@@ -826,12 +824,12 @@ to check for information about the system (and you can communicate that to your 
 
             
                 
-                <a href="utilities.html" class="navigation navigation-prev " aria-label="Previous page: CMake 中一些实用的工具">
+                <a href="utilities.html" class="navigation navigation-prev " aria-label="Previous page: 一些实用的工具">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="ides.html" class="navigation navigation-next " aria-label="Next page: IDEs">
+                <a href="ides.html" class="navigation navigation-next " aria-label="Next page: CMake 对 IDE 的支持">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -842,7 +840,7 @@ to check for information about the system (and you can communicate that to your 
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Useful modules","level":"1.4.4","depth":2,"next":{"title":"IDEs","level":"1.4.5","depth":2,"path":"chapters/features/ides.md","ref":"chapters/features/ides.md","articles":[]},"previous":{"title":"CMake 中一些实用的工具","level":"1.4.3","depth":2,"path":"chapters/features/utilities.md","ref":"chapters/features/utilities.md","articles":[]},"dir":"ltr"},"config":{"plugins":["replace","hints","term","include-codeblock","ace","github-edit"],"root":".","styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"ace":{},"search":{},"term":{"copyButtons":true,"fade":true,"lineStyles":true,"prompt":"(?<prompt>[^\\$^#^:]*)(?<pathsep>:?)(?<path>[^\\$^#]*?)(?<delimiter>[\\$#] )(?<command>.*)$","style":"default"},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"lunr":{"ignoreSpecialCharacters":false,"maxIndexSize":1000000},"fontsettings":{"family":"sans","size":2,"theme":"white"},"highlight":{},"github-edit":{"repo":"Modern-CMake-CN/Modern-CMake-zh_CN","branch":"master"},"replace":{"substitutes":[{"pattern":"«cmake:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/manual/cmake-$1.7.html)"},{"pattern":"«command:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/command/$1.html)"},{"pattern":"«envvar:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/envvar/$1.html)"},{"pattern":"«module:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/module/$1.html)"},{"pattern":"«policy:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/policy/$1.html)"},{"pattern":"«variable:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest//$1.html)"},{"pattern":"«prop:([^:]+):`?([^`^»]+)`?»","flags":"g","substitute":"[`$2`](https://cmake.org/cmake/help/latest/prop_$1/$2.html)"}]},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}}},"theme":"default","author":"Henry Schreiner","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Modern CMake","language":"zh-hans","links":{"sidebar":{"GitHub Repo":"https://github.com/Modern-CMake-CN/Modern-CMake-zh_CN"}},"gitbook":"3.x.x","description":"A guide to writing simple, powerful, and clean CMake 3.1+ builds."},"file":{"path":"chapters/features/modules.md","mtime":"2021-08-19T05:15:44.500Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-19T05:17:39.504Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"一些有用的模组","level":"1.4.4","depth":2,"next":{"title":"CMake 对 IDE 的支持","level":"1.4.5","depth":2,"path":"chapters/features/ides.md","ref":"chapters/features/ides.md","articles":[]},"previous":{"title":"一些实用的工具","level":"1.4.3","depth":2,"path":"chapters/features/utilities.md","ref":"chapters/features/utilities.md","articles":[]},"dir":"ltr"},"config":{"plugins":["replace","hints","term","include-codeblock","ace","github-edit"],"root":".","styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"ace":{},"search":{},"term":{"copyButtons":true,"fade":true,"lineStyles":true,"prompt":"(?<prompt>[^\\$^#^:]*)(?<pathsep>:?)(?<path>[^\\$^#]*?)(?<delimiter>[\\$#] )(?<command>.*)$","style":"default"},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"lunr":{"ignoreSpecialCharacters":false,"maxIndexSize":1000000},"fontsettings":{"family":"sans","size":2,"theme":"white"},"highlight":{},"github-edit":{"repo":"Modern-CMake-CN/Modern-CMake-zh_CN","branch":"master"},"replace":{"substitutes":[{"pattern":"«cmake:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/manual/cmake-$1.7.html)"},{"pattern":"«command:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/command/$1.html)"},{"pattern":"«envvar:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/envvar/$1.html)"},{"pattern":"«module:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/module/$1.html)"},{"pattern":"«policy:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/policy/$1.html)"},{"pattern":"«variable:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest//$1.html)"},{"pattern":"«prop:([^:]+):`?([^`^»]+)`?»","flags":"g","substitute":"[`$2`](https://cmake.org/cmake/help/latest/prop_$1/$2.html)"}]},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}}},"theme":"default","author":"Henry Schreiner","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Modern CMake","language":"zh-hans","links":{"sidebar":{"GitHub Repo":"https://github.com/Modern-CMake-CN/Modern-CMake-zh_CN"}},"gitbook":"3.x.x","description":"A guide to writing simple, powerful, and clean CMake 3.1+ builds."},"file":{"path":"chapters/features/modules.md","mtime":"2021-08-19T15:57:49.081Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-19T15:59:48.345Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
