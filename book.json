@@ -4,7 +4,7 @@
     "title": "Modern CMake",
     "description": "A guide to writing simple, powerful, and clean CMake 3.1+ builds.",
     "author": "Henry Schreiner",
-    "plugins": ["replace", "hints", "term", "include-codeblock", "ace", "github-edit", "pageview-count"],
+    "plugins": ["replace", "hints", "term", "include-codeblock", "ace", "github-edit", "pageview-count", "statistics"],
     "root": ".",
     "links": {
         "sidebar": {
@@ -15,6 +15,9 @@
         "github-edit": {
             "repo": "Modern-CMake-CN/Modern-CMake-zh_CN",
             "branch": "master"
+        },
+        "statistics": {
+            "google_id":"G-0YEXF2MC7Y"
         },
          "replace": {
              "substitutes": [
