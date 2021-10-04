@@ -13,3 +13,18 @@ jobs:
       uses: ZanderZhao/gitbook-action@v1.2.4
       with:
         token: ${{ secrets.PERSONAL_TOKEN }}
+        gitbook_epub: true
+        gitbook_epub_dir: "$GITHUB_ACTION_PATH/gitbook_artifact"
+        gitbook_epub_name: "Modern-CMake-zh_CN.epub"
+        gitbook_pdf: true
+        gitbook_pdf_dir: "$GITHUB_ACTION_PATH/gitbook_artifact"
+        gitbook_pdf_name: "Modern-CMake-zh_CN.pdf"
+        gitbook_mobi: true
+        gitbook_mobi_dir: "$GITHUB_ACTION_PATH/gitbook_artifact"
+        gitbook_mobi_name: "Modern-CMake-zh_CN.mobi"
+    - name: 'Upload Artifact'
+      uses: actions/upload-artifact@v2
+      with:
+        name: gitbook_artifact
+        path: "$GITHUB_ACTION_PATH/gitbook_artifact"
+        
