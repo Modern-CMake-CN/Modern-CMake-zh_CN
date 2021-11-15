@@ -14,6 +14,8 @@
 
 简体中文版链接： https://modern-cmake-cn.github.io/Modern-CMake-zh_CN/
 
+因为参与翻译的同学们都还在上学，因此学期内翻译不会有太多的进展，我们将在假期继续推进。
+
 ## 许可协议
 
 本书采用与原书相同的 [LICENSE](https://gitlab.com/CLIUtils/modern-cmake/-/blob/master/LICENSE)
