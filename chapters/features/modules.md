@@ -4,7 +4,7 @@
 
 ## «module:CMakeDependentOption»
 
-这增加了命令 `cmake_dependent_option` ，它根据另外一组变量来设定一个选项的值。下面是一个例子：
+这增加了命令 `cmake_dependent_option` ，它根据另外一组变量是否为真来（决定是否）放置一个选项。下面是一个例子：
 
 ```cmake
 include(CMakeDependentOption)
