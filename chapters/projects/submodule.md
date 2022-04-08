@@ -1,4 +1,4 @@
-# Git 子模组
+# Git 子模组（Submodule）
 
 如果你想要添加一个 Git 仓库，它与你的项目仓库使用相同的 Git 托管服务（诸如 GitHub、GitLab、BitBucker 等等），下面是正确的添加一个子模组到 `extern` 目录中的命令：
 
