@@ -92,21 +92,28 @@ CentOS 8上的默认安装包不算太差，但最好不要使用CentOS 7上的�
 [![Ubuntu 16.04 package](https://repology.org/badge/version-for-repo/ubuntu_16_04/cmake.svg?minversion=3.10.0)](https://launchpad.net/ubuntu/xenial/+source/cmake)
 [![Ubuntu 18.04 package](https://repology.org/badge/version-for-repo/ubuntu_18_04/cmake.svg?minversion=3.10.0)](https://launchpad.net/ubuntu/bionic/+source/cmake)
 [![Ubuntu 20.04 package](https://repology.org/badge/version-for-repo/ubuntu_20_04/cmake.svg?minversion=3.10.0)](https://launchpad.net/ubuntu/focal/+source/cmake)
+[![Ubuntu 22.04 package](https://repology.org/badge/version-for-repo/ubuntu_22_04/cmake.svg?minversion=3.10.0)](https://launchpad.net/ubuntu/jammy/+source/cmake)
 
 你应该只在18.04以上的版本使用默认的CMake；它是一个LTS版本，并且有一个相当不错的最低版本！
 
+#### Debian
+
+[![Debian 10 package](https://repology.org/badge/version-for-repo/debian_10/cmake.svg)][repology] 
+[![Debian 10 backports package](https://repology.org/badge/version-for-repo/debian_10_backports/cmake.svg)][repology] 
+[![Debian 11 package](https://repology.org/badge/version-for-repo/debian_11/cmake.svg)][repology] 
+[![Debian 11 backports package](https://repology.org/badge/version-for-repo/debian_11_backports/cmake.svg)][repology] 
+[![Debian Unstable package](https://repology.org/badge/version-for-repo/debian_unstable/cmake.svg)][repology]
+
 #### 其它Linux发行版
 
-[![Alpine Linux 3.12 package](https://repology.org/badge/version-for-repo/alpine_3_12/cmake.svg)](https://pkgs.alpinelinux.org/packages?name=cmake&branch=v3.12)
+[![Alpine Linux 3.15 package](https://repology.org/badge/version-for-repo/alpine_3_15/cmake.svg)](https://pkgs.alpinelinux.org/packages?name=cmake&branch=v3.15)
 [![Arch package](https://repology.org/badge/version-for-repo/arch/cmake.svg)][repology]
-[![Debian Stable package](https://repology.org/badge/version-for-repo/debian_stable/cmake.svg)][repology]
-[![Debian Testing package](https://repology.org/badge/version-for-repo/debian_testing/cmake.svg)][repology]
-[![Fedora 32 package](https://repology.org/badge/version-for-repo/fedora_32/cmake.svg)][repology]
+[![Fedora 35 package](https://repology.org/badge/version-for-repo/fedora_35/cmake.svg)][repology]
 [![FreeBSD port](https://repology.org/badge/version-for-repo/freebsd/cmake.svg)][repology]
 [![OpenBSD port](https://repology.org/badge/version-for-repo/openbsd/cmake.svg)][repology]
 [![Gentoo package](https://repology.org/badge/version-for-repo/gentoo/cmake.svg)][repology]
 [![openSUSE Tumbleweed package](https://repology.org/badge/version-for-repo/opensuse_tumbleweed/cmake.svg)][repology]
-[![Linuxbrew package](https://repology.org/badge/version-for-repo/linuxbrew/cmake.svg)][repology]
+[![Homebrew package](https://repology.org/badge/version-for-repo/homebrew/cmake.svg)][homebrew]
 
 
 ### 常用工具
