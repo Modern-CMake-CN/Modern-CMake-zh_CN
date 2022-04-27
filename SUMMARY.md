@@ -23,7 +23,7 @@
     * [子模组](chapters/projects/submodule.md)
     * [使用 CMake 下载项目](chapters/projects/download.md)
     * [获取软件包（FetchContent）(CMake 3.11+)](chapters/projects/fetch.md)
-* [Testing](chapters/testing.md)
+* [测试](chapters/testing.md)
     * [GoogleTest](chapters/testing/googletest.md)
     * [Catch](chapters/testing/catch.md)
 * [Exporting and Installing](chapters/install.md)

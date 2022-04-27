@@ -1,16 +1,16 @@
 # GoogleTest
 
-GoogleTest and GoogleMock are classic options; personally, I personally would recommend Catch2 instead, as GoogleTest heavily follows the Google development philosophy; it drops old compilers very quickly, it assumes users want to live at HEAD, etc. Adding GoogleMock is also often painful - and you need GoogleMock to get matchers, which are a default feature in Catch2 (but not doctest).
+GoogleTest 和 GoogleMock 是非常经典的选择；不过就我个人经验而言，我会推荐你使用 Catch2，因为 GoogleTest 十分遵循谷歌的发展理念；它假定用户总是想使用最新的技术，因此会很快的抛弃旧的编译器（不对其适配）等等。添加 GoogleMock 也常常令人头疼，并且你需要使用 GoogleMock 来获得匹配器(matchers)，这在 Catch2 是一个默认特性，而不需要手动添加（但 docstest 没有这个特性）。
 
-## Submodule method (preferred)
+## 子模块(Submodule)的方式（首选）
 
-To use this method, just checkout GoogleTest as a submodule:[^1]
+当使用这种方式，只需要将 GoogleTest 设定(checkout) 为一个子模块：[^1]
 
 ```cmake
 git submodule add --branch=release-1.8.0 ../../google/googletest.git extern/googletest
 ```
 
-Then, in your main `CMakeLists.txt`:
+然后，在你的主 `CMakeLists.txt` 中：
 
 ```cmake
 option(PACKAGE_TESTS "Build the tests" ON)
@@ -21,19 +21,18 @@ if(PACKAGE_TESTS)
 endif()
 ```
 
-I would recommend using something like `PROJECT_NAME STREQUAL CMAKE_PROJECT_NAME` to set the default for the `PACKAGE_TESTS` option, since this should only build by default if this is the current project.
-As mentioned before, you have to do the `enable_testing` in your main CMakeLists.
+我推荐你使用一些像 `PROJECT_NAME STREQUAL CMAKE_PROJECT_NAME` 来设置 `PACKAGE_TEST` 选项的默认值，因为这样只会在项目为主项目时才构建测试单元。
 
-
-Now, in your tests directory:
+像之前提到的，你必须在你的主 `CMakeLists.txt` 文件中调用 `enable_testing()` 函数。
+现在，在你的 `tests` 目录中：
 
 ```cmake
 add_subdirectory("${PROJECT_SOURCE_DIR}/extern/googletest" "extern/googletest")
 ```
 
-If you did this in your main CMakeLists, you could use a normal `add_subdirectory`; the extra path here is needed to correct the build path because we are calling it from a subdirectory.
+如果你在你的主 `CMakeLists.txt` 中调用它，你可以使用普通的 `add_subdirectory`；这里因为我们是从子目录中调用的，所以我们需要一个额外的路径选项来更正构建路径。
 
-The next line is optional, but keeps your `CACHE` cleaner:
+下面的代码是可选的，它可以让你的 `CACHE` 更干净：
 
 ```cmake
 mark_as_advanced(
@@ -52,7 +51,7 @@ set_target_properties(gmock PROPERTIES FOLDER extern)
 set_target_properties(gmock_main PROPERTIES FOLDER extern)
 ```
 
-Then, to add a test, I'd recommend the following macro:
+然后，为了增加一个测试，推荐使用下面的宏：
 
 ```cmake
 macro(package_add_test TESTNAME)
@@ -74,8 +73,9 @@ endmacro()
 package_add_test(test1 test1.cpp)
 ```
 
-This will allow you to quickly and simply add tests. Feel free to adjust to suit your needs. If you haven't seen it before, `ARGN` is "every argument after the listed ones".
-Modify the macro to meet your needs.  For example, if you're testing libraries and need to link in different libraries for different tests, you might use this:
+这可以简单、快速的添加测试单元。你可以随意更改来满足你的需求。如果你之前没有了解过 `ARGN`，`ARGN ` 是显式声明的参数外的所有参数。如 `package_add_test(test1 test1.cpp a b c)`，`ARGN` 包含除 `test1` 与 `test1.cpp` 外的所有参数。
+
+可以更改宏来满足你的要求。例如，如果你需要链接不同的库来进行不同的测试，你可以这么写：
 
 ```cmake
 macro(package_add_test_with_libraries TESTNAME FILES LIBRARIES TEST_WORKING_DIRECTORY)
@@ -92,11 +92,11 @@ package_add_test_with_libraries(test1 test1.cpp lib_to_test "${PROJECT_DIR}/euro
 ```
 
 
-## Download method
+## 下载的方式
 
-You can use the downloader in my [CMake helper repository][CLIUtils/cmake], using CMake's `include` command.
+你可以通过 CMake 的 `include` 指令使用使用我在 [CMake helper repository][CLIUtils/cmake] 中的下载器，
 
-This is a downloader for [GoogleTest], based on the excellent [DownloadProject] tool. Downloading a copy for each project is the recommended way to use GoogleTest (so much so, in fact, that they have disabled the automatic CMake install target), so this respects that design decision. This method downloads the project at configure time, so that IDEs correctly find the libraries. Using it is simple:
+这是一个 [GoogleTest] 的下载其，基于优秀的 [DownloadProject] 工具。为每个项目下载一个副本是使用 GoogleTest 的推荐方式（so much so, in fact, that they have disabled the automatic CMake install target）, so this respects that design decision. 这个方式在项目配置时下载 GoogleTest，所以 IDEs 可以正确的找到这些库。这样使用起来很简单：
 
 ```cmake
 cmake_minimum_required(VERSION 3.10)
@@ -110,7 +110,8 @@ add_executable(SimpleTest SimpleTest.cu)
 add_gtest(SimpleTest)
 ```
 
-> Note: `add_gtest` is just a macro that adds `gtest`, `gmock`, and `gtest_main`, and then runs `add_test` to create a test with the same name:
+> 提示：`add_gtest` 只是一个添加 `gtest`，`gmock` 以及 `gtest_main` 的宏，然后运行 `add_test` 来创建一个具有相同名字的测试单元
+>
 > ```cmake
 > target_link_libraries(SimpleTest gtest gmock gtest_main)
 > add_test(SimpleTest SimpleTest)
@@ -118,7 +119,7 @@ add_gtest(SimpleTest)
 
 ## FetchContent: CMake 3.11
 
-The example for the FetchContent module is GoogleTest:
+这个例子是用 FetchContent 来添加 GoogleTest：
 
 ```cmake
 include(FetchContent)
@@ -136,7 +137,7 @@ if(NOT googletest_POPULATED)
 endif()
 ```
 
-[^1]: Here I've assumed that you are working on a GitHub repository by using the relative path to googletest.
+[^1]: 在这里我假设你在 Github 仓库中使用 googletest，然后使用的是 googletest 的相对路径。
 
 
 [CLIUtils/cmake]:  https://github.com/CLIUtils/cmake
