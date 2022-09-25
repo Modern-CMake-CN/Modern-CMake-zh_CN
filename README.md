@@ -28,3 +28,9 @@
 
 同时，受限于译者的水平，不足之处敬请谅解，欢迎提出 [Issue](https://github.com/Modern-CMake-CN/Modern-CMake-zh_CN/issues) 或 [Pull Request](https://github.com/Modern-CMake-CN/Modern-CMake-zh_CN/pulls)！
 
+<img src="https://img.shields.io/github/contributors-anon/Modern-CMake-CN/Modern-CMake-zh_CN"/>
+
+<a href="https://github.com/Modern-CMake-CN/Modern-CMake-zh_CN/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Modern-CMake-CN/Modern-CMake-zh_CN&max=240&columns=18" />
+</a>
+
