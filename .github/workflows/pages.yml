@@ -3,6 +3,14 @@ on:
   push:
     branches:
       - master
+    paths-ignore:
+      - '.github/**'
+      - 'examples/**'
+      - 'origin/**'
+      - 'pdf/**'
+      - '.*'
+      - 'LICENSE'
+      - 'README.md'
 jobs:
   build:
     runs-on: ubuntu-latest
