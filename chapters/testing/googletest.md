@@ -96,7 +96,7 @@ package_add_test_with_libraries(test1 test1.cpp lib_to_test "${PROJECT_DIR}/euro
 
 你可以通过 CMake 的 `include` 指令使用使用我在 [CMake helper repository][CLIUtils/cmake] 中的下载器，
 
-这是一个 [GoogleTest] 的下载其，基于优秀的 [DownloadProject] 工具。为每个项目下载一个副本是使用 GoogleTest 的推荐方式（so much so, in fact, that they have disabled the automatic CMake install target）, so this respects that design decision. 这个方式在项目配置时下载 GoogleTest，所以 IDEs 可以正确的找到这些库。这样使用起来很简单：
+这是一个 [GoogleTest] 的下载器，基于优秀的 [DownloadProject] 工具。为每个项目下载一个副本是使用 GoogleTest 的推荐方式（so much so, in fact, that they have disabled the automatic CMake install target）, so this respects that design decision. 这个方式在项目配置时下载 GoogleTest，所以 IDEs 可以正确的找到这些库。这样使用起来很简单：
 
 ```cmake
 cmake_minimum_required(VERSION 3.10)
