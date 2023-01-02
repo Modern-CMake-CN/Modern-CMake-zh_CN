@@ -1,6 +1,6 @@
-# Installing
+# 安装
 
-Install commands cause a file or target to be "installed" into the install tree when you `make install`. Your basic target install command looks like this:
+进行安装时，安装命令会将文件或目标“安装”到安装树中。简单的目标安装命令:
 
 ```cmake
 install(TARGETS MyLib
@@ -12,9 +12,9 @@ install(TARGETS MyLib
         )
 ```
 
-The various destinations are only needed if you have a library, static library, or program to install. The includes destination is special; since a target does not install includes. It only sets the includes destination on the exported target (which is often already set by `target_include_directories`, so check the MyLibTargets file and make sure you don't have the include directory included twice if you want clean cmake files).
+当有一个库、静态库或程序要安装时，才需要不同的目的地。由于目标不安装INCLUDES目录，所以INCLUDES目标是特殊的。它只在导出的目标上设置包含目标(通常已经由target_include_directories设置，因此检查MyLibTargets文件，若想要干净的cmake文件，需要确认没有多次包含INCLUDES目录)。
 
-It's usually a good idea to give CMake access to the version, so that `find_package` can have a version specified. That looks like this:
+通常给定CMake访问版本是个好主意，这样`find_package`就可以指定版本信息:
 
 ```cmake
 include(CMakePackageConfigHelpers)
@@ -25,10 +25,9 @@ write_basic_package_version_file(
     )
 ```
 
+接下来有两个选择。需要创建`MyLibConfig.cmake`，可以直接将目标在这个文件中导出，或者手动写入，然后包含目标文件。若有依赖项(可能只是OpenMP)，则需要添加相应的选项。
 
-You have two choices next. You need to make a `MyLibConfig.cmake`, but you can do it either by exporting your targets directly to it, or by writing it by hand, then including the targets file. The later option is what you'll need if you have any dependencies, even just OpenMP, so I'll illustrate that method.
-
-First, make an install targets file (very similar to the one you made in the build directory):
+首先，创建一个安装目标文件(非常类似于在build目录中创建的文件):
 
 ```cmake
 install(EXPORT MyLibTargets
@@ -38,7 +37,7 @@ install(EXPORT MyLibTargets
          )
 ```
 
-This file will take the targets you exported and put them in a file. If you have no dependencies, just use `MyLibConfig.cmake` instead of `MyLibTargets.cmake` here. Then write a custom `MyLibConfig.cmake` file in your source tree somewhere. If you want to capture configure time variables, you can use a `.in` file, and you will want to use the `@var@` syntax. The contents that look like this:
+该文件将获取导出目标，并将其放入文件中。若没有依赖项，只需使用`MyLibConfig.cmake`代替`MyLibTargets.cmake` 即可。然后，源树的某处，创建一个自定义`MyLibConfig.cmake`文件。若想要捕获配置时的变量，可以使用`.in`文件，并且可以使用`@var@`语法。具体方式如下所示:
 
 ```cmake
 include(CMakeFindDependencyMacro)
@@ -55,8 +54,7 @@ find_dependency(MYDEP REQUIRED)
 include("${CMAKE_CURRENT_LIST_DIR}/MyLibTargets.cmake")
 ```
 
-Now, you can use configure file (if you used a `.in` file) and then install the resulting file.
-Since we've made a `ConfigVersion` file, this is a good place to install it too.
+现在，可以使用配置文件(若使用`.in`文件)，然后安装已生成的文件。因为已经创建了`ConfigVersion`文件，所以可以在这里安装它。
 
 ```cmake
 configure_file(MyLibConfig.cmake.in MyLibConfig.cmake @ONLY)
@@ -66,6 +64,6 @@ install(FILES "${CMAKE_CURRENT_BINARY_DIR}/MyLibConfig.cmake"
         )
 ```
 
-That's it! Now once you install a package, there will be files in `lib/cmake/MyLib` that CMake will search for (specifically, `MyLibConfig.cmake` and `MyLibConfigVersion.cmake`), and the targets file that config uses should be there as well.
+就是这样！现在，当安装了一个包，在`lib/cmake/MyLib`中就提供CMake搜索所需的文件(特别是`MyLibConfig。cmake`和`MyLibConfigVersion.cmake`)，配置时使用的目标文件应该也在那里。
 
-When CMake searches for a package, it will look in the current install prefix and several standard places. You can also add this to your search path manually, including `MyLib_PATH`, and CMake gives the user nice help output if the configure file is not found.
+当CMake搜索一个包时，它将在当前安装目录和几个标准位置中进行查找查找。也可以手动将相应的目录添加到搜索路径中，包括`MyLib_PATH`。若没有找到配置文件，CMake会输出相应的信息，告知用户当前的情况。
