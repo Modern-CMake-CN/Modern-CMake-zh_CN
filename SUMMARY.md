@@ -4,7 +4,7 @@
     * [安装 CMake](chapters/intro/installing.md)
     * [运行 CMake](chapters/intro/running.md)
     * [CMake 行为准则](chapters/intro/dodonot.md)
-    * [What's new in CMake](chapters/intro/newcmake.md)
+    * [CMake 各个版本添加的新特性](chapters/intro/newcmake.md)
 * [基础知识简介](chapters/basics.md)
     * [变量与缓存](chapters/basics/variables.md)
     * [用 CMake 进行编程](chapters/basics/functions.md)
