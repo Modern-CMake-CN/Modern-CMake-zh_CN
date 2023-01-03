@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Exporting · Modern CMake</title>
+        <title>导出 · Modern CMake</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -496,7 +496,7 @@
                 <a href="../install.html">
             
                     
-                    Exporting and Installing
+                    导出与安装
             
                 </a>
             
@@ -510,7 +510,7 @@
                 <a href="installing.html">
             
                     
-                    Installing
+                    安装
             
                 </a>
             
@@ -523,7 +523,7 @@
                 <a href="exporting.html">
             
                     
-                    Exporting
+                    导出
             
                 </a>
             
@@ -536,7 +536,7 @@
                 <a href="packaging.html">
             
                     
-                    Packaging
+                    打包
             
                 </a>
             
@@ -721,7 +721,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >Exporting</a>
+        <a href="../.." >导出</a>
     </h1>
 </div>
 
@@ -736,19 +736,19 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="exporting">Exporting</h1>
-<p><div class="alert alert-danger hints-alert"><div class="hints-icon"><i class="fa fa-exclamation-circle"></i></div><div class="hints-container"><p>The default behavior for exporting changed in CMake 3.15. Since changing files in a user&apos;s home directory is considered &quot;surprising&quot; (and it is, which is why this chapter exists), it is no longer the default behavior. If you set a minimum or maximum CMake version of 3.15 or later, this will no longer happen unless you set <code>CMAKE_EXPORT_PACKAGE_REGISTRY</code> as shown below.</p>
+                                <h1 id="&#x5BFC;&#x51FA;">&#x5BFC;&#x51FA;</h1>
+<p><div class="alert alert-danger hints-alert"><div class="hints-icon"><i class="fa fa-exclamation-circle"></i></div><div class="hints-container"><p>CMake 3.15 &#x4E2D;&#xFF0C;&#x5BFC;&#x51FA;&#x7684;&#x9ED8;&#x8BA4;&#x884C;&#x4E3A;&#x53D1;&#x751F;&#x4E86;&#x53D8;&#x5316;&#x3002;&#x7531;&#x4E8E;&#x66F4;&#x6539;&#x7528;&#x6237;&#x4E3B;&#x76EE;&#x5F55;&#x4E2D;&#x7684;&#x6587;&#x4EF6;&#x662F;&#x201C;&#x4EE4;&#x4EBA;&#x60CA;&#x8BB6;&#x7684;&#x201D;&#xFF08;&#x786E;&#x5B9E;&#x5982;&#x6B64;&#xFF0C;&#x8FD9;&#x5C31;&#x662F;&#x672C;&#x7AE0;&#x5B58;&#x5728;&#x7684;&#x539F;&#x56E0;&#xFF09;&#xFF0C;&#x56E0;&#x6B64;&#x4E0D;&#x518D;&#x662F;&#x9ED8;&#x8BA4;&#x884C;&#x4E3A;&#x3002;&#x82E5;&#x5C06; CMake &#x7684;&#x6700;&#x5C0F;&#x6216;&#x6700;&#x5927;&#x7248;&#x672C;&#x8BBE;&#x7F6E;&#x4E3A; 3.15+&#xFF0C;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x5C06;&#x4E0D;&#x518D;&#x53D1;&#x751F;&#xFF0C;&#x9664;&#x975E;&#x5C06; <code>CMAKE_EXPORT_PACKAGE_REGISTRY</code> &#x8BBE;&#x7F6E;&#x4E3A;<code>ON</code>&#x3002;</p>
 </div></div></p>
-<p>There are three ways to access a project from another project: subdirectory, exported build directories, and installing. To use the build directory of one project in another project, you will need to export targets. Exporting targets is needed for a proper install; allowing the build directory to be used is just two added lines. It is not generally a way to work that I would recommend, but can be useful for development and as way to prepare the installation procedure discussed later.</p>
-<p>You should make an export set, probably near the end of your main <code>CMakeLists.txt</code>:</p>
+<p>CMake &#x8BBF;&#x95EE;&#x9879;&#x76EE;&#x6709;&#x4E09;&#x79CD;&#x65B9;&#x5F0F;&#xFF1A;&#x5B50;&#x76EE;&#x5F55;&#x3001;&#x5BFC;&#x51FA;&#x6784;&#x5EFA;&#x76EE;&#x5F55;&#x548C;&#x5B89;&#x88C5;&#x3002;&#x8981;&#x4F7F;&#x7528;&#x9879;&#x76EE;&#x7684;&#x6784;&#x5EFA;&#x76EE;&#x5F55;&#xFF0C;&#x5C31;&#x9700;&#x8981;&#x5BFC;&#x51FA;&#x76EE;&#x6807;&#x3002;&#x6B63;&#x786E;&#x7684;&#x5B89;&#x88C5;&#x9700;&#x8981;&#x5BFC;&#x51FA;&#x76EE;&#x6807;&#xFF0C;&#x4F7F;&#x7528;&#x6784;&#x5EFA;&#x76EE;&#x5F55;&#x53EA;&#x9700;&#x8981;&#x518D;&#x589E;&#x52A0;&#x4E86;&#x4E24;&#x884C;&#x4EE3;&#x7801;&#xFF0C;&#x4F46;&#x8FD9;&#x5E76;&#x4E0D;&#x662F;&#x6211;&#x63A8;&#x8350;&#x7684;&#x5DE5;&#x4F5C;&#x65B9;&#x5F0F;&#x3002;&#x4E0D;&#x8FC7;&#xFF0C;&#x5BF9;&#x4E8E;&#x5F00;&#x53D1;&#x548C;&#x5B89;&#x88C5;&#x8FC7;&#x7A0B;&#x6765;&#x8BF4;&#x7684;&#x786E;&#x597D;&#x7528;&#x3002;</p>
+<p>&#x8FD8;&#x9700;&#x8981;&#x521B;&#x5EFA;&#x5BFC;&#x51FA;&#x96C6;&#xFF0C;&#x53EF;&#x80FD;&#x8981;&#x653E;&#x5728;&#x4E3B; <code>CMakeLists.txt</code> &#x6587;&#x4EF6;&#x7684;&#x672B;&#x5C3E;:</p>
 <pre><code class="lang-cmake"><span class="hljs-keyword">export</span>(TARGETS MyLib1 MyLib2 NAMESPACE MyLib:: FILE MyLibTargets.cmake)
 </code></pre>
-<p>This puts the targets you have listed into a file in the build directory, and optionally prefixes them with a namespace. Now, to allow CMake to find this package, export the package into the <code>$HOME/.cmake/packages</code> folder:</p>
+<p>&#x8FD9;&#x5C06;&#x628A;&#x5217;&#x51FA;&#x7684;&#x76EE;&#x6807;&#x653E;&#x5230;&#x6784;&#x5EFA;&#x76EE;&#x5F55;&#x7684;&#x6587;&#x4EF6;&#x4E2D;&#xFF0C;&#x8FD8;&#x53EF;&#x4EE5;&#x7ED9;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x4F5C;&#x4E3A;&#x524D;&#x7F00;&#x3002;&#x73B0;&#x5728;&#xFF0C;CMake &#x53EF;&#x4EE5;&#x627E;&#x5230;&#x8FD9;&#x4E2A;&#x5305;&#x4E86;&#xFF0C;&#x5E76;&#x5C06;&#x8FD9;&#x4E2A;&#x5305;&#x5BFC;&#x51FA;&#x5230; <code>$HOME/.cmake/packages</code> &#x6587;&#x4EF6;&#x5939;&#x4E0B;:</p>
 <pre><code class="lang-cmake"><span class="hljs-keyword">set</span>(CMAKE_EXPORT_PACKAGE_REGISTRY <span class="hljs-keyword">ON</span>)
 <span class="hljs-keyword">export</span>(PACKAGE MyLib)
 </code></pre>
-<p>Now, if you <code>find_package(MyLib)</code>, CMake can find the build folder. Look at the generated <code>MyLibTargets.cmake</code> file to help you understand exactly what is created; it&apos;s just a normal CMake file, with the exported targets.</p>
-<p>Note that there&apos;s a downside: if you have imported dependencies, they will need to be imported before you <code>find_package</code>. That will be fixed in the next method.</p>
+<p>&#x73B0;&#x5728;&#xFF0C;<code>find_package(MyLib)</code>&#x5C31;&#x53EF;&#x4EE5;&#x627E;&#x5230;&#x6784;&#x5EFA;&#x6587;&#x4EF6;&#x5939;&#x4E86;&#x3002;&#x6765;&#x770B;&#x770B;&#x751F;&#x6210;&#x7684;<code>MyLibTargets.cmake</code>&#x6587;&#x4EF6;&#x5230;&#x5E95;&#x505A;&#x4E86;&#x4EC0;&#x4E48;&#x3002;&#x5B83;&#x53EA;&#x662F;&#x4E00;&#x4E2A;&#x666E;&#x901A;&#x7684;CMake&#x6587;&#x4EF6;&#xFF0C;&#x4F46;&#x5E26;&#x6709;&#x5BFC;&#x51FA;&#x7684;&#x76EE;&#x6807;&#x3002;</p>
+<p>&#x6CE8;&#x610F;&#xFF0C;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x6709;&#x4E00;&#x4E2A;&#x7F3A;&#x70B9;&#xFF1A;&#x82E5;&#x5BFC;&#x5165;&#x4E86;&#x4F9D;&#x8D56;&#x9879;&#xFF0C;&#x5219;&#x9700;&#x8981;&#x5728; <code>find_package</code> &#x4E4B;&#x524D;&#x5BFC;&#x5165;&#x5B83;&#x4EEC;&#x3002;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x5C06;&#x5728;&#x540E;&#x9762;&#x7684;&#x7AE0;&#x8282;&#x4E2D;&#x89E3;&#x51B3;&#x3002;</p>
 
                                 
                                 </section>
@@ -776,12 +776,12 @@
 
             
                 
-                <a href="installing.html" class="navigation navigation-prev " aria-label="Previous page: Installing">
+                <a href="installing.html" class="navigation navigation-prev " aria-label="Previous page: 安装">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="packaging.html" class="navigation navigation-next " aria-label="Next page: Packaging">
+                <a href="packaging.html" class="navigation navigation-next " aria-label="Next page: 打包">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -792,7 +792,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Exporting","level":"1.7.2","depth":2,"next":{"title":"Packaging","level":"1.7.3","depth":2,"path":"chapters/install/packaging.md","ref":"chapters/install/packaging.md","articles":[]},"previous":{"title":"Installing","level":"1.7.1","depth":2,"path":"chapters/install/installing.md","ref":"chapters/install/installing.md","articles":[]},"dir":"ltr"},"config":{"plugins":["replace","hints","term","include-codeblock","ace","github-edit"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"ace":{},"statistics":{"google_id":"G-0YEXF2MC7Y"},"search":{},"term":{"copyButtons":true,"fade":true,"lineStyles":true,"prompt":"(?<prompt>[^\\$^#^:]*)(?<pathsep>:?)(?<path>[^\\$^#]*?)(?<delimiter>[\\$#] )(?<command>.*)$","style":"default"},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"github-edit":{"repo":"Modern-CMake-CN/Modern-CMake-zh_CN","branch":"master"},"replace":{"substitutes":[{"pattern":"«cmake:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/manual/cmake-$1.7.html)"},{"pattern":"«command:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/command/$1.html)"},{"pattern":"«envvar:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/envvar/$1.html)"},{"pattern":"«module:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/module/$1.html)"},{"pattern":"«policy:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/policy/$1.html)"},{"pattern":"«variable:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest//$1.html)"},{"pattern":"«prop:([^:]+):`?([^`^»]+)`?»","flags":"g","substitute":"[`$2`](https://cmake.org/cmake/help/latest/prop_$1/$2.html)"}]},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Henry Schreiner","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Modern CMake","language":"zh-hans","links":{"sidebar":{"GitHub Repo":"https://github.com/Modern-CMake-CN/Modern-CMake-zh_CN"}},"gitbook":"3.x.x","description":"A guide to writing simple, powerful, and clean CMake 3.1+ builds."},"file":{"path":"chapters/install/exporting.md","mtime":"2023-01-03T12:33:26.807Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-01-03T12:34:18.245Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"导出","level":"1.7.2","depth":2,"next":{"title":"打包","level":"1.7.3","depth":2,"path":"chapters/install/packaging.md","ref":"chapters/install/packaging.md","articles":[]},"previous":{"title":"安装","level":"1.7.1","depth":2,"path":"chapters/install/installing.md","ref":"chapters/install/installing.md","articles":[]},"dir":"ltr"},"config":{"plugins":["replace","hints","term","include-codeblock","ace","github-edit"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"ace":{},"statistics":{"google_id":"G-0YEXF2MC7Y"},"search":{},"term":{"copyButtons":true,"fade":true,"lineStyles":true,"prompt":"(?<prompt>[^\\$^#^:]*)(?<pathsep>:?)(?<path>[^\\$^#]*?)(?<delimiter>[\\$#] )(?<command>.*)$","style":"default"},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"github-edit":{"repo":"Modern-CMake-CN/Modern-CMake-zh_CN","branch":"master"},"replace":{"substitutes":[{"pattern":"«cmake:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/manual/cmake-$1.7.html)"},{"pattern":"«command:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/command/$1.html)"},{"pattern":"«envvar:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/envvar/$1.html)"},{"pattern":"«module:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/module/$1.html)"},{"pattern":"«policy:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/policy/$1.html)"},{"pattern":"«variable:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest//$1.html)"},{"pattern":"«prop:([^:]+):`?([^`^»]+)`?»","flags":"g","substitute":"[`$2`](https://cmake.org/cmake/help/latest/prop_$1/$2.html)"}]},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Henry Schreiner","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Modern CMake","language":"zh-hans","links":{"sidebar":{"GitHub Repo":"https://github.com/Modern-CMake-CN/Modern-CMake-zh_CN"}},"gitbook":"3.x.x","description":"A guide to writing simple, powerful, and clean CMake 3.1+ builds."},"file":{"path":"chapters/install/exporting.md","mtime":"2023-01-03T15:09:39.013Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-01-03T15:10:24.620Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
