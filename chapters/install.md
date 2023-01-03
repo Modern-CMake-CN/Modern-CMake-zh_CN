@@ -1,26 +1,26 @@
-# Exporting and Installing
+# 导出与安装
 
-There are three good ways and one bad way to allow others use your library:
+让别人使用库有三种好方法和一种坏方法:
 
-## Find module (the bad way)
+## 查找模块（不好的方式）
 
-If you are the library author, don't make a `Find<mypackage>.cmake` script! These were designed for libraries whose authors did not support CMake. Use a `Config<mypackage>.cmake` instead as listed below.
+`Find<mypackage>.cmake` 脚本是为那些不支持 CMake 的库所设计，所以已经使用 CMake 的库，无需不要创建这个脚本文件！可以使用 `Config<mypackage>.cmake`，具体方式如下所示。
 
-## Add Subproject
+## 添加子项目
 
-A package can include your project in a subdirectory, and then use `add_subdirectory` on the subdirectory. This useful for header-only and quick-to-compile libraries. Note that the install commands may interfere with the parent project, so you can add `EXCLUDE_FROM_ALL` to the `add_subdirectory` command; the targets you explicitly use will still be built.
+可以将项目作为一个子目录放置于包中，接着使用 `add_subdirectory` 添加相应的子目录，这适用于纯头文件和快速编译的库。还需要注意的是，安装命令可能会干扰父项目，因此可以使用 `add_subdirectory` 的`EXCLUDE_FROM_ALL`选项；当显式使用的目标时，仍然会进行构建。
 
-In order to support this as a library author, make sure you use `CMAKE_CURRENT_SOURCE_DIR` instead of `PROJECT_SOURCE_DIR` (and likewise for other variables, like binary dirs). You can check `CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME` to only add options or defaults that make sense if this is a project.
+作为库的作者，请使用 `CMAKE_CURRENT_SOURCE_DIR` 而非 `PROJECT_SOURCE_DIR` (对于其他变量也是如此，比如`CMAKE_CURRRENT_BINARY_DIR`)。通过检查 `CMAKE_PROJECT_NAME` 和 `PROJECT_NAME` 的内容是否相同 （STREQUAL），可以只添加对项目有意义的选项或默认值。
 
-Also, since namespaces are a good idea, and the usage of your library should be consistent with the other methods below, you should add
+此外，使用命名空间也是不错的方式。使用库的方式应该与下面的一致，应该对所有方法的使用进行标准化。
 
 ```cmake
 add_library(MyLib::MyLib ALIAS MyLib)
 ```
 
-to standardise the usage across all methods. This ALIAS target will not be exported below.
+这里的 ALIAS（别名）目标不会在后面导出。
 
 
-## Exporting
+## 导出
 
-The third way is `*Config.cmake` scripts; that will be the topic of the next chapter in this session.
+第三种方法是 `*Config.cmake` 脚本，这将是下一章的主题。
