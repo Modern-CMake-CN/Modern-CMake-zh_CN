@@ -736,321 +736,354 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="whats-new-in-in-cmake">What&apos;s new in in CMake</h1>
-<p>This is an abbreviated version of the CMake changlog with just the highlights for authors. Names for each release are arbitrarily picked by the author.</p>
-<h2 id="cmake-30--interface-libraries"><a href="https://cmake.org/cmake/help/latest/release/3.0.html" target="_blank">CMake 3.0</a> : Interface libraries</h2>
-<p>There were a ton of additions to this version of CMake, primarily to fill out the target interface. Some bits of needed functionality were missed and implemented in CMake 3.1 instead.</p>
+                                <h1 id="cmake-&#x5404;&#x4E2A;&#x7248;&#x672C;&#x6DFB;&#x52A0;&#x7684;&#x65B0;&#x7279;&#x6027;">CMake &#x5404;&#x4E2A;&#x7248;&#x672C;&#x6DFB;&#x52A0;&#x7684;&#x65B0;&#x7279;&#x6027;</h1>
+<p>CMake &#x4FEE;&#x6539;&#x8BB0;&#x5F55;&#x7684;&#x7B80;&#x5316;&#x7248;&#x672C;&#xFF0C;&#x8FD9;&#x91CC;&#x4EC5;&#x6311;&#x4E86;&#x4F5C;&#x8005;&#x8BA4;&#x4E3A;&#x7684;&#x91CD;&#x70B9;&#x3002;&#x8FD9;&#x91CC;&#xFF0C;&#x6BCF;&#x4E2A;&#x7248;&#x672C;&#x7684;&#x540D;&#x79F0;&#x90FD;&#x7531;&#x4F5C;&#x8005;&#x81EA;&#x884C;&#x547D;&#x540D;&#xFF0C;&#x4E0D;&#x8981;&#x592A;&#x5728;&#x610F;&#x3002;</p>
+<h2 id="cmake-30&#xFF1A;&#x63A5;&#x53E3;&#x5E93;"><a href="https://cmake.org/cmake/help/latest/release/3.0.html" target="_blank">CMake 3.0</a>&#xFF1A;&#x63A5;&#x53E3;&#x5E93;</h2>
+<p>&#x8FD9;&#x4E2A;&#x7248;&#x672C;&#x6DFB;&#x52A0;&#x4E86;&#x5927;&#x91CF;&#x5185;&#x5BB9;&#xFF0C;&#x4E3B;&#x8981;&#x662F;&#x4E3A;&#x4E86;&#x586B;&#x5145;&#x76EE;&#x6807;&#x63A5;&#x53E3;&#x3002;&#x4E00;&#x4E9B;&#x9700;&#x8981;&#x7684;&#x529F;&#x80FD;&#x9057;&#x5F03;&#x4E86;&#xFF0C;&#x5E76;&#x5728; CMake 3.1 &#x4E2D;&#x91CD;&#x65B0;&#x5B9E;&#x73B0;&#x3002;</p>
 <ul>
-<li>Initially released <a href="https://blog.kitware.com/cmake-3-0-0-available-for-download/" target="_blank">June 10, 2014</a></li>
-<li>New documentation</li>
-<li>INTERFACE libraries</li>
-<li>Project VERSION support</li>
-<li>Exporting build trees easily</li>
-<li>Bracket arguments and comments available (not widely used)</li>
-<li>Lots of improvements</li>
+<li>&#x9996;&#x6B21;&#x53D1;&#x5E03;&#x4E8E; <a href="https://blog.kitware.com/cmake-3-0-0-available-for-download/" target="_blank">2014&#x5E74;6&#x6708;10&#x65E5;</a></li>
+<li>&#x66F4;&#x65B0;&#x4E86;&#x6587;&#x6863;</li>
+<li>&#x6DFB;&#x52A0;&#x4E86; INTERFACE &#x5E93;&#x7C7B;&#x578B;</li>
+<li>&#x652F;&#x6301;&#x9879;&#x76EE;&#x7248;&#x672C;&#x5173;&#x952E;&#x5B57; VERSION</li>
+<li>&#x5BFC;&#x51FA;&#x6784;&#x5EFA;&#x6811;&#x66F4;&#x5BB9;&#x6613;</li>
+<li>&#x62EC;&#x53F7;&#x53C2;&#x6570;&#x548C;&#x652F;&#x6301;&#x6CE8;&#x91CA;(&#x672A;&#x5E7F;&#x6CDB;&#x4F7F;&#x7528;)</li>
+<li>&#x4EE5;&#x53CA;&#x5176;&#x4ED6;&#x5F88;&#x591A;&#x6539;&#x8FDB;</li>
 </ul>
-<h2 id="cmake-31--c11-and-compile-features"><a href="https://cmake.org/cmake/help/latest/release/3.1.html" target="_blank">CMake 3.1</a> : C++11 and compile features</h2>
-<p>This is the first release of CMake to support C++11. Combined with fixes to the new features of CMake 3.0, this is currently a common minimum version of CMake for libraries that want to support old CMake builds.</p>
+<h2 id="cmake-31&#xFF1A;&#x652F;&#x6301;-c11-&#x548C;&#x7F16;&#x8BD1;&#x7279;&#x6027;"><a href="https://cmake.org/cmake/help/latest/release/3.1.html" target="_blank">CMake 3.1</a>&#xFF1A;&#x652F;&#x6301; C++11 &#x548C;&#x7F16;&#x8BD1;&#x7279;&#x6027;</h2>
+<p>&#x652F;&#x6301; C++11 &#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x7248;&#x672C;&#xFF0C;&#x5E76;&#x9488;&#x5BF9; CMake 3.0 &#x65B0;&#x7279;&#x6027;&#x8FDB;&#x884C;&#x4E86;&#x4FEE;&#x590D;&#x3002;&#x5982;&#x82E5;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x65E7;&#x7248; CMake&#xFF0C;&#x8BE5;&#x7248;&#x672C;&#x63A8;&#x8350;&#x4F5C;&#x4E3A;&#x6700;&#x4F4E;&#x3002;</p>
 <ul>
-<li>Initially released <a href="https://blog.kitware.com/cmake-3-1-0-released/" target="_blank">December 17, 2014</a></li>
-<li>C++11 Support</li>
-<li>Compile features support</li>
-<li>Sources can be added later with <code>target_sources</code></li>
-<li>Better support for generator expressions and INTERFACE targets</li>
+<li>&#x9996;&#x6B21;&#x53D1;&#x5E03;&#x4E8E; <a href="https://blog.kitware.com/cmake-3-1-0-released/" target="_blank">2014&#x5E74;12&#x6708;17&#x65E5;</a></li>
+<li>&#x652F;&#x6301; C++11</li>
+<li>&#x652F;&#x6301;&#x7F16;&#x8BD1;&#x7279;&#x6027;</li>
+<li>&#x6E90;&#x6587;&#x4EF6;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; <code>target_sources</code> &#x5728;&#x521B;&#x5EFA;&#x76EE;&#x6807;&#x4E4B;&#x540E;&#x6DFB;&#x52A0;</li>
+<li>&#x4F18;&#x5316;&#x4E86;&#x751F;&#x6210;&#x5668;&#x8868;&#x8FBE;&#x5F0F;&#x548C; INTERFACE &#x76EE;&#x6807;</li>
 </ul>
-<h2 id="cmake-32--utf8"><a href="https://cmake.org/cmake/help/latest/release/3.2.html" target="_blank">CMake 3.2</a> : UTF8</h2>
-<p>This is a smaller release, with mostly small features and fixes. Internal changes, like better Windows and UTF8 support, were the focus.</p>
+<h2 id="cmake-32&#xFF1A;utf8"><a href="https://cmake.org/cmake/help/latest/release/3.2.html" target="_blank">CMake 3.2</a>&#xFF1A;UTF8</h2>
+<p>&#x4E00;&#x4E2A;&#x5C0F;&#x7248;&#x672C;&#xFF0C;&#x4E3B;&#x8981;&#x662F;&#x6DFB;&#x52A0;&#x4E86;&#x5C0F;&#x529F;&#x80FD;&#x548C;&#x5BF9;&#x4E4B;&#x524D;&#x529F;&#x80FD;&#x7F3A;&#x9677;&#x7684;&#x4FEE;&#x590D;&#x3002;&#x8FD8;&#x6709;&#x4E00;&#x4E9B;&#x5185;&#x90E8;&#x53D8;&#x5316;&#x6709;&#xFF0C;&#x6211;&#x8BA4;&#x4E3A;&#x5BF9;Windows&#x548C;UTF8&#x652F;&#x6301;&#x66F4;&#x597D;&#x8FD9;&#x4E2A;&#x5F88;&#x91CD;&#x8981;&#x3002;</p>
 <ul>
-<li>Initially released <a href="https://blog.kitware.com/cmake-3-2-1-released/" target="_blank">March 11, 2015</a></li>
-<li><code>continue()</code> inside loops</li>
-<li>File and directory locks added</li>
+<li>&#x9996;&#x6B21;&#x53D1;&#x5E03;&#x4E8E; <a href="https://blog.kitware.com/cmake-3-2-1-released/" target="_blank">2015&#x5E74;3&#x6708;11&#x65E5;</a></li>
+<li>&#x53EF;&#x4EE5;&#x5728;&#x5FAA;&#x73AF;&#x4E2D;&#x4F7F;&#x7528; <code>continue()</code></li>
+<li>&#x65B0;&#x589E;&#x6587;&#x4EF6;&#x548C;&#x76EE;&#x5F55;&#x9501;</li>
 </ul>
-<h2 id="cmake-33--if-inlist"><a href="https://cmake.org/cmake/help/latest/release/3.3.html" target="_blank">CMake 3.3</a> : if IN_LIST</h2>
-<p>This is notable for the useful <code>IN_LIST</code> option for if, but it also added better library search using <code>$PATH</code> (See CMake 3.6), dependencies for INTERFACE libraries, and several other useful improvements. The addition of a <code>COMPILE_LANGUAGE</code> generator expression would prove very useful in the future as more languages are added. Makefiles now produce better output in parallel.</p>
+<h2 id="cmake-33&#xFF1A;if-&#x4E2D;&#x6DFB;&#x52A0;-inlist"><a href="https://cmake.org/cmake/help/latest/release/3.3.html" target="_blank">CMake 3.3</a>&#xFF1A;if &#x4E2D;&#x6DFB;&#x52A0; IN_LIST</h2>
+<p>if&#x4E2D;&#x6DFB;&#x52A0;&#x4E86; <code>IN_LIST</code> &#x9009;&#x9879;&#xFF0C;&#x5E76;&#x4E14;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x73AF;&#x5883;&#x53D8;&#x91CF; <code>$PATH</code> (&#x8BE6;&#x89C1; CMake 3.6) &#x5BF9;&#x5E93;&#x6587;&#x4EF6;&#x8FDB;&#x884C;&#x641C;&#x7D22;&#xFF0C;&#x6DFB;&#x52A0;&#x4E86; INTERFACE &#x5E93;&#x7684;&#x4F9D;&#x8D56;&#x5173;&#x7CFB;&#xFF0C;&#x8FD8;&#x6709;&#x5176;&#x4ED6;&#x4E00;&#x4E9B;&#x6539;&#x8FDB;&#x3002;&#x968F;&#x7740;&#x652F;&#x6301;&#x7684;&#x8BED;&#x8A00;&#x8D8A;&#x6765;&#x8D8A;&#x591A;&#xFF0C; <code>COMPILE_LANGUAGE</code> &#x652F;&#x6301;&#x751F;&#x6210;&#x5668;&#x8868;&#x8FBE;&#x5F0F;&#x5C31;&#x5F88;&#x6709;&#x5FC5;&#x8981;&#x4E86;&#x3002;&#x5E76;&#x4E14;&#xFF0C;Makefile &#x5728;&#x5E76;&#x884C;&#x6267;&#x884C;&#x65F6;&#x7684;&#x8F93;&#x51FA;&#x66F4;&#x597D;&#x770B;&#x4E86;&#x3002;</p>
 <ul>
-<li>Initially released <a href="https://blog.kitware.com/cmake-3-3-0-released/" target="_blank">July 23, 2015</a></li>
-<li><code>IN_LIST</code> added to <code>if</code></li>
-<li><code>*_INCLUDE_WHAT_YOU_USE</code> property added</li>
-<li><code>COMPILE_LANGUAGE</code> generator expression (limited support in some generators)</li>
+<li>&#x9996;&#x6B21;&#x53D1;&#x5E03;&#x4E8E;<a href="https://blog.kitware.com/cmake-3-3-0-released/" target="_blank">2015&#x5E74;7&#x6708;23&#x65E5;</a></li>
+<li><code>if</code> &#x652F;&#x6301; <code>IN_LIST</code> &#x5173;&#x952E;&#x5B57;</li>
+<li>&#x65B0;&#x589E; <code>*_INCLUDE_WHAT_YOU_USE</code> &#x5C5E;&#x6027;</li>
+<li><code>COMPILE_LANGUAGE</code> &#x652F;&#x6301;&#x751F;&#x6210;&#x5668;&#x8868;&#x8FBE;&#x5F0F;(&#x53EA;&#x6709;&#x67D0;&#x4E9B;&#x751F;&#x6210;&#x5668;&#x652F;&#x6301;)</li>
 </ul>
-<h2 id="cmake-34--swift--ccache"><a href="https://cmake.org/cmake/help/latest/release/3.4.html" target="_blank">CMake 3.4</a> : Swift &amp; CCache</h2>
-<p>This release adds lots of useful tools, support for the Swift language, and the usual improvements. It also started supporting compiler launchers, like CCache.</p>
+<h2 id="cmake-34&#xFF1A;swift--ccache"><a href="https://cmake.org/cmake/help/latest/release/3.4.html" target="_blank">CMake 3.4</a>&#xFF1A;Swift &amp; CCache</h2>
+<p>&#x8FD9;&#x4E2A;&#x7248;&#x672C;&#x589E;&#x52A0;&#x4E86;&#x8BB8;&#x591A;&#x6709;&#x7528;&#x7684;&#x5DE5;&#x5177;&#xFF0C;&#x5BF9;Swift&#x8BED;&#x8A00;&#x7684;&#x652F;&#x6301;&#xFF0C;&#x4EE5;&#x53CA;&#x5E38;&#x7528;&#x529F;&#x80FD;&#x7684;&#x6539;&#x8FDB;&#x3002;&#x4E5F;&#x5F00;&#x59CB;&#x652F;&#x6301;&#x7F16;&#x8BD1;&#x5668;&#x542F;&#x52A8;&#x5668;&#xFF0C;&#x6BD4;&#x5982; CCache&#x3002;</p>
 <ul>
-<li>Initially released <a href="https://blog.kitware.com/cmake-3-4-0-released/" target="_blank">November 12, 2015</a></li>
-<li>Added <code>Swift</code> language</li>
-<li>Added <code>BASE_DIR</code> to <code>get_filename_component</code></li>
-<li><code>if(TEST ...)</code> added</li>
-<li><code>string(APPEND ...)</code> added</li>
-<li><code>CMAKE_*_COMPILER_LAUNCHER</code> added for make and ninja</li>
-<li><code>TARGET_MESSAGES</code> allow makefiles to print messages after target is completed</li>
-<li>Imported targets are beginning to show up in the official <code>Find*.cmake</code> files</li>
+<li>&#x9996;&#x6B21;&#x53D1;&#x5E03;&#x4E8E; <a href="https://blog.kitware.com/cmake-3-4-0-released/" target="_blank">2015&#x5E74;11&#x6708;12&#x65E5;</a></li>
+<li>&#x652F;&#x6301; <code>Swift</code> &#x8BED;&#x8A00;</li>
+<li><code>get_filename_component</code> &#x6DFB;&#x52A0;<code>BASE_DIR</code> &#x9009;&#x9879;</li>
+<li>&#x65B0;&#x589E; <code>if(TEST ...)</code> </li>
+<li>&#x65B0;&#x589E; <code>string(APPEND ...)</code> </li>
+<li>&#x4E3A; make &#x548C; ninja &#x6DFB;&#x52A0;&#x4E86;&#x65B0;&#x7684;&#x5185;&#x7F6E;&#x53D8;&#x91CF; <code>CMAKE_*_COMPILER_LAUNCHER</code></li>
+<li><code>TARGET_MESSAGES</code> &#x5141;&#x8BB8; Makefile &#x5728;&#x76EE;&#x6807;&#x5B8C;&#x6210;&#x540E;&#x6253;&#x5370;&#x6D88;&#x606F;</li>
+<li>&#x5BFC;&#x5165;&#x76EE;&#x6807;&#x5F00;&#x59CB;&#x51FA;&#x73B0;&#x5728;&#x5B98;&#x65B9;&#x7684; <code>Find*.cmake</code> &#x6587;&#x4EF6;&#x4E2D;</li>
 </ul>
-<h2 id="cmake-35--arm"><a href="https://cmake.org/cmake/help/latest/release/3.5.html" target="_blank">CMake 3.5</a> : ARM</h2>
-<p>This release expanded CMake to more platforms, and make warnings easier to control from the command line.</p>
+<h2 id="cmake-35&#xFF1A;arm"><a href="https://cmake.org/cmake/help/latest/release/3.5.html" target="_blank">CMake 3.5</a>&#xFF1A;ARM</h2>
+<p>&#x8FD9;&#x4E2A;&#x7248;&#x672C;&#x5C06; CMake &#x6269;&#x5C55;&#x5230;&#x66F4;&#x591A;&#x7684;&#x5E73;&#x53F0;&#xFF0C;&#x5E76;&#x4E14;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x547D;&#x4EE4;&#x884C;&#x6765;&#x63A7;&#x5236;&#x8B66;&#x544A;&#x4FE1;&#x606F;&#x3002;</p>
 <ul>
-<li>Initially released <a href="https://blog.kitware.com/cmake-3-5-0-available-for-download/" target="_blank">March 8, 2016</a></li>
-<li>Multiple input files supported for several of the <code>cmake -E</code> commands.</li>
-<li><code>cmake_parse_arguments</code> now builtin</li>
-<li>Boost, GTest, and more now support imported targets</li>
-<li>ARMCC now supported, better support for iOS</li>
-<li>XCode backslash fix</li>
+<li>&#x9996;&#x6B21;&#x53D1;&#x5E03;&#x4E8E; <a href="https://blog.kitware.com/cmake-3-5-0-available-for-download/" target="_blank">2016&#x5E74;3&#x6708;8&#x65E5;</a></li>
+<li>&#x591A;&#x4E2A;&#x8F93;&#x5165;&#x6587;&#x4EF6;&#x53EF;&#x4EE5;&#x5BF9;&#x5E94;&#x591A;&#x4E2A; <code>cmake -E</code> &#x547D;&#x4EE4;&#x3002;</li>
+<li>&#x5185;&#x7F6E; <code>cmake_parse_arguments</code> &#x89E3;&#x6790;&#x6307;&#x4EE4;</li>
+<li>Boost&#x3001;GTest &#x7B49;&#x5E93;&#x652F;&#x6301;&#x5BFC;&#x5165;&#x76EE;&#x6807;</li>
+<li>&#x652F;&#x6301; ARMCC&#xFF0C;&#x4F18;&#x5316;&#x5BF9; iOS &#x7684;&#x652F;&#x6301;</li>
+<li>XCode &#x53CD;&#x659C;&#x6760;&#x95EE;&#x9898;&#x4FEE;&#x590D;</li>
 </ul>
-<h2 id="cmake-36--clang-tidy"><a href="https://cmake.org/cmake/help/latest/release/3.6.html" target="_blank">CMake 3.6</a> : Clang-Tidy</h2>
-<p>This release added Clang-Tidy support, along with more utilities and improvements. It also removed the search of <code>$PATH</code> on Unix systems due to problems, instead users should use <code>$CMAKE_PREFIX_PATH</code>.</p>
+<h2 id="cmake-36&#xFF1A;clang-tidy"><a href="https://cmake.org/cmake/help/latest/release/3.6.html" target="_blank">CMake 3.6</a>&#xFF1A;Clang-Tidy</h2>
+<p>&#x8FD9;&#x4E2A;&#x7248;&#x672C;&#x589E;&#x52A0;&#x4E86; Clang-Tidy &#x652F;&#x6301;&#xFF0C;&#x6DFB;&#x52A0;&#x4E86;&#x66F4;&#x591A;&#x7684;&#x5DE5;&#x5177;&#x548C;&#x5BF9;&#x539F;&#x6709;&#x529F;&#x80FD;&#x7684;&#x6539;&#x8FDB;&#x3002; &#x53D6;&#x6D88;&#x4E86;&#x5728; Unix &#x7CFB;&#x7EDF;&#x4E0A;&#x641C;&#x7D22; <code>$PATH</code> &#x7684;&#x95EE;&#x9898;&#xFF0C;&#x53D6;&#x800C;&#x4EE3;&#x4E4B;&#x7684;&#x662F;&#x4F7F;&#x7528; <code>$CMAKE_PREFIX_PATH</code>&#x3002;</p>
 <ul>
-<li>Initially released <a href="https://blog.kitware.com/cmake-3-6-0-available-for-download/" target="_blank">July 7, 2016</a></li>
-<li><code>EXCLUDE_FROM_ALL</code> for install</li>
-<li><code>list(FILTER</code> added</li>
-<li><code>CMAKE_*_STANDARD_INCLUDE_DIRECTORIES</code> and <code>CMAKE_*_STANDARD_LIBRARIES</code> added for toolchains</li>
-<li>Try-compile improvements</li>
-<li><code>*_CLANG_TIDY</code> property added</li>
-<li>External projects can now be shallow clones, and other improvements</li>
+<li>&#x9996;&#x6B21;&#x53D1;&#x5E03;&#x4E8E; <a href="https://blog.kitware.com/cmake-3-6-0-available-for-download/" target="_blank">2016&#x5E74;7&#x6708;7&#x65E5;</a></li>
+<li>&#x4E3A;&#x5DE5;&#x7A0B;&#x5B89;&#x88C5;&#x65F6;&#x6DFB;&#x52A0; <code>EXCLUDE_FROM_ALL</code></li>
+<li>&#x65B0;&#x589E; <code>list(FILTER</code></li>
+<li>&#x5DE5;&#x5177;&#x94FE;&#x6DFB;&#x52A0;&#x4E86; <code>CMAKE_*_STANDARD_INCLUDE_DIRECTORIES</code>&#x548C;<code>CMAKE_*_STANDARD_LIBRARIES</code></li>
+<li>&#x6539;&#x8FDB;&#x4E86; Try-compile &#x529F;&#x80FD;</li>
+<li>&#x65B0;&#x589E; <code>*_CLANG_TIDY</code> &#x5C5E;&#x6027;</li>
+<li>&#x5916;&#x90E8;&#x9879;&#x76EE;&#x53EF;&#x4EE5;&#x662F;&#x6D45;&#x514B;&#x9686;&#xFF0C;&#x4EE5;&#x53CA;&#x5176;&#x4ED6;&#x6539;&#x8FDB;</li>
 </ul>
-<h2 id="cmake-37--android--cmake-server"><a href="https://cmake.org/cmake/help/latest/release/3.7.html" target="_blank">CMake 3.7</a> : Android &amp; CMake Server</h2>
-<p>You can now cross-compile to Android. Useful new if statement options really help clarify code. And the new server mode was supposed to improve integration with IDEs (but is being replaced by a different system in CMake 3.14+). Support for the VIM editor was also improved.</p>
+<h2 id="cmake-37&#xFF1A;android--cmake-&#x7684;&#x670D;&#x52A1;&#x5668;&#x6A21;&#x5F0F;"><a href="https://cmake.org/cmake/help/latest/release/3.7.html" target="_blank">CMake 3.7</a>&#xFF1A;Android &amp; CMake &#x7684;&#x670D;&#x52A1;&#x5668;&#x6A21;&#x5F0F;</h2>
+<p>&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4EA4;&#x53C9;&#x7F16;&#x8BD1;&#xFF0C;&#x6784;&#x5EFA;&#x5728; Android &#x5E73;&#x53F0;&#x8FD0;&#x884C;&#x7684;&#x7A0B;&#x5E8F;&#x3002;if &#x7684;&#x65B0;&#x9009;&#x9879;&#x53EF;&#x4F7F;&#x4EE3;&#x7801;&#x53EF;&#x8BFB;&#x6027;&#x66F4;&#x597D;&#x3002;&#x65B0;&#x589E;&#x7684;&#x670D;&#x52A1;&#x5668;&#x6A21;&#x5F0F;&#x662F;&#x4E3A;&#x4E86;&#x63D0;&#x9AD8;&#x4E0E;IDE&#x7684;&#x96C6;&#x6210;(&#x4F46; CMake 3.14+ &#x4F7F;&#x7528;&#x53E6;&#x4E00;&#x79CD;&#x65B9;&#x5F0F;&#x53D6;&#x800C;&#x4EE3;&#x4E4B;)&#x3002;&#x4F18;&#x5316;&#x4E86;&#x5BF9; VIM &#x7F16;&#x8F91;&#x5668;&#x7684;&#x652F;&#x6301;&#x3002;</p>
 <ul>
-<li>Initially released <a href="https://blog.kitware.com/cmake-3-7-0-available-for-download/" target="_blank">November 11, 2016</a></li>
-<li><code>PARSE_ARGV</code> mode for <code>cmake_parse_arguments</code></li>
-<li>Better 32-bit support on 64-bit machines</li>
-<li>Lots of useful new if comparisons, like <code>VERSION_GREATER_EQUAL</code> (really, why did it take this long?)</li>
-<li><code>LINK_WHAT_YOU_USE</code> added</li>
-<li>Lots of custom properties related to files and directories</li>
-<li>CMake Server added</li>
-<li>Added <code>--trace-source=&quot;filename&quot;</code> to monitor certain files only</li>
+<li>&#x9996;&#x6B21;&#x53D1;&#x5E03;&#x4E8E; <a href="https://blog.kitware.com/cmake-3-7-0-available-for-download/" target="_blank">November 11, 2016</a></li>
+<li><code>cmake_parse_arguments</code> &#x65B0;&#x589E;&#x4E86; <code>PARSE_ARGV</code> &#x6A21;&#x5F0F;</li>
+<li>&#x6539;&#x8FDB;&#x4E86;&#x5728; 32 &#x4F4D;&#x5DE5;&#x7A0B;&#x5728; 64 &#x4F4D;&#x73AF;&#x5883;&#x4E2D;&#x7684;&#x6784;&#x5EFA;</li>
+<li>if &#x589E;&#x52A0;&#x4E86;&#x5F88;&#x591A;&#x597D;&#x7528;&#x7684;&#x6BD4;&#x8F83;&#x9009;&#x9879;&#xFF0C;&#x6BD4;&#x5982; <code>VERSION_GREATER_EQUAL</code> (&#x771F;&#x7684;&#x9700;&#x8981;&#x8FD9;&#x4E48;&#x4E45;&#x5417;?)</li>
+<li>&#x65B0;&#x589E; <code>LINK_WHAT_YOU_USE</code></li>
+<li>&#x5927;&#x91CF;&#x4E0E;&#x6587;&#x4EF6;&#x548C;&#x76EE;&#x5F55;&#x76F8;&#x5173;&#x7684;&#x81EA;&#x5B9A;&#x4E49;&#x5C5E;&#x6027;</li>
+<li>&#x65B0;&#x589E; CMake &#x670D;&#x52A1;&#x5668;&#x6A21;&#x5F0F;</li>
+<li>&#x65B0;&#x589E; <code>--trace-source=&quot;filename&quot;</code>&#xFF0C;&#x7528;&#x4E8E;&#x76D1;&#x63A7;&#x67D0;&#x4E9B;&#x6587;&#x4EF6;</li>
 </ul>
-<h2 id="cmake-38--c--cuda"><a href="https://cmake.org/cmake/help/latest/release/3.8.html" target="_blank">CMake 3.8</a> : C# &amp; CUDA</h2>
-<p>This adds CUDA as a language, as well as <code>cxx_std_11</code> as a compiler meta-feature. The new generator expression could be really useful if you can require CMake 3.8+!</p>
+<h2 id="cmake-38&#xFF1A;c--cuda"><a href="https://cmake.org/cmake/help/latest/release/3.8.html" target="_blank">CMake 3.8</a>&#xFF1A;C# &amp; CUDA</h2>
+<p>CUDA &#x4F5C;&#x4E3A;&#x4E00;&#x79CD;&#x8BED;&#x8A00;&#x52A0;&#x5165;&#x4E86; CMake&#xFF0C;&#x4F7F;&#x7528; <code>cxx_std_11</code> &#x4F5C;&#x4E3A;&#x7F16;&#x8BD1;&#x5668;&#x5143;&#x7279;&#x6027;&#x3002;&#x82E5;&#x4F7F;&#x7528; CMake 3.8+&#xFF0C;&#x65B0;&#x7684;&#x751F;&#x6210;&#x5668;&#x8868;&#x8FBE;&#x5F0F;&#x771F;&#x7684;&#x5F88;&#x597D;&#x7528;!</p>
 <ul>
-<li>Initially released <a href="https://blog.kitware.com/cmake-3-8-0-available-for-download/" target="_blank">April 10, 2017</a></li>
-<li>Native support for C# as a language</li>
-<li>Native support for CUDA as a language</li>
-<li>Meta features cxx_std_11 (and 14, 17) added</li>
-<li><code>try_compile</code> has better language support</li>
-<li><code>BUILD_RPATH</code> property added</li>
-<li><code>COMPILE_FLAGS</code> now supports generator expression</li>
-<li><code>*_CPPLINT</code> added</li>
-<li><code>$&lt;IF:cond,true-value,false-value&gt;</code> added (wow!)</li>
-<li><code>source_group(TREE</code> added (finally allowing IDEs to reflect the project folder structure!)</li>
+<li>&#x9996;&#x6B21;&#x53D1;&#x5E03;&#x4E8E;<a href="https://blog.kitware.com/cmake-3-8-0-available-for-download/" target="_blank">2017&#x5E74;4&#x6708;10&#x65E5;</a></li>
+<li>&#x539F;&#x751F;&#x652F;&#x6301; C# &#x8BED;&#x8A00;</li>
+<li>&#x539F;&#x751F;&#x652F;&#x6301; CUDA &#x8BED;&#x8A00;</li>
+<li>&#x65B0;&#x589E;&#x5143;&#x7279;&#x6027; <code>cxx_std_11</code>(&#x4EE5;&#x53CA;14&#x548C;17)</li>
+<li>&#x4F18;&#x5316; <code>try_compile</code> &#x5BF9;&#x8BED;&#x8A00;&#x7684;&#x652F;&#x6301;</li>
+<li>&#x65B0;&#x589E; <code>BUILD_RPATH</code> &#x5C5E;&#x6027;</li>
+<li><code>COMPILE_FLAGS</code> &#x652F;&#x6301;&#x751F;&#x6210;&#x5668;&#x8868;&#x8FBE;&#x5F0F;</li>
+<li>&#x65B0;&#x589E; <code>*_CPPLINT</code> </li>
+<li>&#x65B0;&#x589E; <code>$&lt;IF:cond,true-value,false-value&gt;</code> (wow!)</li>
+<li>&#x65B0;&#x589E; <code>source_group(TREE</code> (&#x7EC8;&#x4E8E;&#x53EF;&#x4EE5;&#x5728; IDE &#x4E2D;&#x663E;&#x793A;&#x9879;&#x76EE;&#x7684;&#x6587;&#x4EF6;&#x5939;&#x7ED3;&#x6784;&#x4E86;!)</li>
 </ul>
-<h2 id="cmake-39--ipo"><a href="https://cmake.org/cmake/help/latest/release/3.9.html" target="_blank">CMake 3.9</a> : IPO</h2>
-<p>Lots of fixes to CUDA support went into this release, including <code>PTX</code> support and MSVC generators. Interprocedural Optimizations are now supported properly.
-Even more modules provide imported targets, including MPI.</p>
+<h2 id="cmake-39&#xFF1A;ipo"><a href="https://cmake.org/cmake/help/latest/release/3.9.html" target="_blank">CMake 3.9</a>&#xFF1A;IPO</h2>
+<p>&#x8FD9;&#x4E2A;&#x7248;&#x672C;&#x5BF9; CUDA &#x652F;&#x6301;&#x8FDB;&#x884C;&#x4E86;&#x5927;&#x91CF;&#x4FEE;&#x590D;&#xFF0C;&#x5305;&#x62EC;&#x5BF9; <code>PTX</code> &#x548C; MSVC &#x751F;&#x6210;&#x5668;&#x7684;&#x652F;&#x6301;&#x3002;&#x8FC7;&#x7A0B;&#x95F4;&#x4F18;&#x5316;(IPO)&#x5DF2;&#x6B63;&#x786E;&#x652F;&#x6301;&#x4E86;&#x3002;</p>
+<p>&#x751A;&#x81F3;&#x6709;&#x66F4;&#x591A;&#x6A21;&#x5757;&#x63D0;&#x4F9B;&#x5BFC;&#x5165;&#x7684;&#x76EE;&#x6807;&#xFF0C;&#x5305;&#x62EC; MPI&#x3002;</p>
 <ul>
-<li>Initially released <a href="https://blog.kitware.com/cmake-3-9-0-available-for-download/" target="_blank">July 18, 2017</a></li>
-<li>CUDA supported for Windows</li>
-<li>Better object library support in several situations</li>
-<li><code>DESCRIPTION</code> added to <code>project</code></li>
-<li><code>separate_arguments</code> gets <code>NATIVE_COMMAND</code></li>
-<li><code>INTERPROCEDURAL_OPTIMIZATION</code> enforced (and <code>CMAKE_*</code> initializer added, CheckIPOSupported added, Clang and GCC support)</li>
-<li>New <code>GoogleTest</code> module</li>
-<li><code>FindDoxygen</code> drastically improved</li>
+<li>&#x9996;&#x6B21;&#x53D1;&#x5E03;&#x4E8E;<a href="https://blog.kitware.com/cmake-3-9-0-available-for-download/" target="_blank">2017&#x5E74;7&#x6708;18&#x65E5;</a></li>
+<li>CUDA &#x652F;&#x6301; Windows</li>
+<li>&#x4F18;&#x5316;&#x90E8;&#x5206;&#x60C5;&#x51B5;&#x4E0B;&#x5BF9;&#x5BF9;&#x8C61;&#x5E93;&#x7684;&#x652F;&#x6301;</li>
+<li><code>project</code> &#x65B0;&#x589E; <code>DESCRIPTION</code> &#x5173;&#x952E;&#x5B57;</li>
+<li><code>separate_arguments</code> &#x65B0;&#x589E; <code>NATIVE_COMMAND</code> &#x6A21;&#x5F0F;</li>
+<li><code>INTERPROCEDURAL_OPTIMIZATION</code> &#x5F3A;&#x5236;&#x6267;&#x884C;(&#x4EE5;&#x53CA;&#x6DFB;&#x52A0; <code>CMAKE_*</code> &#x521D;&#x59CB;&#x5316;&#x5668;&#xFF0C;&#x65B0;&#x589E; CheckIPOSupported&#xFF0C;&#x652F;&#x6301; Clang &#x548C; GCC )</li>
+<li>&#x65B0;&#x589E;&#x4E86;<code>GoogleTest</code>&#x6A21;&#x5757;</li>
+<li>&#x5BF9;<code>FindDoxygen</code>&#x8FDB;&#x884C;&#x4E86;&#x5927;&#x5E45;&#x5EA6;&#x6539;&#x8FDB;</li>
 </ul>
-<h2 id="cmake-310--cppcheck"><a href="https://cmake.org/cmake/help/latest/release/3.10.html" target="_blank">CMake 3.10</a> : CppCheck</h2>
-<p>CMake now is built with C++11 compilers. Lots of useful improvements help write cleaner code.</p>
+<h2 id="cmake-310&#xFF1A;cppcheck"><a href="https://cmake.org/cmake/help/latest/release/3.10.html" target="_blank">CMake 3.10</a>&#xFF1A;CppCheck</h2>
+<p>CMake &#x73B0;&#x5728;&#x4F7F;&#x7528; C++11 &#x7F16;&#x8BD1;&#x5668;&#x6784;&#x5EFA;&#xFF0C;&#x8BB8;&#x591A;&#x6539;&#x8FDB;&#x6709;&#x52A9;&#x4E8E;&#x7F16;&#x5199;&#x53EF;&#x8BFB;&#x6027;&#x66F4;&#x597D;&#x7684;&#x4EE3;&#x7801;&#x3002;</p>
 <ul>
-<li>Initially released <a href="https://blog.kitware.com/cmake-3-10-0-available-for-download/" target="_blank">November 20, 2017</a></li>
-<li>Support for flang Fortran compiler</li>
-<li>Compiler launcher added to CUDA</li>
-<li>Indented <code>#cmakedefines</code> now supported for <code>configure_file</code></li>
-<li><code>include_guard()</code> added to ensure a file gets included only once</li>
-<li><code>string(PREPEND</code> added</li>
-<li><code>*_CPPCHECK</code> property added</li>
-<li><code>LABELS</code> added to directories</li>
-<li>FindMPI vastly expanded</li>
-<li>FindOpenMP improved</li>
-<li>Dynamic test discovery for <code>GoogleTest</code></li>
+<li>&#x9996;&#x6B21;&#x53D1;&#x5E03;&#x4E8E;<a href="https://blog.kitware.com/cmake-3-10-0-available-for-download/" target="_blank">2017&#x5E74;11&#x6708;20&#x65E5;</a></li>
+<li>&#x652F;&#x6301; Fortran &#x7F16;&#x8BD1;&#x5668; flang </li>
+<li>&#x5C06;&#x7F16;&#x8BD1;&#x5668;&#x542F;&#x52A8;&#x5668;&#x6DFB;&#x52A0;&#x5230; CUDA</li>
+<li><code>configure_file</code> &#x652F;&#x6301; <code>#cmakedefines</code> </li>
+<li>&#x65B0;&#x589E; <code>include_guard()</code>&#xFF0C;&#x786E;&#x4FDD;CMake&#x6E90;&#x6587;&#x4EF6;&#x53EA;&#x5305;&#x542B;&#x4E00;&#x6B21;</li>
+<li>&#x65B0;&#x589E; <code>string(PREPEND</code></li>
+<li>&#x65B0;&#x589E; <code>*_CPPCHECK</code> &#x5C5E;&#x6027;</li>
+<li>&#x76EE;&#x5F55;&#x6DFB;&#x52A0;&#x4E86; <code>LABELS</code> &#x5C5E;&#x6027;</li>
+<li>&#x6781;&#x5927;&#x5730;&#x6269;&#x5C55;&#x4E86; FindMPI &#x6A21;&#x5757;</li>
+<li>&#x4F18;&#x5316;&#x4E86; FindOpenMP &#x6A21;&#x5757;</li>
+<li><code>GoogleTest</code> &#x53EF;&#x52A8;&#x6001;&#x53D1;&#x73B0;&#x6D4B;&#x8BD5;&#x7528;&#x4F8B;</li>
+<li><code>cmake_host_system_information</code> &#x53EF;&#x83B7;&#x53D6;&#x66F4;&#x591A;&#x4FE1;&#x606F;&#x3002;</li>
 </ul>
-<h2 id="cmake-311--faster--imported-interface"><a href="https://cmake.org/cmake/help/latest/release/3.11.html" target="_blank">CMake 3.11</a> : Faster &amp; IMPORTED INTERFACE</h2>
-<p>This release is <a href="https://blog.kitware.com/improving-cmakes-runtime-performance/" target="_blank">supposed to be</a> much faster. You can also finally directly add INTERFACE targets
-to IMPORTED libraries (the internal <code>Find*.cmake</code> scripts should become much cleaner eventually).</p>
+<h2 id="cmake-311&#xFF1A;&#x66F4;&#x5FEB;--imported-interface"><a href="https://cmake.org/cmake/help/latest/release/3.11.html" target="_blank">CMake 3.11</a>&#xFF1A;&#x66F4;&#x5FEB; &amp; IMPORTED INTERFACE</h2>
+<p>&#x8FD9;&#x4E2A;&#x7248;&#x672C;&#x8FD0;&#x884C;&#x8D77;&#x6765; <a href="https://blog.kitware.com/improving-cmakes-runtime-performance/" target="_blank">&#x5E94;&#x8BE5;&#x4F1A;</a> &#x5FEB;&#x5F88;&#x591A;&#xFF0C;&#x8FD8;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x5C06; INTERFACE &#x76EE;&#x6807;&#x6DFB;&#x52A0;&#x5230; IMPORTED &#x5E93;(&#x5185;&#x90E8;&#x7684; <code>Find*.cmake</code>  &#x811A;&#x672C;&#x4F1A;&#x66F4;&#x52A0;&#x6E05;&#x6670;)&#x3002;</p>
 <ul>
-<li>Initially released <a href="https://blog.kitware.com/cmake-3-11-0-available-for-download/" target="_blank">March 28, 2018</a></li>
-<li>Fortran supports compiler launchers</li>
-<li>Xcode and Visual Studio support <code>COMPILE_LANGUAGE</code> generator expressions finally</li>
-<li>You can now add INTERFACE targets directly to IMPORTED INTERFACE libraries (Wow!)</li>
-<li>Source file properties have been expanded</li>
-<li><code>FetchContent</code> module now allows downloads to happen at configure time (Wow)</li>
+<li>&#x9996;&#x6B21;&#x53D1;&#x5E03;&#x4E8E; <a href="https://blog.kitware.com/cmake-3-11-0-available-for-download/" target="_blank">2018&#x5E74;3&#x6708;28&#x65E5;</a></li>
+<li>Fortran &#x652F;&#x6301;&#x7F16;&#x8BD1;&#x5668;&#x542F;&#x52A8;&#x5668;</li>
+<li>Xcode &#x548C; Visual Studio &#x652F;&#x6301; <code>COMPILE_LANGUAGE</code> &#x7684;&#x751F;&#x6210;&#x5668;&#x8868;&#x8FBE;&#x5F0F;</li>
+<li>&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x5C06; INTERFACE &#x76EE;&#x6807;&#x6DFB;&#x52A0;&#x5230; IMPORTED INTERFACE &#x5E93;&#x4E2D;(Wow!)</li>
+<li>&#x5BF9;&#x6E90;&#x6587;&#x4EF6;&#x5C5E;&#x6027;&#x8FDB;&#x884C;&#x4E86;&#x6269;&#x5C55;</li>
+<li><code>FetchContent</code> &#x6A21;&#x5757;&#x73B0;&#x5728;&#x5141;&#x8BB8;&#x5728;&#x914D;&#x7F6E;&#x65F6;&#x4E0B;&#x8F7D; (Wow)</li>
 </ul>
-<h2 id="cmake-312--version-ranges-and-configuredepends"><a href="https://cmake.org/cmake/help/latest/release/3.12.html" target="_blank">CMake 3.12</a> : Version ranges and CONFIGURE_DEPENDS</h2>
-<p>Very powerful release, containing lots of smaller long-requested features. One of the smaller
-but immediately noticeable changes is the addition of version ranges;
-you can now set both the minimum and maximum known CMake version easily. You can also set
-<code>CONFIGURE_DEPENDS</code> on a <code>GLOB</code>ed set of files, and the build system will check those files and
-rerun if needed! You can use the general <code>PackageName_ROOT</code>
-for all <code>find_package</code> searches. Lots of additions to strings and lists, module updates,
-shiny new Python find module (2 and 3 versions too), and many more.</p>
+<h2 id="cmake-312&#xFF1A;&#x7248;&#x672C;&#x8303;&#x56F4;&#x548C;configuredepends"><a href="https://cmake.org/cmake/help/latest/release/3.12.html" target="_blank">CMake 3.12</a>&#xFF1A;&#x7248;&#x672C;&#x8303;&#x56F4;&#x548C;CONFIGURE_DEPENDS</h2>
+<p>&#x975E;&#x5E38;&#x725B;&#x7684;&#x7248;&#x672C;&#xFF0C;&#x5305;&#x542B;&#x4E86;&#x8BB8;&#x591A;&#x957F;&#x671F;&#x8981;&#x6C42;&#x6DFB;&#x52A0;&#x7684;&#x5C0F;&#x529F;&#x80FD;&#x3002;&#x5176;&#x4E2D;&#x4E00;&#x4E2A;&#x662F;&#x65B0;&#x589E;&#x4E86;&#x7248;&#x672C;&#x8303;&#x56F4;&#xFF0C;&#x73B0;&#x5728;&#x53EF;&#x4EE5;&#x66F4;&#x5BB9;&#x6613;&#x5730;&#x8BBE;&#x7F6E;&#x6700;&#x4F4E;&#x548C;&#x6700;&#x9AD8;&#x7684;CMake&#x7248;&#x672C;&#x4E86;&#x3002;&#x4E5F;&#x53EF;&#x4EE5;&#x5728;&#x4E00;&#x7EC4;&#x4F7F;&#x7528; <code>GLOB</code> &#x83B7;&#x53D6;&#x7684;&#x6587;&#x4EF6;&#x4E0A;&#x8BBE;&#x7F6E; <code>CONFIGURE_DEPENDS</code>&#xFF0C;&#x6784;&#x5EFA;&#x7CFB;&#x7EDF;&#x5C06;&#x68C0;&#x67E5;&#x8FD9;&#x4E9B;&#x6587;&#x4EF6;&#xFF0C;&#x5E76;&#x5728;&#x9700;&#x8981;&#x65F6;&#x91CD;&#x65B0;&#x8FD0;&#x884C;&#xFF01;&#x8FD8;&#x53EF;&#x4EE5;&#x5BF9; <code>find_package</code> &#x7684;&#x641C;&#x7D22;&#x8DEF;&#x5F84;&#x4F7F;&#x7528;&#x901A;&#x7528;&#x7684; <code>PackageName_ROOT</code>  &#x3002;&#x5BF9;string&#x548C;list&#x5927;&#x91CF;&#x7684;&#x529F;&#x80FD;&#x6DFB;&#x52A0;&#x3001;&#x6A21;&#x5757;&#x66F4;&#x65B0;&#x3001;&#x5168;&#x65B0;&#x7684;Python&#x67E5;&#x627E;&#x6A21;&#x5757;(2&#x548C;3&#x7248;&#x672C;&#x90FD;&#x6709;)&#x7B49;&#x7B49;&#x3002;</p>
 <ul>
-<li>Initially released <a href="https://blog.kitware.com/cmake-3-12-0-available-for-download/" target="_blank">July 17, 2018</a></li>
-<li>Support for <code>cmake_minimum_required</code> ranges (backward compatible)</li>
-<li>Support for <code>-j,--parallel</code> in <code>--build</code> mode (passed on to build tool)</li>
-<li>Support for <code>SHELL:</code> strings in compile options (not deduplicated)</li>
-<li>New FindPython module</li>
-<li><code>string(JOIN</code> and <code>list(JOIN</code>, and <code>list(TRANSFORM</code></li>
-<li><code>file(TOUCH</code> and <code>file(GLOB CONFIGURE_DEPENDS</code></li>
-<li>C++20 support</li>
-<li>CUDA as a language improvements: CUDA 7 and 7.5 now supported</li>
-<li>Support for OpenMP on macOS (command line only)</li>
-<li>Several new properties and property initializers</li>
-<li>CPack finally reads <code>CMAKE_PROJECT_VERSION</code> variables</li>
+<li>&#x9996;&#x6B21;&#x53D1;&#x5E03;&#x4E8E;<a href="https://blog.kitware.com/cmake-3-12-0-available-for-download/" target="_blank">2018&#x5E74;7&#x6708;17&#x65E5;</a></li>
+<li>&#x652F;&#x6301; <code>cmake_minimum_required</code> &#x7684;&#x8303;&#x56F4;&#x8868;&#x793A;&#xFF08;&#x5411;&#x540E;&#x517C;&#x5BB9;&#xFF09;</li>
+<li>&#x4F7F;&#x7528;&#x547D;&#x4EE4;&#x884C; <code>--build</code> &#x6784;&#x5EFA;&#x65F6;&#xFF0C;&#x652F;&#x6301; <code>-j,--parallel</code> &#x8FDB;&#x884C;&#x5E76;&#x884C;&#x6784;&#x5EFA;&#xFF08;&#x4F20;&#x9012;&#x7ED9;&#x6784;&#x5EFA;&#x5DE5;&#x5177;&#xFF09;</li>
+<li>&#x652F;&#x6301;&#x7F16;&#x8BD1;&#x9009;&#x9879;&#x4E2D;&#x7684; <code>SHELL:</code> &#x5B57;&#x7B26;&#x4E32;&#xFF08;&#x4E0D;&#x5220;&#x9664;&#xFF09;</li>
+<li>&#x65B0;&#x589E; <code>FindPython</code> &#x6A21;&#x5757;</li>
+<li>&#x65B0;&#x589E; <code>string(JOIN</code>&#xFF0C;<code>list(JOIN</code> &#x548C; <code>list(TRANSFORM</code></li>
+<li>&#x65B0;&#x589E; <code>file(TOUCH</code>  &#x548C; <code>file(GLOB CONFIGURE_DEPENDS</code></li>
+<li>&#x652F;&#x6301; C++20</li>
+<li>CUDA &#x4F5C;&#x4E3A;&#x8BED;&#x8A00;&#x7684;&#x6539;&#x8FDB;&#xFF1A;&#x652F;&#x6301; CUDA 7 &#x548C; 7.5</li>
+<li>&#x652F;&#x6301; macOS &#x7684;OpenMP(&#x4EC5;&#x9650;&#x547D;&#x4EE4;&#x884C;)</li>
+<li>&#x65B0;&#x589E;&#x4E86;&#x51E0;&#x4E2A;&#x65B0;&#x5C5E;&#x6027;&#x548C;&#x5C5E;&#x6027;&#x521D;&#x59CB;&#x5316;&#x5668;</li>
+<li>CPack&#x53EF;&#x8BFB;&#x53D6; <code>CMAKE_PROJECT_VERSION</code> &#x53D8;&#x91CF;</li>
 </ul>
-<h2 id="cmake-313--linking-control"><a href="https://cmake.org/cmake/help/latest/release/3.13.html" target="_blank">CMake 3.13</a> : Linking control</h2>
-<p>You can now make symbolic links on Windows! Lots of new functions that fill out the
-popular requests for CMake, such as <code>add_link_options</code>, <code>target_link_directories</code>, and
-<code>target_link_options</code>. You can now do quite a bit more modification to targets outside
-of the source directory, for better file separation. And, <code>target_sources</code> <em>finally</em> handles relative paths properly (policy 76).</p>
+<h2 id="cmake-313&#xFF1A;&#x8FDE;&#x63A5;&#x63A7;&#x5236;"><a href="https://cmake.org/cmake/help/latest/release/3.13.html" target="_blank">CMake 3.13</a>&#xFF1A;&#x8FDE;&#x63A5;&#x63A7;&#x5236;</h2>
+<p>&#x53EF;&#x4EE5;&#x5728;Windows&#x521B;&#x5EFA;&#x7B26;&#x53F7;&#x94FE;&#x63A5;&#x4E86;&#xFF01;&#x65B0;&#x589E;&#x4E86;&#x8BB8;&#x591A;&#x65B0;&#x51FD;&#x6570;&#xFF0C;&#x54CD;&#x5E94;&#x4E86;CMake&#x7684;&#x4E3B;&#x6D41;&#x8BF7;&#x6C42;&#xFF0C;&#x5982; <code>add_link_options</code>, <code>target_link_directories</code> &#x548C; <code>target_link_options</code>&#x3002;&#x53EF;&#x4EE5;&#x5728;&#x6E90;&#x76EE;&#x5F55;&#x4E4B;&#x5916;&#x5BF9;&#x76EE;&#x6807;&#x8FDB;&#x884C;&#x66F4;&#x591A;&#x7684;&#x4FEE;&#x6539;&#xFF0C;&#x53EF;&#x4EE5;&#x66F4;&#x597D;&#x7684;&#x5B9E;&#x73B0;&#x6587;&#x4EF6;&#x5206;&#x79BB;&#x3002;<code>target_sources</code> <em>&#x7EC8;&#x4E8E;</em>&#x53EF;&#x4EE5;&#x6B63;&#x786E;&#x5730;&#x5904;&#x7406;&#x76F8;&#x5BF9;&#x8DEF;&#x5F84;&#xFF08;&#x7B56;&#x7565;76&#xFF09;&#x4E86;&#x3002;</p>
 <ul>
-<li>Initially released <a href="https://blog.kitware.com/cmake-3-13-0-available-for-download/" target="_blank">November 20, 2018</a></li>
-<li>New <code>ctest --progress</code> option for live output</li>
-<li><code>target_link_options</code> and <code>add_link_options</code> added</li>
-<li><code>target_link_directories</code> added</li>
-<li>Symbolic link creation, <code>-E create_symlink</code>, supported on Windows</li>
-<li>IPO supported on Windows</li>
-<li>You can use <code>-S</code> and <code>-B</code> for source and build directories</li>
-<li><code>target_link_libraries</code> and <code>install</code> work outside the current target directory</li>
-<li><code>STATIC_LIBRARY_OPTIONS</code> property added</li>
-<li><code>target_sources</code> is now relative to the current source directory (CMP0076)</li>
-<li>If you use Xcode, you now can experimentally set schema fields</li>
+<li>&#x9996;&#x6B21;&#x53D1;&#x5E03;&#x4E8E; <a href="https://blog.kitware.com/cmake-3-13-0-available-for-download/" target="_blank">2018&#x5E74;11&#x6708;20&#x65E5;</a></li>
+<li>&#x65B0;&#x589E; <code>ctest --progress</code> &#x9009;&#x9879;&#xFF0C;&#x8F93;&#x51FA;&#x5B9E;&#x65F6;&#x6D4B;&#x8BD5;&#x8FDB;&#x5EA6;</li>
+<li>&#x65B0;&#x589E; <code>target_link_options</code> &#x548C; <code>add_link_options</code></li>
+<li>&#x65B0;&#x589E; <code>target_link_directories</code></li>
+<li>&#x521B;&#x5EFA;&#x7B26;&#x53F7;&#x94FE;&#x63A5; <code>-E create_symlink</code>&#xFF0C;&#x53EA;&#x652F;&#x6301; Windows</li>
+<li>Windows &#x652F;&#x6301; IPO</li>
+<li>&#x53EF;&#x5BF9;&#x6E90;&#x76EE;&#x5F55;&#x548C;&#x6784;&#x5EFA;&#x76EE;&#x5F55;&#x4F7F;&#x7528; <code>-S</code> &#x548C; <code>-B</code></li>
+<li>&#x53EF;&#x5BF9;&#x5F53;&#x524D;&#x76EE;&#x6807;&#x5916;&#x7684;&#x76EE;&#x5F55;&#x4F7F;&#x7528; <code>target_link_libraries</code> &#x548C; <code>install</code></li>
+<li>&#x65B0;&#x589E; <code>STATIC_LIBRARY_OPTIONS</code> &#x5C5E;&#x6027;</li>
+<li><code>target_sources</code> &#x73B0;&#x5728;&#x76F8;&#x5BF9;&#x4E8E;&#x5F53;&#x524D;&#x6E90;&#x76EE;&#x5F55;&#xFF08;CMP0076&#xFF09;</li>
+<li>&#x82E5;&#x4F7F;&#x7528; Xcode&#xFF0C;&#x53EF;&#x4EE5;&#x5B9E;&#x9A8C;&#x6027;&#x5730;&#x8BBE;&#x7F6E; schema &#x5B57;&#x6BB5;</li>
 </ul>
-<h2 id="cmake-314--file-utilities-aka-cmake-&#x3C0;"><a href="https://cmake.org/cmake/help/latest/release/3.14.html" target="_blank">CMake 3.14</a> : File utilities (AKA <a href="https://blog.kitware.com/kitware-gets-mathematical-with-cmake-&#x3C0;-on-pi-day/" target="_blank">CMake &#x3C0;</a>)</h2>
-<p>This release has lots of small cleanups, including several utilities for files. Generator expressions work in a few more places, and list handling is better with empty variables.
-Quite a few more find packages produce targets. The new Visual Studio 16 2019 generator is a bit different than older versions. Windows XP and Vista support has been dropped.</p>
+<h2 id="cmake-314&#xFF1A;&#x6587;&#x4EF6;&#x5DE5;&#x5177;-aka-cmake-&#x3C0;"><a href="https://cmake.org/cmake/help/latest/release/3.14.html" target="_blank">CMake 3.14</a>&#xFF1A;&#x6587;&#x4EF6;&#x5DE5;&#x5177; (AKA <a href="https://blog.kitware.com/kitware-gets-mathematical-with-cmake-&#x3C0;-on-pi-day/" target="_blank">CMake &#x3C0;</a>)</h2>
+<p>&#x8FDB;&#x884C;&#x4E86;&#x5F88;&#x591A;&#x5C0F;&#x6E05;&#x7406;&#xFF0C;&#x5305;&#x62EC;&#x51E0;&#x4E2A;&#x7528;&#x4E8E;&#x6587;&#x4EF6;&#x7684;&#x5DE5;&#x5177;&#x3002;&#x751F;&#x6210;&#x5668;&#x8868;&#x8FBE;&#x5F0F;&#x53EF;&#x4EE5;&#x5728;&#x66F4;&#x591A;&#x7684;&#x5730;&#x65B9;&#x4F7F;&#x7528;&#xFF0C;&#x4F7F;&#x7528;list&#x8981;&#x4F18;&#x4E8E;&#x4F7F;&#x7528;&#x7A7A;&#x53D8;&#x91CF;&#x3002;&#x5F88;&#x591A;&#x7684;find&#x5305;&#x53EF;&#x4EE5;&#x4EA7;&#x751F;&#x76EE;&#x6807;&#x3002;Visual Studio 16 2019 &#x751F;&#x6210;&#x5668;&#x4E0E;&#x65E7;&#x7248;&#x672C;&#x7565;&#x6709;&#x4E0D;&#x540C;&#x3002;&#x4E0D;&#x652F;&#x6301; Windows XP &#x548C;Vista&#x3002;</p>
 <ul>
-<li>Initially released <a href="https://blog.kitware.com/cmake-3-14-0-available-for-download/" target="_blank">March 14, 2019</a></li>
-<li>The cmake <code>--build</code> command gained <code>-v/--verbose</code>, to use verbose builds if your build tool supports it</li>
-<li>The FILE command gained <code>CREATE_LINK</code>, <code>READ_SYMLINK</code>, and <code>SIZE</code></li>
-<li><a href="https://cmake.org/cmake/help/latest/command/get_filename_component.html" target="_blank"><code>get_filename_component</code></a> gained <code>LAST_EXT</code> and <code>NAME_WLE</code> to access just the <em>last</em> extension on a file, which would get <code>.zip</code> on a file such as <code>version.1.2.zip</code> (very handy!)</li>
-<li>You can see if a variable is defined in the CACHE with <code>DEFINED CACHE{VAR}</code> in an <a href="https://cmake.org/cmake/help/latest/command/if.html" target="_blank"><code>if</code></a> statement.</li>
-<li><code>BUILD_RPATH_USE_ORIGIN</code> and CMake version were added to improve handling of RPath in the build directory.</li>
-<li>The CMake server mode is now being replaced with a file API, starting in this release. Will affect IDEs in the long run.</li>
+<li>&#x9996;&#x6B21;&#x53D1;&#x5E03;&#x4E8E; <a href="https://blog.kitware.com/cmake-3-14-0-available-for-download/" target="_blank">2019&#x5E74;3&#x6708;14&#x65E5;</a></li>
+<li><code>--build</code> &#x547D;&#x4EE4;&#x6DFB;&#x52A0;&#x4E86; <code>-v/--verbose</code> &#x9009;&#x9879;&#x3002;&#x82E5;&#x6784;&#x5EFA;&#x5DE5;&#x5177;&#x652F;&#x6301;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x5197;&#x4F59;&#x6784;&#x5EFA;</li>
+<li>FILE&#x6307;&#x4EE4;&#x65B0;&#x589E;&#x4E86; <code>CREATE_LINK</code>&#xFF0C;<code>READ_SYMLINK</code> &#x548C; <code>SIZE</code> &#x9009;&#x9879;</li>
+<li><a href="https://cmake.org/cmake/help/latest/command/get_filename_component.html" target="_blank"><code>get_filename_component</code></a> &#x65B0;&#x589E;&#x4E86; <code>LAST_EXT</code>  &#x548C; <code>NAME_WLE</code> &#x7528;&#x4E8E;&#x83B7;&#x53D6;&#x6587;&#x4EF6;<em>&#x6700;&#x540E;&#x7684;</em>&#x6269;&#x5C55;&#x540D;&#xFF0C;&#x6BD4;&#x5982;&#x53EF;&#x4EE5;&#x4ECE;&#x6587;&#x4EF6;&#x540D;  <code>version.1.2.zip</code> &#xFF0C;&#x83B7;&#x53D6;&#x540E;&#x7F00;&#x540D; <code>.zip</code> &#xFF08;&#x975E;&#x5E38;&#x65B9;&#x4FBF;!&#xFF09;</li>
+<li>&#x53EF;&#x4EE5;&#x5728; <a href="https://cmake.org/cmake/help/latest/command/if.html" target="_blank"><code>if</code></a> &#x8BED;&#x53E5;&#x4E2D;&#x4F7F;&#x7528; <code>DEFINED CACHE{VAR}</code>&#xFF0C;&#x67E5;&#x770B;&#x662F;&#x5426;&#x5728; CACHE &#x4E2D;&#x5B9A;&#x4E49;&#x4E86;&#x53D8;&#x91CF;&#x3002;</li>
+<li>&#x65B0;&#x589E; <code>BUILD_RPATH_USE_ORIGIN</code>&#xFF0C;&#x4EE5;&#x6539;&#x8FDB;&#x5BF9;&#x6784;&#x5EFA;&#x76EE;&#x5F55;&#x4E2D;RPath&#x7684;&#x5904;&#x7406;&#x3002;</li>
+<li>CMake &#x670D;&#x52A1;&#x5668;&#x6A21;&#x5F0F;&#x4F7F;&#x7528;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;API&#x6240;&#x53D6;&#x4EE3;&#x3002;&#x4ECE;&#x957F;&#x8FDC;&#x6765;&#x770B;&#xFF0C;&#x8FD9;&#x4F1A;&#x5F71;&#x54CD; IDE&#x3002;</li>
 </ul>
-<h2 id="cmake-315--cli-upgrade"><a href="https://cmake.org/cmake/help/latest/release/3.15.html" target="_blank">CMake 3.15</a> : CLI upgrade</h2>
-<p>This release has many smaller polishing changes, include several of improvements to the CMake command line, such as control over the default generator through environment variables (so now it&apos;s easy to change the default generator to Ninja). Multiple targets are supported in <code>--build</code> mode, and <code>--install</code> mode added. CMake finally supports multiple levels of logging. Generator expressions gained a few handy tools. The still very new FindPython module continues to improve, and FindBoost is now more inline with Boost 1.70&apos;s new CONFIG
-module. <code>export(PACKAGE)</code> has drastically changed; it now no longer touches <code>$HOME/.cmake</code> by default (if CMake Minimum version is 3.15 or higher), and requires an extra step if a user wants to use it. This is generally less surprising.</p>
+<h2 id="cmake-315&#xFF1A;&#x5347;&#x7EA7;cli"><a href="https://cmake.org/cmake/help/latest/release/3.15.html" target="_blank">CMake 3.15</a>&#xFF1A;&#x5347;&#x7EA7;CLI</h2>
+<p>&#x8FD9;&#x4E2A;&#x7248;&#x672C;&#x6709;&#x8BB8;&#x591A;&#x8F83;&#x5C0F;&#x6539;&#x8FDB;&#xFF0C;&#x5305;&#x62EC;&#x5BF9;CMake&#x547D;&#x4EE4;&#x884C;&#x7684;&#x6539;&#x8FDB;&#xFF0C;&#x6BD4;&#x5982;&#xFF1A;&#x901A;&#x8FC7;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x63A7;&#x5236;&#x9ED8;&#x8BA4;&#x751F;&#x6210;&#x5668;&#xFF08;&#x73B0;&#x5728;&#x5F88;&#x5BB9;&#x6613;&#x5C06;&#x9ED8;&#x8BA4;&#x751F;&#x6210;&#x5668;&#x6539;&#x4E3A; Ninja&#xFF09;&#x3002;<code>--build</code> &#x6A21;&#x5F0F;&#x652F;&#x6301;&#x591A;&#x4E2A;&#x76EE;&#x6807;&#xFF0C;&#x6DFB;&#x52A0;&#x4E86; <code>--install</code> &#x6A21;&#x5F0F;&#x3002;CMake&#x652F;&#x6301;&#x591A;&#x7EA7;&#x65E5;&#x5FD7;&#x8BB0;&#x5F55;&#x3002;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4E00;&#x4E9B;&#x65B9;&#x4FBF;&#x7684;&#x5DE5;&#x5177;&#x6765;&#x6D4B;&#x8BD5;&#x751F;&#x6210;&#x5668;&#x8868;&#x8FBE;&#x5F0F;&#x3002;FindPython &#x6A21;&#x5757;&#x6301;&#x7EED;&#x6539;&#x8FDB;&#xFF0C;FindBoost &#x4E0E; Boost 1.70 &#x7684;&#x65B0; CONFIG &#x6A21;&#x5757;&#x6709;&#x4E86;&#x66F4;&#x591A;&#x7684;&#x5185;&#x8054;&#x3002;<code>export(PACKAGE)</code> &#x53D1;&#x751F;&#x4E86;&#x5DE8;&#x5927;&#x53D8;&#x5316;&#xFF0C;&#x4E0D;&#x518D;&#x5C06;&#x9ED8;&#x8BA4;&#x76EE;&#x5F55;&#x8BBE;&#x7F6E;&#x4E3A; <code>$HOME/.cmake</code> (&#x82E5;cmake&#x6700;&#x5C0F;&#x7248;&#x672C;&#x4E3A;3.15+)&#xFF0C;&#x82E5;&#x7528;&#x6237;&#x82E5;&#x60F3;&#x4F7F;&#x7528;&#x5B83;&#xFF0C;&#x9700;&#x8981;&#x989D;&#x5916;&#x7684;&#x8BBE;&#x7F6E;&#x6B65;&#x9AA4;&#x3002;</p>
 <ul>
-<li>Initially released <a href="https://blog.kitware.com/cmake-3-15-0-available-for-download/" target="_blank">July 17, 2019</a></li>
-<li><a href="https://cmake.org/cmake/help/latest/envvar/CMAKE_GENERATOR.html" target="_blank"><code>CMAKE_GENERATOR</code></a> environment variable added to control default generator</li>
-<li>Multiple target support in build mode, <code>cmake . --build --target a b</code></li>
-<li>Shortcut <code>-t</code> for <code>--target</code></li>
-<li>Install support, <code>cmake . --install</code>, does not invoke the build system</li>
-<li>Support for <code>--loglevel</code> and <code>NOTICE</code>, <code>VERBOSE</code>, <code>DEBUG</code>, and <code>TRACE</code> for <code>message</code></li>
-<li>The <a href="https://cmake.org/cmake/help/latest/command/list.html" target="_blank"><code>list</code></a> command gained <code>PREPEND</code>, <code>POP_FRONT</code>, and <code>POP_BACK</code></li>
-<li><a href="https://cmake.org/cmake/help/latest/command/execute_process.html" target="_blank"><code>execute_process</code></a> gained <code>COMMAND_ECHO</code> option (<a href="https://cmake.org/cmake/help/latest//CMAKE_EXECUTE_PROCESS_COMMAND_ECHO.html" target="_blank"><code>CMAKE_EXECUTE_PROCESS_COMMAND_ECHO</code></a>) allows you to automatically echo commands before running them</li>
-<li>Several Ninja improvements, include SWIFT language support</li>
-<li>Compiler and list improvements to generator expressions</li>
+<li>&#x9996;&#x6B21;&#x53D1;&#x5E03;&#x4E8E; <a href="https://blog.kitware.com/cmake-3-15-0-available-for-download/" target="_blank">2019&#x5E74;7&#x6708;17&#x65E5;</a></li>
+<li>&#x65B0;&#x589E;&#x63A7;&#x5236;&#x9ED8;&#x8BA4;&#x751F;&#x6210;&#x5668;&#x7684;&#x73AF;&#x5883;&#x53D8;&#x91CF; <a href="https://cmake.org/cmake/help/latest/envvar/CMAKE_GENERATOR.html" target="_blank"><code>CMAKE_GENERATOR</code></a></li>
+<li>&#x547D;&#x4EE4;&#x884C;&#x53EF;&#x6784;&#x5EFA;&#x591A;&#x4E2A;&#x76EE;&#x6807;&#xFF0C;<code>cmake . --build --target a b</code></li>
+<li><code>--target</code> &#x53EF;&#x7F29;&#x5199;&#x4E3A; <code>-t</code></li>
+<li>&#x9879;&#x76EE;&#x5B89;&#x88C5;&#x652F;&#x6301;&#x547D;&#x4EE4;&#x884C;&#x9009;&#x9879; <code>cmake . --install</code>&#xFF0C;&#x8BE5;&#x8FC7;&#x7A0B;&#x4E0D;&#x4F7F;&#x7528;&#x6784;&#x5EFA;&#x7CFB;&#x7EDF;</li>
+<li>&#x652F;&#x6301;&#x65E5;&#x5FD7;&#x7EA7;&#x522B;&#x53C2;&#x6570; <code>--loglevel</code>&#xFF0C;&#x4E3A; <code>message</code> &#x6307;&#x4EE4;&#x6DFB;&#x52A0; <code>NOTICE</code>&#xFF0C;<code>VERBOSE</code>&#xFF0C;<code>DEBUG</code>&#x548C;  <code>TRACE</code>&#x9009;&#x9879;</li>
+<li><a href="https://cmake.org/cmake/help/latest/command/list.html" target="_blank"><code>list</code></a> &#x6307;&#x4EE4;&#x65B0;&#x589E;&#x4E86; <code>PREPEND</code>&#x3001;<code>POP_FRONT</code>&#x548C; <code>POP_BACK</code> &#x9009;&#x9879;</li>
+<li><a href="https://cmake.org/cmake/help/latest/command/execute_process.html" target="_blank"><code>execute_process</code></a> &#x6307;&#x4EE4;&#x65B0;&#x589E;&#x4E86; <code>COMMAND_ECHO</code>  &#x9009;&#x9879;(<a href="https://cmake.org/cmake/help/latest//CMAKE_EXECUTE_PROCESS_COMMAND_ECHO.html" target="_blank"><code>CMAKE_EXECUTE_PROCESS_COMMAND_ECHO</code></a>) &#x53EF;&#x4EE5;&#x5728;&#x8FD0;&#x884C;&#x547D;&#x4EE4;&#x4E4B;&#x524D;&#x81EA;&#x52A8;&#x663E;&#x793A;&#x5177;&#x4F53;&#x547D;&#x4EE4;</li>
+<li>Ninja &#x7684;&#x51E0;&#x4E2A;&#x6539;&#x8FDB;&#xFF0C;&#x5305;&#x62EC;&#x5BF9; SWIFT &#x8BED;&#x8A00;&#x7684;&#x652F;&#x6301;</li>
+<li>&#x6539;&#x8FDB;&#x7F16;&#x8BD1;&#x5668;&#x548C;&#x5217;&#x8868;&#x7684;&#x751F;&#x6210;&#x5668;&#x8868;&#x8FBE;&#x5F0F;</li>
 </ul>
-<h2 id="cmake-316--unity-builds"><a href="https://cmake.org/cmake/help/latest/release/3.16.html" target="_blank">CMake 3.16</a> : Unity builds</h2>
-<p>A new unity build mode was added, allowing source files to be merged into a single build file. Support for
-precompiled headers (possibly preparing for C++20 modules, perhaps?) was added. Lots of other smaller
-fixes were implemented, especially to newer features, such as to FindPython, FindDoxygen, and others.</p>
+<h2 id="cmake-316&#xFF1A;&#x7EDF;&#x4E00;&#x6784;&#x5EFA;"><a href="https://cmake.org/cmake/help/latest/release/3.16.html" target="_blank">CMake 3.16</a>&#xFF1A;&#x7EDF;&#x4E00;&#x6784;&#x5EFA;</h2>
+<p>&#x6DFB;&#x52A0;&#x4E86;&#x7EDF;&#x4E00;&#x6784;&#x5EFA;&#x6A21;&#x5F0F;&#xFF0C;&#x5141;&#x8BB8;&#x6E90;&#x6587;&#x4EF6;&#x5408;&#x5E76;&#x6210;&#x5355;&#x72EC;&#x7684;&#x6784;&#x5EFA;&#x6587;&#x4EF6;&#x3002;&#x589E;&#x52A0;&#x4E86;&#x5BF9;&#x9884;&#x7F16;&#x8BD1;&#x5934;&#x6587;&#x4EF6;&#x7684;&#x652F;&#x6301;&#xFF08;&#x53EF;&#x80FD;&#x662F;&#x4E3A; C++20 &#x7684;&#x6A21;&#x5757;&#x505A;&#x51C6;&#x5907;&#xFF09;&#xFF0C;&#x5B8C;&#x6210;&#x4E86;&#x5BF9;&#x8BB8;&#x591A;&#x5C0F;&#x529F;&#x80FD;&#x7684;&#x4FEE;&#x590D;&#xFF0C;&#x7279;&#x522B;&#x662F;&#x5BF9;&#x8F83;&#x65B0;&#x7684;&#x7279;&#x6027;&#xFF0C;&#x5982; FindPython&#x3001;FindDoxygen &#x7B49;&#x3002;</p>
 <ul>
-<li>Initially released <a href="https://blog.kitware.com/cmake-3-16-0-available-for-download/" target="_blank">November 26, 2019</a></li>
-<li>Added support for Objective C and Objective C++ languages</li>
-<li>Support for precompiling headers, with <code>target_precompile_headers</code></li>
-<li>Support for &quot;Unity&quot; or &quot;Jumbo&quot; builds (merging source files) with <a href="https://cmake.org/cmake/help/latest//CMAKE_UNITY_BUILD.html" target="_blank"><code>CMAKE_UNITY_BUILD</code></a></li>
-<li>CTest: Can now skip based on regex, expand lists</li>
-<li>Several new features to control RPath.</li>
-<li>Generator expressions work in more places, like build and install paths</li>
-<li>Find locations can now be explicitly controlled through new variables</li>
+<li>&#x9996;&#x6B21;&#x53D1;&#x5E03;&#x4E8E; <a href="https://blog.kitware.com/cmake-3-16-0-available-for-download/" target="_blank">2019&#x5E74;11&#x6708;26&#x65E5;</a></li>
+<li>&#x65B0;&#x589E;&#x5BF9; Objective C &#x548C; Objective C++ &#x8BED;&#x8A00;&#x7684;&#x652F;&#x6301;</li>
+<li>&#x4F7F;&#x7528; <code>target_precompile_headers</code> &#x652F;&#x6301;&#x9884;&#x7F16;&#x8BD1;&#x5934;&#x6587;&#x4EF6;</li>
+<li>&#x652F;&#x6301;&#x4F7F;&#x7528; &#x201C;Unity&#x201D; &#x6216; &#x201C;Jumbo&#x201D; &#x6784;&#x5EFA;&#x65F6;(&#x5408;&#x5E76;&#x6E90;&#x6587;&#x4EF6;)&#x4F7F;&#x7528; <a href="https://cmake.org/cmake/help/latest//CMAKE_UNITY_BUILD.html" target="_blank"><code>CMAKE_UNITY_BUILD</code></a> </li>
+<li>CTest&#xFF1A;&#x5C55;&#x5F00;&#x5217;&#x8868;&#xFF0C;&#x53EF;&#x8DF3;&#x8FC7;&#x57FA;&#x4E8E;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x65B9;&#x5F0F;</li>
+<li>&#x63A7;&#x5236; RPath &#x7684;&#x51E0;&#x4E2A;&#x65B0;&#x7279;&#x6027;&#x3002;</li>
+<li>&#x751F;&#x6210;&#x5668;&#x8868;&#x8FBE;&#x5F0F;&#x53EF;&#x4EE5;&#x5728;&#x66F4;&#x591A;&#x5730;&#x65B9;&#x4F7F;&#x7528;&#xFF0C;&#x6BD4;&#x5982;&#x6784;&#x5EFA;&#x548C;&#x5B89;&#x88C5;&#x8DEF;&#x5F84;</li>
+<li>&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x65B0;&#x53D8;&#x91CF;&#x663E;&#x5F0F;&#x5730;&#x63A7;&#x5236;&#x67E5;&#x627E;&#x4F4D;&#x7F6E;</li>
 </ul>
-<h2 id="cmake-317--more-cuda"><a href="https://cmake.org/cmake/help/latest/release/3.17.html" target="_blank">CMake 3.17</a> : More CUDA</h2>
-<p>A FindCUDAToolkit was finally added, which allows finding and using the CUDA
-toolkit without enabling the CUDA language! CUDA now is a bit more configurable,
-such as linking to shared libraries. Quite a bit more polish in the expected areas,
-as well, like FindPython. Finally, you can now iterate over multiple lists at a time.</p>
+<h2 id="cmake-317&#xFF1A;&#x539F;&#x751F;&#x652F;&#x6301;cuda"><a href="https://cmake.org/cmake/help/latest/release/3.17.html" target="_blank">CMake 3.17</a>&#xFF1A;&#x539F;&#x751F;&#x652F;&#x6301;CUDA</h2>
+<p>&#x6DFB;&#x52A0;&#x4E86; FindCUDAToolkit&#xFF0C;&#x5141;&#x8BB8;&#x5728;&#x4E0D;&#x542F;&#x7528; CUDA &#x8BED;&#x8A00;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x67E5;&#x627E;&#x548C;&#x4F7F;&#x7528; CUDA &#x5DE5;&#x5177;&#x5305;&#xFF01;CUDA &#x73B0;&#x5728;&#x66F4;&#x5177;&#x53EF;&#x914D;&#x7F6E;&#x6027;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;&#x94FE;&#x63A5;&#x5230;&#x52A8;&#x6001;&#x5E93;&#x3002;&#x5176;&#x4ED6;&#x529F;&#x80FD;&#x505A;&#x4E86;&#x5F88;&#x591A;&#x4F18;&#x5316;&#xFF0C;&#x6BD4;&#x5982;&#xFF1A;FindPython&#x3002;&#x5E76;&#x4E14;&#xFF0C;&#x53EF;&#x4EE5;&#x4E00;&#x6B21;&#x6027;&#x904D;&#x5386;&#x591A;&#x4E2A;&#x5217;&#x8868;&#x3002;</p>
 <ul>
-<li>Initially released <a href="https://blog.kitware.com/cmake-3-17-0-available-for-download/" target="_blank">March 20, 2020</a></li>
-<li><code>CUDA_RUNTIME_LIBRARY</code> can finally be set to Shared!</li>
-<li>FindCUDAToolkit finally added</li>
-<li><code>cmake -E rm</code> replaces older remove commands</li>
-<li>CUDA has meta features like <code>cuda_std_03</code>, etc.</li>
-<li>You can track the searches for packages with <code>--debug-find</code></li>
-<li>ExternalProject can now disable recursive checkouts</li>
-<li>FindPython better integration with Conda</li>
-<li>DEPRECATION can be applied to targets</li>
-<li>CMake gained a rm command</li>
-<li>Several new environment variables</li>
-<li>foreach can now do <code>ZIP_LISTS</code> (multiple lists at a time)</li>
+<li>&#x9996;&#x6B21;&#x53D1;&#x5E03;&#x4E8E; <a href="https://blog.kitware.com/cmake-3-17-0-available-for-download/" target="_blank">2020&#x5E74;3&#x6708;20&#x65E5;</a></li>
+<li><code>CUDA_RUNTIME_LIBRARY</code> &#x7EC8;&#x4E8E;&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x4E3A; Shared&#xFF01;</li>
+<li>&#x65B0;&#x589E; FindCUDAToolkit</li>
+<li><code>cmake -E rm</code> &#x66FF;&#x6362;&#x65E7;&#x7684;&#x5220;&#x9664;&#x547D;&#x4EE4;</li>
+<li>&#x6DFB;&#x52A0; CUDA &#x5143;&#x7279;&#x6027;&#xFF0C;&#x5982;<code>cuda_std_03</code>&#x7B49;&#x3002;</li>
+<li><code>--debug-find</code> &#x53EF;&#x8DDF;&#x8E2A;&#x5305;&#x7684;&#x641C;&#x7D22;</li>
+<li>ExternalProject &#x53EF;&#x4EE5;&#x7981;&#x7528;&#x9012;&#x5F52;&#x7B7E;&#x51FA;</li>
+<li>FindPython &#x66F4;&#x597D;&#x5730;&#x4E0E; Conda &#x96C6;&#x6210;</li>
+<li>DEPRECATION &#x53EF;&#x4EE5;&#x5E94;&#x7528;&#x4E8E;&#x76EE;&#x6807;</li>
+<li>&#x65B0;&#x589E; rm &#x547D;&#x4EE4;</li>
+<li>&#x51E0;&#x4E2A;&#x65B0;&#x7684;&#x73AF;&#x5883;&#x53D8;&#x91CF;</li>
+<li>foreach &#x65B0;&#x589E; <code>ZIP_LISTS</code> &#x9009;&#x9879;&#xFF08;&#x4E00;&#x6B21;&#x6027;&#x904D;&#x5386;&#x591A;&#x4E2A;&#x5217;&#x8868;&#xFF09;</li>
 </ul>
-<h2 id="cmake-318--cuda-with-clang--cmake-macro-language"><a href="https://cmake.org/cmake/help/latest/release/3.18.html" target="_blank">CMake 3.18</a> : CUDA with Clang &amp; CMake macro language</h2>
-<p>CUDA now supports Clang (without separable compilation). A new
-<code>CUDA_ARCHITECTURES</code> property was implemented to better support targeting CUDA
-hardware. A new <code>cmake_language</code> command supports calling cmake commands and
-expressions from strings. Lots of other meta changes that could make new
-designs available; calling functions by variable, evaluating arbitrary CMake by
-string, and configure files directly from strings. Many other nice tiny
-features and papercut fixes are sprinkled throughout, a small selection is below.</p>
+<h2 id="cmake-318&#xFF1A;cuda&#x4E0E;clang--cmake&#x5B8F;&#x7279;&#x6027;"><a href="https://cmake.org/cmake/help/latest/release/3.18.html" target="_blank">CMake 3.18</a>&#xFF1A;CUDA&#x4E0E;Clang &amp; CMake&#x5B8F;&#x7279;&#x6027;</h2>
+<p>CUDA &#x73B0;&#x5728;&#x652F;&#x6301; Clang &#xFF08;&#x4E0D;&#x53EF;&#x5206;&#x79BB;&#x7F16;&#x8BD1;&#xFF09;&#x3002;&#x65B0;&#x589E;&#x4E86; CUDA_ARCHITECTURES &#x5C5E;&#x6027;&#xFF0C;&#x53EF;&#x4EE5;&#x66F4;&#x597D;&#x5730;&#x652F;&#x6301;&#x9488;&#x5BF9; CUDA &#x786C;&#x4EF6;&#x3002;cmake_language &#x547D;&#x4EE4;&#x652F;&#x6301;&#x4ECE;&#x5B57;&#x7B26;&#x4E32;&#x4E2D;&#x4F7F;&#x7528; cmake &#x547D;&#x4EE4;&#x548C;&#x8868;&#x8FBE;&#x5F0F;&#x3002;&#x8FD8;&#x6709;&#x8BB8;&#x591A;&#x5176;&#x4ED6;&#x5143;&#x7279;&#x6027;&#x7684;&#x53D8;&#x5316;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x65B0;&#x529F;&#x80FD;&#x53EF;&#x7528;&#xFF1A;&#x901A;&#x8FC7;&#x53D8;&#x91CF;&#x8C03;&#x7528;&#x51FD;&#x6570;&#xFF0C;&#x89E3;&#x6790;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x5E76;&#x4F7F;&#x7528;&#x5B57;&#x7B26;&#x4E32;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x3002;&#x8FD8;&#x6709;&#x8BB8;&#x591A;&#x5176;&#x4ED6;&#x6F02;&#x4EAE;&#x7684;&#x5C0F;&#x529F;&#x80FD;&#x6DFB;&#x52A0;&#x548C;&#x529F;&#x80FD;&#x4FEE;&#x590D;&#xFF0C;&#x4E0B;&#x9762;&#x662F;&#x5176;&#x4E2D;&#x7684;&#x4E00;&#x4E9B;&#x3002;</p>
 <ul>
-<li>Initially released <a href="https://blog.kitware.com/cmake-3-18-0-available-for-download/" target="_blank">July 15, 2020</a></li>
-<li><code>cmake</code> can <code>cat</code> files together now</li>
-<li>New profiling mode for <code>cmake</code></li>
-<li><code>cmake_language</code> with <code>CALL</code> and <code>EVAL</code></li>
-<li><code>export</code> requires <code>APPEND</code> if used multiple times (in CMake language level 3.18+)</li>
-<li>You can archive directly from <code>file()</code></li>
-<li><code>file(CONFIGURE</code> is a nicer from of <code>configure_file</code> if you already have a string to produce</li>
-<li>Other <code>find_*</code> commands gain <code>find_package</code>&apos;s <code>REQUIRED</code> flag</li>
-<li><code>NATURAL</code> sorting in <code>list(SORT</code> added</li>
-<li>More options for handling properties with DIRECTORY scope</li>
-<li><code>CUDA_ARCHITECTURES</code> was added</li>
-<li>New <code>LINK_LANGUAGE</code> generator expressions (<code>DEVICE</code>/<code>HOST</code> versions too)</li>
-<li>Source can be a subdirectory for <code>FetchContent</code></li>
+<li>&#x9996;&#x6B21;&#x53D1;&#x5E03;&#x4E8E; <a href="https://blog.kitware.com/cmake-3-18-0-available-for-download/" target="_blank">2020&#x5E74;7&#x6708;15&#x65E5;</a></li>
+<li><code>cmake</code> &#x547D;&#x4EE4;&#x53EF;&#x4F7F;&#x7528; <code>cat</code> &#x5408;&#x5E76;&#x591A;&#x4E2A;&#x6587;&#x4EF6;</li>
+<li>&#x65B0;&#x589E; <code>cmake</code> &#x547D;&#x4EE4;&#x7684;&#x5206;&#x6790;&#x6A21;&#x5F0F;</li>
+<li><code>cmake_language</code> &#x65B0;&#x589E; <code>CALL</code> &#x548C; <code>EVAL</code> &#x9009;&#x9879;</li>
+<li>&#x82E5;&#x9700;&#x591A;&#x6B21;&#x5BFC;&#x51FA;&#xFF0C;&#x53EF;&#x4F7F;&#x7528; <code>export</code> &#x7684; <code>APPEND</code> &#x9009;&#x9879;&#xFF08;CMake 3.18+&#xFF09;</li>
+<li>&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <code>file()</code> &#x8FDB;&#x884C;&#x6253;&#x5305;</li>
+<li>&#x82E5;&#x9700;&#x8981;&#x66FF;&#x6362;&#x6587;&#x4EF6;&#x4E2D;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;<code>file(CONFIGURE</code> &#x662F;&#x6BD4; <code>configure_file</code> &#x66F4;&#x597D;&#x7684;&#x65B9;&#x5F0F;</li>
+<li>&#x5176;&#x4ED6; <code>find_*</code> &#x547D;&#x4EE4;&#x65B0;&#x589E;&#x4E86; <code>find_package</code> &#x7684; <code>REQUIRED</code> &#x6807;&#x5FD7;</li>
+<li>&#x4E3A; <code>list(SORT</code> &#x65B0;&#x589E;&#x4E86; <code>NATURAL</code> &#x6BD4;&#x8F83;&#x6A21;&#x5F0F;</li>
+<li>&#x65B0;&#x589E;&#x5904;&#x7406; DIRECTORY &#x4F5C;&#x7528;&#x57DF;&#x5C5E;&#x6027;&#x7684;&#x591A;&#x4E2A;&#x9009;&#x9879;</li>
+<li>&#x65B0;&#x589E; <code>CUDA_ARCHITECTURES</code></li>
+<li>&#x65B0;&#x589E; <code>LINK_LANGUAGE</code> &#x751F;&#x6210;&#x5668;&#x8868;&#x8FBE;&#x5F0F;&#xFF08;&#x5305;&#x62EC; <code>DEVICE</code>/<code>HOST</code> &#x7248;&#x672C;&#xFF09;</li>
+<li>&#x6E90;&#x76EE;&#x5F55;&#x53EF;&#x4EE5;&#x6210;&#x4E3A; <code>FetchContent</code> &#x7684;&#x5B50;&#x76EE;&#x5F55;</li>
 </ul>
-<h2 id="cmake-319--presets"><a href="https://cmake.org/cmake/help/latest/release/3.19.html" target="_blank">CMake 3.19</a> : Presets</h2>
-<p>You can now add presets in JSON form, and users will get the preset default.
-<code>find_package</code> can now take a version range, and some specialty find modules,
-like FindPython, have custom support for it.  A lot of new controls were added
-for permissions. Further support for generator expressions in more places.</p>
+<h2 id="cmake-319&#xFF1A;&#x9884;&#x8BBE;"><a href="https://cmake.org/cmake/help/latest/release/3.19.html" target="_blank">CMake 3.19</a>&#xFF1A;&#x9884;&#x8BBE;</h2>
+<p>&#x53EF;&#x4EE5;&#x4EE5; JSON &#x7684;&#x65B9;&#x5F0F;&#x6DFB;&#x52A0;&#x9884;&#x8BBE;&#xFF0C;&#x7528;&#x6237;&#x5C06;&#x83B7;&#x5F97;&#x9884;&#x8BBE;&#x7684;&#x9ED8;&#x8BA4;&#x503C;&#x3002;<code>find_package</code> &#x652F;&#x6301;&#x7248;&#x672C;&#x8303;&#x56F4;&#xFF0C;&#x7279;&#x6B8A;&#x7684;&#x67E5;&#x627E;&#x6A21;&#x5757;&#xFF0C;&#x6BD4;&#x5982;&#xFF1A;FindPython&#xFF0C;&#x6709;&#x5BF9;&#x7248;&#x672C;&#x8303;&#x56F4;&#x7684;&#x81EA;&#x5B9A;&#x4E49;&#x652F;&#x6301;&#x3002;&#x6DFB;&#x52A0;&#x4E86;&#x8BB8;&#x591A;&#x65B0;&#x7684;&#x6743;&#x9650;&#x63A7;&#x5236;&#xFF0C;&#x8FDB;&#x4E00;&#x6B65;&#x7684;&#x666E;&#x53CA;&#x751F;&#x6210;&#x5668;&#x8868;&#x8FBE;&#x5F0F;&#x3002;</p>
 <ul>
-<li>New <a href="https://cmake.org/cmake/help/latest/manual/cmake-presets.7.html" target="_blank">CMake presets files</a> now supported - you can set defaults for your project per generator, or you can make User presets. PSA: Please add <code>CMakeUserPresets.json</code> to your <code>.gitignore</code>, even if you do not use <code>CMakePresets.json</code>.</li>
-<li>CMake now uses the new build system introduced in XCode 12+</li>
-<li>MSVC for Android now supported</li>
-<li><code>cmake -E create_hardlink</code> was added</li>
-<li><code>add_test</code> finally properly supports whitespace in test names</li>
-<li>You can now <code>DEFER</code> <code>cmake_language</code> to run at the end of the directory processing</li>
-<li>Lots of new <code>file</code> options, like temporary downloads and <code>COMPRESSION_LEVEL</code> for <code>ARCHIVE_CREATE</code></li>
-<li><code>find_package</code> supports a version range</li>
-<li><code>DIRECTORY</code> can now include a binary directory in property commands</li>
-<li>New <code>JSON</code> commands for <code>string</code></li>
-<li>New <code>OPTIMIZE_DEPENDENCIES</code> property and <code>CMAKE_*</code> variable for smartly dropping dependencies of static and object libraries.</li>
-<li>PCH support expanded with <code>PCH_INSTANTIATE_TEMPLATES</code> property and <code>CMAKE_*</code> variable. </li>
-<li>Check modules have been expanded with <code>CUDA</code> and <code>ISPC</code> languages</li>
-<li>FindPython: <code>Python*_LINK_OPTIONS</code> added</li>
-<li><code>compute-sanitizer</code> for ctest now supports CUDA for memcheck</li>
+<li>&#x9996;&#x6B21;&#x53D1;&#x5E03;&#x4E8E; <a href="https://blog.kitware.com/cmake-3-19-0-available-for-download/" target="_blank">2020&#x5E74;11&#x6708;18&#x65E5;</a></li>
+<li><a href="https://cmake.org/cmake/help/latest/manual/cmake-presets.7.html" target="_blank">CMake&#x9884;&#x8BBE;&#x6587;&#x4EF6;</a> &#x2014;&#x2014; &#x53EF;&#x4EE5;&#x4E3A;&#x6BCF;&#x4E2A;&#x751F;&#x6210;&#x5668;&#x7684;&#x9879;&#x76EE;&#x8BBE;&#x7F6E;&#x9ED8;&#x8BA4;&#x503C;&#xFF0C;&#x6216;&#x8005;&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x8FDB;&#x884C;&#x9884;&#x8BBE;&#x3002;&#x5373;&#x4F7F;&#x5F53;&#x524D;&#x9879;&#x76EE;&#x6CA1;&#x6709;&#x4F7F;&#x7528; <code>CMakePresets.json</code> &#xFF0C;&#x4E5F;&#x53EF;&#x5C06;<code>CMakeUserPresets.json</code> &#x6DFB;&#x52A0;&#x5230; <code>.gitignore</code> &#x4E2D;&#x3002;</li>
+<li>XCode 12+ &#x4E2D;&#x5F15;&#x5165;&#x4E86;&#x65B0;&#x7684;&#x6784;&#x5EFA;&#x7CFB;&#x7EDF;</li>
+<li>&#x652F;&#x6301; MSVC &#x5BF9; Android &#x7684;&#x6784;&#x5EFA;</li>
+<li>&#x65B0;&#x589E; <code>cmake -E create_hardlink</code></li>
+<li><code>add_test</code> &#x6B63;&#x786E;&#x5730;&#x652F;&#x6301;&#x6D4B;&#x8BD5;&#x540D;&#x79F0;&#x4E2D;&#x7684;&#x7A7A;&#x683C;</li>
+<li>&#x53EF;&#x5C06; <code>cmake_language</code> &#x4E2D;&#x6807;&#x8BB0;&#x4E3A; <code>DEFER</code> &#x7684;&#x76EE;&#x5F55;&#x653E;&#x5728;&#x6700;&#x540E;&#x8FDB;&#x884C;&#x5904;&#x7406;</li>
+<li>&#x5927;&#x91CF;&#x65B0; <code>file</code> &#x9009;&#x9879;&#xFF0C;&#x5982;&#x4E34;&#x65F6;&#x4E0B;&#x8F7D;&#x548C; <code>ARCHIVE_CREATE</code> &#x7684; <code>COMPRESSION_LEVEL</code> </li>
+<li><code>find_package</code> &#x652F;&#x6301;&#x7248;&#x672C;&#x8303;&#x56F4;</li>
+<li><code>DIRECTORY</code> &#x53EF;&#x4EE5;&#x5728;&#x5C5E;&#x6027;&#x547D;&#x4EE4;&#x4E2D;&#x5305;&#x542B;&#x4E8C;&#x8FDB;&#x5236;&#x76EE;&#x5F55;</li>
+<li><code>string</code> &#x65B0;&#x589E; <code>JSON</code> &#x6A21;&#x5F0F;</li>
+<li>&#x65B0; <code>OPTIMIZE_DEPENDENCIES</code> &#x5C5E;&#x6027;&#x548C; <code>CMAKE_*</code> &#x53D8;&#x91CF;&#x53EF;&#x667A;&#x80FD;&#x5730;&#x5220;&#x9664;&#x9759;&#x6001;&#x5E93;&#x548C;&#x5BF9;&#x8C61;&#x5E93;&#x7684;&#x4F9D;&#x8D56;&#x9879;&#x3002;</li>
+<li>PCH &#x652F;&#x6301; <code>PCH_INSTANTIATE_TEMPLATES</code> &#x5C5E;&#x6027;&#x548C; <code>CMAKE_*</code> &#x53D8;&#x91CF;&#x3002;</li>
+<li>&#x68C0;&#x67E5;&#x6A21;&#x5757;&#x652F;&#x6301; <code>CUDA</code> &#x548C; <code>ISPC</code> &#x8BED;&#x8A00;</li>
+<li>FindPython&#xFF1A;&#x65B0;&#x589E; <code>Python*_LINK_OPTIONS</code></li>
+<li>ctest &#x7684; <code>compute-sanitizer</code> &#x652F;&#x6301; CUDA &#x7684; memcheck</li>
 </ul>
-<h2 id="cmake-320--docs"><a href="https://cmake.org/cmake/help/latest/release/3.20.html" target="_blank">CMake 3.20</a> : Docs</h2>
-<p>The CMake docs received a major boost in productivity by adding &quot;new in&quot; tags
-to quickly see what was added without having to toggle documentation versions!
-C++ 23 support added. Source files must have the extension listed now, and
-LANGUAGE is always respected. Quite a bit of cleanup was done; make sure your
-code is tested with <code>...3.20</code> before deploying that as your maximum. Presets
-continue to be improved.</p>
+<h2 id="cmake-320&#xFF1A;&#x6587;&#x6863;"><a href="https://cmake.org/cmake/help/latest/release/3.20.html" target="_blank">CMake 3.20</a>&#xFF1A;&#x6587;&#x6863;</h2>
+<p>CMake &#x6587;&#x6863;&#x901A;&#x8FC7;&#x6DFB;&#x52A0; &#x201C;new in&#x201D; &#x6807;&#x7B7E;&#x6765;&#x5FEB;&#x901F;&#x67E5;&#x770B;&#x6DFB;&#x52A0;&#x7684;&#x5185;&#x5BB9;&#xFF0C;&#x65E0;&#x9700;&#x5207;&#x6362;&#x6587;&#x6863;&#x7248;&#x672C;&#xFF0C;&#x63D0;&#x9AD8;&#x4E86;&#x5DE5;&#x4F5C;&#x6548;&#x7387;&#xFF01;&#x65B0;&#x589E;C++23&#x7684;&#x652F;&#x6301;&#x3002;&#x6E90;&#x6587;&#x4EF6;&#x5FC5;&#x987B;&#x5217;&#x51FA;&#x6269;&#x5C55;&#x540D;&#xFF0C;&#x5E76;&#x4E14;&#x59CB;&#x7EC8;&#x9075;&#x5FAA;&#x8BBE;&#x7F6E;&#x7684; LANGUAGE &#x89C4;&#x5219;&#x3002;&#x8FD8;&#x505A;&#x4E86;&#x76F8;&#x5F53;&#x591A;&#x7684;&#x6E05;&#x7406;&#x5DE5;&#x4F5C;&#xFF08;&#x4E3A;&#x4E86;&#x4F7F;
+&#x5DE5;&#x7A0B;&#x90E8;&#x7F72;&#x7684;&#x963B;&#x788D;&#x6700;&#x5C0F;&#x5316;&#xFF0C;&#x6700;&#x597D;&#x4F7F;&#x7528;&#x7248;&#x672C; <code>...3.20</code> &#x5BF9;&#x6E90;&#x7801;&#x8FDB;&#x884C;&#x6D4B;&#x8BD5;&#xFF09;&#xFF0C;&#x7EE7;&#x7EED;&#x6539;&#x8FDB;&#x9884;&#x8BBE;&#x3002;</p>
 <ul>
-<li>Support added for C++23</li>
-<li>CUDAARCHS environment variable for setting CUDA architectures</li>
-<li>The new <code>IntelLLVM</code> compilers are now supported (OneAPI 2021.1), and <code>NVHPC</code> NVIDIA HPC SDK, as well</li>
-<li>Some expanded generator expression support in custom commands/targets, install renaming</li>
-<li>New <code>cmake_path</code> command for working with paths</li>
-<li><code>try_run</code> now has a <code>WORKING_DIRECTORY</code></li>
-<li>More features for the <code>file(GENERATE</code> command</li>
-<li>Several removals, like <code>cmake-server</code>, <code>WriteCompilerDetectionHeader</code> (if policy set to 3.20+), and a few things that have newer methods now.</li>
-<li>Source files must include the extension</li>
+<li>&#x9996;&#x6B21;&#x53D1;&#x5E03;&#x4E8E; <a href="https://blog.kitware.com/cmake-3-20-0-available-for-download/" target="_blank">2021&#x5E74;3&#x6708;23&#x65E5;</a></li>
+<li>&#x652F;&#x6301; C++23</li>
+<li>&#x65B0;&#x589E; CUDAARCHS &#x73AF;&#x5883;&#x53D8;&#x91CF;&#xFF0C;&#x7528;&#x4E8E;&#x8BBE;&#x7F6E; CUDA &#x67B6;&#x6784;</li>
+<li>&#x652F;&#x6301;&#x65B0;&#x7684; <code>IntelLLVM</code> &#x7F16;&#x8BD1;&#x5668;&#xFF08;OneAPI 2021.1&#xFF09;&#x548C; <code>NVHPC</code>&#x7684; NVIDIA HPC SDK</li>
+<li>&#x4E00;&#x4E9B;&#x6269;&#x5C55;&#x751F;&#x6210;&#x5668;&#x8868;&#x8FBE;&#x5F0F;&#x652F;&#x6301;&#x81EA;&#x5B9A;&#x4E49;&#x547D;&#x4EE4;/&#x76EE;&#x6807;&#xFF0C;&#x53EF;&#x5728;&#x5B89;&#x88C5;&#x65F6;&#x91CD;&#x547D;&#x540D;</li>
+<li>&#x65B0;&#x589E;&#x7684; <code>cmake_path</code> &#x547D;&#x4EE4;&#x53EF;&#x7528;&#x4E8E;&#x8DEF;&#x5F84;</li>
+<li><code>try_run</code> &#x65B0;&#x589E;&#x4E86; <code>WORKING_DIRECTORY</code> &#x9009;&#x9879;</li>
+<li><code>file(GENERATE</code> &#x6DFB;&#x52A0;&#x4E86;&#x5F88;&#x591A;&#x7279;&#x6027;</li>
+<li>&#x4E00;&#x4E9B;&#x529F;&#x80FD;&#x6216;&#x7279;&#x6027;&#x7684;&#x79FB;&#x9664;&#xFF0C;&#x5982; <code>cmake-server</code>, <code>WriteCompilerDetectionHeader</code>&#xFF08;&#x82E5;&#x7B56;&#x7565;&#x8BBE;&#x7F6E;&#x4E3A;3.20+&#xFF09;&#xFF0C;&#x4EE5;&#x53CA;&#x4E00;&#x4E9B;&#x53EF;&#x7528;&#x65B0;&#x65B9;&#x6CD5;&#x66FF;&#x4EE3;&#x7684;&#x4E1C;&#x897F;&#x3002;</li>
+<li>&#x6E90;&#x6587;&#x4EF6;&#x5FC5;&#x987B;&#x5305;&#x542B;&#x6269;&#x5C55;&#x540D;</li>
 </ul>
-<h2 id="cmake-321--colors"><a href="https://cmake.org/cmake/help/latest/release/3.21.html" target="_blank">CMake 3.21</a> : Colors</h2>
-<p>Different message types now have different colors! There&apos;s now a nice variable
-to see if you are in the top level project. Lots of continued cleanup and
-specialized new features, such as adding the HIP language and C17 and C23
-support. Presets continue to be improved.</p>
+<h2 id="cmake-321&#xFF1A;&#x914D;&#x8272;"><a href="https://cmake.org/cmake/help/latest/release/3.21.html" target="_blank">CMake 3.21</a>&#xFF1A;&#x914D;&#x8272;</h2>
+<p>&#x4E0D;&#x540C;&#x7684;&#x6D88;&#x606F;&#x7C7B;&#x578B;&#x6709;&#x4E0D;&#x540C;&#x7684;&#x989C;&#x8272;&#xFF01;&#x73B0;&#x5728;&#x6709;&#x53D8;&#x91CF;&#x53EF;&#x4EE5;&#x67E5;&#x770B;&#x662F;&#x5426;&#x5728;&#x9876;&#x7EA7;&#x9879;&#x76EE;&#x4E2D;&#x3002;&#x5927;&#x91CF;&#x6709;&#x5173;&#x6301;&#x7EED;&#x6E05;&#x7406;&#x548C;&#x7279;&#x5316;&#x7684;&#x65B0;&#x7279;&#x6027;&#xFF0C;&#x5982;&#x6DFB;&#x52A0;HIP&#x8BED;&#x8A00;&#x548C;C17&#x548C;C23&#x652F;&#x6301;&#x3002;&#x7EE7;&#x7EED;&#x6539;&#x8FDB;&#x9884;&#x8BBE;&#x3002;</p>
 <ul>
-<li>Preliminary support for MSVC 2022</li>
-<li><code>CMAKE_&lt;LANG_LINKER_LAUNCHER</code> added for make and ninja</li>
-<li>HIP added as a language</li>
-<li>C17 and C23 support added</li>
-<li><code>--instal-prefix &lt;dir&gt;</code> and <code>--toolchain &lt;file&gt;</code> added when running CMake</li>
-<li>Messages printed are colored by message type!</li>
-<li>Support for MSYS, including <code>FindMsys</code></li>
-<li>The <code>file(</code> command got several updates, including <code>EXPAND_TILDE</code></li>
-<li>Support for runtime dependencies and artifacts added to <code>install</code></li>
-<li><code>PROJECT_IS_TOP_LEVEL</code> and <code>&lt;PROJECT-NAME&gt;_IS_TOP_LEVEL</code> finally added</li>
-<li>Caching improvements for the <code>find_</code> commands</li>
+<li>&#x9996;&#x6B21;&#x53D1;&#x5E03;&#x4E8E; <a href="https://blog.kitware.com/cmake-3-21-0-available-for-download/" target="_blank">2021&#x5E74;7&#x6708;14&#x65E5;</a></li>
+<li>&#x521D;&#x6B65;&#x652F;&#x6301; MSVC 2022</li>
+<li>&#x4E3A; make &#x548C; ninja &#x6DFB;&#x52A0;&#x4E86; <code>CMAKE_&lt;LANG_LINKER_LAUNCHER</code></li>
+<li>HIP &#x4F5C;&#x4E3A;&#x8BED;&#x8A00;&#x6DFB;&#x52A0;</li>
+<li>&#x65B0;&#x589E; C17 &#x548C; C23 &#x652F;&#x6301;</li>
+<li>&#x65B0;&#x589E; <code>--install -prefix &lt;dir&gt;</code> &#x548C; <code>--toolchain &lt;file&gt;</code></li>
+<li>&#x6D88;&#x606F;&#x6839;&#x636E;&#x6D88;&#x606F;&#x7C7B;&#x578B;&#x7740;&#x8272;&#xFF01;</li>
+<li>&#x652F;&#x6301; MSYS&#xFF0C;&#x5305;&#x62EC; <code>FindMsys</code></li>
+<li><code>file(</code> &#x6307;&#x4EE4;&#x66F4;&#x65B0;&#xFF0C;&#x6DFB;&#x52A0;&#x4E86; <code>EXPAND_TILDE</code> &#x5C5E;&#x6027;</li>
+<li>&#x652F;&#x6301;&#x5411; <code>install</code> &#x6DFB;&#x52A0;&#x8FD0;&#x884C;&#x65F6;&#x7684;&#x4F9D;&#x8D56;&#x9879;&#x548C;&#x5DE5;&#x4EF6;</li>
+<li>&#x65B0;&#x589E; <code>PROJECT_IS_TOP_LEVEL</code> &#x548C; <code>&lt;PROJECT-NAME&gt;_IS_TOP_LEVEL</code></li>
+<li><code>find_</code> &#x6307;&#x4EE4;&#x5728;&#x7F13;&#x5B58;&#x65B9;&#x9762;&#x7684;&#x6539;&#x8FDB;</li>
+</ul>
+<h2 id="cmake-322&#xFF1A;&#x65B9;&#x4FBF;&#x7684;&#x73AF;&#x5883;&#x53D8;&#x91CF;"><a href="https://cmake.org/cmake/help/latest/release/3.22.html" target="_blank">CMake 3.22</a>&#xFF1A;&#x65B9;&#x4FBF;&#x7684;&#x73AF;&#x5883;&#x53D8;&#x91CF;</h2>
+<p>&#x4E00;&#x4E2A;&#x8F83;&#x5C0F;&#x7684;&#x7248;&#x672C;&#xFF0C;&#x5728;&#x5E38;&#x89C1;&#x7684;&#x6784;&#x5EFA;&#x65B9;&#x9762;&#x8FDB;&#x884C;&#x4E86;&#x4E00;&#x4E9B;&#x4E0D;&#x9519;&#x7684;&#x6539;&#x8FDB;&#x3002;&#x53EF;&#x4EE5;&#x5728;&#x5F00;&#x53D1;&#x73AF;&#x5883;&#x4E2D;&#x8BBE;&#x7F6E; <code>CMAKE_BUILD_TYPE</code> &#x6765;&#x8BBE;&#x7F6E;&#x9ED8;&#x8BA4;&#x7684;&#x6784;&#x5EFA;&#x7C7B;&#x578B;&#xFF0C;&#x8FD8;&#x6709;&#x5176;&#x4ED6;&#x51E0;&#x4E2A;&#x65B0;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x548C;&#x53D8;&#x91CF;&#x7684;&#x6DFB;&#x52A0;&#x3002;&#x4E0E;&#x6807;&#x51C6;&#x76F8;&#x5173;&#x7684;&#x7F16;&#x8BD1;&#x5668;&#x6807;&#x5FD7;&#x8FDB;&#x884C;&#x4E86;&#x6539;&#x8FDB;&#x3002;<code>cmake_host_system_information</code> &#x5728;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x4FE1;&#x606F;&#x65B9;&#x9762;&#x5F97;&#x5230;&#x4E86;&#x8FDB;&#x4E00;&#x6B65;&#x7684;&#x6539;&#x8FDB;&#xFF08;&#x4ECE; 3.10 &#x5F00;&#x59CB;&#xFF09;&#x3002;</p>
+<ul>
+<li>&#x9996;&#x6B21;&#x53D1;&#x5E03;&#x4E8E; <a href="https://blog.kitware.com/cmake-3-22-0-available-for-download/" target="_blank">2021&#x5E74;11&#x6708;18&#x65E5;</a></li>
+<li>&#x65B0;&#x7684;&#x9ED8;&#x8BA4;&#x73AF;&#x5883;&#x53D8;&#x91CF; <code>CMAKE_BUILD_TYPE</code> &#x548C; <code>CMAKE_CONFIGURATION_TYPES</code></li>
+<li>&#x65B0;&#x589E;&#x73AF;&#x5883;&#x53D8;&#x91CF; <code>CMAKE_INSTALL_MODE</code> &#x7528;&#x4E8E;&#x5B89;&#x88C5;&#x7C7B;&#x578B;&#xFF08;symlink&#xFF09;</li>
+<li>&#x65B0;&#x589E; <code>CMAKE_REQUIRE_FIND_PACKAGE_&lt;PackageName&gt;</code>&#x53D8;&#x91CF;&#xFF0C;&#x5C06;&#x53EF;&#x9009;&#x67E5;&#x627E;&#x8F6C;&#x6362;&#x4E3A;&#x5FC5;&#x9009;&#x67E5;&#x627E;</li>
+<li>&#x65B0;&#x589E;&#x9488;&#x5BF9;&#x7F16;&#x8BD1;&#x5668;&#x7684; <code>CMAKE_&lt;LANG&gt;_EXTENSIONS_DEFAULT</code> &#x53D8;&#x91CF;</li>
+<li><code>CMakeDependentOption</code> &#x53EF;&#x4F7F;&#x7528;&#x6B63;&#x5E38;&#x7684;&#x6761;&#x4EF6;&#x8BED;&#x6CD5;</li>
+<li>CTest &#x53EF;&#x4EE5;&#x4FEE;&#x6539;&#x73AF;&#x5883;&#x53D8;&#x91CF;</li>
+<li>&#x4E00;&#x4E9B;&#x751F;&#x6210;&#x5668;&#x53EF;&#x4EE5;&#x5728;&#x4F7F;&#x7528; MSVC &#x65F6;&#x5305;&#x542B;&#x5916;&#x90E8;&#xFF08;&#x7CFB;&#x7EDF;&#xFF09;&#x5934;&#x6587;&#x4EF6;</li>
+</ul>
+<h2 id="cmake-323&#xFF1A;&#x7EAF;&#x5934;&#x6587;&#x4EF6;&#x5E93;"><a href="https://cmake.org/cmake/help/latest/release/3.23.html" target="_blank">CMake 3.23</a>&#xFF1A;&#x7EAF;&#x5934;&#x6587;&#x4EF6;&#x5E93;</h2>
+<p>&#x4E00;&#x4E2A;&#x53EF;&#x9760;&#x7684;&#x7248;&#x672C;&#xFF0C;&#x53EA;&#x5173;&#x6CE8;&#x5934;&#x6587;&#x4EF6;&#x5E93;&#xFF0C;&#x66F4;&#x591A;&#x7684;&#x7528;&#x6237;&#x63A7;&#x4EF6;&#xFF0C;CMake &#x9884;&#x8BBE;&#xFF0C;&#x4EE5;&#x53CA;&#x66F4;&#x597D;&#x7684; CUDA &#x652F;&#x6301;&#x3002;&#x7EAF;&#x5934;&#x6587;&#x4EF6;&#x5E93;&#x6709;&#x4E00;&#x4E9B;&#x5F3A;&#x5927;&#x7684;&#x65B0;&#x7279;&#x6027;&#xFF0C;&#x6BD4;&#x5982;&#xFF1A;&#x5404;&#x79CD; <code>*_SETS</code> &#x76EE;&#x6807;&#x5C5E;&#x6027;&#x3002;&#x6709;&#x4E00;&#x4E9B;&#x65B0;&#x7684;&#x63A7;&#x4EF6;&#xFF0C;&#x53EF;&#x4EE5;&#x9650;&#x5236; <code>find_</code> &#x67E5;&#x627E;&#x8DEF;&#x5F84;&#xFF0C;&#x4EE5;&#x53CA;&#x4ECE;&#x73B0;&#x6709;&#x76EE;&#x6807;&#x4E2D;&#x5220;&#x9664; <code>SYSTEM</code>&#x3002;&#x8FD8;&#x53EF;&#x4EE5;&#x83B7;&#x5F97;&#x4E86;&#x6269;&#x5C55;&#x7684;&#x8C03;&#x8BD5;&#x7279;&#x6027;&#xFF0C;&#x4EE5;&#x53CA;&#x5C06;&#x6240;&#x6709;&#x94FE;&#x63A5;&#x5F3A;&#x5236;&#x6307;&#x5411;&#x76EE;&#x6807;&#x3002;&#x9884;&#x8BBE;&#x53EF;&#x4EE5;&#x5305;&#x62EC;&#x5176;&#x4ED6;&#x6587;&#x4EF6;&#x3002;CUDA &#x548C;C# &#x90E8;&#x5206;&#x8FDB;&#x884C;&#x4E86;&#x66F4;&#x65B0;&#xFF0C;&#x5E76;&#x6DFB;&#x52A0;&#x4E86;&#x51E0;&#x4E2A;&#x7F16;&#x8BD1;&#x5668;&#x3002;</p>
+<ul>
+<li>&#x9996;&#x6B21;&#x53D1;&#x5E03;&#x4E8E; <a href="https://blog.kitware.com/cmake-3-23-0-is-available-for-download/" target="_blank">2022&#x5E74;3&#x6708;29&#x65E5;</a></li>
+<li>CMake &#x9884;&#x8BBE;&#x7684;&#x6539;&#x8FDB;&#xFF0C;&#x53EF;&#x4EE5;&#x5305;&#x542B;&#x5176;&#x4ED6;&#x6587;&#x4EF6;&#x3002;</li>
+<li>&#x4E24;&#x4E2A;&#x65B0;&#x7684;&#x7F16;&#x8BD1;&#x5668;&#xFF0C;&#x4EE5;&#x53CA;&#x66F4;&#x597D;&#x7684; C# &#x652F;&#x6301;&#x3002;</li>
+<li><code>FILE_SET</code> &#x53EF;&#x7528;&#x4E8E; <code>install</code> &#x548C; <code>target_sources</code> &#x7EAF;&#x5934;&#x6587;&#x4EF6;&#x5E93;&#x3002;</li>
+<li><code>&lt;INTERFACE_&gt;HEADER_SETS</code>, <code>&lt;INTERFACE_&gt;HEADER_DIRS</code> &#x4E3A;&#x76EE;&#x6807;&#x5934;&#x6587;&#x4EF6;&#x3002;</li>
+<li>&#x65B0;&#x589E; <code>CUDA_ARCHITECTURES</code> &#x5BF9; all &#x548C; all-major.a &#x7684;&#x652F;&#x6301;</li>
+<li>&#x53EF;&#x4EE5;&#x4E3A; <code>find_*</code> &#x6216; find &#x6A21;&#x5757;&#x542F;&#x7528; DEBUG &#x6D88;&#x606F;&#x3002;</li>
+<li><code>define_property()</code> &#x65B0;&#x589E;&#x4E86; <code>INITIALIZE_FROM_VARIABLE</code> &#x9009;&#x9879;&#x3002;</li>
+<li><code>CMAKE_&lt;SYSTEM_&gt;IGNORE_PREFIX_PATH</code> &#x53EF;&#x4EE5;&#x63A7;&#x5236; <code>find_*</code> &#x7684;&#x67E5;&#x627E;&#x8DEF;&#x5F84;&#x3002;</li>
+<li>&#x65B0;&#x589E; <code>&lt;CMAKE_&gt;LINK_LIBRARIES_ONLY_TARGETS</code> &#x5F3A;&#x5236;&#x53EA;&#x94FE;&#x63A5;&#x76EE;&#x6807;&#xFF08;&#x975E;&#x5E38;&#x9002;&#x5408;&#x67E5;&#x627E;&#x9519;&#x8BEF;&#xFF01;&#xFF09;</li>
+<li><code>IMPORTED_NO_SYSTEM</code> &#x53EF;&#x5F3A;&#x5236;&#x4ECE;&#x76EE;&#x6807;&#x4E2D;&#x5220;&#x9664; SYSTEM &#x7684;&#x65B0;&#x5C5E;&#x6027;&#x3002;</li>
+<li><code>FindGTest</code> &#x5728;&#x627E;&#x5230; <code>GMock</code> &#x76EE;&#x6807;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x4F1A;&#x6DFB;&#x52A0; <code>GMock</code> &#x76EE;&#x6807;&#x3002;</li>
+</ul>
+<h2 id="cmake-324&#xFF1A;&#x5305;&#x67E5;&#x627E;&#x5668;"><a href="https://cmake.org/cmake/help/latest/release/3.24.html" target="_blank">CMake 3.24</a>&#xFF1A;&#x5305;&#x67E5;&#x627E;&#x5668;</h2>
+<p>&#x4E00;&#x4E2A;&#x5F88;&#x68D2;&#x7684;&#x7248;&#x672C;&#x3002;&#x8F6F;&#x4EF6;&#x5305;&#x7F16;&#x5199;&#x8005;&#x6B63;&#x5728;&#x5B9E;&#x73B0;<code>find_package</code>&#x548C;<code>FetchContent</code>&#x7684;&#x96C6;&#x6210;&#xFF0C;&#x8FD9;&#x53EF;&#x4EE5;&#x5B8C;&#x6210;&#x201C;&#x4E22;&#x5931;&#x65F6;&#x4E0B;&#x8F7D;&#x201D;&#x7684;&#x5DE5;&#x4F5C;&#xFF0C;&#x5E76;&#x4E14;&#x53EF;&#x4EE5;&#x7531;&#x8F6F;&#x4EF6;&#x5305;&#x7F16;&#x5199;&#x8005;&#x914D;&#x7F6E;&#x3002;&#x7C7B;&#x4F3C;&#x5730;&#xFF0C;&#x4F5C;&#x4E3A;&#x9519;&#x8BEF;&#x7684;&#x8B66;&#x544A;&#x53EF;&#x4EE5;&#x7531;&#x5305;&#x8BBE;&#x7F6E;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x7531;&#x6253;&#x5305;&#x5668;&#x5220;&#x9664;&#xFF08;&#x6700;&#x597D;&#x4E0D;&#x8981;&#x8FD9;&#x6837;&#x505A;&#xFF0C;&#x9664;&#x975E;&#x5F53;&#x524D;&#x9879;&#x76EE;&#x4F5C;&#x4E3A;&#x4E3B;&#x9879;&#x76EE;&#x6784;&#x5EFA;&#xFF01;&#xFF09;&#x3002;</p>
+<ul>
+<li>&#x9996;&#x6B21;&#x53D1;&#x5E03;&#x4E8E; <a href="https://blog.kitware.com/cmake-3-24-0-is-available-for-download/" target="_blank">2022&#x5E74;8&#x6708;4&#x65E5;</a></li>
+<li><code>--fresh</code> &#x9009;&#x9879;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x53EF;&#x5220;&#x9664;&#x65E7;&#x7F13;&#x5B58;&#x3002;</li>
+<li><code>find_package</code> &#x548C; <code>FetchContent</code> &#x73B0;&#x5728;&#x96C6;&#x6210;&#x5728;&#x4E00;&#x8D77;&#x4E86; &#x2014;&#x2014; &#x53EF;&#x4EE5;&#x9009;&#x62E9;&#x4E0B;&#x8F7D;&#x7F3A;&#x5931;&#x7684;&#x4F9D;&#x8D56;&#x9879;&#x3002;</li>
+<li><code>find_package</code> &#x65B0;&#x589E; <code>GLOBAL</code> &#x9009;&#x9879;&#x3002;</li>
+<li><code>CMAKE_PROJECT_TOP_LEVEL_INCLUDES</code> &#x5141;&#x8BB8;&#x7528;&#x6237;&#xFF08;&#x50CF;&#x6253;&#x5305;&#x5668;&#x4E00;&#x6837;&#xFF09;&#x6CE8;&#x5165;&#x9879;&#x76EE;&#x4EE3;&#x7801;&#x3002;</li>
+<li>&#x751F;&#x6210;&#x5668;&#x8868;&#x8FBE;&#x5F0F;&#x53EF;&#x7BA1;&#x7406; <code>PATH</code>&#x3002;</li>
+<li>&#x65B0;&#x589E; <code>CMAKE_COLOR_DIAGNOSTICS</code> &#x73AF;&#x5883;&#x53D8;&#x91CF;&#x548C;&#x53D8;&#x91CF;&#xFF0C;&#x53D6;&#x4EE3; <code>CMAKE_COLOR_MAKEFILE</code>&#x3002;</li>
+<li>&#x53EF;&#x4EE5;&#x7981;&#x7528; <code>find_*</code> &#x641C;&#x7D22;&#x5B89;&#x88C5;&#x524D;&#x7F00;&#xFF08;&#x76EE;&#x5F55;&#xFF09;&#x3002;</li>
+<li>&#x65B0;&#x589E; <code>COMPILE_WARNING_AS_ERROR</code> &#x5C5E;&#x6027;&#x548C; <code>CMAKE_</code> &#x53D8;&#x91CF;&#xFF0C;&#x53EF;&#x4F7F;&#x7528; <code>--compile-no-warning-as-error</code>&#x7981;&#x7528;&#x3002;</li>
+<li>CUDA &#x652F;&#x6301;&#x5BF9;&#x5F53;&#x524D;&#x68C0;&#x6D4B;&#x5230;&#x7684; GPU &#x8FDB;&#x884C; <code>native</code>  &#x7F16;&#x8BD1;&#x3002;</li>
+<li><code>SYSTEM</code> &#x7684;&#x5305;&#x542B;&#x8DEF;&#x5F84;&#x53EF;&#x4EE5;&#x5728; MSVC &#x751F;&#x6210;&#x5668;&#x4E0A;&#x4F7F;&#x7528;&#x3002;</li>
+<li>&#x66F4;&#x597D;&#x5730;&#x652F;&#x6301; MSVC&#xFF0C;XCode &#x7B49; IDE &#x3002;</li>
+<li>&#x652F;&#x6301; <code>LLVMFlang</code> &#x7F16;&#x8BD1;&#x5668;&#x3002;</li>
+</ul>
+<h2 id="cmake-325&#xFF1A;&#x5757;&#x4F5C;&#x7528;&#x57DF;&#x548C;-system"><a href="https://cmake.org/cmake/help/latest/release/3.25.html" target="_blank">CMake 3.25</a>&#xFF1A;&#x5757;&#x4F5C;&#x7528;&#x57DF;&#x548C; SYSTEM</h2>
+<p>&#x65B0;&#x589E;&#x5757;&#x4F5C;&#x7528;&#x57DF;&#x6307;&#x4EE4;&#xFF0C;&#x53EF;&#x6709;&#x9009;&#x62E9;&#x5730;&#x63A7;&#x5236;&#x53D8;&#x91CF;&#x548C;&#x7B56;&#x7565;&#xFF0C;&#x5BF9; SYSTEM &#x4E5F;&#x6709;&#x66F4;&#x591A;&#x7684;&#x63A7;&#x5236;&#x3002;&#x53EF;&#x4EE5;&#x5728;<code>find_</code>&#x6307;&#x4EE4;&#x4E2D;&#x4F7F;&#x7528; <code>VALIDATOR</code> &#x9009;&#x9879;&#xFF0C;&#x5E76;&#x4E14;&#x5DE5;&#x4F5C;&#x6D41;&#x7A0B;&#x4E5F;&#x8FDB;&#x884C;&#x4E86;&#x5347;&#x7EA7;&#x3002;</p>
+<ul>
+<li>&#x9996;&#x6B21;&#x53D1;&#x5E03;&#x4E8E; <a href="https://www.kitware.com/cmake-3-25-0-available-for-download/" target="_blank">2022&#x5E74;11&#x6708;16&#x65E5;</a></li>
+<li>&#x652F;&#x6301; C++26</li>
+<li>CUDA &#x7684; nvcc &#x53EF;&#x4EE5;&#x4F7F;&#x7528; LTO</li>
+<li>&#x65B0;&#x589E;&#x4E86;&#x5DE5;&#x4F5C;&#x6D41;&#x9884;&#x8BBE;&#x548C;&#x5305;&#x9884;&#x8BBE;&#x3002;</li>
+<li><code>SYSTEM</code> &#x53EF;&#x4F5C;&#x4E3A;&#x76EE;&#x5F55;&#x5C5E;&#x6027;&#x6DFB;&#x52A0;&#x5230; <code>add_subdirectory</code> &#x548C; <code>FetchContent</code></li>
+<li><code>block()/endblock()</code> &#x7528;&#x4E8E;&#x7B56;&#x7565;/&#x53D8;&#x91CF;&#x8303;&#x56F4;&#xFF0C; <code>return()</code> &#x4E2D;&#x65B0;&#x589E; <code>PROPOGATE</code> &#x9009;&#x9879;</li>
+<li>&#x6DFB;&#x52A0;&#x4E86; <code>BSD</code> &#x548C; <code>LINUX</code> &#x53D8;&#x91CF;</li>
+<li><code>find_*</code> &#x65B0;&#x589E; <code>VALIDATOR</code> &#x9009;&#x9879;&#x3002;</li>
+<li>&#x65B0;&#x589E;&#x7684; <code>SYSTEM</code> &#x76EE;&#x6807;/&#x76EE;&#x5F55;&#x5C5E;&#x6027;&#x548C; <code>EXPORT_NO_SYSTEM</code>&#xFF0C;&#x540C;&#x6837;&#x7528;&#x4E8E; FetchContent &#x3002;</li>
+</ul>
+<h2 id="cmake&#x5F00;&#x53D1;&#x4E2D;&#xFF1A;wipwork-in-process"><a href="https://cmake.org/cmake/help/git-master/release/index.html" target="_blank">CMake&#x5F00;&#x53D1;&#x4E2D;</a>&#xFF1A;WIP(Work In Process)</h2>
+<ul>
+<li>FindPython &#x53EF;&#x4EE5;&#x751F;&#x6210;&#x6B63;&#x786E;&#x7684; PyPy SOABI&#xFF08;&#x7EC8;&#x4E8E;&#xFF01;&#xFF09;</li>
 </ul>
 
                                 
@@ -1095,7 +1128,7 @@ support. Presets continue to be improved.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"What's new in CMake","level":"1.2.4","depth":2,"next":{"title":"基础知识简介","level":"1.3","depth":1,"path":"chapters/basics.md","ref":"chapters/basics.md","articles":[{"title":"变量与缓存","level":"1.3.1","depth":2,"path":"chapters/basics/variables.md","ref":"chapters/basics/variables.md","articles":[]},{"title":"用 CMake 进行编程","level":"1.3.2","depth":2,"path":"chapters/basics/functions.md","ref":"chapters/basics/functions.md","articles":[]},{"title":"与你的代码交互","level":"1.3.3","depth":2,"path":"chapters/basics/comms.md","ref":"chapters/basics/comms.md","articles":[]},{"title":"如何组织你的项目","level":"1.3.4","depth":2,"path":"chapters/basics/structure.md","ref":"chapters/basics/structure.md","articles":[]},{"title":"在 CMake 中运行其他程序","level":"1.3.5","depth":2,"path":"chapters/basics/programs.md","ref":"chapters/basics/programs.md","articles":[]},{"title":"一个简单的例子","level":"1.3.6","depth":2,"path":"chapters/basics/example.md","ref":"chapters/basics/example.md","articles":[]}]},"previous":{"title":"CMake 行为准则","level":"1.2.3","depth":2,"path":"chapters/intro/dodonot.md","ref":"chapters/intro/dodonot.md","articles":[]},"dir":"ltr"},"config":{"plugins":["replace","hints","term","include-codeblock","ace","github-edit"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"ace":{},"statistics":{"google_id":"G-0YEXF2MC7Y"},"search":{},"term":{"copyButtons":true,"fade":true,"lineStyles":true,"prompt":"(?<prompt>[^\\$^#^:]*)(?<pathsep>:?)(?<path>[^\\$^#]*?)(?<delimiter>[\\$#] )(?<command>.*)$","style":"default"},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"github-edit":{"repo":"Modern-CMake-CN/Modern-CMake-zh_CN","branch":"master"},"replace":{"substitutes":[{"pattern":"«cmake:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/manual/cmake-$1.7.html)"},{"pattern":"«command:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/command/$1.html)"},{"pattern":"«envvar:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/envvar/$1.html)"},{"pattern":"«module:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/module/$1.html)"},{"pattern":"«policy:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/policy/$1.html)"},{"pattern":"«variable:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest//$1.html)"},{"pattern":"«prop:([^:]+):`?([^`^»]+)`?»","flags":"g","substitute":"[`$2`](https://cmake.org/cmake/help/latest/prop_$1/$2.html)"}]},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Henry Schreiner","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Modern CMake","language":"zh-hans","links":{"sidebar":{"GitHub Repo":"https://github.com/Modern-CMake-CN/Modern-CMake-zh_CN"}},"gitbook":"3.x.x","description":"A guide to writing simple, powerful, and clean CMake 3.1+ builds."},"file":{"path":"chapters/intro/newcmake.md","mtime":"2022-10-17T03:21:53.020Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-10-17T03:22:45.276Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"What's new in CMake","level":"1.2.4","depth":2,"next":{"title":"基础知识简介","level":"1.3","depth":1,"path":"chapters/basics.md","ref":"chapters/basics.md","articles":[{"title":"变量与缓存","level":"1.3.1","depth":2,"path":"chapters/basics/variables.md","ref":"chapters/basics/variables.md","articles":[]},{"title":"用 CMake 进行编程","level":"1.3.2","depth":2,"path":"chapters/basics/functions.md","ref":"chapters/basics/functions.md","articles":[]},{"title":"与你的代码交互","level":"1.3.3","depth":2,"path":"chapters/basics/comms.md","ref":"chapters/basics/comms.md","articles":[]},{"title":"如何组织你的项目","level":"1.3.4","depth":2,"path":"chapters/basics/structure.md","ref":"chapters/basics/structure.md","articles":[]},{"title":"在 CMake 中运行其他程序","level":"1.3.5","depth":2,"path":"chapters/basics/programs.md","ref":"chapters/basics/programs.md","articles":[]},{"title":"一个简单的例子","level":"1.3.6","depth":2,"path":"chapters/basics/example.md","ref":"chapters/basics/example.md","articles":[]}]},"previous":{"title":"CMake 行为准则","level":"1.2.3","depth":2,"path":"chapters/intro/dodonot.md","ref":"chapters/intro/dodonot.md","articles":[]},"dir":"ltr"},"config":{"plugins":["replace","hints","term","include-codeblock","ace","github-edit"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"ace":{},"statistics":{"google_id":"G-0YEXF2MC7Y"},"search":{},"term":{"copyButtons":true,"fade":true,"lineStyles":true,"prompt":"(?<prompt>[^\\$^#^:]*)(?<pathsep>:?)(?<path>[^\\$^#]*?)(?<delimiter>[\\$#] )(?<command>.*)$","style":"default"},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"github-edit":{"repo":"Modern-CMake-CN/Modern-CMake-zh_CN","branch":"master"},"replace":{"substitutes":[{"pattern":"«cmake:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/manual/cmake-$1.7.html)"},{"pattern":"«command:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/command/$1.html)"},{"pattern":"«envvar:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/envvar/$1.html)"},{"pattern":"«module:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/module/$1.html)"},{"pattern":"«policy:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/policy/$1.html)"},{"pattern":"«variable:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest//$1.html)"},{"pattern":"«prop:([^:]+):`?([^`^»]+)`?»","flags":"g","substitute":"[`$2`](https://cmake.org/cmake/help/latest/prop_$1/$2.html)"}]},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Henry Schreiner","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Modern CMake","language":"zh-hans","links":{"sidebar":{"GitHub Repo":"https://github.com/Modern-CMake-CN/Modern-CMake-zh_CN"}},"gitbook":"3.x.x","description":"A guide to writing simple, powerful, and clean CMake 3.1+ builds."},"file":{"path":"chapters/intro/newcmake.md","mtime":"2023-01-03T08:01:09.414Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-01-03T08:02:03.694Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
