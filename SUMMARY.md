@@ -30,7 +30,7 @@
     * [Installing](chapters/install/installing.md)
     * [Exporting](chapters/install/exporting.md)
     * [Packaging](chapters/install/packaging.md)
-* [Looking for Libraries (Packages)](chapters/packages.md)
+* [查找库（或包）](chapters/packages.md)
     * [CUDA](chapters/packages/CUDA.md)
     * [OpenMP](chapters/packages/OpenMP.md)
     * [Boost](chapters/packages/Boost.md)
