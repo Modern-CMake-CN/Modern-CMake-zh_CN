@@ -1,4 +1,4 @@
-# Boost library
+# Boost 库
 
 The Boost library is included in the find packages that CMake provides, but it has a couple of oddities in how it works. See [FindBoost] for a full description; this will just give a quick overview and provide a recipe. Be sure to check the page for the minimum required version of CMake you are using and see what options you have.
 

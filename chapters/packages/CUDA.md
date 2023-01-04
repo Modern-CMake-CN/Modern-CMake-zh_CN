@@ -77,9 +77,9 @@ CMake 3.18 中，设置目标架构变得非常容易。若 CMake 的版本范�
 "$<$<BUILD_INTERFACE:$<COMPILE_LANGUAGE:CXX>>:-fopenmp>$<$<BUILD_INTERFACE:$<COMPILE_LANGUAGE:CUDA>>:-Xcompiler=-fopenmp>"
 ```
 
-然而，若使用`find_package`，使用目标和继承的现代 CMake 方法，一切都会崩溃。别问我为什么这么熟练，这是我吃了不少苦头换来的。
+然而，不管是使用传统 CMake 的 `find_package` 方法，还是使用现代 CMake 的目标和继承方法，都不管用。这是我吃了不少苦头总结出来的。
 
-现在，有一个合理的解决方案，*只要知道未别名的目标名称*。这是一个函数，若使用CUDA编译器，将通过包装编译选项（标志）来修复仅处理 C++ 的目标：
+目前，有一个合理的解决方案，*只要知道未别名的目标名称*即可。这是一个函数，若使用CUDA编译器，将通过包装编译选项（标志）来修复仅处理 C++ 的目标：
 
 ```cmake
 function(CUDA_CONVERT_FLAGS EXISTING_TARGET)
