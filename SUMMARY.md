@@ -36,9 +36,9 @@
     * [Boost](chapters/packages/Boost.md)
     * [MPI](chapters/packages/MPI.md)
     * [ROOT](chapters/packages/ROOT.md)
-        * [UseFile Example](examples/root-usefile/README.md)
-        * [Simple Example](examples/root-simple/README.md)
-        * [Dictionary Example](examples/root-dict/README.md)
+        * [使用文件的用例](examples/root-usefile/README.md)
+        * [简单用例](examples/root-simple/README.md)
+        * [字典用例](examples/root-dict/README.md)
     * [Minuit2](chapters/packages/Minuit2.md)
 
 

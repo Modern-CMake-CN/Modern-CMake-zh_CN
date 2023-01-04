@@ -1,6 +1,6 @@
 # MPI
 
-添加 MPI 的方式类似于 OpenMP，所以最好使用CMake 3.9+。
+添加 MPI 的方式类似于 OpenMP，所以最好使用 CMake 3.9+ 。
 
 ```cmake
 find_package(MPI REQUIRED)
@@ -8,7 +8,7 @@ message(STATUS "Run: ${MPIEXEC} ${MPIEXEC_NUMPROC_FLAG} ${MPIEXEC_MAX_NUMPROCS} 
 target_link_libraries(MyTarget PUBLIC MPI::MPI_CXX)
 ```
 
-若需要支持旧版CMake，可以使用 3.1+ 版本来模仿上面的方式：
+若需要支持旧版 CMake，可以使用 3.1+ 版本来模仿上面的方式：
 
 
 ```cmake

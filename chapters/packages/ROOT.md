@@ -1,28 +1,28 @@
 
 # ROOT
 
-ROOT is a C++ Toolkit for High Energy Physics. It is huge. There are really a lot of ways to use it in CMake, though many/most of the examples you'll find are probably wrong. Here's my recommendation.
+[ROOT](https://root.cern/) 是用于高能物理学的 C++ 工具包，里面东西超级多。CMake 确实有很多使用它的方法，不过其中许多/大多数的例子可能是错误的。这里，说一下我推荐的方式。
 
-Most importantly, there are *lots of improvements* in CMake support in more recent versions of ROOT - Using 6.16+ is much, much easier! If you really must support 6.14 or earlier, see the section at the end. There were further improvements in 6.20, as well, it behaves much more like a proper CMake project, and exports C++ standard features for targets, etc.
+最新版本的 ROOT，对 CMake 的支持*改进了很多* —— 使用 6.16+ 就变得很容易！若需要支持 6.14 或更早版本，可以继续往下阅读。6.20 版中有进一步的改进，更像一个合适的CMake项目，具有为目标导出 C++ 标准特性等功能。
 
-## Finding ROOT
+## 查找 ROOT
 
-ROOT 6.10+ supports config file discovery, so you can just do:
+ROOT 6.10+ 支持配置文件查找的方式，所以可以这样做：
 
 [import:'find_package', lang:'cmake'](../../examples/root-simple/CMakeLists.txt)
 
-to attempt to find ROOT. If you don't have your paths set up, you can pass `-DROOT_DIR=$ROOTSYS/cmake` to find ROOT. (But, really, you should source `thisroot.sh`).
+尝试找到 ROOT 包。若没有设置 ROOT 的路径，可以将 `-DROOT_DIR=$ROOTSYS/cmake` 传递给 CMake，从而找到ROOT。(实际上，应该使用`source thisroot.sh`的方式）
 
 
-## The right way (Targets)
+## 正确的方式（使用目标）
 
-ROOT 6.12 and earlier do not add the include directory for imported targets. ROOT 6.14+ has corrected this error, and required target properties have been getting better. This method is rapidly becoming easier to use (see the example at the end of this page for the older ROOT details).
+ROOT 6.12 及更早版本，没有为导入的目标添加包含目录。ROOT 6.14+ 已经修正了这个错误，所需的目标属性已经变得更好用了。这种方法使得 ROOT 变得越来越容易使用（有关旧版 ROOT 的内容，请参阅本节页末尾的示例）。
 
-To link, just pick the libraries you want to use:
+链接时，只需选择想要使用的库：
 
 [import:'add_and_link', lang:'cmake'](../../examples/root-simple/CMakeLists.txt)
 
-If you'd like to see the default list, run `root-config --libs` on the command line. In Homebrew ROOT 6.18 this would be:
+若想查看默认列表，可以在命令行上运行 `root-config --libs`。若已使用 Homebrew 安装了 ROOT 6.18，那么就会显示如下信息：
 
 * `ROOT::Core`
 * `ROOT::Gpad`
@@ -44,27 +44,28 @@ If you'd like to see the default list, run `root-config --libs` on the command l
 * `ROOT::TreePlayer`
 * `ROOT::Tree`
 
-## The old global way
+## 旧的全局方式
 
-ROOT [provides a utility](https://root.cern.ch/how/integrate-root-my-project-cmake) to set up a ROOT project, which you can activate using `include("${ROOT_USE_FILE}")`. This will automatically make ugly directory level and global variables for you. It will save you a little time setting up, and will waste massive amounts of time later if you try to do anything tricky. As long as you aren't making a library, it's probably fine for simple scripts. Includes and flags are set globally, but you'll still need to link to `${ROOT_LIBRARIES}` yourself, along with possibly `ROOT_EXE_LINKER_FLAGS` (You will have to `separate_arguments` first before linking or you will get an error if there are multiple flags, like on macOS). Also, before 6.16, you have to manually fix a bug in the spacing.
+ROOT 提供了一个配置 ROOT 项目的[工具](https://root.cern.ch/how/integrate-root-my-project-cmake)，可以使用 `include("${ROOT_USE_FILE}")` 激活它。这将自动创建不美观的目录群和全局变量。这个工具的确可以节省一些配置时间，但若想在修改过程来解决一些棘手的问题，则需要花费大量的时间。若不需要创建库，那么直接使用脚本也无所谓。这里，包含目录和编译连接标志使用的是全局设置，但仍然需要为目标手动链接 `${ROOT_LIBRARIES}`，可能还需要 `ROOT_EXE_LINKER_FLAGS`（使用 macOS 操作系统时，必须在链接之前使用`separate_arguments`，若有多个标志，就会报错）。另外，在 6.16 之前，必须手动修复一个空格错误。
 
-Here's what it would look like:
+就像下面这样：
 
 [import:'core', lang:'cmake'](../../examples/root-usefile/CMakeLists.txt)
 
-## Components
+## 组件
 
-Find ROOT allows you to specify components. It will add anything you list to `${ROOT_LIBRARIES}`, so you might want to build your own target using that to avoid listing the components twice. This did not solve dependencies; it was an error to list `RooFit` but not `RooFitCore`. If you link to `ROOT::RooFit` instead of `${ROOT_LIBRARIES}`, then `RooFitCore` is not required.
+CMake 查找 ROOT 时，允许指定相应的组件。CMake 会将列出的内容添加到 `${ROOT_LIBRARIES}`，因此若想使用相应的组件来构建自己的目标，使用这种方式可以避免多次引用。不过，这并没有解决依赖关系的问题；只使用 `RooFit` 而没有 `RooFitCore` 也是错误的。若链接的是 `ROOT::RooFit`，而不是`${ROOT_LIBRARIES}`，则`RooFitCore` 就无需链接。
 
-## Dictionary generation
+## 生成字典
 
-Dictionary generation is ROOT's way of working around the missing reflection feature in C++. It allows ROOT to learn the details of your class so it can save it, show methods in the Cling interpreter, etc. Your source code will need the following modifications to support dictionary generation:
-* Your class definition should end with `ClassDef(MyClassName, 1)`
-* Your class implementation should have `ClassImp(MyClassName)` in it
+生成字典是 ROOT 解决 C++ 中缺少反射特性的一种方式。需要 ROOT 了解自定义类的细节，这样 ROOT 就可以保存它，并且可以在 Cling 解释器中显示相应的方法，等等。源代码需要进行如下修改来支持生成字典：
 
-ROOT provides `rootcling` and `genreflex` (a legacy interface to `rootcling`) binaries which produce the source files required to build the dictionary. It also defines `root_generate_dictionary`, a CMake function to invoke `rootcling` during the build process. 
+* 类定义应该以 `ClassDef(MyClassName, 1)` 结束
+* 类实现中应该有 `ClassImp(MyClassName)`
 
-To load this function, first include the ROOT macros:  
+ROOT 提供了  `rootpersist` 和 `genreflex`（`rootcling` 的遗留接口）二进制文件，这些二进制文件可生成构建字典所需的源文件，还定义了一个CMake函数`root_generate_dictionary`，其在构建过程中会使用 `rootling` 。
+
+要加载函数，首先要包含 ROOT 的宏：
 ```cmake
 include("${ROOT_DIR}/modules/RootNewMacros.cmake")
 # For ROOT versions than 6.16, things break 
@@ -74,34 +75,34 @@ if (${ROOT_VERSION} VERSION_LESS "6.16")
 endif()
 ```
 
-The `if(...)` condition is added to fix a bug in the NewMacros file that causes dictionary generation to fail if there is not at least one global include directory or a `inc` folder. Here I'm including a non-existent directory just to make it work. There is no `ROOT_NONEXISTENT_DIRECTORY_HACK` directory.
+为了修复`RootNewMacros.cmake`文件中的错误，这里需要`if(…)`。若没有全局包含目录或`inc`文件夹，该错误会导致字典生成失败。这里我包含了一个不存在的目录，只是为了让字典能够顺利生成，`ROOT_NONEXISTENT_DIRECTORY_HACK`目录其实并不存在。
 
-`rootcling` uses a special header file with a [specific formula][linkdef-root] to determine which parts to generate dictionaries for. The name of this file may have any prefix, but **must** end with `LinkDef.h`. Once you have written this header file, the dictionary generation function can be invoked.
+`rootcling` 使用带有 [特定公式][linkdef-root] 的特殊头文件来确定为哪部分用于生成字典。文件名可以有前缀，但**必须**以`LinkDef.h`结尾。编写完成了这个头文件，就可以调用字典中生成的函数了。
 
-### Manually building the dictionary
-Sometimes, you might want to ask ROOT to generate the dictionary, and then add the source file to your library target yourself. You can call the `root_generate_dictionary` with the name of the dictionary, e.g. `G__Example`, any required header files, and finally the special `LinkDef.h` file, listed after `LINKDEF`:
+### 手动生成字典
+有时，可能想让 ROOT 生成字典，然后自己将源文件添加到库目标中。可以用字典名来调用 `root_generate_dictionary` 函数（例如：`G__Example`），任何需要的头文件（以`LINKDEF.h`结尾的头文件）可在`LINKDEF`后列出：
 
 ```cmake
 root_generate_dictionary(G__Example Example.h LINKDEF ExampleLinkDef.h)
 ```
 
-This command will create three files:
-* `${NAME}.cxx`: This file should be included in your sources when you make your library.
-* `lib{NAME}.rootmap` (`G__` prefix removed): The rootmap file in plain text
-* `lib{NAME}_rdict.pcm` (`G__` prefix removed): A [ROOT pre-compiled module file][]
-The name (`${NAME}`) of the targetthat you must create is determined by the dictionary name; if the dictionary name starts with `G__`, it will be removed. Otherwise, the name is used directly.
+该命令将创建三个文件:
+* `${NAME}.cxx`：创建库时，这个文件应该包含在源代码中。
+* `lib{NAME}.rootmap`（移除 `G__` 前缀）：纯文本的rootmap文件
+* `lib{NAME}_rdict.pcm`（移除`G__` 前缀）：[ROOT 预编译的模块文件][ROOT pre-compiled module file]
+目标名（`${NAME}`）由字典名决定；若字典名以`G__`为前缀，会将前缀删除。否则，直接使用目标名。
 
-The final two output files must sit next to the library output. This is done by checking `CMAKE_LIBRARY_OUTPUT_DIRECTORY` (it will not pick up local target settings). If you have a libdir set but you don't have (global) install locations set, you'll also need to set `ARG_NOINSTALL` to `TRUE`.
+最后两个输出文件在生成库后产生。可以通过 `CMAKE_LIBRARY_OUTPUT_DIRECTORY` 进行检查（不会获取本地目标的设置信息）。设置了libdir，但没有设置（全局）安装位置时，还需要将 `ARG_NOINSTALL` 设置为 `TRUE`。
 
-### Building the dictionary with an existing target
-Instead of manually adding the generated to your library sources, you can ask ROOT to do this for you by passing a `MODULE` argument. This argument should specify the name of an existing build target:
+### 使用现有目标构建字典
+可以通过`MODULE`参数，要求 ROOT 为执行相应的操作，而不是手动将生成的内容添加到库源代码中。此参数应该指定构建目标名：
 
 ```cmake
 add_library(Example)
 root_generate_dictionary(G__Example Example.h MODULE Example LINKDEF ExampleLinkDef.h)
 ```
 
-The full name of the dictionary (e.g. `G__Example`) should not be identical to the `MODULE` argument. 
+字典全名（例如：`G__Example`）不应该与 `MODULE` 参数相同。
 
 
 [linkdef-root]: https://root.cern.ch/selecting-dictionary-entries-linkdefh
@@ -109,9 +110,9 @@ The full name of the dictionary (e.g. `G__Example`) should not be identical to t
 
 ---
 
-# Using Old ROOT
+# 使用旧版 ROOT
 
-If you really have to use older ROOT, you'll need something like this:
+若有必要使用旧版 ROOT，就需要像这样编写 CMake 脚本：
 
 ```cmake
 # ROOT targets are missing includes and flags in ROOT 6.10 and 6.12

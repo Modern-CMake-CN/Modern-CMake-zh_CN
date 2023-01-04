@@ -1,6 +1,6 @@
 # OpenMP
 
-CMake 3.9+ 中对 [OpenMP] 的支持有了极大的改善。现代(TM)使用OpenMP的方法是，直接将其添加到目标：
+CMake 3.9+ 中对 [OpenMP] 的支持进行了极大的改善。现代（TM）CMake 使用 OpenMP 的方法，可以直接将其添加到目标中：
 
 
 ```cmake
@@ -10,7 +10,7 @@ if(OpenMP_CXX_FOUND)
 endif()
 ```
 
-这不仅比传统方法简单，而且需要的话，还可以将库链接与编译的设置分开。CMake 3.12+ 中，甚至支持了 macOS 系统中的 OpenMP（若想使库可用，可以进行安装，例如`brew install libomp`）。若需要支持旧的CMake，下面的代码可以在 CMake 3.1+ 上正常运行：
+这不仅比传统方法简单，若需要的话，还可以将库链接与编译的设置分开。CMake 3.12+ 中，甚至支持了 macOS 系统中的 OpenMP（需要对库文件进行安装，例如 `brew install libomp`）。若需要支持旧版CMake，下面的代码可以在 CMake 3.1+ 上正常运行：
 
 
 ```cmake

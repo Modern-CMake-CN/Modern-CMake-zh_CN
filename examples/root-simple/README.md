@@ -1,6 +1,6 @@
-# A Simple ROOT Project
+# 简单的 ROOT 工程
 
-This is a minimal example of a ROOT project using the target system and without a dictionary.
+这是使用目标系统，但不使用字典的最小 ROOT 项目示例。
 
 #### examples/root-simple/CMakeLists.txt
 [import:'main', lang:'cmake'](CMakeLists.txt)
@@ -8,3 +8,4 @@ This is a minimal example of a ROOT project using the target system and without 
 #### examples/root-simple/SimpleExample.cxx
 
 [import](SimpleExample.cxx)
+
