@@ -1,6 +1,6 @@
-# Packaging
+# 打包
 
-There are two ways to instruct CMake to build your package; one is to use a CPackConfig.cmake file, and the other is to integrate the CPack variables into your CMakeLists.txt file. Since you want variables from your main build to be included, like version number, you'll want to make a configure file if you go that route. I'll show you the integrated version:
+CMake有两种打包方式：一是使用`CPackConfig.cmake`文件；二是将 CPack 变量放置在 CMakeLists.txt 文件中。若想要包含主构建的相关变量（比如：版本号），可以使用配置文件的方式。这里，我将展示第二种方式：
 
 ```cmake
 # Packaging support
@@ -13,9 +13,9 @@ set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/LICENCE")
 set(CPACK_RESOURCE_FILE_README "${CMAKE_CURRENT_SOURCE_DIR}/README.md")
 ```
 
-These are the most common variables you'll need to make a binary package. A binary package uses the install mechanism of CMake, so anything that is installed will be present.
+这些是生成工件包时最常见的变量。工件包使用CMake的安装机制，已经安装的东西都会显示出来。
 
-You can also make a source package. You should set `CMAKE_SOURCE_IGNORE_FILES` to regular expressions that ensure you don't pick up any extra files (like the build directory or git details); otherwise `make package_source` will bundle up literally everything in the source directory. You can also set the source generator to make your favorite types of files for source packages:
+当然，还可以制作源码包。可以将相应的正则表达式添加到 `CMAKE_SOURCE_IGNORE_FILES` 中，以确保只打包期望的文件（排除构建目录或git信息）；否则，`package_source` 会将源目录中的所有内容打包在一起。这里，也可以根据自己的喜欢的文件类型，对源码包生成器进行设置：
 
 ```cmake
 set(CPACK_SOURCE_GENERATOR "TGZ;ZIP")
@@ -27,9 +27,9 @@ set(CPACK_SOURCE_IGNORE_FILES
 )
 ```
 
-Note that this will not work on Windows, but the generated source packages work on Windows.
+注意，这种方式无法在Windows系统中正常运行，但是生成的源码包可以在Windows系统中正常使用。
 
-Finally, you need to include the CPack module:
+最后，需要包含一下CPack模块:
 
 ```cmake
 include(CPack)
