@@ -552,7 +552,7 @@
                 <a href="../packages.html">
             
                     
-                    Looking for Libraries (Packages)
+                    查找库（或包）
             
                 </a>
             
@@ -632,7 +632,7 @@
                 <a href="../../examples/root-usefile/">
             
                     
-                    UseFile Example
+                    使用文件系统的用例
             
                 </a>
             
@@ -645,7 +645,7 @@
                 <a href="../../examples/root-simple/">
             
                     
-                    Simple Example
+                    使用目标系统的用例
             
                 </a>
             
@@ -658,7 +658,7 @@
                 <a href="../../examples/root-dict/">
             
                     
-                    Dictionary Example
+                    使用生成字典的用例
             
                 </a>
             
@@ -735,9 +735,9 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="minuit2">Minuit2</h1>
-<p>Minuit2 is available in standalone mode, for use in cases where ROOT is either not available or not built with Minuit2 enabled. This will cover recommended usages, as well as some aspects of the design.</p>
-<h2 id="usage">Usage</h2>
-<p>Minuit2 can be used in any of the standard CMake ways, either from the ROOT source or from a standalone source distribution:</p>
+<p>Minuit2 &#x5728;&#x72EC;&#x7ACB;&#x6A21;&#x5F0F;&#x4E0B;&#x53EF;&#x7528;&#xFF0C;&#x7528;&#x4E8E; ROOT &#x4E0D;&#x53EF;&#x7528;&#x6216;&#x672A;&#x542F;&#x7528; Minuit2 &#x6784;&#x5EFA;&#x7684;&#x60C5;&#x51B5;&#x3002;&#x672C;&#x8282;&#x4F1A;&#x4ECB;&#x7ECD;&#x63A8;&#x8350;&#x7684;&#x7528;&#x6CD5;&#xFF0C;&#x4EE5;&#x53CA;&#x8BA8;&#x8BBA;&#x4E00;&#x4E0B;&#x96C6;&#x6210;&#x8BBE;&#x8BA1;&#x65B9;&#x9762;&#x7684;&#x4E8B;&#x5B9C;&#x3002;</p>
+<h2 id="&#x7528;&#x6CD5;">&#x7528;&#x6CD5;</h2>
+<p>&#x65E0;&#x8BBA;&#x662F;&#x4F7F;&#x7528; ROOT &#x6E90;&#x7801;&#xFF0C;&#x8FD8;&#x662F;&#x4F7F;&#x7528;&#x5355;&#x72EC;&#x53D1;&#x884C;&#x7684;&#x6E90;&#x7801;&#x5305;&#xFF0C;Minuit2 &#x90FD;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; CMake &#x7684;&#x6807;&#x51C6;&#x7528;&#x6CD5;&#xFF1A;</p>
 <pre><code class="lang-cmake"><span class="hljs-comment"># Check for Minuit2 in ROOT if you want</span>
 <span class="hljs-comment"># and then link to ROOT::Minuit2 instead</span>
 
@@ -747,10 +747,10 @@
 
 <span class="hljs-keyword">target_link_libraries</span>(MyProgram PRIVATE Minuit2::Minuit2)
 </code></pre>
-<h2 id="development">Development</h2>
-<p>Minuit2 is a good example of potential solutions to the problem of integrating a modern (CMake 3.1+) build into an existing framework.</p>
-<p>To handle the two different CMake systems, the main <code>CMakeLists.txt</code> defines common options, then calls a <code>Standalone.cmake</code> file if this is not building as part of ROOT.</p>
-<p>The hardest part in the ROOT case is that Minuit2 requires files that are outside the <code>math/minuit2</code> directory. This was solved by adding a <code>copy_standalone.cmake</code> file with a function that takes a filename list and then either returns a list of filenames inplace in the original source, or copies files into the local source and returns a list of the new locations, or returns just the list of new locations if the original source does not exist (standalone).</p>
+<h2 id="&#x5F00;&#x53D1;">&#x5F00;&#x53D1;</h2>
+<p>Minuit2 &#x662F;&#x5C06;&#x73B0;&#x4EE3; CMake&#xFF08;CMake 3.1+&#xFF09;&#x6784;&#x5EFA;&#xFF0C;&#x96C6;&#x6210;&#x5230;&#x73B0;&#x6709;&#x6846;&#x67B6;&#x7684;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x3002;&#x540C;&#x65F6;&#xFF0C;&#x4E5F;&#x662F;&#x4E00;&#x4E2A;&#x5F88;&#x597D;&#x7684;&#x4F8B;&#x5B50;&#x3002;</p>
+<p>&#x8981;&#x5904;&#x7406;&#x4E24;&#x4E2A;&#x4E0D;&#x540C;&#x7684; CMake &#x7CFB;&#x7EDF;&#xFF0C;&#x4E3B; <code>CMakeLists.txt</code> &#x5B9A;&#x4E49;&#x4E00;&#x4E9B;&#x516C;&#x5171;&#x9009;&#x9879;&#xFF0C;&#x7136;&#x540E;&#x4F7F;&#x7528; <code>Standalone.cmake</code> &#xFF08;&#x4E0D;&#x4F5C;&#x4E3A; ROOT &#x7684;&#x4E00;&#x90E8;&#x5206;&#x6784;&#x5EFA;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF09;&#x3002;</p>
+<p>ROOT &#x6848;&#x4F8B;&#x4E2D;&#x6700;&#x56F0;&#x96BE;&#x7684;&#x90E8;&#x5206;&#x662F;&#xFF0C;Minuit2 &#x9700;&#x8981; <code>math/minuit2</code> &#x76EE;&#x5F55;&#x4E4B;&#x5916;&#x7684;&#x6587;&#x4EF6;&#x3002;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x901A;&#x8FC7;&#x4F7F;&#x7528;<code>copy_standalone.cmake</code> &#x89E3;&#x51B3;&#x4E86;&#x3002;&#x6587;&#x4EF6;&#x4E2D;&#x4F7F;&#x7528;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x8BE5;&#x51FD;&#x6570;&#x63A5;&#x53D7;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x540D;&#x5217;&#x8868;&#xFF0C;&#x7136;&#x540E;&#x8FD4;&#x56DE;&#x539F;&#x59CB;&#x6E90;&#x4E2D;&#x7684;&#x6587;&#x4EF6;&#x540D;&#x5217;&#x8868;&#xFF1B;&#x6216;&#x8005;&#x5C06;&#x6587;&#x4EF6;&#x590D;&#x5236;&#x5230;&#x672C;&#x5730;&#x6E90;&#x4E2D;&#xFF0C;&#x5E76;&#x8FD4;&#x56DE;&#x65B0;&#x4F4D;&#x7F6E;&#x7684;&#x5217;&#x8868;&#xFF1B;&#x4EA6;&#x6216;&#x8005;&#xFF0C;&#x82E5;&#x539F;&#x59CB;&#x6E90;&#x4E0D;&#x5B58;&#x5728;&#xFF08;&#x72EC;&#x7ACB;&#x6A21;&#x5F0F;&#xFF09;&#xFF0C;&#x5219;&#x53EA;&#x8FD4;&#x56DE;&#x65B0;&#x4F4D;&#x7F6E;&#x7684;&#x5217;&#x8868;&#x3002;</p>
 <pre><code class="lang-bash"><span class="hljs-comment"># Copies files into source directory</span>
 cmake /root/math/minuit2 -Dminuit2-standalone=ON
 
@@ -760,8 +760,8 @@ make package_source
 <span class="hljs-comment"># Optional, clean the source directory</span>
 make purge
 </code></pre>
-<p>This is only intended for developers wanting to produce source packages - a normal user <em>does not pass this option</em> and will not create source copies.</p>
-<p>You can use <code>make install</code> or <code>make package</code> (binary packages) without adding this <code>standalone</code> option, either from inside the ROOT source or from a standalone package.</p>
+<p>&#x4F46;&#x8FD9;&#x4EC5;&#x9002;&#x7528;&#x4E8E;&#x4F7F;&#x7528;&#x6E90;&#x7801;&#x5305;&#x7684;&#x5F00;&#x53D1;&#x4EBA;&#x5458; &#x2014;&#x2014; &#x666E;&#x901A;&#x7528;&#x6237;<em>&#x4E0D;&#x4F1A;&#x9009;&#x62E9;&#x8BE5;&#x9009;&#x9879;</em>&#xFF0C;&#x4E5F;&#x4E0D;&#x4F1A;&#x521B;&#x5EFA;&#x6E90;&#x7801;&#x7684;&#x526F;&#x672C;&#x3002;</p>
+<p>&#x4F7F;&#x7528; ROOT &#x6E90;&#x7801;&#xFF0C;&#x8FD8;&#x662F;&#x4F7F;&#x7528;&#x5355;&#x72EC;&#x53D1;&#x884C;&#x7684;&#x6E90;&#x7801;&#x5305;&#xFF0C;&#x90FD;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<code>make install</code> &#x6216; <code>make package</code> &#xFF08;&#x751F;&#x6210;&#x4E8C;&#x8FDB;&#x5236;&#x5305;&#xFF09;&#xFF0C;&#x800C;&#x65E0;&#x9700;&#x6DFB;&#x52A0; <code>standalone</code> &#x9009;&#x9879;&#x3002;</p>
 
                                 
                                 </section>
@@ -789,7 +789,7 @@ make purge
 
             
                 
-                <a href="../../examples/root-dict/" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Dictionary Example">
+                <a href="../../examples/root-dict/" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 使用生成字典的用例">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -801,7 +801,7 @@ make purge
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Minuit2","level":"1.8.6","depth":2,"previous":{"title":"Dictionary Example","level":"1.8.5.3","depth":3,"path":"examples/root-dict/README.md","ref":"examples/root-dict/README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["replace","hints","term","include-codeblock","ace","github-edit"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"ace":{},"statistics":{"google_id":"G-0YEXF2MC7Y"},"search":{},"term":{"copyButtons":true,"fade":true,"lineStyles":true,"prompt":"(?<prompt>[^\\$^#^:]*)(?<pathsep>:?)(?<path>[^\\$^#]*?)(?<delimiter>[\\$#] )(?<command>.*)$","style":"default"},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"github-edit":{"repo":"Modern-CMake-CN/Modern-CMake-zh_CN","branch":"master"},"replace":{"substitutes":[{"pattern":"«cmake:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/manual/cmake-$1.7.html)"},{"pattern":"«command:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/command/$1.html)"},{"pattern":"«envvar:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/envvar/$1.html)"},{"pattern":"«module:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/module/$1.html)"},{"pattern":"«policy:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/policy/$1.html)"},{"pattern":"«variable:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest//$1.html)"},{"pattern":"«prop:([^:]+):`?([^`^»]+)`?»","flags":"g","substitute":"[`$2`](https://cmake.org/cmake/help/latest/prop_$1/$2.html)"}]},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Henry Schreiner","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Modern CMake","language":"zh-hans","links":{"sidebar":{"GitHub Repo":"https://github.com/Modern-CMake-CN/Modern-CMake-zh_CN"}},"gitbook":"3.x.x","description":"A guide to writing simple, powerful, and clean CMake 3.1+ builds."},"file":{"path":"chapters/packages/Minuit2.md","mtime":"2023-01-03T16:05:11.036Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-01-03T16:06:06.546Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Minuit2","level":"1.8.6","depth":2,"previous":{"title":"使用生成字典的用例","level":"1.8.5.3","depth":3,"path":"examples/root-dict/README.md","ref":"examples/root-dict/README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["replace","hints","term","include-codeblock","ace","github-edit"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"ace":{},"statistics":{"google_id":"G-0YEXF2MC7Y"},"search":{},"term":{"copyButtons":true,"fade":true,"lineStyles":true,"prompt":"(?<prompt>[^\\$^#^:]*)(?<pathsep>:?)(?<path>[^\\$^#]*?)(?<delimiter>[\\$#] )(?<command>.*)$","style":"default"},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"github-edit":{"repo":"Modern-CMake-CN/Modern-CMake-zh_CN","branch":"master"},"replace":{"substitutes":[{"pattern":"«cmake:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/manual/cmake-$1.7.html)"},{"pattern":"«command:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/command/$1.html)"},{"pattern":"«envvar:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/envvar/$1.html)"},{"pattern":"«module:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/module/$1.html)"},{"pattern":"«policy:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/policy/$1.html)"},{"pattern":"«variable:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest//$1.html)"},{"pattern":"«prop:([^:]+):`?([^`^»]+)`?»","flags":"g","substitute":"[`$2`](https://cmake.org/cmake/help/latest/prop_$1/$2.html)"}]},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Henry Schreiner","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Modern CMake","language":"zh-hans","links":{"sidebar":{"GitHub Repo":"https://github.com/Modern-CMake-CN/Modern-CMake-zh_CN"}},"gitbook":"3.x.x","description":"A guide to writing simple, powerful, and clean CMake 3.1+ builds."},"file":{"path":"chapters/packages/Minuit2.md","mtime":"2023-01-05T07:00:16.991Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-01-05T07:00:57.731Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

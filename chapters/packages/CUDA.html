@@ -554,7 +554,7 @@
                 <a href="../packages.html">
             
                     
-                    Looking for Libraries (Packages)
+                    查找库（或包）
             
                 </a>
             
@@ -634,7 +634,7 @@
                 <a href="../../examples/root-usefile/">
             
                     
-                    UseFile Example
+                    使用文件系统的用例
             
                 </a>
             
@@ -647,7 +647,7 @@
                 <a href="../../examples/root-simple/">
             
                     
-                    Simple Example
+                    使用目标系统的用例
             
                 </a>
             
@@ -660,7 +660,7 @@
                 <a href="../../examples/root-dict/">
             
                     
-                    Dictionary Example
+                    使用生成字典的用例
             
                 </a>
             
@@ -737,52 +737,51 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="cuda">CUDA</h1>
-<p>CUDA support is available in two flavors. The new method, introduced in CMake 3.8 (3.9 for Windows), should be strongly preferred over the old, hacky method - I only mention the old method due to the high chances of an old package somewhere having it. Unlike the older languages, CUDA support has been rapidly evolving, and building CUDA is hard, so I would recommend you <em>require a very recent version</em> of CMake! CMake 3.17 and 3.18 have a lot of improvements directly targeting CUDA.</p>
-<p>A good resource for CUDA and Modern CMake is <a href="http://on-demand.gputechconf.com/gtc/2017/presentation/S7438-robert-maynard-build-systems-combining-cuda-and-machine-learning.pdf" target="_blank">this talk</a> by CMake developer Robert Maynard at GTC 2017.</p>
-<h2 id="adding-the-cuda-language">Adding the CUDA Language</h2>
-<p>There are two ways to enable CUDA support. If CUDA is not optional:</p>
+<p>&#x4F7F;&#x7528; CUDA &#x6709;&#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#xFF1A;CMake 3.8&#xFF08;Windows&#x4E3A;3.9&#xFF09;&#x4E2D;&#x5F15;&#x5165;&#x7684;&#x65B0;&#x65B9;&#x6CD5;&#xFF0C;&#x5E94;&#x8BE5;&#x6BD4;&#x65E7;&#x7684;&#x65B9;&#x6CD5;&#x66F4;&#x53D7;&#x6B22;&#x8FCE; &#x2014;&#x2014; &#x53EF;&#x80FD;&#x4F1A;&#x5728;&#x65E7;&#x5305;&#x4E2D;&#x4F7F;&#x7528;&#x8FD9;&#x79CD;&#x65B9;&#x6CD5;&#xFF0C;&#x6240;&#x4EE5;&#x672C;&#x8282;&#x4F1A;&#x63D0;&#x4E00;&#x4E0B;&#x3002;&#x4E0E;&#x65E7;&#x8BED;&#x8A00;&#x4E0D;&#x540C;&#xFF0C;CUDA &#x7684;&#x652F;&#x6301;&#x4E00;&#x76F4;&#x5728;&#x5FEB;&#x901F;&#x53D1;&#x5C55;&#xFF0C;&#x56E0;&#x4E3A;&#x6784;&#x5EFA; CUDA &#x975E;&#x5E38;&#x56F0;&#x96BE;&#xFF0C;&#x6240;&#x4EE5;&#x5EFA;&#x8BAE;<em>&#x4F7F;&#x7528;&#x6700;&#x65B0;&#x7248;&#x672C;</em>&#x7684;CMake&#xFF01;CMake 3.17 &#x548C; 3.18 &#x6709;&#x5F88;&#x591A;&#x76F4;&#x63A5;&#x9488;&#x5BF9; CUDA &#x7684;&#x6539;&#x8FDB;&#x3002;</p>
+<p>&#x5BF9;&#x4E8E; CUDA &#x548C;&#x73B0;&#x4EE3; CMake &#x6765;&#x8BF4;&#xFF0C;&#x4E00;&#x4E2A;&#x5F88;&#x597D;&#x7684;&#x53C2;&#x8003;&#x662F;CMake&#x5F00;&#x53D1;&#x8005; Robert Maynard &#x5728; GTC 2017 &#x7684; <a href="http://on-demand.gputechconf.com/gtc/2017/presentation/S7438-robert-maynard-build-systems-combining-cuda-and-machine-learning.pdf" target="_blank">&#x6F14;&#x8BB2;ppt</a>&#x3002;</p>
+<h2 id="&#x542F;&#x7528;-cuda-&#x8BED;&#x8A00;">&#x542F;&#x7528; CUDA &#x8BED;&#x8A00;</h2>
+<p>&#x6709;&#x4E24;&#x79CD;&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x542F;&#x7528;CUDA&#xFF08;&#x82E5;CUDA&#x7684;&#x652F;&#x6301;&#x4E0D;&#x53EF;&#x9009;&#xFF09;&#xFF1A;</p>
 <pre><code class="lang-cmake"><span class="hljs-keyword">project</span>(MY_PROJECT LANGUAGES CUDA CXX)
 </code></pre>
-<p>You&apos;ll probably want <code>CXX</code> listed here also. And, if CUDA is optional, you&apos;ll
-want to put this in somewhere conditionally:</p>
+<p>&#x8FD9;&#x91CC;&#x53EF;&#x80FD;&#x9700;&#x8981;&#x5728;&#x5C06; <code>CXX</code> &#x4E00;&#x5E76;&#x5217;&#x51FA;&#x3002;</p>
+<p>&#x82E5; CUDA &#x7684;&#x652F;&#x6301;&#x53EF;&#x9009;&#xFF0C;&#x53EF;&#x4EE5;&#x5C06;&#x5176;&#x653E;&#x5728;&#x6761;&#x4EF6;&#x8BED;&#x53E5;&#x4E2D;&#xFF1A;</p>
 <pre><code class="lang-cmake"><span class="hljs-keyword">enable_language</span>(CUDA)
 </code></pre>
-<p>To check to see if CUDA is available, use CheckLanuage:</p>
+<p>&#x8981;&#x68C0;&#x67E5; CUDA &#x662F;&#x5426;&#x53EF;&#x7528;&#xFF0C;&#x53EF;&#x4F7F;&#x7528; CheckLanuage&#xFF1A;</p>
 <pre><code class="lang-cmake"><span class="hljs-keyword">include</span>(CheckLanguage)
 check_language(CUDA)
 </code></pre>
-<p>You can see if CUDA is present by checking <code>CMAKE_CUDA_COMPILER</code> (was missing
-until CMake 3.11).</p>
-<p>You can check variables like <code>CMAKE_CUDA_COMPILER_ID</code> (for nvcc, this is
-<code>&quot;NVIDIA&quot;</code>, Clang was added in CMake 3.18).  You can check the version with
-<code>CMAKE_CUDA_COMPILER_VERSION</code>.</p>
-<h2 id="variables-for-cuda">Variables for CUDA</h2>
-<p>Many variables with <code>CXX</code> in the name have a CUDA version with <code>CUDA</code> instead.
-For example, to set the C++ standard required for CUDA,</p>
-<pre><code>if(NOT DEFINED CMAKE_CUDA_STANDARD)
-    set(CMAKE_CUDA_STANDARD 11)
-    set(CMAKE_CUDA_STANDARD_REQUIRED ON)
-endif()
-</code></pre><p>If you are looking for CUDA&apos;s standard level, in CMake 3.17 a new collection of
-compiler features were added, like <code>cuda_std_11</code>. These have the same benefits that
-you are already used to from the <code>cxx</code> versions.</p>
-<h3 id="adding-a-library--executable">Adding a library / executable</h3>
-<p>This is the easy part; as long as you use <code>.cu</code> for CUDA files, you can just add libraries <em>exactly like you normally would</em>.</p>
-<p>You can also use separable compilation:</p>
+<p>&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x68C0;&#x67E5; <code>CMAKE_CUDA_COMPILER</code>&#xFF08;CMake 3.11 &#x4E4B;&#x524D;&#x6CA1;&#x6709;&#xFF09;&#x6765;&#x67E5;&#x770B; CUDA &#x5F00;&#x53D1;&#x5305;&#x662F;&#x5426;&#x5B58;&#x5728;&#x3002;</p>
+<p>&#x53EF;&#x4EE5;&#x68C0;&#x67E5;  <code>CMAKE_CUDA_COMPILER_ID</code>&#xFF08;&#x5BF9;&#x4E8E;nvcc&#xFF0C;&#x5176;&#x503C;&#x4E3A; <code>&quot;NVIDIA&quot;</code>&#xFF0C;Clang &#x5C06;&#x5728; CMake 3.18 &#x652F;&#x6301;&#xFF09;&#x3002;&#x53EF;&#x4EE5;&#x7528; <code>CMAKE_CUDA_COMPILER_VERSION</code> &#x68C0;&#x67E5;CUDA&#x7248;&#x672C;&#x3002;</p>
+<h2 id="cuda-&#x7684;&#x53D8;&#x91CF;">CUDA &#x7684;&#x53D8;&#x91CF;</h2>
+<p>CMake &#x4E2D;&#x8BB8;&#x591A;&#x540D;&#x79F0;&#x4E2D;&#x5E26;&#x6709; <code>CXX</code> &#x7684;&#x53D8;&#x91CF;&#x90FD;&#x6709; <code>CUDA</code> &#x7248;&#x672C;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x8981;&#x8BBE;&#x7F6E; CUDA &#x6240;&#x9700;&#x7684; C++ &#x6807;&#x51C6;&#xFF0C;</p>
+<pre><code class="lang-cmake"><span class="hljs-keyword">if</span>(NOT DEFINED CMAKE_CUDA_STANDARD)
+    <span class="hljs-keyword">set</span>(CMAKE_CUDA_STANDARD <span class="hljs-number">11</span>)
+    <span class="hljs-keyword">set</span>(CMAKE_CUDA_STANDARD_REQUIRED <span class="hljs-keyword">ON</span>)
+<span class="hljs-keyword">endif</span>()
+</code></pre>
+<p>&#x82E5;&#x6B63;&#x5728;&#x67E5;&#x627E;&#x548C;&#x8BBE;&#x7F6E;CUDA&#x7684;&#x6807;&#x51C6;&#x7EA7;&#x522B;&#xFF0C;CMake 3.17 &#x4E2D;&#x6DFB;&#x52A0;&#x4E86;&#x4E00;&#x7EC4;&#x65B0;&#x7684;&#x7F16;&#x8BD1;&#x5668;&#x7279;&#x6027;&#xFF0C;&#x6BD4;&#x5982;&#xFF1A;<code>cuda_std_11</code>&#x3002;&#x8FD9;&#x4E9B;&#x7248;&#x672C;&#x7279;&#x6027;&#x4E0E; <code>cxx</code> &#x7684;&#x7248;&#x672C;&#x7279;&#x6027;&#x4F7F;&#x7528;&#x65B9;&#x5F0F;&#x76F8;&#x540C;&#x3002;</p>
+<h3 id="&#x6DFB;&#x52A0;&#x5E93;&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;">&#x6DFB;&#x52A0;&#x5E93;/&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;</h3>
+<p>&#x8FD9;&#x90E8;&#x5206;&#x5F88;&#x7B80;&#x5355;&#xFF1B;&#x4F7F;&#x7528;CUDA&#x6587;&#x4EF6; <code>.cu</code>&#xFF0C;<em>&#x5C31;&#x50CF;&#x5E73;&#x5E38;&#x6DFB;&#x52A0;&#x5E93;&#x4E00;&#x6837;</em>&#x3002;</p>
+<p>&#x4E5F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x5206;&#x79BB;&#x7F16;&#x8BD1;&#x7684;&#x65B9;&#x5F0F;&#xFF1A;</p>
 <pre><code class="lang-cmake"><span class="hljs-keyword">set_target_properties</span>(mylib PROPERTIES
                             CUDA_SEPARABLE_COMPILATION <span class="hljs-keyword">ON</span>)
 </code></pre>
-<p>You can also directly make a PTX file with the <code>CUDA_PTX_COMPILATION</code> property.</p>
-<h3 id="targeting-architectures">Targeting architectures</h3>
-<p>When you build CUDA code, you generally should be targeting an architecture. If you don&apos;t, you compile &apos;ptx&apos;, which provide the basic instructions but is compiled at runtime, making it potentially much slower to load.</p>
-<p>All cards have an architecture level, like &quot;7.2&quot;. You have two choices; the first is the code level; this will report to the code being compiled a version, like &quot;5.0&quot;, and it will take advantage of all the features up to 5.0 but not past (assuming well written code / standard libraries). Then there&apos;s a target architecture, which must be equal or greater to the code architecture. This needs to have the same major number as your target card, and be equal to or less than the target card. So 7.0 would be a common choice for our 7.2 card. Finally, you can also generate PTX; this will work on all future cards, but will compile just in time.</p>
-<p>In CMake 3.18, it became very easy to target architectures. If you have a version range that includes 3.18 or newer, you will be using <code>CMAKE_CUDA_ARCHITECTURES</code> variable and the <code>CUDA_ARCHITECTURES</code> property on targets. You can list values (without the <code>.</code>), like 50 for arch 5.0. If set to OFF, it will not pass architectures.</p>
-<h3 id="working-with-targets">Working with targets</h3>
-<p>Using targets should work similarly to CXX, but there&apos;s a problem. If you include a target that includes compiler options (flags), most of the time, the options will not be protected by the correct includes (and the chances of them having the correct CUDA wrapper is even smaller). Here&apos;s what a correct compiler options line should look like:</p>
+<p>&#x4E5F;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4F7F;&#x7528; <code>CUDA_PTX_COMPILATION</code> &#x5C5E;&#x6027;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;PTX&#xFF08;Parallel Thread eXecution&#xFF09;&#x6587;&#x4EF6;&#x3002;</p>
+<h3 id="&#x76EE;&#x6807;&#x67B6;&#x6784;">&#x76EE;&#x6807;&#x67B6;&#x6784;</h3>
+<p>&#x6784;&#x5EFA;CUDA&#x4EE3;&#x7801;&#x65F6;&#xFF0C;&#x5E94;&#x8BE5;&#x4EE5;&#x67B6;&#x6784;&#x4E3A;&#x76EE;&#x6807;&#x3002;&#x82E5;&#x6CA1;&#x6709;&#x660E;&#x786E;&#x7684;&#x67B6;&#x6784;&#x4FE1;&#x606F;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x7F16;&#x8BD1;&#x6210; <code>ptx</code>&#xFF0C;nvcc &#x7F16;&#x8BD1;&#x5668;&#x4F1A;&#x63D0;&#x4F9B;&#x57FA;&#x672C;&#x7684;&#x6307;&#x4EE4;&#xFF0C;&#x6240;&#x4EE5; PTX &#x8FD8;&#x9700;&#x8981;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x8FDB;&#x884C;&#x7F16;&#x8BD1;&#xFF0C;&#x8FD9;&#x4F1A;&#x4F7F;GPU kernel&#x7684;&#x52A0;&#x8F7D;&#x901F;&#x5EA6;&#x6162;&#x5F97;&#x591A;&#x3002;</p>
+<p>&#x6240;&#x6709; NVIDA &#x663E;&#x5361;&#x90FD;&#x6709;&#x4E00;&#x4E2A;&#x67B6;&#x6784;&#x7EA7;&#x522B;&#xFF0C;&#x6BD4;&#x5982;&#xFF1A;7.2&#x3002;&#x5728;&#x5904;&#x7406;&#x67B6;&#x6784;&#x65F6;&#xFF0C;&#x6709;&#x4E24;&#x4E2A;&#x9009;&#x62E9;&#xFF1A;</p>
+<ul>
+<li>&#x4EE3;&#x7801;&#x5C42;&#xFF1A;&#x5C06;&#x5411;&#x6B63;&#x5728;&#x7F16;&#x8BD1;&#x7684;&#x4EE3;&#x7801;&#x9884;&#x62A5;&#x4E00;&#x4E2A;&#x7248;&#x672C;&#xFF08;&#x5982;&#xFF1A;5.0&#xFF09;&#xFF0C;&#x8FD9;&#x5C06;&#x4F7F;&#x7528; 5.0 &#x4E4B;&#x524D;&#x7684;&#x6240;&#x6709;&#x7279;&#x6027;&#xFF0C;&#x4F46;&#x4E0D;&#x4F1A;&#x8D85;&#x8FC7;5.0&#xFF08;&#x5047;&#x8BBE;&#x4EE3;&#x7801;/&#x6807;&#x51C6;&#x5E93;&#x7F16;&#x5199;&#x826F;&#x597D;&#xFF09;&#x3002;</li>
+<li>&#x76EE;&#x6807;&#x67B6;&#x6784;&#xFF1A;&#x5FC5;&#x987B;&#x7B49;&#x4E8E;&#x6216;&#x5927;&#x4E8E;&#x67B6;&#x6784;&#x7248;&#x672C;&#x3002;&#x8FD9;&#x9700;&#x8981;&#x6709;&#x4E0E;&#x76EE;&#x6807;&#x663E;&#x5361;&#x76F8;&#x540C;&#x7684;&#x4E3B;&#x7248;&#x672C;&#x53F7;&#xFF0C;&#x5E76;&#x4E14;&#x7B49;&#x4E8E;&#x6216;&#x5C0F;&#x4E8E;&#x76EE;&#x6807;&#x663E;&#x5361;&#x3002;&#x6240;&#x4EE5;&#x4F7F;&#x7528;&#x67B6;&#x6784;&#x4E3A; 7.2 &#x7684;&#x663E;&#x5361;&#x65F6;&#xFF0C;&#x5728;&#x7F16;&#x8BD1;&#x65F6;&#x5C06;&#x4EE3;&#x7801;&#x67B6;&#x6784;&#x7248;&#x672C;&#x8BBE;&#x7F6E;&#x4E3A; 7.0 &#x5C06;&#x662F;&#x9996;&#x9009;&#x3002;&#x6700;&#x540E;&#xFF0C;&#x8FD8;&#x53EF;&#x4EE5;&#x751F;&#x6210; PTX&#xFF1B;PTX &#x5C06;&#x5728;&#x67B6;&#x6784;&#x7248;&#x672C;&#x5927;&#x4E8E;&#x5F53;&#x524D;&#x67B6;&#x6784;&#x7684;&#x6240;&#x6709;&#x663E;&#x5361;&#x4E0A;&#x5DE5;&#x4F5C;&#xFF0C;&#x4E0D;&#x8FC7;&#x9700;&#x8981;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x518D;&#x5BF9; PTX &#x8FDB;&#x884C;&#x7F16;&#x8BD1;&#x3002;</li>
+</ul>
+<p>CMake 3.18 &#x4E2D;&#xFF0C;&#x8BBE;&#x7F6E;&#x76EE;&#x6807;&#x67B6;&#x6784;&#x53D8;&#x5F97;&#x975E;&#x5E38;&#x5BB9;&#x6613;&#x3002;&#x82E5; CMake &#x7684;&#x7248;&#x672C;&#x8303;&#x56F4;&#x4E3A; 3.18+&#xFF0C;&#x53EF;&#x4EE5;&#x5BF9;&#x76EE;&#x6807;&#x4F7F;&#x7528; <code>CMAKE_CUDA_ARCHITECTURES</code> &#x53D8;&#x91CF;&#x548C; <code>CUDA_ARCHITECTURES</code> &#x5C5E;&#x6027;&#x3002;&#x5141;&#x8BB8;&#x76F4;&#x63A5;&#x5199;&#x503C;&#xFF08;&#x4E0D;&#x5E26; <code>.</code>&#xFF09;&#xFF0C;&#x6BD4;&#x5982;&#xFF1A;&#x67B6;&#x6784; 5.0&#xFF0C;&#x53EF;&#x4EE5;&#x5C31;&#x5199;&#x4E3A; 50&#x3002;&#x82E5;&#x8BBE;&#x7F6E;&#x4E3A;OFF&#xFF0C;&#x5C06;&#x4E0D;&#x4F1A;&#x4F20;&#x9012;&#x4EFB;&#x4F55;&#x67B6;&#x6784;&#x4FE1;&#x606F;&#x3002;</p>
+<h3 id="&#x4F7F;&#x7528;&#x76EE;&#x6807;">&#x4F7F;&#x7528;&#x76EE;&#x6807;</h3>
+<p>&#x4F7F;&#x7528;&#x76EE;&#x6807;&#x4E0E; CXX &#x7C7B;&#x4F3C;&#xFF0C;&#x4F46;&#x6709;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#x3002;&#x82E5;&#x76EE;&#x6807;&#x5305;&#x542B;&#x7F16;&#x8BD1;&#x5668;&#x9009;&#x9879;&#xFF08;&#x6216;&#x6807;&#x5FD7;&#xFF09;&#xFF0C;&#x5927;&#x591A;&#x6570;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x8FD9;&#x4E9B;&#x9009;&#x9879;&#x5C06;&#x65E0;&#x6CD5;&#x6B63;&#x786E;&#x4F7F;&#x7528;&#xFF08;&#x5F88;&#x96BE;&#x6B63;&#x786E;&#x7684;&#x5C01;&#x88C5;&#x5728; CUDA &#x5305;&#x88C5;&#x5B8F;&#x6216;&#x51FD;&#x6570;&#x4E2D;&#xFF09;&#x3002;&#x6B63;&#x786E;&#x7684;&#x7F16;&#x8BD1;&#x5668;&#x9009;&#x9879;&#x8BBE;&#x7F6E;&#x5E94;&#x8BE5;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
 <pre><code class="lang-cmake"><span class="hljs-string">&quot;$&lt;$&lt;BUILD_INTERFACE:$&lt;COMPILE_LANGUAGE:CXX&gt;&gt;:-fopenmp&gt;$&lt;$&lt;BUILD_INTERFACE:$&lt;COMPILE_LANGUAGE:CUDA&gt;&gt;:-Xcompiler=-fopenmp&gt;&quot;</span>
 </code></pre>
-<p>However, if you using almost any find_package, and using the Modern CMake methods of targets and inheritance, everything will break. I&apos;ve learned that the hard way.</p>
-<p>For now, here&apos;s a pretty reasonable solution, <em>as long as you know the un-aliased target name</em>. It&apos;s a function that will fix a C++ only target by wrapping the flags if using a CUDA compiler:</p>
+<p>&#x7136;&#x800C;&#xFF0C;&#x4E0D;&#x7BA1;&#x662F;&#x4F7F;&#x7528;&#x4F20;&#x7EDF; CMake &#x7684; <code>find_package</code> &#x65B9;&#x6CD5;&#xFF0C;&#x8FD8;&#x662F;&#x4F7F;&#x7528;&#x73B0;&#x4EE3; CMake &#x7684;&#x76EE;&#x6807;&#x548C;&#x7EE7;&#x627F;&#x65B9;&#x6CD5;&#xFF0C;&#x90FD;&#x4E0D;&#x597D;&#x4F7F;&#x3002;&#x8FD9;&#x662F;&#x6211;&#x5403;&#x4E86;&#x4E0D;&#x5C11;&#x82E6;&#x5934;&#x603B;&#x7ED3;&#x51FA;&#x6765;&#x7684;&#x7ECF;&#x9A8C;&#x3002;</p>
+<p>&#x76EE;&#x524D;&#xFF0C;&#x6709;&#x4E00;&#x4E2A;&#x5408;&#x9002;&#x7684;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#xFF0C;<em>&#x53EA;&#x8981;&#x77E5;&#x9053;&#x672A;&#x522B;&#x540D;&#x7684;&#x76EE;&#x6807;&#x540D;&#x79F0;</em>&#x5373;&#x53EF;&#x3002;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x82E5;&#x4F7F;&#x7528;CUDA&#x7F16;&#x8BD1;&#x5668;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5305;&#x88C5;&#x7F16;&#x8BD1;&#x9009;&#x9879;&#xFF08;&#x6807;&#x5FD7;&#xFF09;&#x6765;&#x4FEE;&#x590D;&#x4EC5;&#x5904;&#x7406; C++ &#x7684;&#x76EE;&#x6807;&#xFF1A;</p>
 <pre><code class="lang-cmake"><span class="hljs-keyword">function</span>(CUDA_CONVERT_FLAGS EXISTING_TARGET)
     <span class="hljs-keyword">get_property</span>(old_flags TARGET <span class="hljs-variable">${EXISTING_TARGET}</span> PROPERTY INTERFACE_COMPILE_OPTIONS)
     <span class="hljs-keyword">if</span>(NOT <span class="hljs-string">&quot;${old_flags}&quot;</span> <span class="hljs-keyword">STREQUAL</span> <span class="hljs-string">&quot;&quot;</span>)
@@ -793,33 +792,30 @@ you are already used to from the <code>cxx</code> versions.</p>
     <span class="hljs-keyword">endif</span>()
 <span class="hljs-keyword">endfunction</span>()
 </code></pre>
-<h3 id="useful-variables">Useful variables</h3>
+<h3 id="&#x5185;&#x7F6E;&#x53D8;&#x91CF;">&#x5185;&#x7F6E;&#x53D8;&#x91CF;</h3>
 <ul>
-<li><code>CMAKE_CUDA_TOOLKIT_INCLUDE_DIRECTORIES</code>: Place for built-in Thrust, etc</li>
-<li><code>CMAKE_CUDA_COMPILER</code>: NVCC with location</li>
+<li><code>CMAKE_CUDA_TOOLKIT_INCLUDE_DIRECTORIES</code>&#xFF1A;&#x6307;&#x793A; CUDA &#x5F00;&#x53D1;&#x5305;&#x5185;&#x7F6E; Thrust &#x7B49;&#x5DE5;&#x5177;&#x7684;&#x76EE;&#x5F55;</li>
+<li><code>CMAKE_CUDA_COMPILER</code>&#xFF1A;NVCC &#x7684;&#x5177;&#x4F53;&#x8DEF;&#x5F84;</li>
 </ul>
-<p>You can use
-<a href="https://cmake.org/cmake/help/git-stage/module/FindCUDAToolkit.html" target="_blank"><code>FindCUDAToolkit</code></a>
-to find a variety of useful targets and variables even without enabling the
-CUDA language.</p>
+<p>&#x5373;&#x4F7F;&#x4E0D;&#x542F;&#x7528;CUDA&#x8BED;&#x8A00;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <a href="https://cmake.org/cmake/help/git-stage/module/FindCUDAToolkit.html" target="_blank"><code>FindCUDAToolkit</code></a>  &#x6765;&#x67E5;&#x627E; CUDA &#x7684;&#x5404;&#x79CD;&#x76EE;&#x6807;&#x548C;&#x53D8;&#x91CF;&#x3002;</p>
 <blockquote>
-<h3 id="note-that-findcuda-is-deprecated-but-for-for-versions-of-cmake--318-the-following-functions-required-findcuda">Note that FindCUDA is deprecated, but for for versions of CMake &lt; 3.18, the following functions required FindCUDA:</h3>
+<h3 id="&#x6CE8;&#x610F;&#xFF0C;findcuda-&#x5DF2;&#x5F03;&#x7528;&#xFF0C;&#x4F46;&#x5BF9;&#x4E8E;&#x4F4E;&#x4E8E;-318-&#x7684;-cmake&#xFF0C;&#x4EE5;&#x4E0B;&#x51FD;&#x6570;&#x9700;&#x8981;-findcuda&#xFF1A;">&#x6CE8;&#x610F;&#xFF0C;FindCUDA &#x5DF2;&#x5F03;&#x7528;&#xFF0C;&#x4F46;&#x5BF9;&#x4E8E;&#x4F4E;&#x4E8E; 3.18 &#x7684; CMake&#xFF0C;&#x4EE5;&#x4E0B;&#x51FD;&#x6570;&#x9700;&#x8981; FindCUDA&#xFF1A;</h3>
 <ul>
-<li>CUDA version checks / picking a version</li>
-<li>Architecture detection (Note: 3.12 fixes this partially)</li>
-<li>Linking to CUDA libraries from non-.cu files</li>
+<li>CUDA &#x7248;&#x672C;&#x68C0;&#x67E5;/&#x9009;&#x62E9;&#x7248;&#x672C;</li>
+<li>&#x67B6;&#x6784;&#x68C0;&#x6D4B;&#xFF08;&#x6CE8;&#x610F;&#xFF1A;3.12 &#x90E8;&#x5206;&#x4FEE;&#x590D;&#x4E86;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#xFF09;</li>
+<li>&#x4E3A; CUDA &#x5E93;&#x8FDE;&#x63A5;&#x975E; <code>.cu</code> &#x6587;&#x4EF6;</li>
 </ul>
 </blockquote>
-<h2 id="classic-findcuda-warning-do-not-use-for-reference-only">Classic FindCUDA [WARNING: DO NOT USE] (for reference only)</h2>
-<p>If you want to support an older version of CMake, I recommend at least including the FindCUDA from CMake version 3.9 in your cmake folder (see the CLIUtils github organization for a <a href="https://github.com/CLIUtils/cuda_support" target="_blank">git repository</a>). You&apos;ll want two features that were added: <code>CUDA_LINK_LIBRARIES_KEYWORD</code> and <code>cuda_select_nvcc_arch_flags</code>, along with the newer architectures and CUDA versions.</p>
-<p>To use the old CUDA support, you use <code>find_package</code>:</p>
+<h2 id="findcuda-&#x8B66;&#x544A;&#xFF1A;&#x4E0D;&#x8981;&#x4F7F;&#x7528;-&#x4EC5;&#x4F9B;&#x53C2;&#x8003;">FindCUDA [&#x8B66;&#x544A;&#xFF1A;&#x4E0D;&#x8981;&#x4F7F;&#x7528;] (&#x4EC5;&#x4F9B;&#x53C2;&#x8003;)</h2>
+<p>&#x82E5;&#x8981;&#x652F;&#x6301;&#x65E7;&#x7248; CMake&#xFF0C;&#x5EFA;&#x8BAE;&#x81F3;&#x5C11;&#x5728; CMake &#x6587;&#x4EF6;&#x5939;&#x4E2D;&#x5305;&#x542B;&#x6765;&#x81EA; CMake 3.9 &#x7248;&#x672C;&#x7684; FindCUDA&#xFF08;&#x53C2;&#x89C1; CLIUtils github &#x7EC4;&#x7EC7;&#x4E2D;&#x7684; <a href="https://github.com/CLIUtils/cuda_support" target="_blank">git&#x5E93;</a>&#xFF09;&#x3002;&#x9700;&#x8981;&#x6DFB;&#x52A0;&#x4E24;&#x4E2A;&#x7279;&#x6027;&#xFF1A;<code>CUDA_LINK_LIBRARIES_KEYWORD</code> &#x548C;<code>cuda_select_nvcc_arch_flags</code>&#xFF0C;&#x4EE5;&#x53CA;&#x8F83;&#x65B0;&#x7684;&#x67B6;&#x6784;&#x548C; CUDA &#x7248;&#x672C;&#x3002;</p>
+<p>&#x8981;&#x4F7F;&#x7528;&#x65E7;&#x7248; CUDA &#x652F;&#x6301;&#x65B9;&#x5F0F;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <code>find_package</code>&#xFF1A;</p>
 <pre><code class="lang-cmake"><span class="hljs-keyword">find_package</span>(CUDA <span class="hljs-number">7.0</span> REQUIRED)
 <span class="hljs-keyword">message</span>(STATUS <span class="hljs-string">&quot;Found CUDA ${CUDA_VERSION_STRING} at ${CUDA_TOOLKIT_ROOT_DIR}&quot;</span>)
 </code></pre>
-<p>You can control the CUDA flags with <code>CUDA_NVCC_FLAGS</code> (list append) and you can control separable compilation with <code>CUDA_SEPARABLE_COMPILATION</code>. You&apos;ll also want to make sure CUDA plays nice and adds keywords to the targets (CMake 3.9+):</p>
+<p>&#x53EF;&#x4EE5;&#x7528; <code>CUDA_NVCC_FLAGS</code>&#xFF08;&#x4F7F;&#x7528;&#x5217;&#x8868;&#x6DFB;&#x52A0;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;<code>list(APPEND)</code>&#xFF09;&#x63A7;&#x5236; CUDA &#x6807;&#x5FD7;&#xFF0C;&#x901A;&#x8FC7; <code>CUDA_SEPARABLE_COMPILATION</code> &#x63A7;&#x5236;&#x5206;&#x79BB;&#x7F16;&#x8BD1;&#x3002;&#x82E5;&#x60F3;&#x786E;&#x4FDD; CUDA &#x7684;&#x6B63;&#x5E38;&#x5DE5;&#x4F5C;&#xFF0C;&#x9700;&#x8981;&#x5C06;&#x5173;&#x952E;&#x5B57;&#x6DFB;&#x52A0;&#x5230;&#x76EE;&#x6807;&#x4E2D;&#xFF08;CMake 3.9+&#xFF09;&#xFF1A;</p>
 <pre><code class="lang-cmake"><span class="hljs-keyword">set</span>(CUDA_LINK_LIBRARIES_KEYWORD PUBLIC)
 </code></pre>
-<p>You&apos;ll also might want to allow a user to check for the arch flags of their current hardware:</p>
+<p>&#x82E5;&#x60F3;&#x8BA9;&#x7528;&#x6237;&#x68C0;&#x67E5;&#x5F53;&#x524D;&#x786C;&#x4EF6;&#x7684;&#x67B6;&#x6784;&#x6807;&#x5FD7;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4EE5;&#x4E0B;&#x65B9;&#x5F0F;&#xFF1A;</p>
 <pre><code class="lang-cmake">cuda_select_nvcc_arch_flags(ARCH_FLAGS) <span class="hljs-comment"># optional argument for arch to add</span>
 </code></pre>
 
@@ -849,7 +845,7 @@ CUDA language.</p>
 
             
                 
-                <a href="../packages.html" class="navigation navigation-prev " aria-label="Previous page: Looking for Libraries (Packages)">
+                <a href="../packages.html" class="navigation navigation-prev " aria-label="Previous page: 查找库（或包）">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -865,7 +861,7 @@ CUDA language.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"CUDA","level":"1.8.1","depth":2,"next":{"title":"OpenMP","level":"1.8.2","depth":2,"path":"chapters/packages/OpenMP.md","ref":"chapters/packages/OpenMP.md","articles":[]},"previous":{"title":"Looking for Libraries (Packages)","level":"1.8","depth":1,"path":"chapters/packages.md","ref":"chapters/packages.md","articles":[{"title":"CUDA","level":"1.8.1","depth":2,"path":"chapters/packages/CUDA.md","ref":"chapters/packages/CUDA.md","articles":[]},{"title":"OpenMP","level":"1.8.2","depth":2,"path":"chapters/packages/OpenMP.md","ref":"chapters/packages/OpenMP.md","articles":[]},{"title":"Boost","level":"1.8.3","depth":2,"path":"chapters/packages/Boost.md","ref":"chapters/packages/Boost.md","articles":[]},{"title":"MPI","level":"1.8.4","depth":2,"path":"chapters/packages/MPI.md","ref":"chapters/packages/MPI.md","articles":[]},{"title":"ROOT","level":"1.8.5","depth":2,"path":"chapters/packages/ROOT.md","ref":"chapters/packages/ROOT.md","articles":[{"title":"UseFile Example","level":"1.8.5.1","depth":3,"path":"examples/root-usefile/README.md","ref":"examples/root-usefile/README.md","articles":[]},{"title":"Simple Example","level":"1.8.5.2","depth":3,"path":"examples/root-simple/README.md","ref":"examples/root-simple/README.md","articles":[]},{"title":"Dictionary Example","level":"1.8.5.3","depth":3,"path":"examples/root-dict/README.md","ref":"examples/root-dict/README.md","articles":[]}]},{"title":"Minuit2","level":"1.8.6","depth":2,"path":"chapters/packages/Minuit2.md","ref":"chapters/packages/Minuit2.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["replace","hints","term","include-codeblock","ace","github-edit"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"ace":{},"statistics":{"google_id":"G-0YEXF2MC7Y"},"search":{},"term":{"copyButtons":true,"fade":true,"lineStyles":true,"prompt":"(?<prompt>[^\\$^#^:]*)(?<pathsep>:?)(?<path>[^\\$^#]*?)(?<delimiter>[\\$#] )(?<command>.*)$","style":"default"},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"github-edit":{"repo":"Modern-CMake-CN/Modern-CMake-zh_CN","branch":"master"},"replace":{"substitutes":[{"pattern":"«cmake:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/manual/cmake-$1.7.html)"},{"pattern":"«command:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/command/$1.html)"},{"pattern":"«envvar:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/envvar/$1.html)"},{"pattern":"«module:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/module/$1.html)"},{"pattern":"«policy:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/policy/$1.html)"},{"pattern":"«variable:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest//$1.html)"},{"pattern":"«prop:([^:]+):`?([^`^»]+)`?»","flags":"g","substitute":"[`$2`](https://cmake.org/cmake/help/latest/prop_$1/$2.html)"}]},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Henry Schreiner","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Modern CMake","language":"zh-hans","links":{"sidebar":{"GitHub Repo":"https://github.com/Modern-CMake-CN/Modern-CMake-zh_CN"}},"gitbook":"3.x.x","description":"A guide to writing simple, powerful, and clean CMake 3.1+ builds."},"file":{"path":"chapters/packages/CUDA.md","mtime":"2023-01-03T16:05:11.036Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-01-03T16:06:06.546Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"CUDA","level":"1.8.1","depth":2,"next":{"title":"OpenMP","level":"1.8.2","depth":2,"path":"chapters/packages/OpenMP.md","ref":"chapters/packages/OpenMP.md","articles":[]},"previous":{"title":"查找库（或包）","level":"1.8","depth":1,"path":"chapters/packages.md","ref":"chapters/packages.md","articles":[{"title":"CUDA","level":"1.8.1","depth":2,"path":"chapters/packages/CUDA.md","ref":"chapters/packages/CUDA.md","articles":[]},{"title":"OpenMP","level":"1.8.2","depth":2,"path":"chapters/packages/OpenMP.md","ref":"chapters/packages/OpenMP.md","articles":[]},{"title":"Boost","level":"1.8.3","depth":2,"path":"chapters/packages/Boost.md","ref":"chapters/packages/Boost.md","articles":[]},{"title":"MPI","level":"1.8.4","depth":2,"path":"chapters/packages/MPI.md","ref":"chapters/packages/MPI.md","articles":[]},{"title":"ROOT","level":"1.8.5","depth":2,"path":"chapters/packages/ROOT.md","ref":"chapters/packages/ROOT.md","articles":[{"title":"使用文件系统的用例","level":"1.8.5.1","depth":3,"path":"examples/root-usefile/README.md","ref":"examples/root-usefile/README.md","articles":[]},{"title":"使用目标系统的用例","level":"1.8.5.2","depth":3,"path":"examples/root-simple/README.md","ref":"examples/root-simple/README.md","articles":[]},{"title":"使用生成字典的用例","level":"1.8.5.3","depth":3,"path":"examples/root-dict/README.md","ref":"examples/root-dict/README.md","articles":[]}]},{"title":"Minuit2","level":"1.8.6","depth":2,"path":"chapters/packages/Minuit2.md","ref":"chapters/packages/Minuit2.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["replace","hints","term","include-codeblock","ace","github-edit"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"ace":{},"statistics":{"google_id":"G-0YEXF2MC7Y"},"search":{},"term":{"copyButtons":true,"fade":true,"lineStyles":true,"prompt":"(?<prompt>[^\\$^#^:]*)(?<pathsep>:?)(?<path>[^\\$^#]*?)(?<delimiter>[\\$#] )(?<command>.*)$","style":"default"},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"github-edit":{"repo":"Modern-CMake-CN/Modern-CMake-zh_CN","branch":"master"},"replace":{"substitutes":[{"pattern":"«cmake:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/manual/cmake-$1.7.html)"},{"pattern":"«command:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/command/$1.html)"},{"pattern":"«envvar:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/envvar/$1.html)"},{"pattern":"«module:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/module/$1.html)"},{"pattern":"«policy:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/policy/$1.html)"},{"pattern":"«variable:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest//$1.html)"},{"pattern":"«prop:([^:]+):`?([^`^»]+)`?»","flags":"g","substitute":"[`$2`](https://cmake.org/cmake/help/latest/prop_$1/$2.html)"}]},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Henry Schreiner","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Modern CMake","language":"zh-hans","links":{"sidebar":{"GitHub Repo":"https://github.com/Modern-CMake-CN/Modern-CMake-zh_CN"}},"gitbook":"3.x.x","description":"A guide to writing simple, powerful, and clean CMake 3.1+ builds."},"file":{"path":"chapters/packages/CUDA.md","mtime":"2023-01-05T07:00:16.991Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-01-05T07:00:57.731Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

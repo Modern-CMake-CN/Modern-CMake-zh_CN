@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Dictionary Example · Modern CMake</title>
+        <title>使用生成字典的用例 · Modern CMake</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -554,7 +554,7 @@
                 <a href="../../chapters/packages.html">
             
                     
-                    Looking for Libraries (Packages)
+                    查找库（或包）
             
                 </a>
             
@@ -634,7 +634,7 @@
                 <a href="../root-usefile/">
             
                     
-                    UseFile Example
+                    使用文件系统的用例
             
                 </a>
             
@@ -647,7 +647,7 @@
                 <a href="../root-simple/">
             
                     
-                    Simple Example
+                    使用目标系统的用例
             
                 </a>
             
@@ -660,7 +660,7 @@
                 <a href="./">
             
                     
-                    Dictionary Example
+                    使用生成字典的用例
             
                 </a>
             
@@ -721,7 +721,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >Dictionary Example</a>
+        <a href="../.." >使用生成字典的用例</a>
     </h1>
 </div>
 
@@ -736,10 +736,8 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="dictionary-example">Dictionary Example</h1>
-<p>This is an example of building a module that includes a dictionary in CMake. Instead of using the
-ROOT suggested flags, we will manually add threading via <code>find_package</code>, which is the only
-important flag in the list on most systems.</p>
+                                <h1 id="&#x5B57;&#x5178;&#x7528;&#x4F8B;">&#x5B57;&#x5178;&#x7528;&#x4F8B;</h1>
+<p>&#x8FD9;&#x662F;&#x5728; CMake &#x4E2D;&#x6784;&#x5EFA;&#x5305;&#x542B;&#x5B57;&#x5178;&#x6A21;&#x5757;&#x7684;&#x4F8B;&#x5B50;&#x3002;&#x901A;&#x8FC7; <code>find_package</code> &#x624B;&#x52A8;&#x6DFB;&#x52A0; ROOT&#xFF0C;&#x800C;&#x975E;&#x4F7F;&#x7528; ROOT &#x5EFA;&#x8BAE;&#x7684;&#x6807;&#x5FD7;&#x3002;&#x5728;&#x5927;&#x591A;&#x6570;&#x7CFB;&#x7EDF;&#x4E2D;&#xFF0C;CMake &#x6587;&#x4EF6;&#x4E2D;&#x552F;&#x4E00;&#x91CD;&#x8981;&#x7684;&#x6807;&#x5FD7;&#x3002;</p>
 <h4 id="examplesroot-dictcmakeliststxt">examples/root-dict/CMakeLists.txt</h4>
 <pre><code class="lang-cmake"><span class="hljs-keyword">cmake_minimum_required</span>(VERSION <span class="hljs-number">3.4</span>...<span class="hljs-number">3.21</span>)
 
@@ -767,8 +765,8 @@ target_include_directories(DictExample PUBLIC <span class="hljs-string">&quot;${
 <span class="hljs-comment"># target_link_libraries(DictExample PUBLIC ROOT::Core)</span>
 <span class="hljs-comment"># root_generate_dictionary(G__DictExample DictExample.h MODULE DictExample LINKDEF DictLinkDef.h)</span>
 </code></pre>
-<h2 id="supporting-files">Supporting files</h2>
-<p>This is just a simple-as-possible class definition, with one method:</p>
+<h2 id="&#x652F;&#x6301;&#x6587;&#x4EF6;">&#x652F;&#x6301;&#x6587;&#x4EF6;</h2>
+<p>&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x6781;&#x7B80;&#x7684;&#x7C7B;&#x5B9A;&#x4E49;&#xFF0C;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x6210;&#x5458;&#x51FD;&#x6570;&#xFF1A;</p>
 <h4 id="examplesroot-dictdictexamplecxx">examples/root-dict/DictExample.cxx</h4>
 <pre><code class="lang-c_cpp">#include &quot;DictExample.h&quot;
 
@@ -791,7 +789,7 @@ public:
     ClassDef(Simple,1)
 };
 </code></pre>
-<p>We need a <code>LinkDef.h</code>, as well.</p>
+<p>&#x8FD8;&#x9700;&#x8981;&#x4E00;&#x4E2A;  <code>LinkDef.h</code>&#x3002;</p>
 <h4 id="examplesroot-dictdictlinkdefh">examples/root-dict/DictLinkDef.h</h4>
 <pre><code class="lang-c_cpp">// See: https://root.cern.ch/selecting-dictionary-entries-linkdefh
 #ifdef __CINT__
@@ -805,8 +803,8 @@ public:
 
 #endif
 </code></pre>
-<h2 id="testing-it">Testing it</h2>
-<p>This is an example of a macro that tests the correct generation from the files listed above.</p>
+<h2 id="&#x8FDB;&#x884C;&#x6D4B;&#x8BD5;">&#x8FDB;&#x884C;&#x6D4B;&#x8BD5;</h2>
+<p>&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x5B8F;&#x793A;&#x4F8B;&#xFF0C;&#x7528;&#x4E8E;&#x6D4B;&#x8BD5;&#x4E0A;&#x9762;&#x6587;&#x4EF6;&#x751F;&#x6210;&#x7684;&#x7ED3;&#x679C;&#x662F;&#x5426;&#x6B63;&#x786E;&#x3002;</p>
 <h4 id="examplesroot-dictcheckloadc">examples/root-dict/CheckLoad.C</h4>
 <pre><code class="lang-c_cpp">{
 gSystem-&gt;Load(&quot;libDictExample&quot;);
@@ -847,7 +845,7 @@ _file-&gt;Close();
 
             
                 
-                <a href="../root-simple/" class="navigation navigation-prev " aria-label="Previous page: Simple Example">
+                <a href="../root-simple/" class="navigation navigation-prev " aria-label="Previous page: 使用目标系统的用例">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -863,7 +861,7 @@ _file-&gt;Close();
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Dictionary Example","level":"1.8.5.3","depth":3,"next":{"title":"Minuit2","level":"1.8.6","depth":2,"path":"chapters/packages/Minuit2.md","ref":"chapters/packages/Minuit2.md","articles":[]},"previous":{"title":"Simple Example","level":"1.8.5.2","depth":3,"path":"examples/root-simple/README.md","ref":"examples/root-simple/README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["replace","hints","term","include-codeblock","ace","github-edit"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"ace":{},"statistics":{"google_id":"G-0YEXF2MC7Y"},"search":{},"term":{"copyButtons":true,"fade":true,"lineStyles":true,"prompt":"(?<prompt>[^\\$^#^:]*)(?<pathsep>:?)(?<path>[^\\$^#]*?)(?<delimiter>[\\$#] )(?<command>.*)$","style":"default"},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"github-edit":{"repo":"Modern-CMake-CN/Modern-CMake-zh_CN","branch":"master"},"replace":{"substitutes":[{"pattern":"«cmake:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/manual/cmake-$1.7.html)"},{"pattern":"«command:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/command/$1.html)"},{"pattern":"«envvar:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/envvar/$1.html)"},{"pattern":"«module:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/module/$1.html)"},{"pattern":"«policy:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/policy/$1.html)"},{"pattern":"«variable:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest//$1.html)"},{"pattern":"«prop:([^:]+):`?([^`^»]+)`?»","flags":"g","substitute":"[`$2`](https://cmake.org/cmake/help/latest/prop_$1/$2.html)"}]},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Henry Schreiner","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Modern CMake","language":"zh-hans","links":{"sidebar":{"GitHub Repo":"https://github.com/Modern-CMake-CN/Modern-CMake-zh_CN"}},"gitbook":"3.x.x","description":"A guide to writing simple, powerful, and clean CMake 3.1+ builds."},"file":{"path":"examples/root-dict/README.md","mtime":"2023-01-03T16:05:11.040Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-01-03T16:06:06.546Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"使用生成字典的用例","level":"1.8.5.3","depth":3,"next":{"title":"Minuit2","level":"1.8.6","depth":2,"path":"chapters/packages/Minuit2.md","ref":"chapters/packages/Minuit2.md","articles":[]},"previous":{"title":"使用目标系统的用例","level":"1.8.5.2","depth":3,"path":"examples/root-simple/README.md","ref":"examples/root-simple/README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["replace","hints","term","include-codeblock","ace","github-edit"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"ace":{},"statistics":{"google_id":"G-0YEXF2MC7Y"},"search":{},"term":{"copyButtons":true,"fade":true,"lineStyles":true,"prompt":"(?<prompt>[^\\$^#^:]*)(?<pathsep>:?)(?<path>[^\\$^#]*?)(?<delimiter>[\\$#] )(?<command>.*)$","style":"default"},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"github-edit":{"repo":"Modern-CMake-CN/Modern-CMake-zh_CN","branch":"master"},"replace":{"substitutes":[{"pattern":"«cmake:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/manual/cmake-$1.7.html)"},{"pattern":"«command:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/command/$1.html)"},{"pattern":"«envvar:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/envvar/$1.html)"},{"pattern":"«module:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/module/$1.html)"},{"pattern":"«policy:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/policy/$1.html)"},{"pattern":"«variable:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest//$1.html)"},{"pattern":"«prop:([^:]+):`?([^`^»]+)`?»","flags":"g","substitute":"[`$2`](https://cmake.org/cmake/help/latest/prop_$1/$2.html)"}]},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Henry Schreiner","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Modern CMake","language":"zh-hans","links":{"sidebar":{"GitHub Repo":"https://github.com/Modern-CMake-CN/Modern-CMake-zh_CN"}},"gitbook":"3.x.x","description":"A guide to writing simple, powerful, and clean CMake 3.1+ builds."},"file":{"path":"examples/root-dict/README.md","mtime":"2023-01-05T07:00:16.991Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-01-05T07:00:57.731Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

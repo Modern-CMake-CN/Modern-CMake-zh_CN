@@ -554,7 +554,7 @@
                 <a href="../packages.html">
             
                     
-                    Looking for Libraries (Packages)
+                    查找库（或包）
             
                 </a>
             
@@ -634,7 +634,7 @@
                 <a href="../../examples/root-usefile/">
             
                     
-                    UseFile Example
+                    使用文件系统的用例
             
                 </a>
             
@@ -647,7 +647,7 @@
                 <a href="../../examples/root-simple/">
             
                     
-                    Simple Example
+                    使用目标系统的用例
             
                 </a>
             
@@ -660,7 +660,7 @@
                 <a href="../../examples/root-dict/">
             
                     
-                    Dictionary Example
+                    使用生成字典的用例
             
                 </a>
             
@@ -736,17 +736,16 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="boost-library">Boost library</h1>
-<p>The Boost library is included in the find packages that CMake provides, but it has a couple of oddities in how it works. See <a href="https://cmake.org/cmake/help/latest/module/FindBoost.html" target="_blank">FindBoost</a> for a full description; this will just give a quick overview and provide a recipe. Be sure to check the page for the minimum required version of CMake you are using and see what options you have.</p>
-<p>First, you can customize the behavior of the Boost libraries selected using a set of variables that you set before searching for Boost. There are a growing number of settings, but here are the three most common ones:</p>
+                                <h1 id="boost-&#x5E93;">Boost &#x5E93;</h1>
+<p>CMake &#x63D0;&#x4F9B; Boost &#x5E93;&#x7684;&#x67E5;&#x627E;&#x5305;&#xFF0C;&#x4F46;&#x5176;&#x5DE5;&#x4F5C;&#x65B9;&#x5F0F;&#x6709;&#x4E9B;&#x5947;&#x602A;&#x3002;<a href="https://cmake.org/cmake/help/latest/module/FindBoost.html" target="_blank">FindBoost</a> &#x4E2D;&#x53EF;&#x83B7;&#x5F97;&#x5B8C;&#x6574;&#x7684;&#x63CF;&#x8FF0;&#xFF1A;&#x8FD9;&#x53EA;&#x662F;&#x4E00;&#x4E2A;&#x6982;&#x8FF0;&#xFF0C;&#x5E76;&#x63D0;&#x4F9B;&#x4E00;&#x4E2A;&#x793A;&#x4F8B;&#x3002;&#x52A1;&#x5FC5;&#x67E5;&#x770B;&#x9875;&#x9762;&#x4E0A;&#x4F7F;&#x7528; CMake &#x7684;&#x6700;&#x4F4E;&#x7248;&#x672C;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x67E5;&#x770B;&#x6709;&#x54EA;&#x4E9B;&#x652F;&#x6301;&#x7684;&#x9009;&#x9879;&#x3002;</p>
+<p>&#x9996;&#x5148;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&#x641C;&#x7D22; Boost &#x4E4B;&#x524D;&#x8BBE;&#x7F6E;&#x7684;&#x4E00;&#x7EC4;&#x53D8;&#x91CF;&#xFF0C;&#x81EA;&#x5B9A;&#x4E49;&#x9009;&#x5B9A; Boost &#x5E93;&#x7684;&#x884C;&#x4E3A;&#x3002;&#x53EF;&#x8BBE;&#x7F6E;&#x7684;&#x53D8;&#x91CF;&#x968F;&#x7740; CMake &#x7684;&#x53D1;&#x5C55;&#x53D8;&#x5F97;&#x8D8A;&#x6765;&#x8D8A;&#x591A;&#xFF0C;&#x8FD9;&#x91CC;&#x4EC5;&#x8BBE;&#x7F6E;&#x4E09;&#x4E2A;&#x5E38;&#x89C1;&#x7684;&#x53D8;&#x91CF;&#xFF1A;</p>
 <pre><code class="lang-cmake"><span class="hljs-keyword">set</span>(Boost_USE_STATIC_LIBS <span class="hljs-keyword">OFF</span>)
 <span class="hljs-keyword">set</span>(Boost_USE_MULTITHREADED <span class="hljs-keyword">ON</span>)
 <span class="hljs-keyword">set</span>(Boost_USE_STATIC_RUNTIME <span class="hljs-keyword">OFF</span>)
 </code></pre>
-<p>In CMake 3.5, imported targets were added. These targets handle dependencies for you as well, so they are a very nice way to add Boost libraries. However, CMake has the dependency information baked into it for all known versions of Boost, so CMake must be newer than Boost for these to work. In a recent <a href="https://gitlab.kitware.com/cmake/cmake/merge_requests/1172" target="_blank">merge request</a>, CMake started assuming that the dependencies hold from the last version it knows about, and will use that (along with giving a warning). This
-functionality was backported into CMake 3.9.</p>
-<p>The import targets are in the <code>Boost::</code> namespace. <code>Boost::boost</code> is the header only part. The other compiled libraries are available, and include dependencies as needed.</p>
-<p>Here is an example for using the <code>Boost::filesystem</code> library:</p>
+<p>CMake 3.5 &#x6DFB;&#x52A0;&#x4E86;&#x5BFC;&#x5165;&#x76EE;&#x6807;&#x3002;&#x8FD9;&#x4E9B;&#x76EE;&#x6807;&#x6709;&#x52A9;&#x4E8E;&#x5904;&#x7406;&#x4F9D;&#x8D56;&#x5173;&#x7CFB;&#xFF0C;&#x6240;&#x4EE5;&#x8FD9;&#x4E5F;&#x662F;&#x6DFB;&#x52A0;Boost&#x5E93;&#x7684;&#x597D;&#x65B9;&#x6CD5;&#x3002;&#x7136;&#x800C;&#xFF0C;CMake &#x5305;&#x542B;&#x6240;&#x6709;&#x5DF2;&#x77E5;&#x7684; Boost &#x4F9D;&#x8D56;&#x4FE1;&#x606F;&#xFF0C;&#x56E0;&#x6B64; CMake &#x7684;&#x7248;&#x672C;&#x5FC5;&#x987B;&#x6BD4; Boost &#x65B0;&#xFF0C;&#x8FD9;&#x6837;CMake&#x624D;&#x80FD;&#x6B63;&#x5E38;&#x5DE5;&#x4F5C;&#x3002;&#x6700;&#x8FD1; CMake &#x7684; <a href="https://gitlab.kitware.com/cmake/cmake/merge_requests/1172" target="_blank">&#x5408;&#x5E76;&#x8BF7;&#x6C42;</a> &#x4E2D;&#xFF0C;&#x5F00;&#x59CB;&#x5047;&#x8BBE;&#x4F9D;&#x8D56;&#x9879;&#x4F1A;&#x4ECE;&#x5DF2;&#x77E5;&#x7684;&#x4E0A;&#x4E00;&#x4E2A;&#x7248;&#x672C;&#x7EE7;&#x627F;&#x4E0B;&#x6765;&#xFF0C;&#x5E76;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#xFF08;&#x540C;&#x65F6;&#x7ED9;&#x51FA;&#x8B66;&#x544A;&#xFF09;&#x3002;&#x8FD9;&#x9879;&#x529F;&#x80FD;&#x4E5F;&#x53CD;&#x5411;&#x79FB;&#x690D;&#x5230;&#x4E86; CMake 3.9 &#x4E2D;&#x3002;</p>
+<p>&#x5BFC;&#x5165;&#x76EE;&#x6807;&#x4F4D;&#x4E8E; <code>Boost::</code> &#x547D;&#x540D;&#x7A7A;&#x95F4;&#x3002;&#x53EA;&#x6709; <code>Boost::boost</code> &#x7EC4;&#x4EF6;&#x6709;&#x5934;&#x6587;&#x4EF6;&#xFF0C;&#x5176;&#x4ED6;&#x7EC4;&#x4EF6;&#x5747;&#x662F;&#x9884;&#x7F16;&#x8BD1;&#x7684;&#x5E93;&#x6587;&#x4EF6;&#x3002;&#x8FD9;&#x91CC;&#xFF0C;&#x53EF;&#x4EE5;&#x6839;&#x636E;&#x9700;&#x8981;&#x5305;&#x542B;&#x76F8;&#x5E94;&#x7684;&#x4F9D;&#x8D56;&#x9879;&#x3002;</p>
+<p>&#x4E0B;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#x4E2D;&#x4F7F;&#x7528;&#x4E86; <code>Boost::filesystem</code> &#x5E93;&#xFF1A;</p>
 <pre><code class="lang-cmake"><span class="hljs-keyword">set</span>(Boost_USE_STATIC_LIBS <span class="hljs-keyword">OFF</span>)
 <span class="hljs-keyword">set</span>(Boost_USE_MULTITHREADED <span class="hljs-keyword">ON</span>)
 <span class="hljs-keyword">set</span>(Boost_USE_STATIC_RUNTIME <span class="hljs-keyword">OFF</span>)
@@ -808,7 +807,7 @@ functionality was backported into CMake 3.9.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Boost","level":"1.8.3","depth":2,"next":{"title":"MPI","level":"1.8.4","depth":2,"path":"chapters/packages/MPI.md","ref":"chapters/packages/MPI.md","articles":[]},"previous":{"title":"OpenMP","level":"1.8.2","depth":2,"path":"chapters/packages/OpenMP.md","ref":"chapters/packages/OpenMP.md","articles":[]},"dir":"ltr"},"config":{"plugins":["replace","hints","term","include-codeblock","ace","github-edit"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"ace":{},"statistics":{"google_id":"G-0YEXF2MC7Y"},"search":{},"term":{"copyButtons":true,"fade":true,"lineStyles":true,"prompt":"(?<prompt>[^\\$^#^:]*)(?<pathsep>:?)(?<path>[^\\$^#]*?)(?<delimiter>[\\$#] )(?<command>.*)$","style":"default"},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"github-edit":{"repo":"Modern-CMake-CN/Modern-CMake-zh_CN","branch":"master"},"replace":{"substitutes":[{"pattern":"«cmake:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/manual/cmake-$1.7.html)"},{"pattern":"«command:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/command/$1.html)"},{"pattern":"«envvar:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/envvar/$1.html)"},{"pattern":"«module:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/module/$1.html)"},{"pattern":"«policy:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/policy/$1.html)"},{"pattern":"«variable:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest//$1.html)"},{"pattern":"«prop:([^:]+):`?([^`^»]+)`?»","flags":"g","substitute":"[`$2`](https://cmake.org/cmake/help/latest/prop_$1/$2.html)"}]},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Henry Schreiner","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Modern CMake","language":"zh-hans","links":{"sidebar":{"GitHub Repo":"https://github.com/Modern-CMake-CN/Modern-CMake-zh_CN"}},"gitbook":"3.x.x","description":"A guide to writing simple, powerful, and clean CMake 3.1+ builds."},"file":{"path":"chapters/packages/Boost.md","mtime":"2023-01-03T16:05:11.036Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-01-03T16:06:06.546Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Boost","level":"1.8.3","depth":2,"next":{"title":"MPI","level":"1.8.4","depth":2,"path":"chapters/packages/MPI.md","ref":"chapters/packages/MPI.md","articles":[]},"previous":{"title":"OpenMP","level":"1.8.2","depth":2,"path":"chapters/packages/OpenMP.md","ref":"chapters/packages/OpenMP.md","articles":[]},"dir":"ltr"},"config":{"plugins":["replace","hints","term","include-codeblock","ace","github-edit"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"ace":{},"statistics":{"google_id":"G-0YEXF2MC7Y"},"search":{},"term":{"copyButtons":true,"fade":true,"lineStyles":true,"prompt":"(?<prompt>[^\\$^#^:]*)(?<pathsep>:?)(?<path>[^\\$^#]*?)(?<delimiter>[\\$#] )(?<command>.*)$","style":"default"},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"github-edit":{"repo":"Modern-CMake-CN/Modern-CMake-zh_CN","branch":"master"},"replace":{"substitutes":[{"pattern":"«cmake:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/manual/cmake-$1.7.html)"},{"pattern":"«command:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/command/$1.html)"},{"pattern":"«envvar:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/envvar/$1.html)"},{"pattern":"«module:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/module/$1.html)"},{"pattern":"«policy:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/policy/$1.html)"},{"pattern":"«variable:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest//$1.html)"},{"pattern":"«prop:([^:]+):`?([^`^»]+)`?»","flags":"g","substitute":"[`$2`](https://cmake.org/cmake/help/latest/prop_$1/$2.html)"}]},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Henry Schreiner","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Modern CMake","language":"zh-hans","links":{"sidebar":{"GitHub Repo":"https://github.com/Modern-CMake-CN/Modern-CMake-zh_CN"}},"gitbook":"3.x.x","description":"A guide to writing simple, powerful, and clean CMake 3.1+ builds."},"file":{"path":"chapters/packages/Boost.md","mtime":"2023-01-05T07:00:16.991Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-01-05T07:00:57.731Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

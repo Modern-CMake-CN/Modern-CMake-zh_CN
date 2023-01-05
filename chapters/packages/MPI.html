@@ -554,7 +554,7 @@
                 <a href="../packages.html">
             
                     
-                    Looking for Libraries (Packages)
+                    查找库（或包）
             
                 </a>
             
@@ -634,7 +634,7 @@
                 <a href="../../examples/root-usefile/">
             
                     
-                    UseFile Example
+                    使用文件系统的用例
             
                 </a>
             
@@ -647,7 +647,7 @@
                 <a href="../../examples/root-simple/">
             
                     
-                    Simple Example
+                    使用目标系统的用例
             
                 </a>
             
@@ -660,7 +660,7 @@
                 <a href="../../examples/root-dict/">
             
                     
-                    Dictionary Example
+                    使用生成字典的用例
             
                 </a>
             
@@ -737,12 +737,12 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="mpi">MPI</h1>
-<p>To add MPI, like OpenMP, you&apos;ll be best off with CMake 3.9+.</p>
+<p>&#x6DFB;&#x52A0; MPI &#x7684;&#x65B9;&#x5F0F;&#x7C7B;&#x4F3C;&#x4E8E; OpenMP&#xFF0C;&#x6240;&#x4EE5;&#x6700;&#x597D;&#x4F7F;&#x7528; CMake 3.9+ &#x3002;</p>
 <pre><code class="lang-cmake"><span class="hljs-keyword">find_package</span>(MPI REQUIRED)
 <span class="hljs-keyword">message</span>(STATUS <span class="hljs-string">&quot;Run: ${MPIEXEC} ${MPIEXEC_NUMPROC_FLAG} ${MPIEXEC_MAX_NUMPROCS} ${MPIEXEC_PREFLAGS} EXECUTABLE ${MPIEXEC_POSTFLAGS} ARGS&quot;</span>)
 <span class="hljs-keyword">target_link_libraries</span>(MyTarget PUBLIC MPI::MPI_CXX)
 </code></pre>
-<p>However, you can imitate this on CMake 3.1+ with:</p>
+<p>&#x82E5;&#x9700;&#x8981;&#x652F;&#x6301;&#x65E7;&#x7248; CMake&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; 3.1+ &#x7248;&#x672C;&#x6765;&#x6A21;&#x4EFF;&#x4E0A;&#x9762;&#x7684;&#x65B9;&#x5F0F;&#xFF1A;</p>
 <pre><code class="lang-cmake"><span class="hljs-keyword">find_package</span>(MPI REQUIRED)
 
 <span class="hljs-comment"># For supporting CMake &lt; 3.9:</span>
@@ -804,7 +804,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"MPI","level":"1.8.4","depth":2,"next":{"title":"ROOT","level":"1.8.5","depth":2,"path":"chapters/packages/ROOT.md","ref":"chapters/packages/ROOT.md","articles":[{"title":"UseFile Example","level":"1.8.5.1","depth":3,"path":"examples/root-usefile/README.md","ref":"examples/root-usefile/README.md","articles":[]},{"title":"Simple Example","level":"1.8.5.2","depth":3,"path":"examples/root-simple/README.md","ref":"examples/root-simple/README.md","articles":[]},{"title":"Dictionary Example","level":"1.8.5.3","depth":3,"path":"examples/root-dict/README.md","ref":"examples/root-dict/README.md","articles":[]}]},"previous":{"title":"Boost","level":"1.8.3","depth":2,"path":"chapters/packages/Boost.md","ref":"chapters/packages/Boost.md","articles":[]},"dir":"ltr"},"config":{"plugins":["replace","hints","term","include-codeblock","ace","github-edit"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"ace":{},"statistics":{"google_id":"G-0YEXF2MC7Y"},"search":{},"term":{"copyButtons":true,"fade":true,"lineStyles":true,"prompt":"(?<prompt>[^\\$^#^:]*)(?<pathsep>:?)(?<path>[^\\$^#]*?)(?<delimiter>[\\$#] )(?<command>.*)$","style":"default"},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"github-edit":{"repo":"Modern-CMake-CN/Modern-CMake-zh_CN","branch":"master"},"replace":{"substitutes":[{"pattern":"«cmake:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/manual/cmake-$1.7.html)"},{"pattern":"«command:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/command/$1.html)"},{"pattern":"«envvar:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/envvar/$1.html)"},{"pattern":"«module:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/module/$1.html)"},{"pattern":"«policy:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/policy/$1.html)"},{"pattern":"«variable:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest//$1.html)"},{"pattern":"«prop:([^:]+):`?([^`^»]+)`?»","flags":"g","substitute":"[`$2`](https://cmake.org/cmake/help/latest/prop_$1/$2.html)"}]},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Henry Schreiner","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Modern CMake","language":"zh-hans","links":{"sidebar":{"GitHub Repo":"https://github.com/Modern-CMake-CN/Modern-CMake-zh_CN"}},"gitbook":"3.x.x","description":"A guide to writing simple, powerful, and clean CMake 3.1+ builds."},"file":{"path":"chapters/packages/MPI.md","mtime":"2023-01-03T16:05:11.036Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-01-03T16:06:06.546Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"MPI","level":"1.8.4","depth":2,"next":{"title":"ROOT","level":"1.8.5","depth":2,"path":"chapters/packages/ROOT.md","ref":"chapters/packages/ROOT.md","articles":[{"title":"使用文件系统的用例","level":"1.8.5.1","depth":3,"path":"examples/root-usefile/README.md","ref":"examples/root-usefile/README.md","articles":[]},{"title":"使用目标系统的用例","level":"1.8.5.2","depth":3,"path":"examples/root-simple/README.md","ref":"examples/root-simple/README.md","articles":[]},{"title":"使用生成字典的用例","level":"1.8.5.3","depth":3,"path":"examples/root-dict/README.md","ref":"examples/root-dict/README.md","articles":[]}]},"previous":{"title":"Boost","level":"1.8.3","depth":2,"path":"chapters/packages/Boost.md","ref":"chapters/packages/Boost.md","articles":[]},"dir":"ltr"},"config":{"plugins":["replace","hints","term","include-codeblock","ace","github-edit"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"ace":{},"statistics":{"google_id":"G-0YEXF2MC7Y"},"search":{},"term":{"copyButtons":true,"fade":true,"lineStyles":true,"prompt":"(?<prompt>[^\\$^#^:]*)(?<pathsep>:?)(?<path>[^\\$^#]*?)(?<delimiter>[\\$#] )(?<command>.*)$","style":"default"},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"github-edit":{"repo":"Modern-CMake-CN/Modern-CMake-zh_CN","branch":"master"},"replace":{"substitutes":[{"pattern":"«cmake:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/manual/cmake-$1.7.html)"},{"pattern":"«command:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/command/$1.html)"},{"pattern":"«envvar:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest/envvar/$1.html)"},{"pattern":"«module:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/module/$1.html)"},{"pattern":"«policy:([^`^»]+)»","flags":"g","substitute":"[$1](https://cmake.org/cmake/help/latest/policy/$1.html)"},{"pattern":"«variable:`?([^`^»]+)`?»","flags":"g","substitute":"[`$1`](https://cmake.org/cmake/help/latest//$1.html)"},{"pattern":"«prop:([^:]+):`?([^`^»]+)`?»","flags":"g","substitute":"[`$2`](https://cmake.org/cmake/help/latest/prop_$1/$2.html)"}]},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Henry Schreiner","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Modern CMake","language":"zh-hans","links":{"sidebar":{"GitHub Repo":"https://github.com/Modern-CMake-CN/Modern-CMake-zh_CN"}},"gitbook":"3.x.x","description":"A guide to writing simple, powerful, and clean CMake 3.1+ builds."},"file":{"path":"chapters/packages/MPI.md","mtime":"2023-01-05T07:00:16.991Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-01-05T07:00:57.731Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
