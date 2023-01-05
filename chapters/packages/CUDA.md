@@ -21,14 +21,14 @@ project(MY_PROJECT LANGUAGES CUDA CXX)
 enable_language(CUDA)
 ```
 
-要检查 CUDA 是否可用，可使用checklanguage：
+要检查 CUDA 是否可用，可使用 CheckLanuage：
 
 ```cmake
 include(CheckLanguage)
 check_language(CUDA)
 ```
 
-检查 `CMAKE_CUDA_COMPILER`（CMake 3.11 之前没有）查看 CUDA 开发包是否存在。
+可以通过检查 `CMAKE_CUDA_COMPILER`（CMake 3.11 之前没有）来查看 CUDA 开发包是否存在。
 
 可以检查  `CMAKE_CUDA_COMPILER_ID`（对于nvcc，其值为 `"NVIDIA"`，Clang 将在 CMake 3.18 支持）。可以用 `CMAKE_CUDA_COMPILER_VERSION` 检查CUDA版本。
 
@@ -60,14 +60,14 @@ set_target_properties(mylib PROPERTIES
 
 ### 目标架构
 
-构建CUDA代码时，应该以架构为目标。若没有也可以编译成PTX，nvcc编译器会提供了基本的指令，所以 PTX 还需要在运行时进行编译，这会使GPU kernel的加载速度慢得多。
+构建CUDA代码时，应该以架构为目标。若没有明确的架构信息，也可以编译成 `ptx`，nvcc 编译器会提供基本的指令，所以 PTX 还需要在运行时进行编译，这会使GPU kernel的加载速度慢得多。
 
 所有 NVIDA 显卡都有一个架构级别，比如：7.2。在处理架构时，有两个选择：
 
-- 代码层：将向正在编译的代码预报一个版本（如：5.0），这将使用5.0之前的所有特性，但不会超过5.0（假设代码/标准库编写良好）。
-- 目标架构：必须等于或大于架构版本。这需要有与目标显卡相同的主版本号，并且等于或小于目标显卡。所以使用架构为7.2的显卡时，在编译时将代码架构版本设置为7.0将是首选。最后，还可以生成PTX；PTX将在架构版本大于当前架构的所有显卡上工作，不过需要在运行时再对PTX进行编译。
+- 代码层：将向正在编译的代码预报一个版本（如：5.0），这将使用 5.0 之前的所有特性，但不会超过5.0（假设代码/标准库编写良好）。
+- 目标架构：必须等于或大于架构版本。这需要有与目标显卡相同的主版本号，并且等于或小于目标显卡。所以使用架构为 7.2 的显卡时，在编译时将代码架构版本设置为 7.0 将是首选。最后，还可以生成 PTX；PTX 将在架构版本大于当前架构的所有显卡上工作，不过需要在运行时再对 PTX 进行编译。
 
-CMake 3.18 中，设置目标架构变得非常容易。若 CMake 的版本范围为 3.18+，可以对目标使用 `CMAKE_CUDA_ARCHITECTURES` 变量和 `CUDA_ARCHITECTURES` 属性。允许直接写值（不带`.`），比如：架构 5.0，可以就写为 50。若设置为OFF，将不会传递任何架构信息。
+CMake 3.18 中，设置目标架构变得非常容易。若 CMake 的版本范围为 3.18+，可以对目标使用 `CMAKE_CUDA_ARCHITECTURES` 变量和 `CUDA_ARCHITECTURES` 属性。允许直接写值（不带 `.`），比如：架构 5.0，可以就写为 50。若设置为OFF，将不会传递任何架构信息。
 
 ### 使用目标
 
@@ -117,7 +117,7 @@ find_package(CUDA 7.0 REQUIRED)
 message(STATUS "Found CUDA ${CUDA_VERSION_STRING} at ${CUDA_TOOLKIT_ROOT_DIR}")
 ```
 
-可以用 `CUDA_NVCC_FLAGS`（使用列表添加的方式，`list(APPEND`）控制 CUDA 标志，通过`CUDA_SEPARABLE_COMPILATION` 控制分离编译。若想确保 CUDA 的正常工作，需要将关键字添加到目标中（CMake 3.9+）：
+可以用 `CUDA_NVCC_FLAGS`（使用列表添加的方式，`list(APPEND)`）控制 CUDA 标志，通过 `CUDA_SEPARABLE_COMPILATION` 控制分离编译。若想确保 CUDA 的正常工作，需要将关键字添加到目标中（CMake 3.9+）：
 
 ```cmake
 set(CUDA_LINK_LIBRARIES_KEYWORD PUBLIC)

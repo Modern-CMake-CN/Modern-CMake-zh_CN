@@ -1,6 +1,6 @@
 # OpenMP
 
-CMake 3.9+ 中对 [OpenMP] 的支持进行了极大的改善。现代（TM）CMake 使用 OpenMP 的方法，可以直接将其添加到目标中：
+CMake 3.9+ 中对 [OpenMP] 的支持进行了极大的改善。现代（TM）CMake 使用 OpenMP 链接到一个目标的方法如下：
 
 
 ```cmake

@@ -10,7 +10,7 @@ set(Boost_USE_MULTITHREADED ON)
 set(Boost_USE_STATIC_RUNTIME OFF)
 ```
 
-CMake 3.5 添加了导入目标。这些目标有助于处理依赖关系，所以这也是添加Boost库的好方法。然而，CMake 在所有已知版本的 Boost 中都包含依赖信息，因此 CMake 的版本必须比 Boost 新，这样CMake才能正常工作。最近 CMake 的 [合并请求][MROldBoost] 中，开始假设依赖项会从已知的上一个版本继承下来，并直接使用（同时给出警告）。这项功能也反向移植到了 CMake 3.9 中。
+CMake 3.5 添加了导入目标。这些目标有助于处理依赖关系，所以这也是添加Boost库的好方法。然而，CMake 包含所有已知的 Boost 依赖信息，因此 CMake 的版本必须比 Boost 新，这样CMake才能正常工作。最近 CMake 的 [合并请求][MROldBoost] 中，开始假设依赖项会从已知的上一个版本继承下来，并直接使用（同时给出警告）。这项功能也反向移植到了 CMake 3.9 中。
 
 导入目标位于 `Boost::` 命名空间。只有 `Boost::boost` 组件有头文件，其他组件均是预编译的库文件。这里，可以根据需要包含相应的依赖项。
 
