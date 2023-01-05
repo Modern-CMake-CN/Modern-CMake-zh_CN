@@ -1,10 +1,10 @@
 # Minuit2
 
-Minuit2 is available in standalone mode, for use in cases where ROOT is either not available or not built with Minuit2 enabled. This will cover recommended usages, as well as some aspects of the design.
+Minuit2 在独立模式下可用，用于 ROOT 不可用或未启用 Minuit2 构建的情况。本节会介绍推荐的用法，以及讨论一下集成设计方面的事宜。
 
-## Usage
+## 用法
 
-Minuit2 can be used in any of the standard CMake ways, either from the ROOT source or from a standalone source distribution:
+无论是使用 ROOT 源码，还是使用单独发行的源码包，Minuit2 都可以使用 CMake 的标准用法：
 
 ```cmake
 # Check for Minuit2 in ROOT if you want
@@ -18,13 +18,13 @@ target_link_libraries(MyProgram PRIVATE Minuit2::Minuit2)
 ```
 
 
-## Development
+## 开发
 
-Minuit2 is a good example of potential solutions to the problem of integrating a modern (CMake 3.1+) build into an existing framework.
+Minuit2 是将现代 CMake（CMake 3.1+）构建，集成到现有框架的解决方案。同时，也是一个很好的例子。
 
-To handle the two different CMake systems, the main `CMakeLists.txt` defines common options, then calls a `Standalone.cmake` file if this is not building as part of ROOT.
+要处理两个不同的 CMake 系统，主 `CMakeLists.txt` 定义一些公共选项，然后使用 `Standalone.cmake` （不作为 ROOT 的一部分构建的情况下）。
 
-The hardest part in the ROOT case is that Minuit2 requires files that are outside the `math/minuit2` directory. This was solved by adding a `copy_standalone.cmake` file with a function that takes a filename list and then either returns a list of filenames inplace in the original source, or copies files into the local source and returns a list of the new locations, or returns just the list of new locations if the original source does not exist (standalone).
+ROOT 案例中最困难的部分是，Minuit2 需要 `math/minuit2` 目录之外的文件。这个问题，通过使用`copy_standalone.cmake` 解决了。文件中使用一个函数，该函数接受一个文件名列表，然后返回原始源中的文件名列表；或者将文件复制到本地源中，并返回新位置的列表；亦或者，若原始源不存在（独立模式），则只返回新位置的列表。
 
 ```bash
 # Copies files into source directory
@@ -37,8 +37,8 @@ make package_source
 make purge
 ```
 
-This is only intended for developers wanting to produce source packages - a normal user *does not pass this option* and will not create source copies.
+但这仅适用于使用源码包的开发人员 —— 普通用户*不会选择该选项*，也不会创建源码的副本。
 
-You can use `make install` or `make package` (binary packages) without adding this `standalone` option, either from inside the ROOT source or from a standalone package.
+使用 ROOT 源码，还是使用单独发行的源码包，都可以使用`make install` 或 `make package` （生成二进制包），而无需添加 `standalone` 选项。
 
 [Minuit2]: https://root.cern.ch

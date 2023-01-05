@@ -1,8 +1,8 @@
-# Boost library
+# Boost 库
 
-The Boost library is included in the find packages that CMake provides, but it has a couple of oddities in how it works. See [FindBoost] for a full description; this will just give a quick overview and provide a recipe. Be sure to check the page for the minimum required version of CMake you are using and see what options you have.
+CMake 提供 Boost 库的查找包，但其工作方式有些奇怪。[FindBoost] 中可获得完整的描述：这只是一个概述，并提供一个示例。务必查看页面上使用 CMake 的最低版本，然后再查看有哪些支持的选项。
 
-First, you can customize the behavior of the Boost libraries selected using a set of variables that you set before searching for Boost. There are a growing number of settings, but here are the three most common ones:
+首先，可以在搜索 Boost 之前设置的一组变量，自定义选定 Boost 库的行为。可设置的变量随着 CMake 的发展变得越来越多，这里仅设置三个常见的变量：
 
 ```cmake
 set(Boost_USE_STATIC_LIBS OFF)
@@ -10,12 +10,11 @@ set(Boost_USE_MULTITHREADED ON)
 set(Boost_USE_STATIC_RUNTIME OFF)
 ```
 
-In CMake 3.5, imported targets were added. These targets handle dependencies for you as well, so they are a very nice way to add Boost libraries. However, CMake has the dependency information baked into it for all known versions of Boost, so CMake must be newer than Boost for these to work. In a recent [merge request][MROldBoost], CMake started assuming that the dependencies hold from the last version it knows about, and will use that (along with giving a warning). This
-functionality was backported into CMake 3.9.
+CMake 3.5 添加了导入目标。这些目标有助于处理依赖关系，所以这也是添加Boost库的好方法。然而，CMake 包含所有已知的 Boost 依赖信息，因此 CMake 的版本必须比 Boost 新，这样CMake才能正常工作。最近 CMake 的 [合并请求][MROldBoost] 中，开始假设依赖项会从已知的上一个版本继承下来，并直接使用（同时给出警告）。这项功能也反向移植到了 CMake 3.9 中。
 
-The import targets are in the `Boost::` namespace. `Boost::boost` is the header only part. The other compiled libraries are available, and include dependencies as needed.
+导入目标位于 `Boost::` 命名空间。只有 `Boost::boost` 组件有头文件，其他组件均是预编译的库文件。这里，可以根据需要包含相应的依赖项。
 
-Here is an example for using the `Boost::filesystem` library:
+下面的例子中使用了 `Boost::filesystem` 库：
 
 ```cmake
 set(Boost_USE_STATIC_LIBS OFF)

@@ -1,87 +1,85 @@
 # CUDA
 
-CUDA support is available in two flavors. The new method, introduced in CMake 3.8 (3.9 for Windows), should be strongly preferred over the old, hacky method - I only mention the old method due to the high chances of an old package somewhere having it. Unlike the older languages, CUDA support has been rapidly evolving, and building CUDA is hard, so I would recommend you *require a very recent version* of CMake! CMake 3.17 and 3.18 have a lot of improvements directly targeting CUDA.
+使用 CUDA 有两种方式：CMake 3.8（Windows为3.9）中引入的新方法，应该比旧的方法更受欢迎 —— 可能会在旧包中使用这种方法，所以本节会提一下。与旧语言不同，CUDA 的支持一直在快速发展，因为构建 CUDA 非常困难，所以建议*使用最新版本*的CMake！CMake 3.17 和 3.18 有很多直接针对 CUDA 的改进。
 
-A good resource for CUDA and Modern CMake is [this talk](http://on-demand.gputechconf.com/gtc/2017/presentation/S7438-robert-maynard-build-systems-combining-cuda-and-machine-learning.pdf) by CMake developer Robert Maynard at GTC 2017.
+对于 CUDA 和现代 CMake 来说，一个很好的参考是CMake开发者 Robert Maynard 在 GTC 2017 的 [演讲ppt](http://on-demand.gputechconf.com/gtc/2017/presentation/S7438-robert-maynard-build-systems-combining-cuda-and-machine-learning.pdf)。
 
 
-## Adding the CUDA Language
+## 启用 CUDA 语言
 
-There are two ways to enable CUDA support. If CUDA is not optional:
+有两种方法可以启用CUDA（若CUDA的支持不可选）：
 
 ```cmake
 project(MY_PROJECT LANGUAGES CUDA CXX)
 ```
 
-You'll probably want `CXX` listed here also. And, if CUDA is optional, you'll
-want to put this in somewhere conditionally:
+这里可能需要在将 `CXX` 一并列出。
+
+若 CUDA 的支持可选，可以将其放在条件语句中：
 
 ```cmake
 enable_language(CUDA)
 ```
 
-To check to see if CUDA is available, use CheckLanuage:
+要检查 CUDA 是否可用，可使用 CheckLanuage：
 
 ```cmake
 include(CheckLanguage)
 check_language(CUDA)
 ```
 
-You can see if CUDA is present by checking `CMAKE_CUDA_COMPILER` (was missing
-until CMake 3.11).
+可以通过检查 `CMAKE_CUDA_COMPILER`（CMake 3.11 之前没有）来查看 CUDA 开发包是否存在。
 
-You can check variables like `CMAKE_CUDA_COMPILER_ID` (for nvcc, this is
-`"NVIDIA"`, Clang was added in CMake 3.18).  You can check the version with
-`CMAKE_CUDA_COMPILER_VERSION`.
+可以检查  `CMAKE_CUDA_COMPILER_ID`（对于nvcc，其值为 `"NVIDIA"`，Clang 将在 CMake 3.18 支持）。可以用 `CMAKE_CUDA_COMPILER_VERSION` 检查CUDA版本。
 
-## Variables for CUDA
+## CUDA 的变量
 
-Many variables with `CXX` in the name have a CUDA version with `CUDA` instead.
-For example, to set the C++ standard required for CUDA,
+CMake 中许多名称中带有 `CXX` 的变量都有 `CUDA` 版本。例如，要设置 CUDA 所需的 C++ 标准，
 
-```
+```cmake
 if(NOT DEFINED CMAKE_CUDA_STANDARD)
     set(CMAKE_CUDA_STANDARD 11)
     set(CMAKE_CUDA_STANDARD_REQUIRED ON)
 endif()
 ```
 
-If you are looking for CUDA's standard level, in CMake 3.17 a new collection of
-compiler features were added, like `cuda_std_11`. These have the same benefits that
-you are already used to from the `cxx` versions.
+若正在查找和设置CUDA的标准级别，CMake 3.17 中添加了一组新的编译器特性，比如：`cuda_std_11`。这些版本特性与 `cxx` 的版本特性使用方式相同。
 
-### Adding a library / executable
+### 添加库/可执行文件
 
-This is the easy part; as long as you use `.cu` for CUDA files, you can just add libraries *exactly like you normally would*.
+这部分很简单；使用CUDA文件 `.cu`，*就像平常添加库一样*。
 
-You can also use separable compilation:
+也可以使用分离编译的方式：
 
 ```cmake
 set_target_properties(mylib PROPERTIES
                             CUDA_SEPARABLE_COMPILATION ON)
 ```
 
-You can also directly make a PTX file with the `CUDA_PTX_COMPILATION` property.
+也可以直接使用 `CUDA_PTX_COMPILATION` 属性创建一个PTX（Parallel Thread eXecution）文件。
 
-### Targeting architectures
+### 目标架构
 
-When you build CUDA code, you generally should be targeting an architecture. If you don't, you compile 'ptx', which provide the basic instructions but is compiled at runtime, making it potentially much slower to load.
+构建CUDA代码时，应该以架构为目标。若没有明确的架构信息，也可以编译成 `ptx`，nvcc 编译器会提供基本的指令，所以 PTX 还需要在运行时进行编译，这会使GPU kernel的加载速度慢得多。
 
-All cards have an architecture level, like "7.2". You have two choices; the first is the code level; this will report to the code being compiled a version, like "5.0", and it will take advantage of all the features up to 5.0 but not past (assuming well written code / standard libraries). Then there's a target architecture, which must be equal or greater to the code architecture. This needs to have the same major number as your target card, and be equal to or less than the target card. So 7.0 would be a common choice for our 7.2 card. Finally, you can also generate PTX; this will work on all future cards, but will compile just in time.
+所有 NVIDA 显卡都有一个架构级别，比如：7.2。在处理架构时，有两个选择：
 
-In CMake 3.18, it became very easy to target architectures. If you have a version range that includes 3.18 or newer, you will be using `CMAKE_CUDA_ARCHITECTURES` variable and the `CUDA_ARCHITECTURES` property on targets. You can list values (without the `.`), like 50 for arch 5.0. If set to OFF, it will not pass architectures.
+- 代码层：将向正在编译的代码预报一个版本（如：5.0），这将使用 5.0 之前的所有特性，但不会超过5.0（假设代码/标准库编写良好）。
+- 目标架构：必须等于或大于架构版本。这需要有与目标显卡相同的主版本号，并且等于或小于目标显卡。所以使用架构为 7.2 的显卡时，在编译时将代码架构版本设置为 7.0 将是首选。最后，还可以生成 PTX；PTX 将在架构版本大于当前架构的所有显卡上工作，不过需要在运行时再对 PTX 进行编译。
 
-### Working with targets
+CMake 3.18 中，设置目标架构变得非常容易。若 CMake 的版本范围为 3.18+，可以对目标使用 `CMAKE_CUDA_ARCHITECTURES` 变量和 `CUDA_ARCHITECTURES` 属性。允许直接写值（不带 `.`），比如：架构 5.0，可以就写为 50。若设置为OFF，将不会传递任何架构信息。
 
-Using targets should work similarly to CXX, but there's a problem. If you include a target that includes compiler options (flags), most of the time, the options will not be protected by the correct includes (and the chances of them having the correct CUDA wrapper is even smaller). Here's what a correct compiler options line should look like:
+### 使用目标
+
+使用目标与 CXX 类似，但有一个问题。若目标包含编译器选项（或标志），大多数情况下，这些选项将无法正确使用（很难正确的封装在 CUDA 包装宏或函数中）。正确的编译器选项设置应该如下所示：
 
 ```cmake
 "$<$<BUILD_INTERFACE:$<COMPILE_LANGUAGE:CXX>>:-fopenmp>$<$<BUILD_INTERFACE:$<COMPILE_LANGUAGE:CUDA>>:-Xcompiler=-fopenmp>"
 ```
 
-However, if you using almost any find_package, and using the Modern CMake methods of targets and inheritance, everything will break. I've learned that the hard way.
+然而，不管是使用传统 CMake 的 `find_package` 方法，还是使用现代 CMake 的目标和继承方法，都不好使。这是我吃了不少苦头总结出来的经验。
 
-For now, here's a pretty reasonable solution, _as long as you know the un-aliased target name_. It's a function that will fix a C++ only target by wrapping the flags if using a CUDA compiler:
+目前，有一个合适的解决方案，*只要知道未别名的目标名称*即可。这是一个函数，若使用CUDA编译器，可以通过包装编译选项（标志）来修复仅处理 C++ 的目标：
 
 ```cmake
 function(CUDA_CONVERT_FLAGS EXISTING_TARGET)
@@ -95,40 +93,37 @@ function(CUDA_CONVERT_FLAGS EXISTING_TARGET)
 endfunction()
 ```
 
-### Useful variables
+### 内置变量
 
-* `CMAKE_CUDA_TOOLKIT_INCLUDE_DIRECTORIES`: Place for built-in Thrust, etc
-* `CMAKE_CUDA_COMPILER`: NVCC with location
+* `CMAKE_CUDA_TOOLKIT_INCLUDE_DIRECTORIES`：指示 CUDA 开发包内置 Thrust 等工具的目录
+* `CMAKE_CUDA_COMPILER`：NVCC 的具体路径
 
-You can use
-[`FindCUDAToolkit`](https://cmake.org/cmake/help/git-stage/module/FindCUDAToolkit.html)
-to find a variety of useful targets and variables even without enabling the
-CUDA language.
+即使不启用CUDA语言，也可以使用 [`FindCUDAToolkit`](https://cmake.org/cmake/help/git-stage/module/FindCUDAToolkit.html)  来查找 CUDA 的各种目标和变量。
 
-> ### Note that FindCUDA is deprecated, but for for versions of CMake < 3.18, the following functions required FindCUDA:
+> ### 注意，FindCUDA 已弃用，但对于低于 3.18 的 CMake，以下函数需要 FindCUDA：
 >
-> * CUDA version checks / picking a version
-> * Architecture detection (Note: 3.12 fixes this partially)
-> * Linking to CUDA libraries from non-.cu files
+> * CUDA 版本检查/选择版本
+> * 架构检测（注意：3.12 部分修复了这个问题）
+> * 为 CUDA 库连接非 `.cu` 文件
 
-## Classic FindCUDA [WARNING: DO NOT USE] (for reference only)
+## FindCUDA [警告：不要使用] (仅供参考)
 
-If you want to support an older version of CMake, I recommend at least including the FindCUDA from CMake version 3.9 in your cmake folder (see the CLIUtils github organization for a [git repository](https://github.com/CLIUtils/cuda_support)). You'll want two features that were added: `CUDA_LINK_LIBRARIES_KEYWORD` and `cuda_select_nvcc_arch_flags`, along with the newer architectures and CUDA versions.
+若要支持旧版 CMake，建议至少在 CMake 文件夹中包含来自 CMake 3.9 版本的 FindCUDA（参见 CLIUtils github 组织中的 [git库](https://github.com/CLIUtils/cuda_support)）。需要添加两个特性：`CUDA_LINK_LIBRARIES_KEYWORD` 和` cuda_select_nvcc_arch_flags`，以及较新的架构和 CUDA 版本。
 
-To use the old CUDA support, you use `find_package`:
+要使用旧版 CUDA 支持方式，可以使用 `find_package`：
 
 ```cmake
 find_package(CUDA 7.0 REQUIRED)
 message(STATUS "Found CUDA ${CUDA_VERSION_STRING} at ${CUDA_TOOLKIT_ROOT_DIR}")
 ```
 
-You can control the CUDA flags with `CUDA_NVCC_FLAGS` (list append) and you can control separable compilation with `CUDA_SEPARABLE_COMPILATION`. You'll also want to make sure CUDA plays nice and adds keywords to the targets (CMake 3.9+):
+可以用 `CUDA_NVCC_FLAGS`（使用列表添加的方式，`list(APPEND)`）控制 CUDA 标志，通过 `CUDA_SEPARABLE_COMPILATION` 控制分离编译。若想确保 CUDA 的正常工作，需要将关键字添加到目标中（CMake 3.9+）：
 
 ```cmake
 set(CUDA_LINK_LIBRARIES_KEYWORD PUBLIC)
 ```
 
-You'll also might want to allow a user to check for the arch flags of their current hardware:
+若想让用户检查当前硬件的架构标志，可以使用以下方式：
 
 ```cmake
 cuda_select_nvcc_arch_flags(ARCH_FLAGS) # optional argument for arch to add

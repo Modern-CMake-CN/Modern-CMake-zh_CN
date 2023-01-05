@@ -1,15 +1,13 @@
-# Dictionary Example
+# 字典用例
 
-This is an example of building a module that includes a dictionary in CMake. Instead of using the
-ROOT suggested flags, we will manually add threading via `find_package`, which is the only
-important flag in the list on most systems.
+这是在 CMake 中构建包含字典模块的例子。通过 `find_package` 手动添加 ROOT，而非使用 ROOT 建议的标志。在大多数系统中，CMake 文件中唯一重要的标志。
 
 #### examples/root-dict/CMakeLists.txt
 [import:'main', lang:'cmake'](CMakeLists.txt)
 
-## Supporting files
+## 支持文件
 
-This is just a simple-as-possible class definition, with one method:
+这是一个极简的类定义，只有一个成员函数：
 
 #### examples/root-dict/DictExample.cxx
 [import, lang:'c_cpp'](DictExample.cxx)
@@ -17,14 +15,14 @@ This is just a simple-as-possible class definition, with one method:
 #### examples/root-dict/DictExample.h
 [import, lang:'c_cpp'](DictExample.h)
 
-We need a `LinkDef.h`, as well.
+还需要一个  `LinkDef.h`。
 
 #### examples/root-dict/DictLinkDef.h
 [import, lang:'c_cpp'](DictLinkDef.h)
 
-## Testing it
+## 进行测试
 
-This is an example of a macro that tests the correct generation from the files listed above.
+这是一个宏示例，用于测试上面文件生成的结果是否正确。
 
 #### examples/root-dict/CheckLoad.C
 [import, lang:'c_cpp'](CheckLoad.C)
