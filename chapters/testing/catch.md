@@ -1,6 +1,6 @@
 # Catch
 
-[Catch2]（只有C++11版本）是一个独立且强大的测试工具，它的理念（philosophy）类似于 Python 中的 Pytest。他比 GTest 支持更多的编译器版本，并且会紧跟潮流支持新的事物，比如支持在 M1 版本 MacOS 上使用 Catch。他也有一个相似但是更加快速的双胞胎兄弟，[doctest](https://github.com/onqtam/doctest)，他编译十分迅速但是缺少了一些类似于匹配器（features）的特性。为了在 CMake 项目中使用 Catch，下面是一些可选的方式：
+[Catch2]（只有 C++11 版本）是一个独立且强大的测试工具，它的理念（philosophy）类似于 Python 中的 Pytest。他比 GTest 支持更多的编译器版本，并且会紧跟潮流支持新的事物，比如支持在 M1 版本 MacOS 上使用 Catch。他也有一个相似但是更加快速的双胞胎兄弟，[doctest](https://github.com/onqtam/doctest)，他编译十分迅速但是缺少了一些类似于匹配器（features）的特性。为了在 CMake 项目中使用 Catch，下面是一些可选的方式：
 
 ## 如何配置
 

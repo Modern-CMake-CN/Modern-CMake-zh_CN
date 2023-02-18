@@ -66,7 +66,7 @@ set(MY_CACHE_VARIABLE "VALUE" CACHE INTERNAL "")
 
 ## 属性
 
-CMake 也可以通过属性来存储信息。这就像是一个变量，但它被附加到一些其他的物体 (item) 上，像是一个目录或者是一个目标。一个全局的属性可以是一个有用的非缓存的全局变量。许多目标属性都是被以 `CMAKE_` 为前缀的变量来初始化的。例如你设置 `CMAKE_CXX_STANDARD` 这个变量，这意味着你之后创建的所有目标的 `CXX_STANDARD` 都将被设为`CMAKE_CXX_STANDARD` 变量的值。
+CMake 也可以通过属性来存储信息。这就像是一个变量，但它被附加到一些其他的物体 ( item ) 上，像是一个目录或者是一个目标。一个全局的属性可以是一个有用的非缓存的全局变量。许多目标属性都是被以 `CMAKE_` 为前缀的变量来初始化的。例如你设置 `CMAKE_CXX_STANDARD` 这个变量，这意味着你之后创建的所有目标的 `CXX_STANDARD` 都将被设为`CMAKE_CXX_STANDARD` 变量的值。
 
 你可以这样来设置属性：
 

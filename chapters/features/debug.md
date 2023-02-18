@@ -48,4 +48,4 @@ cmake -S . -B build --trace-source=CMakeLists.txt
 
 对于单一构建模式的生成器 (single-configuration generators)，你可以使用参数 `-DCMAKE_BUILD_TYPE=Debug` 来构建项目，以获得调试标志 (debugging flags)。对于支持多个构建模式的生成器 (multi-configuration generators)，像是多数IDE，你可以在 IDE 里打开调试模式。这种模式有不同的标志（变量以 `_DEBUG` 结尾，而不是 `_RELEASE` 结尾），以及生成器表达式的值 `CONFIG:Debug` 或 `CONFIG:Release`。
 
-如果你使用了 debug 模式构建，你就可以在上面运行调试器了，比如gdb或lldb。
+如果你使用了 debug 模式构建，你就可以在上面运行调试器了，比如 gdb 或 lldb。

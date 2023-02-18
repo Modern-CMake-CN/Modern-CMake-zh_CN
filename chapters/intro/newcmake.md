@@ -27,7 +27,7 @@ CMake 修改记录的简化版本，这里仅挑了作者认为的重点。这�
 
 ## [CMake 3.2][]：UTF8
 
-一个小版本，主要是添加了小功能和对之前功能缺陷的修复。还有一些内部变化有，我认为对Windows和UTF8支持更好这个很重要。
+一个小版本，主要是添加了小功能和对之前功能缺陷的修复。还有一些内部变化有，我认为对 Windows 和 UTF8 支持更好这个很重要。
 
 * 首次发布于 [2015年3月11日](https://blog.kitware.com/cmake-3-2-1-released/)
 * 可以在循环中使用 `continue()`
@@ -44,7 +44,7 @@ if中添加了 `IN_LIST` 选项，并且可以使用环境变量 `$PATH` (详见
 
 ## [CMake 3.4][]：Swift & CCache
 
-这个版本增加了许多有用的工具，对Swift语言的支持，以及常用功能的改进。也开始支持编译器启动器，比如 CCache。
+这个版本增加了许多有用的工具，对 Swift 语言的支持，以及常用功能的改进。也开始支持编译器启动器，比如  CCache。
 
 * 首次发布于 [2015年11月12日](https://blog.kitware.com/cmake-3-4-0-released/)
 * 支持 `Swift` 语言
@@ -81,7 +81,7 @@ if中添加了 `IN_LIST` 选项，并且可以使用环境变量 `$PATH` (详见
 
 ## [CMake 3.7][]：Android & CMake 的服务器模式
 
-可以使用交叉编译，构建在 Android 平台运行的程序。if 的新选项可使代码可读性更好。新增的服务器模式是为了提高与IDE的集成(但 CMake 3.14+ 使用另一种方式取而代之)。优化了对 VIM 编辑器的支持。
+可以使用交叉编译，构建在 Android 平台运行的程序。if 的新选项可使代码可读性更好。新增的服务器模式是为了提高与 IDE 的集成(但 CMake 3.14+ 使用另一种方式取而代之)。优化了对 VIM 编辑器的支持。
 
 * 首次发布于 [November 11, 2016](https://blog.kitware.com/cmake-3-7-0-available-for-download/)
 * `cmake_parse_arguments` 新增了 `PARSE_ARGV` 模式
@@ -154,7 +154,7 @@ CMake 现在使用 C++11 编译器构建，许多改进有助于编写可读性�
 
 ## [CMake 3.12][]：版本范围和CONFIGURE_DEPENDS
 
-非常牛的版本，包含了许多长期要求添加的小功能。其中一个是新增了版本范围，现在可以更容易地设置最低和最高的CMake版本了。也可以在一组使用 `GLOB` 获取的文件上设置 `CONFIGURE_DEPENDS`，构建系统将检查这些文件，并在需要时重新运行！还可以对 `find_package` 的搜索路径使用通用的 `PackageName_ROOT`  。对string和list大量的功能添加、模块更新、全新的Python查找模块(2和3版本都有)等等。
+非常牛的版本，包含了许多长期要求添加的小功能。其中一个是新增了版本范围，现在可以更容易地设置最低和最高的 CMake 版本了。也可以在一组使用 `GLOB` 获取的文件上设置 `CONFIGURE_DEPENDS`，构建系统将检查这些文件，并在需要时重新运行！还可以对 `find_package` 的搜索路径使用通用的 `PackageName_ROOT`  。对 string 和 list 大量的功能添加、模块更新、全新的 Python 查找模块(2 和 3 版本都有)等等。
 
 * 首次发布于[2018年7月17日](https://blog.kitware.com/cmake-3-12-0-available-for-download/)
 * 支持 `cmake_minimum_required` 的范围表示（向后兼容）
@@ -165,13 +165,13 @@ CMake 现在使用 C++11 编译器构建，许多改进有助于编写可读性�
 * 新增 `file(TOUCH`  和 `file(GLOB CONFIGURE_DEPENDS`
 * 支持 C++20
 * CUDA 作为语言的改进：支持 CUDA 7 和 7.5
-* 支持 macOS 的OpenMP(仅限命令行)
+* 支持 macOS 的 OpenMP (仅限命令行)
 * 新增了几个新属性和属性初始化器
-* CPack可读取 `CMAKE_PROJECT_VERSION` 变量
+* CPack 可读取 `CMAKE_PROJECT_VERSION` 变量
 
 ## [CMake 3.13][]：连接控制
 
-可以在Windows创建符号链接了！新增了许多新函数，响应了CMake的主流请求，如 `add_link_options`, `target_link_directories` 和 `target_link_options`。可以在源目录之外对目标进行更多的修改，可以更好的实现文件分离。`target_sources` *终于*可以正确地处理相对路径（策略76）了。
+可以在Windows创建符号链接了！新增了许多新函数，响应了 CMake 的主流请求，如 `add_link_options`, `target_link_directories` 和 `target_link_options`。可以在源目录之外对目标进行更多的修改，可以更好的实现文件分离。`target_sources` *终于*可以正确地处理相对路径（策略76）了。
 
 * 首次发布于 [2018年11月20日](https://blog.kitware.com/cmake-3-13-0-available-for-download/)
 * 新增 `ctest --progress` 选项，输出实时测试进度
@@ -187,19 +187,19 @@ CMake 现在使用 C++11 编译器构建，许多改进有助于编写可读性�
 
 ## [CMake 3.14][]：文件工具 (AKA [CMake π](https://blog.kitware.com/kitware-gets-mathematical-with-cmake-π-on-pi-day/))
 
-进行了很多小清理，包括几个用于文件的工具。生成器表达式可以在更多的地方使用，使用list要优于使用空变量。很多的find包可以产生目标。Visual Studio 16 2019 生成器与旧版本略有不同。不支持 Windows XP 和Vista。
+进行了很多小清理，包括几个用于文件的工具。生成器表达式可以在更多的地方使用，使用 list 要优于使用空变量。很多的 find 包可以产生目标。Visual Studio 16 2019 生成器与旧版本略有不同。不支持 Windows XP 和Vista。
 
 * 首次发布于 [2019年3月14日](https://blog.kitware.com/cmake-3-14-0-available-for-download/)
 * `--build` 命令添加了 `-v/--verbose` 选项。若构建工具支持，可以使用冗余构建
 * FILE指令新增了 `CREATE_LINK`，`READ_SYMLINK` 和 `SIZE` 选项
 * «command:get_filename_component» 新增了 `LAST_EXT`  和 `NAME_WLE` 用于获取文件*最后的*扩展名，比如可以从文件名  `version.1.2.zip` ，获取后缀名 `.zip` （非常方便!）
 * 可以在 «command:if» 语句中使用 `DEFINED CACHE{VAR}`，查看是否在 CACHE 中定义了变量。
-* 新增 `BUILD_RPATH_USE_ORIGIN`，以改进对构建目录中RPath的处理。
-* CMake 服务器模式使用一个文件API所取代。从长远来看，这会影响 IDE。
+* 新增 `BUILD_RPATH_USE_ORIGIN`，以改进对构建目录中 RPath 的处理。
+* CMake 服务器模式使用一个文件 API 所取代。从长远来看，这会影响 IDE。
 
 ## [CMake 3.15][]：升级CLI
 
-这个版本有许多较小改进，包括对CMake命令行的改进，比如：通过环境变量控制默认生成器（现在很容易将默认生成器改为 Ninja）。`--build` 模式支持多个目标，添加了 `--install` 模式。CMake支持多级日志记录。可以使用一些方便的工具来测试生成器表达式。FindPython 模块持续改进，FindBoost 与 Boost 1.70 的新 CONFIG 模块有了更多的内联。`export(PACKAGE)` 发生了巨大变化，不再将默认目录设置为 `$HOME/.cmake` (若cmake最小版本为3.15+)，若用户若想使用它，需要额外的设置步骤。
+这个版本有许多较小改进，包括对CMake命令行的改进，比如：通过环境变量控制默认生成器（现在很容易将默认生成器改为 Ninja）。`--build` 模式支持多个目标，添加了 `--install` 模式。CMake支持多级日志记录。可以使用一些方便的工具来测试生成器表达式。FindPython 模块持续改进，FindBoost 与 Boost 1.70 的新 CONFIG 模块有了更多的内联。`export(PACKAGE)` 发生了巨大变化，不再将默认目录设置为 `$HOME/.cmake` (若 cmake 最小版本为 3.15+)，若用户若想使用它，需要额外的设置步骤。
 
 * 首次发布于 [2019年7月17日](https://blog.kitware.com/cmake-3-15-0-available-for-download/)
 * 新增控制默认生成器的环境变量 «envvar:CMAKE_GENERATOR»
@@ -284,7 +284,7 @@ CUDA 现在支持 Clang （不可分离编译）。新增了 CUDA_ARCHITECTURES 
 
 ## [CMake 3.20][]：文档
 
-CMake 文档通过添加 “new in” 标签来快速查看添加的内容，无需切换文档版本，提高了工作效率！新增C++23的支持。源文件必须列出扩展名，并且始终遵循设置的 LANGUAGE 规则。还做了相当多的清理工作（为了使
+CMake 文档通过添加 “new in” 标签来快速查看添加的内容，无需切换文档版本，提高了工作效率！新增 C++23 的支持。源文件必须列出扩展名，并且始终遵循设置的 LANGUAGE 规则。还做了相当多的清理工作（为了使
 工程部署的阻碍最小化，最好使用版本 `...3.20` 对源码进行测试），继续改进预设。
 
 * 首次发布于 [2021年3月23日](https://blog.kitware.com/cmake-3-20-0-available-for-download/)
