@@ -15,7 +15,7 @@
 ~/package/build $ make
 {% endterm %}
 
-你可以用 `cmake --build .` 替换 `make` 这一行。它会调用 `make` 或这任何你正在使用的构建工具。如果你正在使用版本比较新的 CMake（除非你正在检查对于老版本 CMake 的兼容性，否则应该使用较新的版本），你也可以这样做：
+你可以用 `cmake --build .` 替换 `make` 这一行。它会调用 `make` 或者任何你正在使用的构建工具。如果你正在使用版本比较新的 CMake（除非你正在检查对于老版本 CMake 的兼容性，否则应该使用较新的版本），你也可以这样做：
 
 {% term %}
 ~/package $ cmake -S . -B build
