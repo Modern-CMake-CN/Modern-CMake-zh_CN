@@ -21,7 +21,7 @@ endif()
 
 ## 在构建时运行一条命令
 
-在构建时运行一条命令有点难。主要是目标系统使这变的很难，你希望你的命令在什么时候运行？它是否会产生另一个目标需要的输出？记住这些需求，然后我们来看一个关于调用 Python 脚本生成头文件的例子：
+在构建时运行一条命令有点难。主要是目标系统（target system）使这变的很难，你希望你的命令在什么时候运行？它是否会产生另一个目标需要的输出？记住这些需求，然后我们来看一个关于调用 Python 脚本生成头文件的例子：
 
 ```cmake
 find_package(PythonInterp REQUIRED)
@@ -36,12 +36,6 @@ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/include/Generated.hpp DESTINATION incl
 ```
 
 在这里，当你在 `add_custom_target` 命令中添加 `ALL` 关键字，头文件的生成过程会在 `some_target` 这些依赖目标完成后自动执行。当你把这个目标作为另一个目标的依赖，你也可以不加 `ALL` 关键字，那这样他会在被依赖目标构建时会自动执行。或者，你也可以显示的直接构建 `generate_header` 这个目标。
-
-{% hint style='info' %}
-
-译者注：这里翻译的有一些拗口，后续会改善。
-
-{% endhint %}
 
 ## CMake 中包含的常用的工具
 

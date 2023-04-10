@@ -41,23 +41,22 @@ endif()
 
 «cmake:generator-expressions» 语句十分强大，不过有点奇怪和专业 ( specialized ) 。大多数 CMake 命令在配置的时候执行，包括我们上面看到的 `if` 语句。但是如果你想要他们在构建或者安装的时候运行呢，应该怎么写？ 生成器表达式就是为此而生[^1]。它们在目标属性中被评估（ evaluate ）：
 
-最简单的生成器表达式是信息表达式，其形式为 `$<KEYWORD>`；它会评估和当前配置相关的一系列信息。信息表达式的另一个形式是 `${KEYWORD:value}`，其中 `KEYWORD` 是一个控制评估的关键字，而 `value` 则是需要进行比较的值（ 这里的 `KEYWORD` 也允许使用信息表达式 ）。如果 `KEYWORD` 是一个可以被评估为0或1的生成器表达式或者变量，如果（`KEYWORD`被评估）为1则将会被替换（成`value`），如果是0则不会替换。你可以使用嵌套的生成器表达式，你也可以使用变量来使得自己更容易理解嵌套的变量。一些表达式也可以有多个值，值之间通过逗号分隔[^2]。
+最简单的生成器表达式是信息表达式，其形式为 `$<KEYWORD>`；它会评估和当前配置相关的一系列信息。信息表达式的另一个形式是 `$<KEYWORD:value>`，其中 `KEYWORD` 是一个控制评估的关键字，而 `value` 则是被评估的对象（ 这里的 `value` 中也允许使用信息表达式，如下面的 `${CMAKE_CURRENT_SOURCE_DIR}/include` ）。如果 `KEYWORD` 是一个可以被评估为0或1的生成器表达式或者变量，如果（`KEYWORD`被评估）为1则 `value` 会在这里被保留下来，而反之则不会。你可以使用嵌套的生成器表达式，你也可以使用变量来使得自己更容易理解嵌套的变量。一些表达式也可以有多个值，值之间通过逗号分隔[^2]。
 
 
-{% hint style='info' %}
-
-译者注：这里有点类似于 C 语言中的条件运算符。这里由于译者英语水平的问题，翻译的不够清楚，后续会改善。
-
-{% endhint %}
-
-
-如果你有一个只想在 DEBUG 模式下开启的编译标志（ flag ），你可以这样做：
+如果你有一个只想在配置阶段的 DEBUG 模式下开启的编译标志（ flag ），你可以这样做：
 
 ```
 target_compile_options(MyTarget PRIVATE "$<$<CONFIG:Debug>:--my-flag>")
 ```
 
-这是一个相比与指定一些形如 `*_DEBUG` 这样的变量更加新颖并且更加优雅的方式，并且这对所有支持生成器表达式的设置都通用。需要注意的是，你应该永远都不要使用配置时间的值作为当前的配置，因为像 IDE 这种多配置生成器不会在配置过程中生成配置时间，只有在构建时可以通过生成器表达式和 `*_<CONFIG>` 这类变量可以获得。
+{% hint style='info' %}
+
+译者注：这里有点迷惑性，这里其实包含了两种 generator-expression，分别是 configuration-expression 和 conditional-expression，前者使用的形式是 `$<CONFIG:cfgs>`，这里的 cfgs 是一个 List，如果 CONFIG 满足 cfgs 列表中的任何一个值，这个表达式会被评估（evaluate）为 1，否则为 0。后者使用的形式是 `$<condition:true_string>`，如果 condition 值为 1，则表达式被评估为 true_string，否则为空值。因此这里表达的含义是，如果这里是一个 DEBUG 的 configuration，就设置 --my-flag。可参见[官方文档](https://cmake.org/cmake/help/latest/manual/cmake-generator-expressions.7.html#genex:condition)。
+
+{% endhint %}
+
+这是一个相比与指定一些形如 `*_DEBUG` 这样的变量更加新颖并且更加优雅的方式，并且这对所有支持生成器表达式的设置都通用。需要注意的是，你永远不要在配置阶段（configuration phase）使用配置有关值（configure time value），因为在使用像 IDE 这种多配置生成器时你没法在配置阶段获取到这些值，只有在构建阶段使用生成器表达式或者形如 `*_<CONFIG>` 的变量才能获得。
 
 一些生成器表达式的其他用途：
 
@@ -66,6 +65,12 @@ target_compile_options(MyTarget PRIVATE "$<$<CONFIG:Debug>:--my-flag>")
 + 为构建和安装生成不同的位置。
 
 最后一个是常见的。你几乎会在所有支持安装的软件包中看到如下代码：
+
+{% hint style='info' %}
+
+译者注：表示在目标对于直接 BUILD 使用的目标包含的头文件目录为 `${CMAKE_CURRENT_SOURCE_DIR}/include`，而安装的目标包含的头文件目录为 `include`，是一个相对位置（同时需要 install 对应的头文件才可以）。
+
+{% endhint %}
 
 ```cmake
 target_include_directories(
