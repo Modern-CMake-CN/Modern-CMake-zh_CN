@@ -4,7 +4,7 @@
 
 ## 查找模块（不好的方式）
 
-`Find<mypackage>.cmake` 脚本是为那些不支持 CMake 的库所设计，所以已经使用 CMake 的库，无需不要创建这个脚本文件！可以使用 `Config<mypackage>.cmake`，具体方式如下所示。
+`Find<mypackage>.cmake` 脚本是为那些不支持 CMake 的库所设计，所以已经使用 CMake 的库，不要创建这个脚本文件！可以使用 `Config<mypackage>.cmake`，具体方式如下所示。
 
 ## 添加子项目
 
