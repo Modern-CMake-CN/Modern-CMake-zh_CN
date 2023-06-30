@@ -2,7 +2,7 @@
 
 ## 在配置时运行一条命令
 
-在配置时运行一条命令是相对比较容易的。可以使用 [`execute_process`][execute_process] 来运行一条命令并获得他的结果。一般来说，在 CMkae 中避免使用硬编码路径是一个好的习惯，你也可以使用 `${CMAKE_COMMAND}` , `find_package(Git)` , 或者`find_program` 来获取命令的运行权限。可以使用 `RESULT_VARIABLE` 变量来检查返回值，使用 `OUTPUT_VARIABLE` 来获得命令的输出。 
+在配置时运行一条命令是相对比较容易的。可以使用 [`execute_process`][execute_process] 来运行一条命令并获得他的结果。一般来说，在 CMake 中避免使用硬编码路径是一个好的习惯，你也可以使用 `${CMAKE_COMMAND}` , `find_package(Git)` , 或者`find_program` 来获取命令的运行权限。可以使用 `RESULT_VARIABLE` 变量来检查返回值，使用 `OUTPUT_VARIABLE` 来获得命令的输出。 
 
 下面是一个更新所有 git 子模块的例子：
 
