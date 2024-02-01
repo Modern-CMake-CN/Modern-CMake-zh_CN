@@ -85,7 +85,7 @@ target_include_directories(
 
 你可以轻松地定义你自己的 CMake «command:`function`» 或 «command:`macro`» 。函数和宏只有作用域上存在区别，宏没有作用域的限制。所以说，如果你想让函数中定义的变量对外部可见，你需要使用 `PARENT_SCOPE` 来改变其作用域。如果是在嵌套函数中，这会变得异常繁琐，因为你必须在想要变量对外的可见的所有函数中添加 `PARENT_SCOPE` 标志。但是这样也有好处，函数不会像宏那样对外“泄漏”所有的变量。接下来用函数举一个例子：
 
-下面十一个简单的函数的例子：
+下面是一个简单的函数的例子：
 
 ```cmake
 function(SIMPLE REQUIRED_ARG)
