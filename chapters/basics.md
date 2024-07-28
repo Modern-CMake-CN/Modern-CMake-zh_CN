@@ -104,7 +104,7 @@ add_library(another STATIC another.cpp another.h)
 target_link_libraries(another PUBLIC one)
 ```
 
-«command:`target_link_libraries`» 可能是 CMake 中最有用也最令人迷惑的命令。这个命令需要指定一个目标 `another`，并且在给出该目标的名字后为此目标添加一个依赖关系。如果 CMake 项目中不存在名称为 `one` 的目标（没有定义该 target/目标），那它会直接添加名字为 `one` 的库到依赖中（一般而言，会去 `/usr`、CMake 项目指定寻找库的路径等所有能找的路径找到叫 `one` 的库——译者注）（这也是命令叫 `target_link_libraries` 的原因）。因此你可以给定一个库的完整路径，或者是链接器标志。最后再说一个有些迷惑性的知识：），经典的 CMake 允许你省略 `PUBLIC` 关键字，但是你在目标链中省略与不省略混用，那么 CMake 会报出错误。
+«command:`target_link_libraries`» 可能是 CMake 中最有用也最令人迷惑的命令。这个命令需要指定一个目标 `another`，并且在给出该目标的名字（ `another` ）后为此目标添加一个依赖 `one`。如果 CMake 项目中不存在名称为 `one` 的目标（没有定义该 target/目标），那它会直接添加名字为 `one` 的库到依赖中（一般而言，会去 `/usr`、CMake 项目指定寻找库的路径等所有能找的路径找到叫 `one` 的库——译者注）（这也是命令叫 `target_link_libraries` 的原因）。或者你可以给定一个库的完整路径，或者是链接器标志。最后再说一个有些迷惑性的知识：），经典的 CMake 允许你省略 `PUBLIC` 关键字，但是你在目标链中省略与不省略混用，那么 CMake 会报出错误。
 
 只要记得在任何使用目标的地方都指定关键字，那么就不会有问题。
 
