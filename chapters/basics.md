@@ -46,7 +46,7 @@ endif()
 
 ## 设置一个项目
 
-现在，每一个顶层 CMakelists 文件都应该有下面这一行：
+接下来，每一个顶层 CMakelists 文件都应该加入下面这一行：
 
 ```cmake
 project(MyProject VERSION 1.0
@@ -61,7 +61,7 @@ project(MyProject VERSION 1.0
 你可以用 `#` 来添加[注释](https://cmake.org/cmake/help/latest/manual/cmake-language.7.html#comments)。CMake 也有一个用于注释的内联语法，但是那极少用到。
 {% endhint %}
 
-项目名称没有什么特别的用处。这里没有添加任何的目标(target)。
+项目名称就没有什么特别要注意的。目前为止，我们还没有添加任何的目标(target)。
 
 ## 生成一个可执行文件
 
@@ -95,7 +95,7 @@ add_library(one STATIC two.cpp three.h)
 target_include_directories(one PUBLIC include)
 ```
 
-«command:`target_include_directories`»  为目标添加了一个目录。 `PUBLIC` 对于一个二进制目标没有什么含义；但对于库来说，它让 CMake 知道，任何链接到这个目标的目标也必须包含这个目录。其他选项还有 `PRIVATE`（只影响当前目标，不影响依赖），以及 `INTERFACE`（只影响依赖）。
+«command:`target_include_directories`»  为目标添加了一个目录。 `PUBLIC` 对于一个可执行文件目标没有什么含义；但对于库来说，它让 CMake 知道，任何链接到这个目标的目标也必须包含这个目录。其他选项还有 `PRIVATE`（只影响当前目标，不影响依赖），以及 `INTERFACE`（只影响依赖）。
 
 接下来我们可以将目标之间链接起来：
 
@@ -104,7 +104,7 @@ add_library(another STATIC another.cpp another.h)
 target_link_libraries(another PUBLIC one)
 ```
 
-«command:`target_link_libraries`» 可能是 CMake 中最有用也最令人迷惑的命令。它指定一个目标，并且在给出目标的情况下添加一个依赖关系。如果不存在名称为 `one` 的目标，那他会添加一个链接到你路径中 `one` 库（这也是命令叫 `target_link_libraries` 的原因）。或者你可以给定一个库的完整路径，或者是链接器标志。最后再说一个有些迷惑性的知识：），经典的 CMake 允许你省略 `PUBLIC` 关键字，但是你在目标链中省略与不省略混用，那么 CMake 会报出错误。
+«command:`target_link_libraries`» 可能是 CMake 中最有用也最令人迷惑的命令。这个命令需要指定一个目标 `another`，并且在给出该目标的名字（ `another` ）后为此目标添加一个依赖 `one`。如果 CMake 项目中不存在名称为 `one` 的目标（没有定义该 target/目标），那它会直接添加名字为 `one` 的库到依赖中（一般而言，会去 `/usr`、CMake 项目指定寻找库的路径等所有能找的路径找到叫 `one` 的库——译者注）（这也是命令叫 `target_link_libraries` 的原因）。或者你可以给定一个库的完整路径，或者是链接器标志。最后再说一个有些迷惑性的知识：），经典的 CMake 允许你省略 `PUBLIC` 关键字，但是你在目标链中省略与不省略混用，那么 CMake 会报出错误。
 
 只要记得在任何使用目标的地方都指定关键字，那么就不会有问题。
 
