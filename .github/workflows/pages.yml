@@ -21,6 +21,7 @@ jobs:
       with:
         token: ${{ secrets.PERSONAL_TOKEN }}
         gitbook_epub: true
+        publish_push_force: true
         gitbook_epub_dir: "ebooks"
         gitbook_epub_name: "Modern-CMake-zh_CN"
         gitbook_pdf: true
