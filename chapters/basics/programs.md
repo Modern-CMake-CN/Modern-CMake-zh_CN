@@ -35,7 +35,7 @@ add_custom_target(generate_header ALL
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/include/Generated.hpp DESTINATION include)
 ```
 
-在这里，当你在 `add_custom_target` 命令中添加 `ALL` 关键字，头文件的生成过程会在 `some_target` 这些依赖目标完成后自动执行。当你把这个目标作为另一个目标的依赖，你也可以不加 `ALL` 关键字，那这样他会在被依赖目标构建时会自动执行。或者，你也可以显示的直接构建 `generate_header` 这个目标。
+在这里，当你在 `add_custom_target` 命令中添加 `ALL` 关键字，头文件的生成过程会在 `some_target` 这些依赖目标完成后自动执行。当你把这个目标作为另一个目标的依赖，你也可以不加 `ALL` 关键字，那这样他会在被依赖目标构建时会自动执行。或者，你也可以显式地直接构建 `generate_header` 这个目标。
 
 ## CMake 中包含的常用的工具
 
