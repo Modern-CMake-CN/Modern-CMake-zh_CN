@@ -17,7 +17,6 @@ find_package(Minuit2 CONFIG) # Either build or install
 target_link_libraries(MyProgram PRIVATE Minuit2::Minuit2)
 ```
 
-
 ## Development
 
 Minuit2 is a good example of potential solutions to the problem of integrating a modern (CMake 3.1+) build into an existing framework.
@@ -37,8 +36,8 @@ make package_source
 make purge
 ```
 
-This is only intended for developers wanting to produce source packages - a normal user *does not pass this option* and will not create source copies.
+This is only intended for developers wanting to produce source packages - a normal user _does not pass this option_ and will not create source copies.
 
 You can use `make install` or `make package` (binary packages) without adding this `standalone` option, either from inside the ROOT source or from a standalone package.
 
-[Minuit2]: https://root.cern.ch
+[minuit2]: https://root.cern.ch

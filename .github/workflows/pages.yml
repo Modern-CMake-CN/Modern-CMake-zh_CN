@@ -1,32 +1,98 @@
-name: 'Gitbook Action Build'
+name: 构建并发布文档
+
 on:
   push:
     branches:
       - master
-    paths-ignore:
-      - '.github/**'
-      - 'examples/**'
-      - 'origin/**'
-      - 'pdf/**'
-      - '.*'
-      - 'LICENSE'
+      - sync-upstream
+  pull_request:
+    branches:
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: book-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  build:
+  test-examples:
+    name: 测试 CMake 示例
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     steps:
-    - name: Checkout action
-      uses: actions/checkout@v2
-    - name: Gitbook Action
-      uses: ZanderZhao/gitbook-action@v1.2.4
-      with:
-        token: ${{ secrets.PERSONAL_TOKEN }}
-        gitbook_epub: true
-        publish_push_force: true
-        gitbook_epub_dir: "ebooks"
-        gitbook_epub_name: "Modern-CMake-zh_CN"
-        gitbook_pdf: true
-        gitbook_pdf_dir: "ebooks"
-        gitbook_pdf_name: "Modern-CMake-zh_CN"
-        gitbook_mobi: true
-        gitbook_mobi_dir: "ebooks"
-        gitbook_mobi_name: "Modern-CMake-zh_CN"
+      - name: 检出仓库
+        uses: actions/checkout@v4
+
+      - name: 安装 CMake 与 C++ 依赖
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake ninja-build libboost-dev
+
+      - name: 配置、构建并测试不依赖 ROOT 的示例
+        env:
+          CMAKE_POLICY_VERSION_MINIMUM: "3.5"
+        run: |
+          for example in simple-project extended-project fetch; do
+            cmake -S "examples/${example}" -B "build/${example}" -G Ninja
+            cmake --build "build/${example}" --parallel 2
+            ctest --test-dir "build/${example}" --output-on-failure --no-tests=error
+          done
+
+  build-and-deploy:
+    name: 构建 HTML、PDF 并发布
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    needs: test-examples
+    permissions:
+      contents: write
+    steps:
+      - name: 检出仓库
+        uses: actions/checkout@v4
+
+      - name: 配置 Pixi 构建环境
+        uses: prefix-dev/setup-pixi@v0.8.1
+        with:
+          pixi-version: v0.84.2
+          environments: build
+          locked: true
+
+      - name: 安装 PDF 所需的中文字体
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y fonts-noto-cjk
+
+      - name: 构建 MyST HTML 与 Typst PDF
+        env:
+          BASE_URL: /${{ github.event.repository.name }}
+        run: |
+          mkdir -p _build
+          pixi run build
+          pixi run pdf
+          cp _build/pdf/modern-cmake.pdf _build/html/modern-cmake.pdf
+          touch _build/html/.nojekyll
+
+      - name: 上传 PDF 构建产物
+        uses: actions/upload-artifact@v4
+        with:
+          name: modern-cmake-pdf
+          path: _build/pdf/modern-cmake.pdf
+          if-no-files-found: error
+
+      - name: 上传 HTML 构建产物
+        uses: actions/upload-artifact@v4
+        with:
+          name: modern-cmake-html
+          path: _build/html/
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 7
+
+      - name: 发布到 GitHub Pages
+        if: github.event_name != 'pull_request' && (github.ref == 'refs/heads/master' || github.event_name == 'workflow_dispatch')
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_build/html

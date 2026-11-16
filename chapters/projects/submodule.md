@@ -2,8 +2,8 @@
 
 如果你想要添加一个 Git 仓库，它与你的项目仓库使用相同的 Git 托管服务（诸如 GitHub、GitLab、BitBucker 等等），下面是正确的添加一个子模组到 `extern` 目录中的命令：
 
-```term
-gitbook $ git submodule add ../../owner/repo.git extern/repo
+```bash
+$ git submodule add ../../owner/repo.git extern/repo
 ```
 
 此处的关键是使用相对于你的项目仓库的相对路径，它可以保证你使用与主仓库相同的访问方式（ ssh 或 https ）访问子模组。这在大多数情况都能工作得相当好。当你在一个子模组里的时候，你可以把它看作一个正常的仓库，而当你在主仓库里时，你可以用 `add` 来改变当前的提交指针。
@@ -13,7 +13,7 @@ gitbook $ git submodule add ../../owner/repo.git extern/repo
 ```cmake
 find_package(Git QUIET)
 if(GIT_FOUND AND EXISTS "${PROJECT_SOURCE_DIR}/.git")
-# Update submodules as needed
+# 按需更新子模组
     option(GIT_SUBMODULE "Check submodules during build" ON)
     if(GIT_SUBMODULE)
         message(STATUS "Submodule update")
@@ -43,10 +43,9 @@ add_subdirectory(extern/repo)
 
 或者，如果这是一个只有头文件的库，你可以创建一个接口库目标 (interface library target) 。或者，如果支持的话，你可以使用`find_package`，可能初始的搜索目录就是你所添加的目录（查看文档或你所使用的`Find*.cmake`文件）。如果你追加到你的`CMAKE_MODULE_PATH`，你也可以包括一个CMake帮助文件目录，例如添加`pybind11`改进过的`FindPython*.cmake`文件。
 
+## 小贴士：获取 Git 版本号
 
-### 小贴士：获取 Git 版本号
-
-将下面的命令加入到上述 Git 更新子仓库的那段中：
+既然你在上面的代码片段中已经通过 `find_package(Git)` 找到了 Git，你还可以使用 `${GIT_EXECUTABLE}` 将当前的提交哈希（commit hash）捕获到一个变量中，例如将其嵌入到你的构建中：
 
 ```cmake
 execute_process(COMMAND ${GIT_EXECUTABLE} rev-parse --short HEAD

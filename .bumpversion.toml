@@ -1,0 +1,27 @@
+[tool.bumpversion]
+current_version = "4.4.0"
+
+[[tool.bumpversion.files]]
+filename = "chapters/intro/installing.md"
+search = "cmake-{current_version}-linux"
+replace = "cmake-{new_version}-linux"
+
+[[tool.bumpversion.files]]
+filename = "chapters/intro/installing.md"
+serialize = ["{major}.{minor}"]
+
+[[tool.bumpversion.files]]
+filename = "introduction.md"
+serialize = ["{major}.{minor}"]
+
+[[tool.bumpversion.files]]
+filename = "chapters/basics.md"
+serialize = ["{major}.{minor}"]
+
+[[tool.bumpversion.files]]
+filename = "examples/CMakeLists.txt"
+serialize = ["{major}.{minor}"]
+
+[[tool.bumpversion.files]]
+glob = "examples/*/CMakeLists.txt"
+serialize = ["{major}.{minor}"]

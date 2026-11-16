@@ -1,6 +1,7 @@
 # 变量与缓存
 
 ## 本地变量
+
 我们首先讨论变量。你可以这样声明一个本地 ( local ) 变量：
 
 ```CMake
@@ -40,7 +41,7 @@ set(MY_CACHE_VARIABLE "VALUE" CACHE STRING "" FORCE)
 mark_as_advanced(MY_CACHE_VARIABLE)
 ```
 
-第一行将会强制设置该变量的值，第二行将使得用户运行 `cmake -L ..` 或使用 GUI 界面的时候不会列出该变量。此外，你也可以通过 `INTERNAL` 这个类型来达到同样的目的（尽管在技术上他会强制使用 STRING 类型，这不会产生任何的影响）：
+第一行将会强制设置该变量的值，第二行将使得用户运行 `cmake -L ..` 或使用 GUI 界面的时候不会列出该变量。此外，你也可以通过 `INTERNAL` 这个类型来达到同样的目的（`INTERNAL` 类型隐含了 `FORCE`，并且会在列表和 GUI 中隐藏该条目）：
 
 ```cmake
 set(MY_CACHE_VARIABLE "VALUE" CACHE INTERNAL "")
@@ -48,9 +49,9 @@ set(MY_CACHE_VARIABLE "VALUE" CACHE INTERNAL "")
 
 因为 `BOOL` 类型非常常见，你可以这样非常容易的设置它：
 
- ```cmake
- option(MY_OPTION "This is settable from the command line" OFF)
- ```
+```cmake
+option(MY_OPTION "This is settable from the command line" OFF)
+```
 
 对于 `BOOL` 这种数据类型，对于它的 `ON` 和 `OFF` 有几种不同的说辞 (wordings) 。
 
@@ -90,4 +91,5 @@ get_property(ResultVariable TARGET TargetName PROPERTY CXX_STANDARD)
 [cmake-variables]: https://cmake.org/cmake/help/latest/manual/cmake-variables.7.html
 
 [^1]:  `if` 的条件部分语法有一些奇怪，因为 `if` 语法比 `${}` 出现的更早，所以它既可以加 `${}` 也可以不加 `${}`。 
+
 [^2]: 对于接口类的目标，可能对允许自定义的属性有一些限制。

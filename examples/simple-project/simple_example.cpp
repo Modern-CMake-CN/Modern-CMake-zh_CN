@@ -1,4 +1,4 @@
-// This is an example file as part of Modern-CMake
+// 这是 Modern-CMake 教程中的示例文件
 
 #include "simple_lib.hpp"
 

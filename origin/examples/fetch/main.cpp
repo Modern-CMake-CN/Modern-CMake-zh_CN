@@ -1,5 +1,5 @@
-#define CATCH_CONFIG_MAIN  // This tells Catch to provide a main() - only do this in one cpp file
-#include "catch2/catch.hpp"
+// Catch2 v3 provides main() via Catch2::Catch2WithMain
+#include <catch2/catch_test_macros.hpp>
 
 unsigned int Factorial( unsigned int number ) {
     return number <= 1 ? number : Factorial(number-1)*number;

@@ -24,9 +24,9 @@ endif()
 在构建时运行一条命令有点难。主要是目标系统（target system）使这变的很难，你希望你的命令在什么时候运行？它是否会产生另一个目标需要的输出？记住这些需求，然后我们来看一个关于调用 Python 脚本生成头文件的例子：
 
 ```cmake
-find_package(PythonInterp REQUIRED)
+find_package(Python REQUIRED COMPONENTS Interpreter)
 add_custom_command(OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/include/Generated.hpp"
-    COMMAND "${PYTHON_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/scripts/GenerateHeader.py" --argument
+    COMMAND "${Python_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/scripts/GenerateHeader.py" --argument
     DEPENDS some_target)
 
 add_custom_target(generate_header ALL

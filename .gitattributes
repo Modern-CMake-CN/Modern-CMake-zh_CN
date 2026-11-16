@@ -1,0 +1,4 @@
+# GitHub syntax highlighting
+pixi.lock linguist-language=YAML linguist-generated=true
+# Avoid grepping
+pixi.lock binary

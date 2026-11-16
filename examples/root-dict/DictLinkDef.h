@@ -1,4 +1,4 @@
-// See: https://root.cern.ch/selecting-dictionary-entries-linkdefh
+// 参见：https://root.cern.ch/selecting-dictionary-entries-linkdefh
 #ifdef __CINT__
 
 #pragma link off all globals;

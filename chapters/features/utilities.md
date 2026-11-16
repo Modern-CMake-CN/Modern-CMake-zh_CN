@@ -8,7 +8,6 @@
 
 通过设置变量 `CMAKE_<LANG>_COMPILER_LAUNCHER` 或设置目标的 `<LANG>_COMPILER_LAUNCHER` 属性来使用一些像 CCache 的方式来“封装”目标的编译。在 CMake 的最新版本中拓展了对 CCache 的支持。在使用时，可以这么写：
 
-
 ```cmake
 find_program(CCACHE_PROGRAM ccache)
 if(CCACHE_PROGRAM)
@@ -17,15 +16,14 @@ if(CCACHE_PROGRAM)
 endif()
 ```
 
-
 ## 一些实用工具
 
 设置以下属性或是在命令行中设置以 `CMAKE_*` 为起始的变量来启动这些功能。它们大部分只在 make 或 ninja 生成器生成 C 和 CXX 项目时起作用。
 
-* `<LANG>_CLANG_TIDY`: CMake 3.6+
-* `<LANG>_CPPCHECK`
-* `<LANG>_CPPLINT`
-* `<LANG>_INCLUDE_WHAT_YOU_USE`
+- `<LANG>_CLANG_TIDY`: CMake 3.6+
+- `<LANG>_CPPCHECK`
+- `<LANG>_CPPLINT`
+- `<LANG>_INCLUDE_WHAT_YOU_USE`
 
 ## Clang tidy[^2]
 
@@ -33,9 +31,9 @@ endif()
 
 这是一个使用 Clang-Tidy 的简单例子：
 
-```term
+```bash
 ~/package # cmake -S . -B build-tidy -DCMAKE_CXX_CLANG_TIDY="$(which clang-tidy);-fix"
-~/package # cmake --build build -j 1
+~/package # cmake --build build-tidy -j 1
 ```
 
 这里的 `-fix` 部分是可选的，将会修改你的源文件来尝试修复 clang-tidy 警告 (warning) 的问题。如果你在一个 git 仓库中工作的话，使用 `-fix` 是相当安全的，因为你可以看到代码中哪部分被改变了。不过，请确保**不要同时运行你的 makefile/ninja 来进行构建**！如果它尝试修复一个相同的头文件两次，可能会出现预期外的错误。
@@ -54,13 +52,13 @@ find_program(
 
 这是一个使用 `include what you use` 的例子。首先，你需要确保系统中有这个工具，例如在一个 docker 容器中或者通过 macOS 上的 brew 利用 `brew install include-what-you-use` 来安装它。然后，你可以通过此方式使用此工具，而不需要修改你的源代码：
 
-```term
+```bash
 ~/package # cmake -S . -B build-iwyu -DCMAKE_CXX_INCLUDE_WHAT_YOU_USE=include-what-you-use
 ```
 
 最后，你可以重定向输出到文件，然后选择是否应用此修复：
 
-```term
+```bash
 ~/package # cmake --build build-iwyu 2> iwyu.out
 ~/package # fix_includes.py < iwyu.out
 ```
@@ -77,21 +75,18 @@ find_program(
 
 下面的两行可以在一个 git 仓库中，在 `bash ` 中使用 clang-format 工具（假设你有一个 `.clang-format` 文件）：
 
-```term
-gitbook $ git ls-files -- '*.cpp' '*.h' | xargs clang-format -i -style=file
-gitbook $ git diff --exit-code --color
+```bash
+$ git ls-files -- '*.cpp' '*.h' | xargs clang-format -i -style=file
+$ git diff --exit-code --color
 ```
 
-
-
-{% hint style='info' %}
+:::{note}
 
 译者注：以下所有的脚注说明都为译者添加，原文并不包含此信息。脚注的说明资料均来自于互联网。
-{% endhint %}
 
+:::
 
-
-[^1]: Ccache（或 ”ccache“）是一个编译器缓存。它通过缓存之前的编译文件并且利用之前已经完成的编译过程来[加速重编译]((https://ccache.dev/performance.html))。Ccache是一个免费的软件，基于 [GNU General Public License version 3](http://www.gnu.org/licenses/gpl.html) 或之后更新的许可协议发布。可以查看这里的 [许可协议页面](https://ccache.dev/license.html) 。
+[^1]: Ccache（或 ”ccache“）是一个编译器缓存。它通过缓存之前的编译文件并且利用之前已经完成的编译过程来[加速重编译](https://ccache.dev/performance.html)。Ccache是一个免费的软件，基于 [GNU General Public License version 3](http://www.gnu.org/licenses/gpl.html) 或之后更新的许可协议发布。可以查看这里的 [许可协议页面](https://ccache.dev/license.html) 。
 [^2]: **clang-tidy** 是一个基于 clang 的 C++ 代码分析工具。它意图提供一个可扩展的框架，用于诊断和修复典型的编程错误，如样式违规、接口误用、或通过静态分析推断出的错误。**clang-tidy** 是一个模块化的程序，为编写新的检查规则提供了方便的接口。
 [^3]: 一个与 **clang** 一起使用，用于分析 C 和 C++ 源文件中 **#include** 的工具。
 [^4]:  ClangFormat 描述了一套建立在 [LibFormat](https://clang.llvm.org/docs/LibFormat.html) 之上的工具。它可以以各种方式支持你的工作流程，包括独立的工具和编辑器的集成。

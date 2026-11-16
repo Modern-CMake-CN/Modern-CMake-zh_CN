@@ -8,5 +8,4 @@
 
 ## 在配置时 (configure time) 下载
 
-如果你更喜欢在配置时下载，看看这个仓库 [Crascit/DownloadProject](https://github.com/Crascit/DownloadProject) ，它提供了插件式（不需要改变你原有的 CMakeLists.txt）的解决方案。但是，子模块 (submodules) 很好用，以至于我已经停止了使用 CMake 对诸如 GoogleTest 之类的项目的下载，并把他们加入到了子模块中。自动下载在没有网络访问的环境下也是难以实现的，并且外部项目经常被下载到构建目录中，如果你有多个构建目录，这就既浪费时间又浪费空间。
-
+如果你更喜欢在配置时下载，现代的做法是使用内置的 [FetchContent](fetch.md) 模块（CMake 3.11+ 引入，并在 3.14 中得到了大幅改进）。如果你受限于必须支持非常老旧的 CMake 版本，[Crascit/DownloadProject](https://github.com/Crascit/DownloadProject) 仓库曾是一个开箱即用（drop-in）的解决方案，但如今它已被 FetchContent 取代。但是，子模块 (submodules) 很好用，以至于我已经停止了使用 CMake 对诸如 GoogleTest 之类的项目的下载，并把他们加入到了子模块中。自动下载在没有网络访问的环境下也是难以实现的，并且外部项目经常被下载到构建目录中，如果你有多个构建目录，这就既浪费时间又浪费空间。

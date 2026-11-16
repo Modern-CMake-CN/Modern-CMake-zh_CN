@@ -2,11 +2,11 @@ This is an example project using CMake.
 
 The requirements are:
 
-* CMake 3.11 or better; 3.14+ highly recommended.
-* A C++17 compatible compiler
-* The Boost libararies (header only part is fine)
-* Git
-* Doxygen (optional)
+- CMake 3.11 or better; 3.14+ highly recommended.
+- A C++17 compatible compiler
+- The Boost libraries (header only part is fine)
+- Git
+- Doxygen (optional)
 
 To configure:
 
@@ -41,4 +41,4 @@ cmake -S . -B xbuild -GXcode
 cmake --open xbuild
 ```
 
-The CMakeLists show off several useful design patters for CMake.
+The CMakeLists show off several useful design patterns for CMake.

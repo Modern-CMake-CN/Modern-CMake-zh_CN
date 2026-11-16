@@ -1,5 +1,5 @@
-# Works with 3.11 and tested through 3.21
-cmake_minimum_required(VERSION 3.11...3.21)
+# Works with 3.15 and tested through 4.4
+cmake_minimum_required(VERSION 3.15...4.4)
 
 # Project name and a few useful settings. Other commands can pick up the results
 project(
@@ -35,11 +35,8 @@ if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
 endif()
 
 # FetchContent added in CMake 3.11, downloads during the configure step
+# FetchContent_MakeAvailable was added in CMake 3.14; simpler usage
 include(FetchContent)
-# FetchContent_MakeAvailable was not added until CMake 3.14; use our shim
-if(${CMAKE_VERSION} VERSION_LESS 3.14)
-  include(cmake/add_FetchContent_MakeAvailable.cmake)
-endif()
 
 # Accumulator library
 # This is header only, so could be replaced with git submodules or FetchContent

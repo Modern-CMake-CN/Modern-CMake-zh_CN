@@ -2,8 +2,8 @@
 
 If you want to add a Git repository on the same service (GitHub, GitLab, BitBucket, etc), the following is the correct Git command to set that up as a submodule in the `extern` directory:
 
-```term
-gitbook $ git submodule add ../../owner/repo.git extern/repo
+```bash
+$ git submodule add ../../owner/repo.git extern/repo
 ```
 
 The relative path to the repo is important; it allows you to keep the same access method (ssh or https) as the parent repository. This works very well in most ways. When you are inside the submodule, you can treat it just like a normal repo, and when you are in the parent repository, you can "add" to change the current commit pointer.
@@ -43,10 +43,9 @@ add_subdirectory(extern/repo)
 
 Or, you can build an interface library target yourself if it is a header only project. Or, you can use `find_package` if that is supported, probably preparing the initial search directory to be the one you've added (check the docs or the file for the `Find*.cmake` file you are using). You can also include a CMake helper file directory if you append to your `CMAKE_MODULE_PATH`, for example to add `pybind11`'s improved `FindPython*.cmake` files.
 
+## Bonus: Git version number
 
-### Bonus: Git version number
-
-Move this to Git section:
+Since you've already found Git with `find_package(Git)` in the snippet above, you can also use `${GIT_EXECUTABLE}` to capture the current commit hash into a variable, for example to embed it in your build:
 
 ```cmake
 execute_process(COMMAND ${GIT_EXECUTABLE} rev-parse --short HEAD

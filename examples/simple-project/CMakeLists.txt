@@ -1,45 +1,44 @@
-# CMake simple example
+# CMake 简单示例
 
 ## [main]
 
-# Almost all CMake files should start with this
-# You should always specify a range with the newest
-# and oldest tested versions of CMake. This will ensure
-# you pick up the best policies.
-cmake_minimum_required(VERSION 3.1...3.21)
+# 几乎所有的 CMake 文件都应该以这行开头
+# 你应当始终指定一个包含已测试的最新和最旧 CMake 版本的范围。
+# 这能确保你启用最佳的 CMake 策略（policy）。
+cmake_minimum_required(VERSION 3.15...4.4)
 
-# This is your project statement. You should always list languages;
-# Listing the version is nice here since it sets lots of useful variables
+# 这是你的项目声明。你应当始终列出所使用的编程语言；
+# 在这里列出版本号也很不错，因为它会自动设置许多实用的变量
 project(
   ModernCMakeExample
   VERSION 1.0
   LANGUAGES CXX)
 
-# If you set any CMAKE_ variables, that can go here.
-# (But usually don't do this, except maybe for C++ standard)
+# 如果你要设置任何 CMAKE_ 变量，可以放在这里。
+# （但通常不建议这样做，或许设置 C++ 标准时除外）
 
-# Find packages go here.
+# 查找包（find_package）的语句放在这里。
 
-# You should usually split this into folders, but this is a simple example
+# 通常你应该把后续内容拆分到各个子文件夹中，不过这只是一个简单示例
 
-# This is a "default" library, and will match the *** variable setting.
-# Other common choices are STATIC, SHARED, and MODULE
-# Including header files here helps IDEs but is not required.
-# Output libname matches target name, with the usual extensions on your system
+# 这是一个“默认”类型的库，会匹配相应的变量（BUILD_SHARED_LIBS）设置。
+# 其他常见选项还有 STATIC、SHARED 和 MODULE
+# 在这里把头文件一并列出有助于 IDE 识别，但并非必需。
+# 输出的库文件名与目标名一致，并带有当前系统上的常规扩展名
 add_library(MyLibExample simple_lib.cpp simple_lib.hpp)
 
-# Link each target with other targets or add options, etc.
+# 将各个目标与其他目标进行链接，或添加编译选项等。
 
-# Adding something we can run - Output name matches target name
+# 添加一个可运行的程序 —— 输出文件名与目标名一致
 add_executable(MyExample simple_example.cpp)
 
-# Make sure you link your targets with this command. It can also link libraries and
-# even flags, so linking a target that does not exist will not give a configure-time error.
+# 请确保使用此命令来链接你的目标。它也可以链接库甚至编译标志，
+# 因此链接一个不存在的目标不会在配置阶段报错。
 target_link_libraries(MyExample PRIVATE MyLibExample)
 
 ## [main]
 
-# This part is so the Modern CMake book can verify this example builds. For your code,
-# you'll probably want tests too
+# 这部分是为了让 Modern CMake 教程验证该示例能够正常构建。
+# 对于你自己的代码，大概也会希望添加测试
 enable_testing()
 add_test(NAME MyExample COMMAND MyExample)

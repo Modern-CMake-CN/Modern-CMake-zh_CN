@@ -4,7 +4,7 @@ In general, IDEs are already supported by a standard CMake project. There are ju
 
 ## Folders for targets
 
-Some IDEs, like Xcode, support folders. You have to manually enable the `USE_FOLDERS` global property to allow CMake to organize your files by folders:
+Some IDEs, like Xcode, support folders. Since CMake 3.26 (see policy [CMP0143](https://cmake.org/cmake/help/latest/policy/CMP0143.html)), the `USE_FOLDERS` global property defaults to `ON`; before that, you had to enable it manually to allow CMake to organize your files by folders:
 
 ```cmake
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
@@ -18,19 +18,15 @@ set_property(TARGET MyFile PROPERTY FOLDER "Scripts")
 
 Folders can be nested with `/`.
 
-
-
-You can control how files show up in each folder with regular expressions or explicit listings in [`source_group`](https://cmake.org/cmake/help/latest/command/source_group.html):
-
 ## Folders for files
 
-You can also control how the folders inside targets appear. There are two ways, both using the «command:source_group» command. The traditional way is
+You can also control how the folders inside targets appear. There are two ways, both using the [`source_group`](https://cmake.org/cmake/help/latest/command/source_group.html) command. The traditional way is
 
 ```cmake
 source_group("Source Files\\New Directory" REGULAR_EXPRESSION ".*\\.c[ucp]p?")
 ```
 
-You can explicitly list files with `FILES`, or use a `REGULAR_EXPRESSION`. This way you have complete control over the folder structure. However, if your on-disk layout is well designed, you might just want to mimic that. In CMake 3.8+, you can do so very easily with a new version of the «command:source_group» command:
+You can explicitly list files with `FILES`, or use a `REGULAR_EXPRESSION`. This way you have complete control over the folder structure. However, if your on-disk layout is well designed, you might just want to mimic that. In CMake 3.8+, you can do so very easily with a new version of the [`source_group`](https://cmake.org/cmake/help/latest/command/source_group.html) command:
 
 ```cmake
 source_group(TREE "${CMAKE_CURRENT_SOURCE_DIR}/base/dir" PREFIX "Header Files" FILES ${FILE_LIST})
@@ -47,5 +43,4 @@ CMake will strip the `TREE` path from the `FILE_LIST` path, it will add `PREFIX`
 
 To use an IDE, either pass `-G"name of IDE"` if CMake can produce that IDE's files (like Xcode, Visual Studio), or open the CMakeLists.txt file from your IDE if that IDE has built in support for CMake (CLion, QtCreator, many others).
 
-
-[sorting]: http://blog.audio-tk.com/2015/09/01/sorting-source-files-and-projects-in-folders-with-cmake-and-visual-studioxcode/
+[sorting]: https://web.archive.org/web/20231205143313/https://blog.audio-tk.com/2015/09/01/sorting-source-files-and-projects-in-folders-with-cmake-and-visual-studioxcode/

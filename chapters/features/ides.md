@@ -4,7 +4,7 @@
 
 ## 用文件夹来组织目标 (target)
 
-一些 IDE，例如 Xcode，支持文件夹。你需要手动的设定 `USE_FOLDERS` 这个全局属性来允许 CMake 使用文件夹组织你的文件：
+一些 IDE，例如 Xcode，支持文件夹。自 CMake 3.26 起（参见策略 [CMP0143](https://cmake.org/cmake/help/latest/policy/CMP0143.html)），全局属性 `USE_FOLDERS` 默认即为 `ON`；在此之前，你需要手动的设定这个全局属性来允许 CMake 使用文件夹组织你的文件：
 
 ```cmake
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
@@ -18,19 +18,15 @@ set_property(TARGET MyFile PROPERTY FOLDER "Scripts")
 
 文件夹可以使用 `/` 进行嵌套。
 
-
-
-你可以使用正则表达式或在 [`source_group`](https://cmake.org/cmake/help/latest/command/source_group.html) 使用列表来控制文件在文件夹中是否可见。
-
 ## 用文件夹来组织文件
 
-你也可以控制文件夹对目标是否可见。有两种方式，都是使用 «command:source_group» 命令，传统的方式是：
+你也可以控制文件夹对目标是否可见。有两种方式，都是使用 [`source_group`](https://cmake.org/cmake/help/latest/command/source_group.html) 命令，传统的方式是：
 
 ```cmake
 source_group("Source Files\\New Directory" REGULAR_EXPRESSION ".*\\.c[ucp]p?")
 ```
 
-你可以用 `FILES` 来明确的列出文件列表，或者使用 `REGULAR_EXPRESSION` 来进行筛选。通过这个方式你可以完全的掌控文件夹的结构。不过，如果你的文件已经在硬盘中组织的很好，你可能只是想在 CMake 中复现这种组织。在 CMake 3.8+ 中，你可以用新版的 «command:source_group» 命令非常容易的做到上述情形：
+你可以用 `FILES` 来明确的列出文件列表，或者使用 `REGULAR_EXPRESSION` 来进行筛选。通过这个方式你可以完全的掌控文件夹的结构。不过，如果你的文件已经在硬盘中组织的很好，你可能只是想在 CMake 中复现这种组织。在 CMake 3.8+ 中，你可以用新版的 [`source_group`](https://cmake.org/cmake/help/latest/command/source_group.html) 命令非常容易的做到上述情形：
 
 ```cmake
 source_group(TREE "${CMAKE_CURRENT_SOURCE_DIR}/base/dir" PREFIX "Header Files" FILES ${FILE_LIST})
@@ -44,5 +40,4 @@ source_group(TREE "${CMAKE_CURRENT_SOURCE_DIR}/base/dir" PREFIX "Header Files" F
 
 要使用 IDE，如果 CMake 可以生成对应 IDE 的文件（例如 Xcode，Visual Studio），可以通过 `-G"name of IDE"` 来完成，或者如果 IDE 已经内置了对 CMake 的支持（例如 CLion，QtCreator 和一些其他的 IDE），你可以直接在 IDE 中打开 `CMakeLists.txt` 来运行 CMake。
 
-
-[sorting]: http://blog.audio-tk.com/2015/09/01/sorting-source-files-and-projects-in-folders-with-cmake-and-visual-studioxcode/
+[sorting]: https://web.archive.org/web/20231205143313/https://blog.audio-tk.com/2015/09/01/sorting-source-files-and-projects-in-folders-with-cmake-and-visual-studioxcode/
