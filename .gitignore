@@ -1,9 +1,0 @@
-*.DS_Store
-/_book/
-/node_modules/
-/public/
-/book.pdf
-/modern-cmake.pdf
-/book.mobi
-/book.epub
-/package-lock.json
