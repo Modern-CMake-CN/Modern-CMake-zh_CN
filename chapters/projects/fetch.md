@@ -1,12 +1,11 @@
-# 获取软件包（FetchContent） (CMake 3.11+)
+# 获取软件包（FetchContent） (CMake 3.14+)
 
-有时你想要在配置的时候下载数据或者是包，而不是在编译的时候下载。这种方法已经被第三方包重复“发明”了好几次。最终，这种方法在 CMake 3.11 中以 [FetchContent] 模块的形式出现。
+有时你想要在配置的时候下载数据或者是包，而不是在编译的时候下载。这种方法已经被第三方包重复“发明”了好几次。最终，这种方法在 CMake 中以 [FetchContent] 模块的形式出现。
 
 [FetchContent] 模块有出色的文档，我在此不会赘述。我会阐述这样几个步骤：
 
-* 使用 `FetchContent_Declare(MyName)` 来从 URL、Git 仓库等地方获取数据或者是软件包。
-* 使用 `FetchContent_GetProperties(MyName)` 来获取 `MyName_*` 等变量的值，这里的 `MyName` 是上一步获取的软件包的名字。
-* 检查 `MyName_POPULATED` 是否已经导出，否则使用 `FetchContent_Populate(MyName)` 来导出变量（如果这是一个软件包，则使用 `add_subdirectory("${MyName_SOURCE_DIR}" "${MyName_BINARY_DIR}")` ）
+- 使用 `FetchContent_Declare(MyName)` 来从 URL、Git 仓库等地方获取数据或者是软件包。
+- 使用 `FetchContent_MakeAvailable(MyName)` 使其可用；如果它是一个带有 `CMakeLists.txt` 的软件包，这会将它添加到你的构建中（就像 `add_subdirectory` 所做的那样）。
 
 比如，下载 Catch2 ：
 
@@ -14,40 +13,14 @@
 FetchContent_Declare(
   catch
   GIT_REPOSITORY https://github.com/catchorg/Catch2.git
-  GIT_TAG        v2.13.6
+  GIT_TAG        v3.15.0
 )
 
-# CMake 3.14+
 FetchContent_MakeAvailable(catch)
 ```
 
-如果你不能使用 CMake 3.14+ ，可以使用适用于低版本的方式来加载：
-
-```cmake
-# CMake 3.11+
-FetchContent_GetProperties(catch)
-if(NOT catch_POPULATED)
-  FetchContent_Populate(catch)
-  add_subdirectory(${catch_SOURCE_DIR} ${catch_BINARY_DIR})
-endif()
-```
-
-当然，你可以将这些语句封装到一个宏内：
-
-```cmake
-if(${CMAKE_VERSION} VERSION_LESS 3.14)
-    macro(FetchContent_MakeAvailable NAME)
-        FetchContent_GetProperties(${NAME})
-        if(NOT ${NAME}_POPULATED)
-    	    FetchContent_Populate(${NAME})
-    	    add_subdirectory(${${NAME}_SOURCE_DIR} ${${NAME}_BINARY_DIR})
-        endif()
-    endmacro()
-endif()
-```
-
-这样，你就可以在 CMake 3.11+ 里使用 CMake 3.14+ 的语法了。
+如果你正在维护较旧的代码，你可能还会遇到早期那种手动检查 `MyName_POPULATED` 并调用 `FetchContent_Populate(MyName)` 的写法；该用法已在 CMake 3.30 中被弃用（见 [CMP0169](https://cmake.org/cmake/help/latest/policy/CMP0169.html)），并且在当前版本的 CMake 中会产生警告，因此直接使用 `FetchContent_MakeAvailable` 即可。
 
 可以在这里[查看](https://gitlab.com/CLIUtils/modern-cmake/-/tree/master/examples/fetch)例子。
 
-[FetchContent]: https://cmake.org/cmake/help/latest/module/FetchContent.html
+[fetchcontent]: https://cmake.org/cmake/help/latest/module/FetchContent.html

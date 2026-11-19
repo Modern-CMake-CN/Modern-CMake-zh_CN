@@ -39,11 +39,10 @@ add_test(NAME TestName COMMAND TargetName)
 If you put something else besides a target name after COMMAND, it will register as a command line to run. It would also be valid to put the generator expression:
 
 ```cmake
-add_test(NAME TestName COMMAND $<TARGET_FILE:${TESTNAME}>)
+add_test(NAME TestName COMMAND $<TARGET_FILE:TargetName>)
 ```
 
 which would use the output location (thus, the executable) of the produced target.
-
 
 ## Building as part of a test
 
@@ -55,7 +54,7 @@ add_test(
     ExampleCMakeBuild
   COMMAND
     "${CMAKE_CTEST_COMMAND}"
-             --build-and-test "${My_SOURCE_DIR}/examples/simple"
+             --build-and-test "${MyProject_SOURCE_DIR}/examples/simple"
                               "${CMAKE_CURRENT_BINARY_DIR}/simple"
              --build-generator "${CMAKE_GENERATOR}"
              --test-command "${CMAKE_CTEST_COMMAND}"
@@ -66,6 +65,6 @@ add_test(
 
 Look at the subchapters for recipes for popular frameworks.
 
-* [GoogleTest](testing/googletest.md): A popular option from Google. Development can be a bit slow.
-* [Catch2](testing/catch.md): A modern, PyTest-like framework with clever macros.
-* [DocTest](https://github.com/onqtam/doctest): A replacement for Catch2 that is supposed to compile much faster and be cleaner. See Catch2 chapter and replace with DocTest.
+- [GoogleTest](testing/googletest.md): A popular option from Google. Development can be a bit slow.
+- [Catch2](testing/catch.md): A modern, PyTest-like framework with clever macros.
+- [DocTest](https://github.com/doctest/doctest): A replacement for Catch2 that is supposed to compile much faster and be cleaner. See Catch2 chapter and replace with DocTest.

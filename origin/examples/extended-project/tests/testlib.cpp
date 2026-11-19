@@ -1,5 +1,5 @@
-#define CATCH_CONFIG_MAIN
-#include <catch2/catch.hpp>
+#include <catch2/catch_approx.hpp>
+#include <catch2/catch_test_macros.hpp>
 #include <modern/lib.hpp>
 
 TEST_CASE( "Quick check", "[main]" ) {
@@ -7,5 +7,5 @@ TEST_CASE( "Quick check", "[main]" ) {
     auto [mean, moment] = accumulate_vector(values);
 
     REQUIRE( mean == 2.0 );
-    REQUIRE( moment == Approx(4.666666) );
+    REQUIRE( moment == Catch::Approx(4.666666) );
 }

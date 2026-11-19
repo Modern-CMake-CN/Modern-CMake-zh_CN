@@ -2,11 +2,11 @@
 
 ## 通过 CMake 配置文件
 
-CMake 允许你在代码中使用 `configure_file` 来访问 CMake 变量。该命令将一个文件（ 一般以 `.in` 结尾 ）的内容复制到另一个文件中，并替换其中它找到的所有 CMake 变量。如果你想要在你的输入文件中避免替换掉使用  `${}` 包含的内容，你可以使用 `@ONLY` 关键字。还有一个关键字 `COPY_ONLY` 可以用来作为 `file(COPY` 的替代字。
+CMake 允许你在代码中使用 `configure_file` 来访问 CMake 变量。该命令将一个文件（ 一般以 `.in` 结尾 ）的内容复制到另一个文件中，并替换其中它找到的所有 CMake 变量。如果你想要在你的输入文件中避免替换掉使用  `${}` 包含的内容，你可以使用 `@ONLY` 关键字。还有一个关键字 `COPYONLY` 可以用来作为 `file(COPY` 的替代字。
 
 这个功能在 CMake 中使用的相当频繁，例如在下面的 `Version.h.in`  中：
 
-#### Version.h.in
+### Version.h.in
 
 ```cpp
 #pragma once
@@ -18,7 +18,8 @@ CMake 允许你在代码中使用 `configure_file` 来访问 CMake 变量。该�
 #define MY_VERSION "@PROJECT_VERSION@"
 ```
 
-#### CMake lines:
+### CMake lines:
+
 ```cmake
 configure_file (
     "${PROJECT_SOURCE_DIR}/include/My/Version.h.in"
@@ -29,7 +30,7 @@ configure_file (
 在构建你的项目时，你也应该包括二进制头文件路径。如果你想要在头文件中包含一些 `true/false` 类型的变量，CMake 对 C 语言有特有的 `#cmakedefine` 和 `#cmakedefine01` 替换符来完成上述需求。
 
 
-你也可以使用（ 并且是常用 ）这个来生成 `.cmake` 文件，例如配置文件（ 见 [installing](https://cliutils.gitlab.io/modern-cmake/chapters/install/installing.html) ）。
+你也可以使用（ 并且是常用 ）这个来生成 `.cmake` 文件，例如配置文件（ 见 [installing](../install/installing.md) ）。
 
 ## 读入文件
 
@@ -37,18 +38,18 @@ configure_file (
 
 
 ```cmake
-# Assuming the canonical version is listed in a single line
-# This would be in several parts if picking up from MAJOR, MINOR, etc.
+# 假设规范版本号写在单独一行中
+# 如果分别从 MAJOR、MINOR 等宏中读取，则需要拆分为几个部分
 set(VERSION_REGEX "#define MY_VERSION[ \t]+\"(.+)\"")
 
-# Read in the line containing the version
+# 读入包含版本号的那一行
 file(STRINGS "${CMAKE_CURRENT_SOURCE_DIR}/include/My/Version.hpp"
     VERSION_STRING REGEX ${VERSION_REGEX})
 
-# Pick out just the version
+# 仅提取出版本号本身
 string(REGEX REPLACE ${VERSION_REGEX} "\\1" VERSION_STRING "${VERSION_STRING}")
 
-# Automatically getting PROJECT_VERSION_MAJOR, My_VERSION_MAJOR, etc.
+# 自动获取 PROJECT_VERSION_MAJOR、My_VERSION_MAJOR 等变量
 project(My LANGUAGES CXX VERSION ${VERSION_STRING})
 ```
 

@@ -1,20 +1,22 @@
-# CMake ROOT dict example
+# CMake ROOT 字典示例
 
 ## [main]
 
-cmake_minimum_required(VERSION 3.4...3.21)
+cmake_minimum_required(VERSION 3.15...4.4)
 
 project(RootDictExample LANGUAGES CXX)
 
-set(CMAKE_CXX_STANDARD 11 CACHE STRING "C++ standard to use")
+set(CMAKE_CXX_STANDARD
+    11
+    CACHE STRING "C++ standard to use")
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_PLATFORM_INDEPENDENT_CODE ON)
 
 find_package(ROOT 6.20 CONFIG REQUIRED)
-# If you want to support <6.20, add this line:
+# 如果你想支持 < 6.20 的版本，请添加下面这行：
 # include("${ROOT_DIR}/modules/RootNewMacros.cmake")
-# However, it was moved and included by default in 6.201
+# 不过在 6.20 中该文件已迁移位置并默认自动包含！
 
 root_generate_dictionary(G__DictExample DictExample.h LINKDEF DictLinkDef.h)
 
@@ -22,7 +24,7 @@ add_library(DictExample SHARED DictExample.cxx DictExample.h G__DictExample.cxx)
 target_include_directories(DictExample PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}")
 target_link_libraries(DictExample PUBLIC ROOT::Core)
 
-## Alternative to add the dictionary to an existing target:
+## 将字典添加到现有目标的另一种写法：
 # add_library(DictExample SHARED DictExample.cxx DictExample.h)
 # target_include_directories(DictExample PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}")
 # target_link_libraries(DictExample PUBLIC ROOT::Core)

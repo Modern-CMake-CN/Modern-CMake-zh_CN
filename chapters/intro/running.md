@@ -8,35 +8,38 @@
 
 这是经典的 CMake 构建流程 （TM）：
 
-{% term %}
+```bash
 ~/package $ mkdir build
 ~/package $ cd build
 ~/package/build $ cmake ..
 ~/package/build $ make
-{% endterm %}
+```
 
 你可以用 `cmake --build .` 替换 `make` 这一行。它会调用 `make` 或者任何你正在使用的构建工具。如果你正在使用版本比较新的 CMake（除非你正在检查对于老版本 CMake 的兼容性，否则应该使用较新的版本），你也可以这样做：
 
-{% term %}
-~/package $ cmake -S . -B build
+```bash
+~/package $ cmake -S. -Bbuild
 ~/package $ cmake --build build
-{% endterm %}
+```
 
+（其中 `-S` 指定包含 `CMakeLists.txt` 的源代码目录，`-B` 指定构建目录，若该目录不存在则会自动创建。）
 以下**任何一条**命令都能够执行安装：
 
-{% term %}
-# From the build directory (pick one)
+```bash
+# 在构建目录中执行（任选其一）
+
 ~/package/build $ make install
 ~/package/build $ cmake --build . --target install
-~/package/build $ cmake --install . # CMake 3.15+ only
+~/package/build $ cmake --install . # 仅限 CMake 3.15+
 
-# From the source directory (pick one)
+# 在源代码目录中执行（任选其一）
+
 ~/package $ make -C build install
 ~/package $ cmake --build build --target install
-~/package $ cmake --install build # CMake 3.15+ only
-{% endterm %}
+~/package $ cmake --install build # 仅限 CMake 3.15+
+```
 
-所以你应该选择哪一种方法？只要你**别忘记**输入构建目录作为参数，在构建目录之外的时间较短，并且从源代码目录更改源代码比较方便就行。你应该试着习惯使用 `--build`，因为它能让你免于只用 `make` 来构建。需要注意的是，在构建目录下进行工作一直都非常普遍，并且一些工具和命令（包括 CTest）仍然需要在 build 目录中才能工作。
+所以你应该选择哪一种方法？只要你**别忘记**输入构建目录作为参数，在构建目录之外的时间较短，并且从源代码目录更改源代码比较方便就行。你应该试着习惯使用 `--build`，因为它能让你免于只用 `make` 来构建。需要注意的是，在构建目录下进行工作一直都非常普遍，并且一些工具和命令（包括 CTest <3.20）仍然需要在 build 目录中才能工作。
 
 额外解释一下，你可以指定 CMake 工作在**来自构建目录**的源代码目录，也可以工作在任何**现有**的构建目录。
 
@@ -46,19 +49,25 @@
 
 指定编译器必须在第一次运行时在空目录中进行。这种命令并不属于 CMake 语法，但你仍可能不太熟悉它。如果要选择 Clang：
 
-{% term %}
+```bash
 ~/package/build $ CC=clang CXX=clang++ cmake ..
-{% endterm %}
+```
 
-这条命令设置了 bash 里的环境变量 CC 和 CXX，并且 CMake 会使用这些参数。这一行命令就够了，你也只需要调用一次；之后 CMake 会继续使用从这些变量里推导出来的路径。
+这条命令设置了 bash 里的环境变量 CC 和 CXX，并且 CMake 会使用这些参数。如果你使用的是 Git Bash，则应当使用 `export` 将变量传递给子进程：
+
+```bash
+~/package/build $ export CC=clang CXX=clang++ cmake ..
+```
+
+这一行命令就够了，你也只需要调用一次；之后 CMake 会继续使用从这些变量里推导出来的路径。
 
 ## 指定生成器
 
 你可以选择的构建工具有很多；通常默认的是 `make`。要显示在你的系统上 CMake 可以调用的所有构建工具，运行：
 
-{% term %}
+```bash
 ~/package/build $ cmake --help
-{% endterm %}
+```
 
 你也可以用 `-G"My Tool"`（仅当构建工具的名字中包含空格时才需要引号）来指定构建工具。像指定编译器一样，你应该在一个目录中第一次调用 CMake 时就指定构建工具。如果有好几个构建目录也没关系，比如 `build/` 和 `buildXcode`。你可以用环境变量 `CMAKE_GENERATOR` 来指定默认的生成器（CMake 3.15+）。需要注意的是，makefiles 只会在你明确地指出线程数目之时才会并行运行，比如 `make -j2`，而 Ninja 却会自动地并行运行。在较新版本的 CMake 中，你能直接传递并行选项，比如`-j2`，到命令 `cmake --build `。
 
@@ -68,15 +77,12 @@
 
 ## 详细和部分的构建
 
-同样，这不属于 CMake，如果你正使用像 `make` 一样的命令行构建工具，你能获得详细的输出：
+虽然并非所有构建工具都支持，但你可以通过以下方式获得详细的构建输出（任选其一）：
 
-{% term %}
-~/package/build $ VERBOSE=1 make96
-
-我们已经提到了在构建时可以有详细输出，但你也可以看到详细的 CMake 配置输出。`--trace` 选项能够打印出运行的 CMake 的每一行。由于它过于冗长，CMake 3.7 添加了 `--trace-source="filename"` 选项，这让你可以打印出你想看的特定文件运行时执行的每一行。如果你选择了要调试的文件的名称（在调试一个 CMakeLists.txt 时通常选择父目录，因为它们名字都一样），你就会只看到这个文件里运行的那些行。这很实用！
-
-
-{% endterm %}
+```bash
+~/package $ cmake --build build --verbose # 仅限 CMake 3.14+
+~/package/build $ VERBOSE=1 make
+```
 
 实际上你写成 `make VERBOSE=1`，make 也能正确工作，但这是 `make` 的一个特性而不是命令行的惯用写法。
 
@@ -90,10 +96,10 @@ CMake 支持缓存选项。CMake 中的变量可以被标记为 "cached"，这�
 
 大部分软件包中都会用到以下的 CMake 选项：
 
-* `-DCMAKE_BUILD_TYPE=` 从 Release， RelWithDebInfo， Debug， 或者可能存在的更多参数中选择。
-* `-DCMAKE_INSTALL_PREFIX=` 这是安装位置。UNIX 系统默认的位置是 `/usr/local`，用户目录是 `~/.local`，也可以是你自己指定的文件夹。
-* `-DBUILD_SHARED_LIBS=` 你可以把这里设置为 `ON` 或 `OFF` 来控制共享库的默认值（不过，你也可以明确选择其他值而不是默认值）
-* `-DBUILD_TESTING=` 这是启用测试的通用名称，当然不会所有软件包都会使用它，有时这样做确实不错。
+- `-DCMAKE_BUILD_TYPE=` 从 Release， RelWithDebInfo， Debug， 或者可能存在的更多参数中选择。
+- `-DCMAKE_INSTALL_PREFIX=` 这是安装位置。UNIX 系统默认的位置是 `/usr/local`，用户目录是 `~/.local`，也可以是你自己指定的文件夹。
+- `-DBUILD_SHARED_LIBS=` 你可以把这里设置为 `ON` 或 `OFF` 来控制共享库的默认值（不过，你也可以明确选择其他值而不是默认值）
+- `-DBUILD_TESTING=` 这是启用测试的通用名称，当然不会所有软件包都会使用它，有时这样做确实不错。
 
 ## 调试你的 CMake 文件
 

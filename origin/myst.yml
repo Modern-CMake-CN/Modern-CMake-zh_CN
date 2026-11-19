@@ -1,0 +1,83 @@
+version: 1
+
+project:
+  title: Modern CMake
+  authors:
+    - name: Henry Schreiner
+  copyright: "2024"
+  exclude:
+    - _build
+    - build
+    - Thumbs.db
+    - .DS_Store
+    - "**.ipynb_checkpoints"
+    - .pixi
+    - "**/_deps"
+  toc:
+    - file: README.md
+    - title: Getting Started
+      children:
+        - file: chapters/intro/installing.md
+        - file: chapters/intro/running.md
+        - file: chapters/intro/dodonot.md
+        - file: chapters/intro/newcmake.md
+    - title: The Basics
+      children:
+        - file: chapters/basics.md
+        - file: chapters/basics/variables.md
+        - file: chapters/basics/functions.md
+        - file: chapters/basics/comms.md
+        - file: chapters/basics/structure.md
+        - file: chapters/basics/programs.md
+        - file: chapters/basics/example.md
+    - title: Extra features
+      children:
+        - file: chapters/features.md
+        - file: chapters/features/cpp11.md
+        - file: chapters/features/small.md
+        - file: chapters/features/utilities.md
+        - file: chapters/features/modules.md
+        - file: chapters/features/ides.md
+        - file: chapters/features/debug.md
+    - title: Using Other Projects
+      children:
+        - file: chapters/projects.md
+        - file: chapters/projects/submodule.md
+        - file: chapters/projects/download.md
+        - file: chapters/projects/fetch.md
+    - title: Testing
+      children:
+        - file: chapters/testing.md
+        - file: chapters/testing/googletest.md
+        - file: chapters/testing/catch.md
+    - title: Exporting and Installing
+      children:
+        - file: chapters/install.md
+        - file: chapters/install/installing.md
+        - file: chapters/install/exporting.md
+        - file: chapters/install/packaging.md
+    - title: Libraries
+      children:
+        - file: chapters/packages.md
+        - file: chapters/packages/CUDA.md
+        - file: chapters/packages/OpenMP.md
+        - file: chapters/packages/Boost.md
+        - file: chapters/packages/MPI.md
+        - file: chapters/packages/ROOT.md
+          children:
+            - file: examples/root-usefile/README.md
+            - file: examples/root-simple/README.md
+            - file: examples/root-dict/README.md
+        - file: chapters/packages/Minuit2.md
+  exports:
+    - format: typst
+      template: plain_typst_book
+      output: _build/pdf/modern-cmake.pdf
+
+site:
+  template: book-theme
+  options:
+    logo: logo.png
+  actions:
+    - title: src
+      url: https://gitlab.com/CLIUtils/modern-cmake

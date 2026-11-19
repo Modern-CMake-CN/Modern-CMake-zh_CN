@@ -1,0 +1,40 @@
+[workspace]
+authors = ["Henry Schreiner <henryschreineriii@gmail.com>"]
+channels = ["conda-forge"]
+description = "A book about modern CMake"
+name = "modern-cmake"
+platforms = ["linux-64", "osx-64", "osx-arm64"]
+version = "0.1.0"
+
+
+[feature.test.dependencies]
+root_base = ">=6.26"
+cmake = ">=3.15"
+make = "*"
+cxx-compiler = "*"
+libboost-devel = "*"
+git = "*"
+
+[feature.test.tasks.test]
+cmd = "cmake -Sexamples -Bbuild && cmake --build build -v && cmake --build build -t test"
+env = { CMAKE_POLICY_VERSION_MINIMUM = "3.5" }
+
+
+[feature.build.dependencies]
+python = "3.14.*"
+mystmd = "*"
+typst = "*"
+imagemagick = "*"
+make = "*"
+
+[feature.build.tasks]
+build = "myst build --html"
+serve = "myst start"
+pdf = "myst build --pdf"
+
+[environments]
+test = ["test"]
+build = ["build"]
+
+[activation.env]
+NODE_OPTIONS = "--localstorage-file=_build/.node-localstorage"

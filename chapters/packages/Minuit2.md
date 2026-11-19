@@ -7,16 +7,15 @@ Minuit2 在独立模式下可用，用于 ROOT 不可用或未启用 Minuit2 构
 无论是使用 ROOT 源码，还是使用单独发行的源码包，Minuit2 都可以使用 CMake 的标准用法：
 
 ```cmake
-# Check for Minuit2 in ROOT if you want
-# and then link to ROOT::Minuit2 instead
+# 如果需要，也可以先检查 ROOT 中是否包含 Minuit2，
+# 然后改为链接到 ROOT::Minuit2
 
-add_subdirectory(minuit2) # or root/math/minuit2
-# OR
-find_package(Minuit2 CONFIG) # Either build or install
+add_subdirectory(minuit2) # 或 root/math/minuit2
+# 或者
+find_package(Minuit2 CONFIG) # 构建目录或安装目录皆可
 
 target_link_libraries(MyProgram PRIVATE Minuit2::Minuit2)
 ```
-
 
 ## 开发
 
@@ -27,13 +26,13 @@ Minuit2 是将现代 CMake（CMake 3.1+）构建，集成到现有框架的解�
 ROOT 案例中最困难的部分是，Minuit2 需要 `math/minuit2` 目录之外的文件。这个问题，通过使用`copy_standalone.cmake` 解决了。文件中使用一个函数，该函数接受一个文件名列表，然后返回原始源中的文件名列表；或者将文件复制到本地源中，并返回新位置的列表；亦或者，若原始源不存在（独立模式），则只返回新位置的列表。
 
 ```bash
-# Copies files into source directory
+# 将文件复制到源码目录中
 cmake /root/math/minuit2 -Dminuit2-standalone=ON
 
-# Makes .tar.gz from source directory
+# 从源码目录生成 .tar.gz 压缩包
 make package_source
 
-# Optional, clean the source directory
+# 可选：清理源码目录
 make purge
 ```
 
@@ -41,4 +40,4 @@ make purge
 
 使用 ROOT 源码，还是使用单独发行的源码包，都可以使用`make install` 或 `make package` （生成二进制包），而无需添加 `standalone` 选项。
 
-[Minuit2]: https://root.cern.ch
+[minuit2]: https://root.cern.ch

@@ -1,31 +1,31 @@
-# Works with 3.11 and tested through 3.21
-cmake_minimum_required(VERSION 3.11...3.21)
+# 支持 CMake 3.15，并已测试至 4.4
+cmake_minimum_required(VERSION 3.15...4.4)
 
-# Project name and a few useful settings. Other commands can pick up the results
+# 项目名称以及一些实用的设置。其他命令可以获取这些设置的结果
 project(
   ModernCMakeExample
   VERSION 0.1
   DESCRIPTION "An example project with CMake"
   LANGUAGES CXX)
 
-# Only do these if this is the main project, and not if it is included through add_subdirectory
+# 仅当本项目作为主项目时才执行以下操作，通过 add_subdirectory 引入时不执行
 if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
 
-  # Optionally set things like CMAKE_CXX_STANDARD, CMAKE_POSITION_INDEPENDENT_CODE here
+  # 可选：在此处设置诸如 CMAKE_CXX_STANDARD、CMAKE_POSITION_INDEPENDENT_CODE 等变量
 
-  # Let's ensure -std=c++xx instead of -std=g++xx
+  # 确保使用 -std=c++xx 而非 -std=g++xx
   set(CMAKE_CXX_EXTENSIONS OFF)
 
-  # Let's nicely support folders in IDEs
+  # 在 IDE 中友好地支持文件夹组织功能
   set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
-  # Testing only available if this is the main app
-  # Note this needs to be done in the main CMakeLists
-  # since it calls enable_testing, which must be in the
-  # main CMakeLists.
+  # 仅当本项目作为主应用时才启用测试
+  # 注意：这必须在主 CMakeLists 中完成，
+  # 因为它会调用 enable_testing，而该命令必须位于
+  # 主 CMakeLists 中。
   include(CTest)
 
-  # Docs only available if this is the main app
+  # 仅当本项目作为主应用时才启用文档构建
   find_package(Doxygen)
   if(Doxygen_FOUND)
     add_subdirectory(docs)
@@ -34,34 +34,31 @@ if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
   endif()
 endif()
 
-# FetchContent added in CMake 3.11, downloads during the configure step
+# FetchContent 于 CMake 3.11 引入，会在配置阶段下载内容
+# FetchContent_MakeAvailable 于 CMake 3.14 引入，用法更加简便
 include(FetchContent)
-# FetchContent_MakeAvailable was not added until CMake 3.14; use our shim
-if(${CMAKE_VERSION} VERSION_LESS 3.14)
-  include(cmake/add_FetchContent_MakeAvailable.cmake)
-endif()
 
-# Accumulator library
-# This is header only, so could be replaced with git submodules or FetchContent
+# 累加器库
+# 这是一个纯头文件库，因此也可以替换为 Git 子模块或 FetchContent
 find_package(Boost REQUIRED)
-# Adds Boost::boost
+# 添加 Boost::boost 目标
 
-# Formatting library
+# 格式化库
 FetchContent_Declare(
   fmtlib
   GIT_REPOSITORY https://github.com/fmtlib/fmt.git
   GIT_TAG 5.3.0)
 FetchContent_MakeAvailable(fmtlib)
-# Adds fmt::fmt
+# 添加 fmt::fmt 目标
 
-# The compiled library code is here
+# 需要编译的库代码位于此处
 add_subdirectory(src)
 
-# The executable code is here
+# 可执行程序代码位于此处
 add_subdirectory(apps)
 
-# Testing only available if this is the main app
-# Emergency override MODERN_CMAKE_BUILD_TESTING provided as well
+# 仅当本项目作为主应用时才启用测试
+# 同时也提供了用于紧急覆盖的变量 MODERN_CMAKE_BUILD_TESTING
 if((CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME OR MODERN_CMAKE_BUILD_TESTING)
    AND BUILD_TESTING)
   add_subdirectory(tests)

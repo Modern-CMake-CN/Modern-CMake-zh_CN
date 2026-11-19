@@ -2,9 +2,9 @@
 
 下面的说法可能存在一些偏见，但我认为这是一种好的组织方式。我将会讲解如何组织项目的目录结构，这是基于以往的惯例来写的，这么做对你有以下好处：
 
-* 可以很容易阅读以相同模式组织的项目
-* 避免可能造成冲突的组织形式
-* 避免使目录结构变得混乱和复杂
+- 可以很容易阅读以相同模式组织的项目
+- 避免可能造成冲突的组织形式
+- 避免使目录结构变得混乱和复杂
 
 首先，如果你创建一个名为 `project` 的项目，它有一个名为 `lib` 的库，有一个名为 `app` 的可执行文件，那么目录结构应该如下所示：
 
@@ -12,7 +12,7 @@
 - project
   - .gitignore
   - README.md
-  - LICENCE.md
+  - LICENSE.md
   - CMakeLists.txt
   - cmake
     - FindSomeLib.cmake
@@ -54,7 +54,7 @@ set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
 如果你想要避免构建目录在有效的（ valid ）源代码目录中，你可以在顶层 `CMakeLists.txt` 文件头部添加如下语句：
 
 ```cmake
-### Require out-of-source builds
+### 要求源码外构建（out-of-source build）
 file(TO_CMAKE_PATH "${PROJECT_BINARY_DIR}/CMakeLists.txt" LOC_PATH)
 if(EXISTS "${LOC_PATH}")
     message(FATAL_ERROR "You cannot build in a source directory (or any directory with a CMakeLists.txt file). Please make a build subdirectory. Feel free to remove CMakeCache.txt and CMakeFiles.")

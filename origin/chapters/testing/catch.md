@@ -1,56 +1,54 @@
 # Catch
 
-
-[Catch2] (C++11 only version) is a powerful, idomatic testing solutions similar in philosophy to PyTest for Python. It supports a wider range of compilers than GTest, and is quick to support new things, like M1 builds on macOS. It also has a smaller but faster twin, [doctest](https://github.com/onqtam/doctest), which is quick to compile but misses features like matchers. To use Catch in a CMake project, there are several options.
+[Catch2] is a powerful, idiomatic testing solution similar in philosophy to PyTest for Python. It supports a wider range of compilers than GTest, and is quick to support new things, like M1 builds on macOS. It also has a smaller but faster twin, [doctest](https://github.com/doctest/doctest), which is quick to compile but misses features like matchers. The current Catch2 v3 line is a normal library (the old v2 single-header design is gone), and it requires C++14 or better. To use Catch2 in a CMake project, there are several options.
 
 ## Configure methods
 
-Catch has nice CMake support, though to use it, you need the full repo. This could be with submodules or FetchContent. Both the [`extended-project`](https://gitlab.com/CLIUtils/modern-cmake/-/tree/master/examples/extended-project) and [`fetch`](https://gitlab.com/CLIUtils/modern-cmake/-/tree/master/examples/fetch) examples use FetchContent. See [the docs](https://github.com/catchorg/Catch2/blob/v2.x/docs/cmake-integration.md#top).
-
-## Quick download
-
-This is likely the simplest method and supports older versions of CMake. You can download the all-in-one header file in one step:
+Catch2 has nice CMake support; you can get it with FetchContent (or submodules, or an installed copy via `find_package(Catch2 3)`). Both the [`extended-project`](https://gitlab.com/CLIUtils/modern-cmake/-/tree/master/examples/extended-project) and [`fetch`](https://gitlab.com/CLIUtils/modern-cmake/-/tree/master/examples/fetch) examples use FetchContent. See [the docs](https://github.com/catchorg/Catch2/blob/devel/docs/cmake-integration.md#top).
 
 ```cmake
-add_library(catch_main main.cpp)
-target_include_directories(catch_main PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}")
-set(url https://github.com/philsquared/Catch/releases/download/v2.13.6/catch.hpp)
-file(
-  DOWNLOAD ${url} "${CMAKE_CURRENT_BINARY_DIR}/catch.hpp"
-  STATUS status
-  EXPECTED_HASH SHA256=681e7505a50887c9085539e5135794fc8f66d8e5de28eadf13a30978627b0f47)
-list(GET status 0 error)
-if(error)
-  message(FATAL_ERROR "Could not download ${url}")
-endif()
-target_include_directories(catch_main PUBLIC "${CMAKE_CURRENT_BINARY_DIR}")
+include(FetchContent)
+
+FetchContent_Declare(
+  catch
+  GIT_REPOSITORY https://github.com/catchorg/Catch2.git
+  GIT_TAG        v3.15.0
+)
+FetchContent_MakeAvailable(catch)
 ```
 
-This will two downloads when Catch 3 is released, as that now requires two files (but you no longer have to write a main.cpp). The `main.cpp` looks like this:
+This provides two targets: `Catch2::Catch2`, and `Catch2::Catch2WithMain`, which also provides `main()` for you; unlike v2, you no longer write a `main.cpp` with `CATCH_CONFIG_MAIN`:
 
-```cpp
-#define CATCH_CONFIG_MAIN
-#include "catch.hpp"
+```cmake
+add_executable(my_tests test.cpp)
+target_link_libraries(my_tests PRIVATE Catch2::Catch2WithMain)
 ```
+
+Your test files then just include what they use, like `<catch2/catch_test_macros.hpp>` (the v2 catch-all `<catch2/catch.hpp>` is gone).
+
+## Registering tests with CTest
+
+Catch2 also ships CMake modules in its `extras` folder that register each `TEST_CASE` with CTest individually. The one to use is `catch_discover_tests` from the `Catch` module (`ParseAndAddCatchTests` is deprecated in v3):
+
+```cmake
+list(APPEND CMAKE_MODULE_PATH ${catch_SOURCE_DIR}/extras)
+include(CTest)
+include(Catch)
+catch_discover_tests(my_tests)
+```
+
+If you installed Catch2 instead of adding it as a subproject, the module is available directly after `find_package(Catch2 3 REQUIRED)`.
 
 ## Vendoring
 
-If you simply drop in the single include release of Catch into your project, this is what you would need to add Catch:
+If you can't (or don't want to) download at configure time, Catch2 v3 provides an amalgamated distribution: a pair of files, `extras/catch_amalgamated.hpp` and `extras/catch_amalgamated.cpp`, that you can drop into your project and build as a normal library:
 
 ```cmake
-# Prepare "Catch" library for other executables
-set(CATCH_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/extern/catch)
-add_library(Catch2::Catch IMPORTED INTERFACE)
-set_property(Catch2::Catch PROPERTY INTERFACE_INCLUDE_DIRECTORIES "${CATCH_INCLUDE_DIR}")
+add_library(catch2 STATIC extern/catch2/catch_amalgamated.cpp)
+target_include_directories(catch2 PUBLIC extern/catch2)
+target_compile_features(catch2 PUBLIC cxx_std_14)
 ```
 
-Then, you would link to Catch2::Catch. This would have been okay as an INTERFACE target since you won't be exporting your tests.
+The amalgamated files include the default `main()` as well. This is fine as a plain (non-exported) target since you won't be exporting your tests.
 
-
-## Direct inclusion
-
-If you add the library using ExternalProject, FetchContent, or git submodules, you can also `add_subdirectory` Catch (CMake 3.1+).
-
-Catch also provides two CMake modules that you can use to register the individual tests with CMake.
-
-[Catch2]: https://github.com/catchorg/Catch2
+[catch2]: https://github.com/catchorg/Catch2

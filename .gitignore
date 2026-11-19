@@ -1,9 +1,17 @@
 *.DS_Store
 /_book/
 /node_modules/
+/package-lock.json
 /public/
 /book.pdf
 /modern-cmake.pdf
 /book.mobi
 /book.epub
-/package-lock.json
+# pixi environments
+.pixi
+*.egg-info
+_build
+build
+# Symlink to AGENTS.md
+CLAUDE.md
+.claude/

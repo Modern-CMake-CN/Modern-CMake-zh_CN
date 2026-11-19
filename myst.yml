@@ -1,0 +1,95 @@
+version: 1
+
+project:
+  title: Modern CMake 简体中文版
+  subtitle: 编写简洁、强大且优雅的现代 CMake 构建指南
+  description: 著名 CMake 教程 Modern CMake 的简体中文翻译版，涵盖 CMake 3.15+ 现代构建最佳实践。
+  authors:
+    - name: Henry Schreiner
+  github: https://github.com/Modern-CMake-CN/Modern-CMake-zh_CN
+  copyright: "2024"
+  exclude:
+    - _build
+    - build
+    - Thumbs.db
+    - .DS_Store
+    - "**.ipynb_checkpoints"
+    - .pixi
+    - "**/_deps"
+    - origin
+    - "origin/**"
+    - CONTRIBUTING.md
+    - pdf
+    - "pdf/**"
+    - "examples/extended-project/**"
+  toc:
+    - file: README.md
+    - file: introduction.md
+    - title: 快速入门
+      children:
+        - file: chapters/intro/installing.md
+        - file: chapters/intro/running.md
+        - file: chapters/intro/dodonot.md
+        - file: chapters/intro/newcmake.md
+    - title: 基础知识
+      children:
+        - file: chapters/basics.md
+        - file: chapters/basics/variables.md
+        - file: chapters/basics/functions.md
+        - file: chapters/basics/comms.md
+        - file: chapters/basics/structure.md
+        - file: chapters/basics/programs.md
+        - file: chapters/basics/example.md
+    - title: 额外特性
+      children:
+        - file: chapters/features.md
+        - file: chapters/features/cpp11.md
+        - file: chapters/features/small.md
+        - file: chapters/features/utilities.md
+        - file: chapters/features/modules.md
+        - file: chapters/features/ides.md
+        - file: chapters/features/debug.md
+    - title: 包含子项目
+      children:
+        - file: chapters/projects.md
+        - file: chapters/projects/submodule.md
+        - file: chapters/projects/download.md
+        - file: chapters/projects/fetch.md
+    - title: 测试
+      children:
+        - file: chapters/testing.md
+        - file: chapters/testing/googletest.md
+        - file: chapters/testing/catch.md
+    - title: 导出与安装
+      children:
+        - file: chapters/install.md
+        - file: chapters/install/installing.md
+        - file: chapters/install/exporting.md
+        - file: chapters/install/packaging.md
+    - title: 查找库（或包）
+      children:
+        - file: chapters/packages.md
+        - file: chapters/packages/CUDA.md
+        - file: chapters/packages/OpenMP.md
+        - file: chapters/packages/Boost.md
+        - file: chapters/packages/MPI.md
+        - file: chapters/packages/ROOT.md
+          children:
+            - file: examples/root-usefile/README.md
+            - file: examples/root-simple/README.md
+            - file: examples/root-dict/README.md
+        - file: chapters/packages/Minuit2.md
+  exports:
+    - format: typst
+      template: plain_typst_book
+      output: _build/pdf/modern-cmake.pdf
+
+site:
+  template: book-theme
+  options:
+    logo: logo.png
+  actions:
+    - title: GitHub 仓库
+      url: https://github.com/Modern-CMake-CN/Modern-CMake-zh_CN
+    - title: 英文原版仓库
+      url: https://gitlab.com/CLIUtils/modern-cmake

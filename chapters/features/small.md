@@ -37,7 +37,7 @@ endif()
 
 ## 程序间优化(Interprocedural optimization)
 
-«prop:tgt:INTERPROCEDURAL_OPTIMIZATION»，最有名的是 *链接时间优化* 以及 `-flto` 标志，这在最新的几个 CMake 版本中可用。你可以通过变量 «variable:CMAKE_INTERPROCEDURAL_OPTIMIZATION»（ CMake 3.9+ 可用）或对目标指定 «prop:tgt:INTERPROCEDURAL_OPTIMIZATION» 属性来打开它。在 CMake 3.8 中添加了对 GCC 及 Clang 的支持。如果你设置了 `cmake_minimum_required(VERSION 3.9)` 或者更高的版本（参考 «policy:CMP0069»），当在编译器不支持 «prop:tgt:INTERPROCEDURAL_OPTIMIZATION» 时，通过变量或属性启用该优化会产生报错。你可以使用内置模块 «module:CheckIPOSupported» 中的 `check_ipo_supported()` 来检查编译器是否支持 IPO 。下面是基于 CMake 3.9 的一个例子：
+[`INTERPROCEDURAL_OPTIMIZATION`](https://cmake.org/cmake/help/latest/prop_tgt/INTERPROCEDURAL_OPTIMIZATION.html)，最有名的是 *链接时间优化* 以及 `-flto` 标志，在 CMake 中得到了良好的支持。你可以通过变量 [`CMAKE_INTERPROCEDURAL_OPTIMIZATION`](https://cmake.org/cmake/help/latest/variable/CMAKE_INTERPROCEDURAL_OPTIMIZATION.html) 全局开启它，或对单个目标指定 [`INTERPROCEDURAL_OPTIMIZATION`](https://cmake.org/cmake/help/latest/prop_tgt/INTERPROCEDURAL_OPTIMIZATION.html) 属性来打开它。当编译器不支持 [`INTERPROCEDURAL_OPTIMIZATION`](https://cmake.org/cmake/help/latest/prop_tgt/INTERPROCEDURAL_OPTIMIZATION.html) 时，在目标上将其设置为 `ON` 会产生报错（参考 [CMP0069](https://cmake.org/cmake/help/latest/policy/CMP0069.html)）。你可以使用内置模块 [CheckIPOSupported](https://cmake.org/cmake/help/latest/module/CheckIPOSupported.html) 中的 `check_ipo_supported()` 来提前检查编译器是否支持 IPO：
 
 ```cmake
 include(CheckIPOSupported)

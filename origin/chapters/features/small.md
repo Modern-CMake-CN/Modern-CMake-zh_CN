@@ -2,7 +2,7 @@
 
 There are lots of compiler and linker settings. When you need to add something special, you could check first to see if CMake supports it; if it does, you can avoid explicitly tying yourself to a compiler version. And, better yet, you explain what you mean in your CMakeLists, rather than spewing flags.
 
-The first and most common feature was C++ standards support, which got it's own chapter.
+The first and most common feature was C++ standards support, which got its own chapter.
 
 ## Position independent code
 
@@ -35,11 +35,9 @@ endif()
 
 You can pretty easily find `Find*.cmake`'s for this and other libraries that you need with a quick search; most major packages have a helper library of CMake modules. See the chapter on existing package inclusion for more.
 
-
-
 ## Interprocedural optimization
 
-«prop:tgt:INTERPROCEDURAL_OPTIMIZATION», best known as *link time optimization* and the `-flto` flag, is available on very recent versions of CMake. You can turn this on with «variable:CMAKE_INTERPROCEDURAL_OPTIMIZATION» (CMake 3.9+ only) or the «prop:tgt:INTERPROCEDURAL_OPTIMIZATION» property on targets. Support for GCC and Clang was added in CMake 3.8. If you set `cmake_minimum_required(VERSION 3.9)` or better (see «policy:CMP0069»), setting this to `ON` on a target is an error if the compiler doesn't support it. You can use check_ipo_supported(), from the built-in «module:CheckIPOSupported» module, to see if support is available before hand. An example of 3.9 style usage:
+[`INTERPROCEDURAL_OPTIMIZATION`](https://cmake.org/cmake/help/latest/prop_tgt/INTERPROCEDURAL_OPTIMIZATION.html), best known as _link time optimization_ and the `-flto` flag, is well supported by CMake. You can turn this on globally with [`CMAKE_INTERPROCEDURAL_OPTIMIZATION`](https://cmake.org/cmake/help/latest/variable/CMAKE_INTERPROCEDURAL_OPTIMIZATION.html) or per-target with the [`INTERPROCEDURAL_OPTIMIZATION`](https://cmake.org/cmake/help/latest/prop_tgt/INTERPROCEDURAL_OPTIMIZATION.html) property. Setting this to `ON` on a target is an error if the compiler doesn't support it (see [CMP0069](https://cmake.org/cmake/help/latest/policy/CMP0069.html)). You can use `check_ipo_supported()`, from the built-in [CheckIPOSupported](https://cmake.org/cmake/help/latest/module/CheckIPOSupported.html) module, to check support beforehand:
 
 ```cmake
 include(CheckIPOSupported)

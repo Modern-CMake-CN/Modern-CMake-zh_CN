@@ -39,7 +39,7 @@ add_test(NAME TestName COMMAND TargetName)
 如果你在 `COMMAND` 后写了除 `TargetName` 之外的东西，他将会被注册为在命令行运行的指令。在这里写生成器表达式(generator-expression)也是有效的：
 
 ```cmake
-add_test(NAME TestName COMMAND $<TARGET_FILE:${TESTNAME}>)
+add_test(NAME TestName COMMAND $<TARGET_FILE:TargetName>)
 ```
 
 这么写将会使用该目标生成的文件（也就是生成的可执行文件）的路径作为参数。
@@ -54,7 +54,7 @@ add_test(
     ExampleCMakeBuild
   COMMAND
     "${CMAKE_CTEST_COMMAND}"
-             --build-and-test "${My_SOURCE_DIR}/examples/simple"
+             --build-and-test "${MyProject_SOURCE_DIR}/examples/simple"
                               "${CMAKE_CURRENT_BINARY_DIR}/simple"
              --build-generator "${CMAKE_GENERATOR}"
              --test-command "${CMAKE_CTEST_COMMAND}"
@@ -65,6 +65,6 @@ add_test(
 
 可以查看子章节了解主流测试框架的使用方式(recipes)：
 
-* [GoogleTest](testing/googletest.md): 一个 Google 出品的主流测试框架。不过开发可能有点慢。
-* [Catch2](testing/catch.md): 一个现代的，具有灵巧的宏的 PyTest-like 的测试框架。
-* [DocTest](https://github.com/onqtam/doctest):  一个 Catch2 框架的替代品，并且编译速度更快、更干净(cleaner)。See Catch2 chapter and replace with DocTest. 
+- [GoogleTest](testing/googletest.md): 一个 Google 出品的主流测试框架。不过开发可能有点慢。
+- [Catch2](testing/catch.md): 一个现代的，具有灵巧的宏的 PyTest-like 的测试框架。
+- [DocTest](https://github.com/doctest/doctest):  一个 Catch2 框架的替代品，并且编译速度更快、更干净(cleaner)。See Catch2 chapter and replace with DocTest. 

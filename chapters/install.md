@@ -1,10 +1,10 @@
 # 导出与安装
 
-让别人使用库有三种好方法和一种坏方法:
+让别人使用库有三种好方法和一种坏方法。这三种好方法分别是：将项目作为子目录引入、导出构建树，以及安装 `*Config.cmake` 脚本：
 
 ## 查找模块（不好的方式）
 
-`Find<mypackage>.cmake` 脚本是为那些不支持 CMake 的库所设计，所以已经使用 CMake 的库，不要创建这个脚本文件！可以使用 `Config<mypackage>.cmake`，具体方式如下所示。
+`Find<mypackage>.cmake` 脚本是为那些不支持 CMake 的库所设计，所以已经使用 CMake 的库，不要创建这个脚本文件！可以使用 `<mypackage>Config.cmake`，具体方式如下所示。
 
 ## 添加子项目
 
@@ -20,7 +20,6 @@ add_library(MyLib::MyLib ALIAS MyLib)
 
 这里的 ALIAS（别名）目标不会在后面导出。
 
+## 导出与安装
 
-## 导出
-
-第三种方法是 `*Config.cmake` 脚本，这将是下一章的主题。
+另外两种好方法（导出构建树和安装 `*Config.cmake` 脚本）共享了大部分机制，它们将是本节后续章节的主题。

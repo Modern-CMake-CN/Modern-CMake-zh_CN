@@ -2,9 +2,9 @@
 
 The following information is biased. But in a good way, I think. I'm going to tell you how to structure the directories in your project. This is based on convention, but will help you:
 
-* Easily read other projects following the same patterns,
-* Avoid a pattern that causes conflicts,
-* Keep from muddling and complicating your build.
+- Easily read other projects following the same patterns,
+- Avoid a pattern that causes conflicts,
+- Keep from muddling and complicating your build.
 
 First, this is what your files should look like when you start if your project is creatively called `project`, with a library called `lib`, and a executable called `app`:
 
@@ -12,7 +12,7 @@ First, this is what your files should look like when you start if your project i
 - project
   - .gitignore
   - README.md
-  - LICENCE.md
+  - LICENSE.md
   - CMakeLists.txt
   - cmake
     - FindSomeLib.cmake
